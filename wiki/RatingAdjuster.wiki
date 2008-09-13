@@ -1,0 +1,15 @@
+#summary Automatically adjust ratings according to played count and listening pattern.
+#labels ratings,tracks,auto
+
+= Step-by-step Guide =
+
+Start iTSfv...
+
+ * Press F2 to access Options
+ * Go to OneTouch > Library > Rating tab
+ * Modify any settings to suit your needs
+ * Press OK 
+
+You are now back to the Main Window... 
+
+ * Jobs menu, click Adjust track Ratings...
