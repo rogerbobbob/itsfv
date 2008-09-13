@@ -1,0 +1,29 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <ReferencePath>H:\Users\McoreD\My Documents\McoreSDK\Assembly\v2.0\;H:\Users\Manno\Documents\Visual Studio 2005\Projects\iTSfv\lib\</ReferencePath>
+    <PublishUrlHistory>ftp://ftp.powweb.com/htdocs/mcored/research/itsfv/|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://wmwiki.com/mcored/research/itsfv/</InstallUrlHistory>
+    <SupportUrlHistory>http://sourceforge.net/forum/forum.php%3fforum_id=729721</SupportUrlHistory>
+    <UpdateUrlHistory>
+    </UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>
+    </ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
+  </PropertyGroup>
+</Project>
