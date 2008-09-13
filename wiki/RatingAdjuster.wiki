@@ -1,8 +1,6 @@
 #summary Automatically adjust ratings according to played count and listening pattern.
 #labels ratings,tracks,auto
 
-= Step-by-step Guide =
-
 Start iTSfv...
 
  * Press F2 to access [Options]
