@@ -7678,10 +7678,11 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
                     For i = 0 To listTracks.Count - 1
 
-                        If mDiscArtists.ContainsKey(listTracks.Item(i)) Then
-                            mDiscArtists.Item(listTracks.Item(i)) += 1
+                        Dim p As String = fGetRootFolderPath(listTracks(i), deep)
+                        If mDiscArtists.ContainsKey(p) Then
+                            mDiscArtists.Item(p) += 1
                         Else
-                            mDiscArtists.Add(listTracks.Item(i), 1)
+                            mDiscArtists.Add(p, 1)
                         End If
 
                     Next
