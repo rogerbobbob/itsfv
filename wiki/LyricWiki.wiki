@@ -1,4 +1,5 @@
 #summary a lyrical database-oriented website run by a MediaWiki wiki server.
+#labels lyricwiki,lyrics
 
 = Introduction =
 
