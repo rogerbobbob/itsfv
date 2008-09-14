@@ -1,0 +1,6 @@
+#summary Recover iTunes PlayedCount using your Last.fm.
+#labels last.fm,itunes,playedcount
+
+= Introduction =
+
+Recover iTunes PlayedCount using your Last.fm profile. ReverseScrobbling reads the play counts from the Last.fm user profile and updates the matching track in iTunes.
