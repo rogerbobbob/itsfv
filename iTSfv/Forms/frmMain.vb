@@ -9276,7 +9276,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     End Sub
 
     Private Sub SVNRepositoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SVNRepositoryToolStripMenuItem.Click
-        Process.Start("http://itsfv.svn.sourceforge.net/viewvc/itsfv/itsfv5/trunk/")
+        Process.Start("http://code.google.com/p/itsfv/source/checkout")
     End Sub
 
     Private Sub tsmiSelectedTracksValidate_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tsmiSelectedTracksValidate.DoubleClick
