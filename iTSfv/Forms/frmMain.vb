@@ -2184,9 +2184,19 @@ mItunesApp.SelectedTracks.Count > 0 Then
             ssAdjustTrackRating(track)
         End If
 
-        If chkRatingsImportPOPM.Checked Then
-            '*Import Rating from POPM
-            track.Rating = mTagLibJobs.mfGetPOPM(track.Location).Rating
+        If chkRatingsImportPOPM.Checked Or chkPlayedCountImportPCNT.Checked Then
+
+            Dim popm As FramePOPM = mTagLibJobs.mfGetPOPM(track.Location)
+
+            If chkRatingsImportPOPM.Checked Then
+                '*Import Rating from POPM
+                track.Rating = popm.Rating
+            End If
+
+            If chkPlayedCountImportPCNT.Checked Then
+                track.PlayedCount = popm.PlayedCount
+            End If
+
         End If
 
     End Sub
@@ -2293,6 +2303,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
             If My.Settings.WritePOPM Then
                 bEdited = tl.SetFramePOPM(track.PlayedCount, track.Rating)
+                mfUpdateStatusBarText(String.Format("Setting PlayedCount|Rating for {0} as {1}|{2}", track.Name, track.PlayedCount, track.Rating), True)
             End If
 
             If My.Settings.WritePCNT Then
@@ -9380,6 +9391,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
         Dim f As New frmSetInfo()
         f.Show()
 
+    End Sub
+
+    Private Sub GoogleGroupsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GoogleGroupsToolStripMenuItem.Click
+        Process.Start("http://groups.google.com/group/itsfv")
     End Sub
 End Class
 

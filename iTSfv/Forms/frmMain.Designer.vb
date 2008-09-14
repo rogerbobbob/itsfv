@@ -94,6 +94,7 @@ Partial Class frmMain
         Me.chkImportLyrics = New System.Windows.Forms.CheckBox
         Me.chkRemoveNull = New System.Windows.Forms.CheckBox
         Me.tpEditLibrary = New System.Windows.Forms.TabPage
+        Me.chkPlayedCountImportPCNT = New System.Windows.Forms.CheckBox
         Me.chkRatingsImportPOPM = New System.Windows.Forms.CheckBox
         Me.btnValidateSelectedTracksLibrary = New System.Windows.Forms.Button
         Me.chkDeleteNonMusicFolderTracks = New System.Windows.Forms.CheckBox
@@ -334,6 +335,7 @@ Partial Class frmMain
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.miManual = New System.Windows.Forms.ToolStripMenuItem
         Me.SupportForumsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.GoogleGroupsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.HydrogenAudioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ILoungeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SourceForgeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -1084,6 +1086,7 @@ Partial Class frmMain
         '
         'tpEditLibrary
         '
+        Me.tpEditLibrary.Controls.Add(Me.chkPlayedCountImportPCNT)
         Me.tpEditLibrary.Controls.Add(Me.chkRatingsImportPOPM)
         Me.tpEditLibrary.Controls.Add(Me.btnValidateSelectedTracksLibrary)
         Me.tpEditLibrary.Controls.Add(Me.chkDeleteNonMusicFolderTracks)
@@ -1100,6 +1103,18 @@ Partial Class frmMain
                 " tab does not modify tags in Tracks.")
         Me.tpEditLibrary.UseVisualStyleBackColor = True
         '
+        'chkPlayedCountImportPCNT
+        '
+        Me.chkPlayedCountImportPCNT.AutoSize = True
+        Me.chkPlayedCountImportPCNT.Checked = Global.iTSfv.My.MySettings.Default.PlayedCountImportPCNT
+        Me.chkPlayedCountImportPCNT.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "PlayedCountImportPCNT", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkPlayedCountImportPCNT.Location = New System.Drawing.Point(10, 102)
+        Me.chkPlayedCountImportPCNT.Name = "chkPlayedCountImportPCNT"
+        Me.chkPlayedCountImportPCNT.Size = New System.Drawing.Size(251, 17)
+        Me.chkPlayedCountImportPCNT.TabIndex = 19
+        Me.chkPlayedCountImportPCNT.Text = "Import PlayedCount from POPM or PCNT Frame"
+        Me.chkPlayedCountImportPCNT.UseVisualStyleBackColor = True
+        '
         'chkRatingsImportPOPM
         '
         Me.chkRatingsImportPOPM.AutoSize = True
@@ -1107,9 +1122,9 @@ Partial Class frmMain
         Me.chkRatingsImportPOPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RatingImportPOPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.chkRatingsImportPOPM.Location = New System.Drawing.Point(10, 79)
         Me.chkRatingsImportPOPM.Name = "chkRatingsImportPOPM"
-        Me.chkRatingsImportPOPM.Size = New System.Drawing.Size(222, 17)
+        Me.chkRatingsImportPOPM.Size = New System.Drawing.Size(178, 17)
         Me.chkRatingsImportPOPM.TabIndex = 18
-        Me.chkRatingsImportPOPM.Text = "Import &Rating from POPM or PCNT Frame"
+        Me.chkRatingsImportPOPM.Text = "Import &Rating from POPM Frame"
         Me.chkRatingsImportPOPM.UseVisualStyleBackColor = True
         '
         'btnValidateSelectedTracksLibrary
@@ -1151,7 +1166,7 @@ Partial Class frmMain
         Me.chkValidationPlaylists.AutoSize = True
         Me.chkValidationPlaylists.Checked = Global.iTSfv.My.MySettings.Default.CreateValidationPlaylists
         Me.chkValidationPlaylists.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CreateValidationPlaylists", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkValidationPlaylists.Location = New System.Drawing.Point(10, 102)
+        Me.chkValidationPlaylists.Location = New System.Drawing.Point(10, 125)
         Me.chkValidationPlaylists.Name = "chkValidationPlaylists"
         Me.chkValidationPlaylists.Size = New System.Drawing.Size(224, 17)
         Me.chkValidationPlaylists.TabIndex = 16
@@ -3289,10 +3304,16 @@ Partial Class frmMain
         '
         'SupportForumsToolStripMenuItem
         '
-        Me.SupportForumsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HydrogenAudioToolStripMenuItem, Me.ILoungeToolStripMenuItem, Me.SourceForgeToolStripMenuItem, Me.ToolStripSeparator8, Me.BetaVersionsToolStripMenuItem, Me.SVNRepositoryToolStripMenuItem, Me.ToolStripSeparator27, Me.DiggToolStripMenuItem, Me.OhlohToolStripMenuItem, Me.WakoopaToolStripMenuItem})
+        Me.SupportForumsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GoogleGroupsToolStripMenuItem, Me.HydrogenAudioToolStripMenuItem, Me.ILoungeToolStripMenuItem, Me.SourceForgeToolStripMenuItem, Me.ToolStripSeparator8, Me.BetaVersionsToolStripMenuItem, Me.SVNRepositoryToolStripMenuItem, Me.ToolStripSeparator27, Me.DiggToolStripMenuItem, Me.OhlohToolStripMenuItem, Me.WakoopaToolStripMenuItem})
         Me.SupportForumsToolStripMenuItem.Name = "SupportForumsToolStripMenuItem"
         Me.SupportForumsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.SupportForumsToolStripMenuItem.Text = "&Forums / Links"
+        '
+        'GoogleGroupsToolStripMenuItem
+        '
+        Me.GoogleGroupsToolStripMenuItem.Name = "GoogleGroupsToolStripMenuItem"
+        Me.GoogleGroupsToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.GoogleGroupsToolStripMenuItem.Text = "Google &Groups.."
         '
         'HydrogenAudioToolStripMenuItem
         '
@@ -4019,5 +4040,7 @@ Partial Class frmMain
     Friend WithEvents chkExportArtwork As System.Windows.Forms.CheckBox
     Friend WithEvents IgnoreWordsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmSetInfo As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents chkPlayedCountImportPCNT As System.Windows.Forms.CheckBox
+    Friend WithEvents GoogleGroupsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
 

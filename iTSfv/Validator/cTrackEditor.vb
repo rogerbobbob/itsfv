@@ -61,7 +61,7 @@ Public Class cTrackEditor
                 popm.Rating = Convert.ToByte(Math.Min(255, 255 * rating / 100))
                 popm.PlayCount = CULng(playedCount)
 
-                'msAppendDebug(String.Format("Setting PlayedCount|Rating for track as {0}|{1}", playedCount, rating))
+                'msAppendDebug(String.Format("Setting PlayedCount|Rating for track as {0}|{1}", playedCount, rating))                
                 succ = True
             End If
         Catch ex As Exception

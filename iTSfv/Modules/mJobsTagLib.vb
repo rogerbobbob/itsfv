@@ -15,20 +15,26 @@ Public Module mTagLibJobs
 
         Try
             Dim f As TagLib.File = TagLib.File.Create(filePath)
+
             Dim id32_tag As TagLib.Id3v2.Tag = CType(f.GetTag(TagLib.TagTypes.Id3v2, True), TagLib.Id3v2.Tag)
+
             If id32_tag IsNot Nothing Then
+
                 Dim userString As String = If(My.Settings.EmailAddress <> "", My.Settings.EmailAddress, EMAIL_ADDRESS)
                 Dim pf As PopularimeterFrame = PopularimeterFrame.Get(id32_tag, userString, False)
                 If pf IsNot Nothing Then
                     popm.PlayedCount = CInt(pf.PlayCount)
                     popm.Rating = CInt(100 * (pf.Rating / 255))
                 End If
+
+                '' this is the PCNT frame
                 If popm.PlayedCount = 0 Then
                     Dim pc As PlayCountFrame = PlayCountFrame.Get(id32_tag, False)
                     If pc IsNot Nothing Then
                         popm.PlayedCount = CInt(pc.PlayCount)
                     End If
                 End If
+
             End If
 
         Catch ex As Exception

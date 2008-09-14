@@ -1,7 +1,7 @@
 import artwork using iTunes Store Artwork
 stats for file size in OneTouch
 command line to sync last.fm playedcount
-use of previous rating 0% to 100%
+
 selected tracks > set info window to edit Episode Number etc
 lyrics viewer to have ontop option
 ability to re-order priority in artwork sources
