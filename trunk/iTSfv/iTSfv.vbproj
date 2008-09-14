@@ -81,7 +81,11 @@
     </Reference>
     <Reference Include="iTuneslyrics, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\iTuneslyrics\bin\Release\iTuneslyrics.dll</HintPath>
+      <HintPath>..\lib\iTuneslyrics.dll</HintPath>
+    </Reference>
+    <Reference Include="McoreIndexer, Version=2.9.2907.39509, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\McoreIndexer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -93,7 +97,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="taglib-sharp, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\taglib-sharp\bin\Release\taglib-sharp.dll</HintPath>
+      <HintPath>..\lib\taglib-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -340,7 +344,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Docs\iTSfv-Manual.pdf" />
     <None Include="My Project\app.manifest" />
     <EmbeddedResource Include="Forms\dlgArtistsList.resx">
       <DependentUpon>dlgArtistsList.vb</DependentUpon>
@@ -488,10 +491,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TreeGUI\McoreIndexer\Indexer.vbproj">
-      <Project>{64DF2713-9110-43AE-BD62-2C8633FDA9E9}</Project>
-      <Name>Indexer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\lib\CommandLineParser\CommandLineParser.vbproj">
       <Project>{0750FD5C-105A-474E-AB36-CA98DC1FA2E4}</Project>
       <Name>CommandLineParser</Name>
@@ -531,6 +530,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docs\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

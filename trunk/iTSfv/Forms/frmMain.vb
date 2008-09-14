@@ -4232,13 +4232,18 @@ mItunesApp.SelectedTracks.Count > 0 Then
         Next
 
         If folderMatches = False Then
-            MessageBox.Show(Application.ProductName & " has found that some or all of your tracks are not in any of the iTunes Music folder locations so iTSfv will not remove tracks out side of music folders." & Environment.NewLine & _
-            Environment.NewLine & "Most of your music are in:" & Environment.NewLine & guessedFolder & _
-               Environment.NewLine & String.Format("Your iTunes Music folder location is:" & _
-               Environment.NewLine & fGetLibraryParser.MusicFolder & Environment.NewLine & Environment.NewLine & "Set iTunes Music folder location to where you primarily store music ({0}) and retry to remove tracks outside of music folder or add another location using iTSfv Options. iTSfv will continue to remove tracks that do not exist.", guessedFolder), _
-               Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
-            success = True
+
+            If MessageBox.Show(Application.ProductName & " has found that some or all of your tracks are not in any of the iTunes Music folder locations so iTSfv will not remove tracks out side of music folders." & Environment.NewLine & _
+             Environment.NewLine & "Most of your music are in:" & Environment.NewLine & guessedFolder & _
+                Environment.NewLine & String.Format("Your iTunes Music folder location is:" & _
+                Environment.NewLine & fGetLibraryParser.MusicFolder & Environment.NewLine & Environment.NewLine & "Set iTunes Music folder location to where you primarily store music ({0}) and retry to remove tracks outside of music folder or add another location using iTSfv Options. iTSfv will continue to remove tracks that do not exist.", guessedFolder), _
+                Application.ProductName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK Then
+
+                ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
+                success = True
+
+            End If
+
         Else
             ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, True)
             success = True
@@ -7658,16 +7663,45 @@ mItunesApp.SelectedTracks.Count > 0 Then
             Dim booSame As Boolean = True
 
             ' we put 10 here; in reality who would put music 10 folders deep?
-            For deep As Integer = 10 To 1 Step -1
+            For deep As Integer = 10 To 0 Step -1
                 booSame = True
                 Dim i As Integer = 0
                 For i = 0 To listTracks.Count - 2
                     booSame = booSame And fEqualsRoot(listTracks.Item(i), listTracks.Item(i + 1), deep)
-                    ''Console.Writeline(String.Format("Trying deep {0}, {1}th time: {2}", fGetRootFolderPath(locs.Item(i), deep), i, booSame))
+                    Console.WriteLine(String.Format("Trying {0} deep: {1}, {2}th time: {3}", deep, fGetRootFolderPath(listTracks.Item(i), deep), i + 1, booSame))
                     If booSame = False Then Exit For
                 Next
+
                 If booSame Then
-                    Return fGetRootFolderPath(listTracks.Item(i), deep)
+
+                    Dim mDiscArtists As New Dictionary(Of String, Integer)
+
+                    For i = 0 To listTracks.Count - 1
+
+                        If mDiscArtists.ContainsKey(listTracks.Item(i)) Then
+                            mDiscArtists.Item(listTracks.Item(i)) += 1
+                        Else
+                            mDiscArtists.Add(listTracks.Item(i), 1)
+                        End If
+
+                    Next
+
+                    Dim topHit As Integer = 0
+                    Dim topArtist As String = VARIOUS_ARTISTS
+
+                    Dim et As IEnumerator = mDiscArtists.GetEnumerator
+                    Dim de As System.Collections.Generic.KeyValuePair(Of String, Integer)
+
+                    While et.MoveNext
+                        de = CType(et.Current, KeyValuePair(Of String, Integer))
+                        If String.IsNullOrEmpty(de.Key) = False AndAlso CInt(de.Value) > topHit Then
+                            topHit = CInt(de.Value)
+                            topArtist = CStr(de.Key)
+                        End If
+                    End While
+
+                    Return topArtist
+
                 End If
             Next
 
@@ -7684,7 +7718,12 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Function fEqualsRoot(ByVal loc1 As String, ByVal loc2 As String, ByVal deep As Integer) As Boolean
 
-        Return fGetRootFolderPath(loc1, deep).Equals(fGetRootFolderPath(loc2, deep))
+        Dim okPair As Boolean = fGetRootFolderPath(loc1, deep).Equals(fGetRootFolderPath(loc2, deep))
+        If deep = 0 AndAlso okPair = False Then
+            okPair = mfFileIsInMusicFolder(loc1) AndAlso mfFileIsInMusicFolder(loc2)
+        End If
+
+        Return okPair
 
     End Function
 
