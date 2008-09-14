@@ -3701,6 +3701,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
             ssBwAppDeleteMissingTracks(False, True)
         End If
 
+        If cli.ReverseScrobble Then
+            sBwAppReverseScrobble()
+        End If
+
         If cli.ValidateLibrary Then
             sBwAppValidateLibrary()
         End If
@@ -4870,7 +4874,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 sExecuteJob(AddressOf sBwAppFindNewTracksFromHDD)
 
             Case JobType.IMPORT_PLAYEDCOUNT_LASTFM
-                sExecuteJob(AddressOf sBwAppImportPlayedCountLastFM)
+                sExecuteJob(AddressOf sBwAppReverseScrobble)
 
             Case JobType.IMPORT_POPM_PCNT
                 sExecuteJob(AddressOf Me.sBwAppImportPOPM)
@@ -4940,7 +4944,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     End Sub
 
-    Private Sub sBwAppImportPlayedCountLastFM()
+    Private Sub sBwAppReverseScrobble()
 
         If bwApp.CancellationPending Then
             Exit Sub
