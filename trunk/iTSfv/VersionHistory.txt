@@ -1,5 +1,6 @@
 Version 5.60 - 20081231?
 
+5.60.17.0 Import PlayedCount from POPM or PCNT Frame for MP3 files using Library tab
 5.60.16.0 Lyrics from LyricWiki will support all UTF-8 characters
 5.60.15.3 Could not determine the music folder path where most of the music files are in the library when music files were in the root drive
 5.60.15.2 Selected Tracks : Export iTunes Store Artwork... always exported artwork of the firstly selected track [Jojo]
