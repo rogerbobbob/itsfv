@@ -445,14 +445,15 @@ Public Class frmOptions
 
     Private Sub sSettingsSaveAdvanced()
 
-
-
         Dim regKey As Microsoft.Win32.RegistryKey = _
        Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True)
-        If My.Settings.LoadWithWindows Then
-            regKey.SetValue(Application.ProductName, Application.ExecutablePath)
-        Else
-            regKey.DeleteValue(Application.ProductName, False)
+
+        If regKey IsNot Nothing Then
+            If My.Settings.LoadWithWindows Then
+                regKey.SetValue(Application.ProductName, Application.ExecutablePath)
+            Else
+                regKey.DeleteValue(Application.ProductName, False)
+            End If
         End If
 
         ' advanced - appearance
