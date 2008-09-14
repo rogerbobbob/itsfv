@@ -3,13 +3,57 @@ Imports System.Text
 
 Public Class cCommandLine
 
+    ''***************************************
+    '' ADDING A NEW FLAG TO THE COMMAND LINE: 
+    ''***************************************
+    '' Create a Const as FLAG_NEWFLAG
+    '' Add FLAG_NEWFLAG to SetupCommandLineEntries
+    '' Create a Property for the Flag
+    '' Check for the flag in New()
+
     Const FLAG_ADD_FILES As String = "add_files"
     Const FLAG_ADD_FOLDER As String = "add_folder"
     Const FLAG_ADJUST_RATINGS As String = "adjust_ratings"
     Const FLAG_REMOVE_DEAD As String = "remove_dead"
     Const FLAG_REMOVE_FOREIGN As String = "remove_foreign"
     Const FLAG_REMOVE_DEAD_FOREIGN As String = "remove_dead_foreign"
+    Const FLAG_REVERSE_SCROBBLE As String = "reverse_scrobble"
     Const FLAG_VALIDATE_LIBRARY As String = "validate_library"
+
+    Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParser.CommandLineParser)
+
+        Dim anEntry As CommandLineEntry
+        ' create a flag type entry that accepts a -f (file) 
+        ' flag, (meaning the next parameter is a file 
+        ' name), and is required 
+        anEntry = parser.CreateEntry _
+           (CommandTypeEnum.Flag, FLAG_ADD_FOLDER)
+        parser.Entries.Add(anEntry)
+
+        ' store the new Entry in a local reference
+        ' for use with the next CommandLineEntry's 
+        ' MustFollow property.
+        Dim fileEntry As CommandLineEntry
+        fileEntry = anEntry
+
+        ' now create am ExistingFile type entry that must
+        ' follow the -f flag.
+        anEntry = parser.CreateEntry _
+        (CommandTypeEnum.ExistingFolder)
+        anEntry.MustFollowEntry = fileEntry
+        parser.Entries.Add(anEntry)
+
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADD_FILES))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADJUST_RATINGS))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_FOREIGN))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD_FOREIGN))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REVERSE_SCROBBLE))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_VALIDATE_LIBRARY))
+
+
+    End Sub
+
 
     Private mAddFiles As Boolean = False
     Public ReadOnly Property AddFiles() As Boolean
@@ -57,6 +101,13 @@ Public Class cCommandLine
     Public ReadOnly Property RemoveDeadForeignFiles() As Boolean
         Get
             Return mRemoveDeadForeign
+        End Get
+    End Property
+
+    Private mReverseScrobble As Boolean = False
+    Public ReadOnly Property ReverseScrobble() As Boolean
+        Get
+            Return mReverseScrobble
         End Get
     End Property
 
@@ -114,6 +165,8 @@ Public Class cCommandLine
                         mRemoveForeign = True
                     ElseIf entry.Value.Equals(FLAG_REMOVE_DEAD_FOREIGN) Then
                         mRemoveDeadForeign = True
+                    ElseIf entry.Value.Equals(FLAG_REVERSE_SCROBBLE) Then
+                        mReverseScrobble = True
                     ElseIf entry.Value.Equals(FLAG_VALIDATE_LIBRARY) Then
                         mValidateLibrary = True
                     End If
@@ -130,39 +183,6 @@ Public Class cCommandLine
             End If
 
         End If
-
-    End Sub
-
-    Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParser.CommandLineParser)
-
-        Dim anEntry As CommandLineEntry
-        ' create a flag type entry that accepts a -f (file) 
-        ' flag, (meaning the next parameter is a file 
-        ' name), and is required 
-        anEntry = parser.CreateEntry _
-           (CommandTypeEnum.Flag, FLAG_ADD_FOLDER)
-        parser.Entries.Add(anEntry)
-
-        ' store the new Entry in a local reference
-        ' for use with the next CommandLineEntry's 
-        ' MustFollow property.
-        Dim fileEntry As CommandLineEntry
-        fileEntry = anEntry
-
-        ' now create am ExistingFile type entry that must
-        ' follow the -f flag.
-        anEntry = parser.CreateEntry _
-        (CommandTypeEnum.ExistingFolder)
-        anEntry.MustFollowEntry = fileEntry
-        parser.Entries.Add(anEntry)
-
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADD_FILES))
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADJUST_RATINGS))
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD))
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_FOREIGN))
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD_FOREIGN))
-        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_VALIDATE_LIBRARY))
-
 
     End Sub
 
