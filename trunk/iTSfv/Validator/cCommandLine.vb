@@ -10,6 +10,7 @@ Public Class cCommandLine
     '' Add FLAG_NEWFLAG to SetupCommandLineEntries
     '' Create a Property for the Flag
     '' Check for the flag in New()
+    '' Code what has to be done in main form sBwAppCommandLineJobs()
 
     Const FLAG_ADD_FILES As String = "add_files"
     Const FLAG_ADD_FOLDER As String = "add_folder"
@@ -18,6 +19,7 @@ Public Class cCommandLine
     Const FLAG_REMOVE_FOREIGN As String = "remove_foreign"
     Const FLAG_REMOVE_DEAD_FOREIGN As String = "remove_dead_foreign"
     Const FLAG_REVERSE_SCROBBLE As String = "reverse_scrobble"
+    Const FLAG_SYNCHROCLEAN As String = "synchroclean"
     Const FLAG_VALIDATE_LIBRARY As String = "validate_library"
 
     Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParser.CommandLineParser)
@@ -49,6 +51,7 @@ Public Class cCommandLine
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_FOREIGN))
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD_FOREIGN))
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REVERSE_SCROBBLE))
+        parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_SYNCHROCLEAN))
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_VALIDATE_LIBRARY))
 
 
@@ -111,6 +114,13 @@ Public Class cCommandLine
         End Get
     End Property
 
+    Private mSynchroclean As Boolean = False
+    Public ReadOnly Property Synchroclean() As Boolean
+        Get
+            Return mSynchroclean
+        End Get
+    End Property
+
     Private mValidateLibrary As Boolean = False
     Public ReadOnly Property ValidateLibrary() As Boolean
         Get
@@ -167,6 +177,8 @@ Public Class cCommandLine
                         mRemoveDeadForeign = True
                     ElseIf entry.Value.Equals(FLAG_REVERSE_SCROBBLE) Then
                         mReverseScrobble = True
+                    ElseIf entry.Value.Equals(FLAG_SYNCHROCLEAN) Then
+                        mSynchroclean = True
                     ElseIf entry.Value.Equals(FLAG_VALIDATE_LIBRARY) Then
                         mValidateLibrary = True
                     End If

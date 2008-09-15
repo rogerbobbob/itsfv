@@ -35,7 +35,7 @@ Partial Class frmAddNewFiles
         Me.chkYear = New System.Windows.Forms.CheckBox
         Me.chkGenre = New System.Windows.Forms.CheckBox
         Me.chkAlbumArtist = New System.Windows.Forms.CheckBox
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.lblOf = New System.Windows.Forms.Label
         Me.chkDisc = New System.Windows.Forms.CheckBox
         Me.nudDiscCount = New System.Windows.Forms.NumericUpDown
         Me.nudDiscNumber = New System.Windows.Forms.NumericUpDown
@@ -98,7 +98,7 @@ Partial Class frmAddNewFiles
         Me.gbAlbumTags.Controls.Add(Me.chkGenre)
         Me.gbAlbumTags.Controls.Add(Me.cboAlbumArtist)
         Me.gbAlbumTags.Controls.Add(Me.chkAlbumArtist)
-        Me.gbAlbumTags.Controls.Add(Me.Label1)
+        Me.gbAlbumTags.Controls.Add(Me.lblOf)
         Me.gbAlbumTags.Controls.Add(Me.chkDisc)
         Me.gbAlbumTags.Controls.Add(Me.nudDiscCount)
         Me.gbAlbumTags.Controls.Add(Me.nudDiscNumber)
@@ -146,7 +146,7 @@ Partial Class frmAddNewFiles
         Me.nudYear.Location = New System.Drawing.Point(105, 99)
         Me.nudYear.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.nudYear.Name = "nudYear"
-        Me.nudYear.Size = New System.Drawing.Size(120, 20)
+        Me.nudYear.Size = New System.Drawing.Size(148, 20)
         Me.nudYear.TabIndex = 7
         Me.nudYear.Value = New Decimal(New Integer() {2008, 0, 0, 0})
         '
@@ -180,14 +180,14 @@ Partial Class frmAddNewFiles
         Me.chkAlbumArtist.Text = "Album Artist"
         Me.chkAlbumArtist.UseVisualStyleBackColor = True
         '
-        'Label1
+        'lblOf
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(171, 155)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(16, 13)
-        Me.Label1.TabIndex = 14
-        Me.Label1.Text = "of"
+        Me.lblOf.AutoSize = True
+        Me.lblOf.Location = New System.Drawing.Point(171, 155)
+        Me.lblOf.Name = "lblOf"
+        Me.lblOf.Size = New System.Drawing.Size(16, 13)
+        Me.lblOf.TabIndex = 14
+        Me.lblOf.Text = "of"
         '
         'chkDisc
         '
@@ -247,7 +247,7 @@ Partial Class frmAddNewFiles
         '
         'frmAddNewFiles
         '
-        Me.AcceptButton = Me.btnYes
+        Me.AcceptButton = Me.btnNo
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(378, 289)
@@ -284,7 +284,7 @@ Partial Class frmAddNewFiles
     Friend WithEvents chkDisc As System.Windows.Forms.CheckBox
     Friend WithEvents nudDiscCount As System.Windows.Forms.NumericUpDown
     Friend WithEvents nudDiscNumber As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblOf As System.Windows.Forms.Label
     Friend WithEvents chkAlbumArtist As System.Windows.Forms.CheckBox
     Friend WithEvents chkGenre As System.Windows.Forms.CheckBox
     Friend WithEvents nudYear As System.Windows.Forms.NumericUpDown

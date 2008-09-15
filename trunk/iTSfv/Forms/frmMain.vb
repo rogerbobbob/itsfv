@@ -347,7 +347,9 @@ Public Class frmMain
                         lAddNewFilesDialogBox = New frmAddNewFiles(filePaths.Count)
                     End Try
 
-                    lAddNewFilesDialogBox.chkOverwriteTags.Enabled = booSingleAlbum
+                    'lAddNewFilesDialogBox.chkOverwriteTags.Enabled = booSingleAlbum
+                    lAddNewFilesDialogBox.AcceptButton = If(booSingleAlbum, lAddNewFilesDialogBox.btnYes, lAddNewFilesDialogBox.btnNo)
+
                     lAddNewFilesDialogBox.ShowDialog()
 
                     ans = lAddNewFilesDialogBox.DialogResult
@@ -3685,21 +3687,30 @@ mItunesApp.SelectedTracks.Count > 0 Then
             sQueueFolderToLibrary(cli.AddFolderPath)
         End If
 
-        If cli.AddFiles Then
+        If cli.Synchroclean Then
             sBwAppFindNewTracksFromHDD()
+            ssBwAppDeleteMissingTracks(bDeleteTracksNotInHDD:=True, bDeleteNonMusicFolderTracks:=False)
+        Else
+
+            If cli.AddFiles Then
+                sBwAppFindNewTracksFromHDD()
+            End If
+            If cli.RemoveDeadForeignFiles Then
+                ssBwAppDeleteMissingTracks(True, True)
+            ElseIf cli.RemoveDeadFiles Then
+                ssBwAppDeleteMissingTracks(True, False)
+            ElseIf cli.RemoveForeignFiles Then
+                ssBwAppDeleteMissingTracks(False, True)
+            End If
+
         End If
+
 
         If cli.AdjustRatings Then
             sBwAppAdjustRatings()
         End If
 
-        If cli.RemoveDeadForeignFiles Then
-            ssBwAppDeleteMissingTracks(True, True)
-        ElseIf cli.RemoveDeadFiles Then
-            ssBwAppDeleteMissingTracks(True, False)
-        ElseIf cli.RemoveForeignFiles Then
-            ssBwAppDeleteMissingTracks(False, True)
-        End If
+
 
         If cli.ReverseScrobble Then
             sBwAppReverseScrobble()
