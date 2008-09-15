@@ -932,5 +932,8 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     <Setting Name="PlayedCountImportPCNT" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ForceTagsAddNew" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
