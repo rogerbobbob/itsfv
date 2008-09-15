@@ -2104,23 +2104,23 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
             End If
 
-            If f.Tag.Track = 0 Then
-                ' if no tag at all (id3v2 2.3, 2.4) are found then set it to id
-                f.Tag.Track = CUInt(id)
-            Else
-                f.Tag.Track = f.Tag.Track
-                f.Tag.Title = f.Tag.Title
-                f.Tag.Genres = f.Tag.Genres
-                f.Tag.Year = f.Tag.Year
-                f.Tag.Disc = f.Tag.Disc
+            If My.Settings.ForceTagsAddNew Then
+                If f.Tag.Track = 0 Then
+                    ' if no tag at all (id3v2 2.3, 2.4) are found then set it to id
+                    f.Tag.Track = CUInt(id)
+                Else
+                    f.Tag.Track = f.Tag.Track ' http://www.hydrogenaudio.org/forums/index.php?s=&showtopic=51708&view=findpost&p=588265
+                    f.Tag.Title = f.Tag.Title
+                    f.Tag.Genres = f.Tag.Genres
+                    f.Tag.Year = f.Tag.Year
+                    f.Tag.Disc = f.Tag.Disc
+                End If
             End If
 
-            If f.Tag.Track = 1 Then
-                If My.Settings.FilesAddArtworkClear Then
-                    If f.Tag.Pictures.Length > 0 Then
-                        f.Tag.Pictures = Nothing
-                        f.Save()
-                    End If
+            If f.Tag.Track = 1 AndAlso My.Settings.FilesAddArtworkClear Then
+                If f.Tag.Pictures.Length > 0 Then
+                    f.Tag.Pictures = Nothing
+                    f.Save()
                 End If
             End If
 
@@ -5125,6 +5125,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     sbErr.AppendLine("iTunes version: " & mItunesApp.Version)
                     sbErr.AppendLine(APP_ABBR_NAME_IT & " version: " & vbTab & Application.ProductVersion)
                     sbErr.AppendLine("Error caused by: ")
+                    sbErr.AppendLine(String.Format("Job: {0}", mCurrJobTypeMain.ToString) & Environment.NewLine)
                     sbErr.AppendLine(String.Format("{0}", ex.Message) & Environment.NewLine)
                     sbErr.AppendLine("Error path: ")
                     sbErr.AppendLine(String.Format("{0}", ex.StackTrace) & Environment.NewLine)

@@ -176,6 +176,7 @@ Partial Class frmOptions
         Me.gbRulesAddNewFiles = New System.Windows.Forms.GroupBox
         Me.chkFilesAddArtworkClear = New System.Windows.Forms.CheckBox
         Me.gbRulesExplorer = New System.Windows.Forms.GroupBox
+        Me.chkSilentMusicAdd = New System.Windows.Forms.CheckBox
         Me.lblAddMode = New System.Windows.Forms.Label
         Me.lblMinutes = New System.Windows.Forms.Label
         Me.nudAddMusicFreq = New System.Windows.Forms.NumericUpDown
@@ -420,7 +421,7 @@ Partial Class frmOptions
         Me.lblRestartApp = New System.Windows.Forms.Label
         Me.btnApply = New System.Windows.Forms.Button
         Me.btnRestart = New System.Windows.Forms.Button
-        Me.chkSilentMusicAdd = New System.Windows.Forms.CheckBox
+        Me.chkForceTags = New System.Windows.Forms.CheckBox
         Me.tcOptions.SuspendLayout()
         Me.tpValidate.SuspendLayout()
         Me.tcValidate.SuspendLayout()
@@ -2293,6 +2294,7 @@ Partial Class frmOptions
         '
         'gbRulesExplorer
         '
+        Me.gbRulesExplorer.Controls.Add(Me.chkForceTags)
         Me.gbRulesExplorer.Controls.Add(Me.chkSilentMusicAdd)
         Me.gbRulesExplorer.Controls.Add(Me.lblAddMode)
         Me.gbRulesExplorer.Controls.Add(Me.lblMinutes)
@@ -2302,10 +2304,22 @@ Partial Class frmOptions
         Me.gbRulesExplorer.Controls.Add(Me.chkDeleteTempFiles)
         Me.gbRulesExplorer.Location = New System.Drawing.Point(14, 193)
         Me.gbRulesExplorer.Name = "gbRulesExplorer"
-        Me.gbRulesExplorer.Size = New System.Drawing.Size(609, 120)
+        Me.gbRulesExplorer.Size = New System.Drawing.Size(609, 140)
         Me.gbRulesExplorer.TabIndex = 23
         Me.gbRulesExplorer.TabStop = False
         Me.gbRulesExplorer.Text = "Rules for Explorer"
+        '
+        'chkSilentMusicAdd
+        '
+        Me.chkSilentMusicAdd.AutoSize = True
+        Me.chkSilentMusicAdd.Checked = Global.iTSfv.My.MySettings.Default.SyncSilent
+        Me.chkSilentMusicAdd.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "SyncSilent", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkSilentMusicAdd.Location = New System.Drawing.Point(13, 88)
+        Me.chkSilentMusicAdd.Name = "chkSilentMusicAdd"
+        Me.chkSilentMusicAdd.Size = New System.Drawing.Size(279, 17)
+        Me.chkSilentMusicAdd.TabIndex = 28
+        Me.chkSilentMusicAdd.Text = "&Silent Mode (do not prompt for Add new Files window)"
+        Me.chkSilentMusicAdd.UseVisualStyleBackColor = True
         '
         'lblAddMode
         '
@@ -5063,17 +5077,18 @@ Partial Class frmOptions
         Me.btnRestart.UseVisualStyleBackColor = True
         Me.btnRestart.Visible = False
         '
-        'chkSilentMusicAdd
+        'chkForceTags
         '
-        Me.chkSilentMusicAdd.AutoSize = True
-        Me.chkSilentMusicAdd.Checked = Global.iTSfv.My.MySettings.Default.SyncSilent
-        Me.chkSilentMusicAdd.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "SyncSilent", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkSilentMusicAdd.Location = New System.Drawing.Point(13, 88)
-        Me.chkSilentMusicAdd.Name = "chkSilentMusicAdd"
-        Me.chkSilentMusicAdd.Size = New System.Drawing.Size(279, 17)
-        Me.chkSilentMusicAdd.TabIndex = 28
-        Me.chkSilentMusicAdd.Text = "&Silent Mode (do not prompt for Add new Files window)"
-        Me.chkSilentMusicAdd.UseVisualStyleBackColor = True
+        Me.chkForceTags.AutoSize = True
+        Me.chkForceTags.Checked = Global.iTSfv.My.MySettings.Default.ForceTagsAddNew
+        Me.chkForceTags.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkForceTags.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ForceTagsAddNew", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkForceTags.Location = New System.Drawing.Point(13, 111)
+        Me.chkForceTags.Name = "chkForceTags"
+        Me.chkForceTags.Size = New System.Drawing.Size(240, 17)
+        Me.chkForceTags.TabIndex = 29
+        Me.chkForceTags.Text = "Refresh tags when adding new files to Library"
+        Me.chkForceTags.UseVisualStyleBackColor = True
         '
         'frmOptions
         '
@@ -5714,4 +5729,5 @@ Partial Class frmOptions
     Friend WithEvents chkPrevRating As System.Windows.Forms.CheckBox
     Friend WithEvents gpWriteRating As System.Windows.Forms.GroupBox
     Friend WithEvents chkSilentMusicAdd As System.Windows.Forms.CheckBox
+    Friend WithEvents chkForceTags As System.Windows.Forms.CheckBox
 End Class
