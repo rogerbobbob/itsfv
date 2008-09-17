@@ -3692,15 +3692,16 @@ mItunesApp.SelectedTracks.Count > 0 Then
             ssBwAppDeleteMissingTracks(bDeleteTracksNotInHDD:=True, bDeleteNonMusicFolderTracks:=False)
         Else
 
-            If cli.AddFiles Then
-                sBwAppFindNewTracksFromHDD()
-            End If
             If cli.RemoveDeadForeignFiles Then
                 ssBwAppDeleteMissingTracks(True, True)
             ElseIf cli.RemoveDeadFiles Then
                 ssBwAppDeleteMissingTracks(True, False)
             ElseIf cli.RemoveForeignFiles Then
                 ssBwAppDeleteMissingTracks(False, True)
+            End If
+
+            If cli.AddFiles Then
+                sBwAppFindNewTracksFromHDD()
             End If
 
         End If
