@@ -623,19 +623,19 @@ Public Module mAdapter
 
         str = mfGetFixedString(str)
 
-        str = str.Replace("&amp;amp;", "and")
-        str = str.Replace("&amp;quot;", Chr(34))
+        'str = str.Replace("&amp;amp;", "and")
+        'str = str.Replace("&amp;quot;", Chr(34))
 
         ' temporary fixe for fixing strange characters until a proper soln
-        str = str.Replace("â", "'")
-        str = str.Replace("â", Chr(34))
-        str = str.Replace("â", Chr(34))
+        'str = str.Replace("â", "'")
+        'str = str.Replace("â", Chr(34))
+        'str = str.Replace("â", Chr(34))
 
-        str = str.Replace("Ã¡", "á")
-        str = str.Replace("Ã©", "é")
-        str = str.Replace("Ã­", "í")
-        str = str.Replace("Ã³", "ó")
-        str = str.Replace("Â¡", "¡")
+        'str = str.Replace("Ã¡", "á")
+        'str = str.Replace("Ã©", "é")
+        'str = str.Replace("Ã­", "í")
+        'str = str.Replace("Ã³", "ó")
+        'str = str.Replace("Â¡", "¡")
 
         str = str.Replace(vbCrLf + vbCrLf + vbCrLf, vbCrLf)
 

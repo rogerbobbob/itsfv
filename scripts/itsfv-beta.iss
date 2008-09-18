@@ -42,7 +42,7 @@ end;
 [Setup]
 
 AppName=iTSfv
-AppVerName=iTSfv 5.60.18 BETA
+AppVerName=iTSfv 5.60.20.1 BETA
 ;VersionInfoVersion=5.5.2.5
 ;VersionInfoTextVersion=5.5.2.5 BETA
 VersionInfoCompany=BetaONE
@@ -51,7 +51,7 @@ AppPublisher=BetaONE
 AppPublisherURL=https://sourceforge.net/users/mcored/
 AppSupportURL=http://sourceforge.net/forum/forum.php?forum_id=729721
 AppUpdatesURL=http://sourceforge.net/project/showfiles.php?group_id=204248
-DefaultDirName={pf}\iTSfv
+DefaultDirName={userdocs}\Applications\iTSfv
 DefaultGroupName=BetaONE\iTSfv
 AllowNoIcons=yes
 InfoBeforeFile=..\iTSfv\VersionHistory.txt

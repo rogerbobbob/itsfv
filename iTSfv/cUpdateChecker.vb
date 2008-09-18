@@ -5,7 +5,8 @@ Public Class cUpdateChecker
     Private sBarTrack As ToolStripStatusLabel
     Private WithEvents bwUpdate As New BackgroundWorker
 
-    Private mcUpdateDownloadDir As String() = New String() {"http://superb-west.dl.sourceforge.net/sourceforge/itsfv/", _
+    Private mcUpdateDownloadDir As String() = New String() {"http://itsfv.googlecode.com/files/", _
+                                                            "http://superb-west.dl.sourceforge.net/sourceforge/itsfv/", _
                                                             "http://optusnet.dl.sourceforge.net/sourceforge/itsfv/"}
 
     Const mcUpdateCheckUrl As String = "http://itsfv.sourceforge.net/updates.txt" ' HAS TO RELIABLE
