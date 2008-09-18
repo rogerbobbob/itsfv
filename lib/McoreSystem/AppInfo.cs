@@ -218,17 +218,27 @@ namespace McoreSystem
             return mUpdated;
         }
 
-        public bool isUpdated(string updateUrl)
+        public bool isUpdated(string[] updateUrls)
         {
 
             versionCount = 0;  // IMPORTANT BUG FIX
 
             if (!mUpdated)
             {
-                string updateDirName = Path.GetDirectoryName(updateUrl).Replace("\\", "/").Replace(":/", "://");
-                string updateFileName = Path.GetFileName(updateUrl);
+                foreach (string updateUrl in updateUrls)
+                {
+                    string updateDirName = Path.GetDirectoryName(updateUrl).Replace("\\", "/").Replace(":/", "://");
+                    string updateFileName = Path.GetFileName(updateUrl);
+                    
+                    mUpdated = isUpdated(updateDirName, updateFileName);
 
-                mUpdated = isUpdated(updateDirName, updateFileName);
+                    if (mUpdated)
+                    {
+                        break;
+                    }
+
+                }
+
             }
 
             return mUpdated;
@@ -243,7 +253,7 @@ namespace McoreSystem
         /// <param name="appName"></param>
         /// <param name="style"></param>
         /// <returns></returns>
-        public bool CheckUpdates(string updateUrl, string[] downloadDirs, string appName, OutdatedMsgStyle style)
+        public bool CheckUpdates(string[] updateUrl, string[] downloadDirs, string appName, OutdatedMsgStyle style)
         {
             foreach (string dirName in downloadDirs)
             {
@@ -255,7 +265,7 @@ namespace McoreSystem
             return false;
         }
 
-        private bool CheckUpdates(string updateUrl, string downloadDirName, string appName, OutdatedMsgStyle style)
+        private bool CheckUpdates(string[] updateUrl, string downloadDirName, string appName, OutdatedMsgStyle style)
         {
             bool succ = false;
 

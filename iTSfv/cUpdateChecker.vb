@@ -9,7 +9,8 @@ Public Class cUpdateChecker
                                                             "http://superb-west.dl.sourceforge.net/sourceforge/itsfv/", _
                                                             "http://optusnet.dl.sourceforge.net/sourceforge/itsfv/"}
 
-    Const mcUpdateCheckUrl As String = "http://itsfv.sourceforge.net/updates.txt" ' HAS TO RELIABLE
+    Private mcUpdateCheckUrl As String() = New String() {"http://wmwiki.com/mcored/updates.txt", _
+                                                       "http://itsfv.sourceforge.net/updates.txt"}
     Private mIsManualCheckUpdate As Boolean = False
     Private mAppIcon As Icon = Nothing
     Private mAppImage As Image = Nothing
