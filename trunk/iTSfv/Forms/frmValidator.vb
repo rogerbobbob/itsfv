@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports iTuneslyrics.org.lyricwiki
 Imports iTSfv.cBwJob
 
 Public Class frmValidator

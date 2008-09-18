@@ -3437,6 +3437,16 @@ Namespace My
                 Me("ForceTagsAddNew") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://lyricwiki.org/server.php")>  _
+        Public ReadOnly Property iTSfv_org_lyricwiki_LyricWiki() As String
+            Get
+                Return CType(Me("iTSfv_org_lyricwiki_LyricWiki"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

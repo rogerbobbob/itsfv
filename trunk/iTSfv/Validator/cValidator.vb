@@ -1,7 +1,7 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports iTSfv.cBwJob
-Imports iTuneslyrics.org.lyricwiki
+Imports iTSfv.org.lyricwiki
 
 Public Class cValidator
 

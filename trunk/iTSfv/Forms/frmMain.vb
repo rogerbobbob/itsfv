@@ -17,7 +17,7 @@ Imports Graphing.V3
 Imports iTunesLib
 Imports System.IO
 Imports McoreSystem
-Imports iTuneslyrics.org.lyricwiki
+Imports iTSfv.org.lyricwiki
 Imports System.Xml.Serialization
 Imports System.Net.Mail
 Imports iTSfv.cBwJob

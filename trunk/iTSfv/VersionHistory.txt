@@ -1,5 +1,6 @@
 Version 5.60 - 20081231?
 
+5.60.20.1 Removed dependence from iLyics and ensured lyrics are imported in UTF-8 [pt_ha]
 5.60.20.0 Added new command line flag "synchroclean" which is the same as "add_folder remove_dead"
 5.60.19.0 Forcing tags to be refreshed while adding new files to library is now an option in Options : Explorer [Steffen M.]
 5.60.18.0 ReverseScrobble is now possible using command line interface using flag reverse_scrobble

@@ -935,5 +935,8 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     <Setting Name="ForceTagsAddNew" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="iTSfv_org_lyricwiki_LyricWiki" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://lyricwiki.org/server.php</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

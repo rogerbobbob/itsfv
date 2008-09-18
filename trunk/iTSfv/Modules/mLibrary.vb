@@ -68,14 +68,16 @@ Public Module mLibrary
 
         mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
 
-        Dim lyricsWiki As New iTuneslyrics.org.lyricwiki.LyricWiki
+        Dim lyricsWiki As New org.lyricwiki.LyricWiki
         msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
 
         '' 5.31.5.1 Fixed stability for crashes during timeouts occured when downloading lyrics
         Try
             If lyricsWiki.checkSongExists(artist, song) = True Then
-                Dim result As iTuneslyrics.org.lyricwiki.LyricsResult = lyricsWiki.getSong(artist, song)
-                lyrics = result.lyrics
+
+                Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
+                Dim result As org.lyricwiki.LyricsResult = lyricsWiki.getSong(artist, song)
+                lyrics = Encoding.UTF8.GetString(iso8859.GetBytes(result.lyrics))
             End If
         Catch ex As Exception
             msAppendWarnings(ex.Message)
