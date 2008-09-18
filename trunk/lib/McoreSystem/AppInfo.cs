@@ -17,7 +17,7 @@ namespace McoreSystem
 
         private string mAppName;
         private string mLocalVersion;
-        private string mRemoteVersion; // new version
+        private string mRemoteVersion = "0.0.0.0";
         private string[] webVersion;
         private string[] localVersion;
         private string[] webProduct;
@@ -229,7 +229,7 @@ namespace McoreSystem
                 {
                     string updateDirName = Path.GetDirectoryName(updateUrl).Replace("\\", "/").Replace(":/", "://");
                     string updateFileName = Path.GetFileName(updateUrl);
-                    
+
                     mUpdated = isUpdated(updateDirName, updateFileName);
 
                     if (mUpdated)
@@ -389,12 +389,10 @@ namespace McoreSystem
         {
             if (web > local)
             {
-                this.mRemoteVersion = webProduct[1];
                 return true;
             }
             else if (web < local)
             {
-                this.mRemoteVersion = webProduct[1];
                 return false;
             }
             else
@@ -406,7 +404,6 @@ namespace McoreSystem
                 }
                 else
                 {
-                    this.mRemoteVersion = webProduct[1];
                     return false;
                 }
             }
@@ -468,6 +465,52 @@ namespace McoreSystem
             return String.Format("The current version is up-to-date. {0}", getMsgStatistics());
         }
 
+        private string compareVersion(string version1, string version2)
+        {
+            string[] ver1 = version1.Split('.');
+            string[] ver2 = version2.Split('.');
+
+            int[] vers1 = new int[ver1.Length];
+            int[] vers2 = new int[ver2.Length];
+
+            for (int i = 0; i < ver1.Length; i++)
+            {
+                vers1[i] = Convert.ToInt32(ver1[i]);
+                vers2[i] = Convert.ToInt32(ver2[i]);
+            }
+
+            int r = compareVersion(vers1, vers2, 0);
+            switch (r)
+            {
+                case 1:
+                    return version1;
+                case 2:
+                    return version2;
+                default:
+                    return version1;
+            }
+        }
+
+        private int compareVersion(int[] ver1, int[] ver2, int index)
+        {
+
+            if (ver1[index] > ver2[index])
+                return 1;
+            else if (ver1[index] < ver2[index])
+                return 2;
+            else
+            {
+                if (++index < 4)
+                {
+                    return compareVersion(ver1, ver2, index);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
         private bool isUpdated(string address, string fileName)
         {
 
@@ -490,13 +533,12 @@ namespace McoreSystem
                     {
                         webVersion = webProduct[1].Split('.');
                         localVersion = this.mLocalVersion.Split('.');
-                        bool[] booUpdated = new bool[webVersion.Length];
+                        // Store the latest web version out of all the sources
+                        mRemoteVersion = compareVersion(webProduct[1], mRemoteVersion);
 
                         if (webVersion.Length == localVersion.Length)
                         {
-
-                            bool bUpdated = isUpdated(System.Convert.ToInt32(webVersion[0]),
-                                System.Convert.ToInt32(localVersion[0]));
+                            bool bUpdated = isUpdated(Convert.ToInt32(webVersion[0]), Convert.ToInt32(localVersion[0]));
 
                             if (bUpdated)
                             {
