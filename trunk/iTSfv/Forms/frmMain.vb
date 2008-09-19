@@ -1287,7 +1287,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 argReplaceArt.ArtworkPath = srcNew.ArtworkPath
                 msAppendWarnings(ex.Message & " for " & locTrack + " while comparing artwork to embed")
                 msAppendWarnings(ex.StackTrace)
-                msAppendDebug(String.Format("Replace Artwork for {0} {1}? {2}", track.TrackNumber.ToString("00"), fGetName(argReplaceArt.Track), argReplaceArt.ReplaceArtwork))
+                msAppendDebug(String.Format("Replace Artwork for {0} {1}? {2}", track.TrackNumber.ToString("00"), mfGetNameToSearch(argReplaceArt.Track), argReplaceArt.ReplaceArtwork))
 
             End Try
 
@@ -1363,11 +1363,11 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         '******************
                         Dim retry As Integer = 0
                         While retry < 3 And lyrics = String.Empty
-                            lyrics = mfGetLyricsFromLyricWiki(mGetAlbumArtist(track), fGetName(track))
+                            lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
                             retry += 1
                         End While
                         If lyrics <> String.Empty Then
-                            bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + fGetName(track) + Chr(34))
+                            bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
                             lyricsSrc = "LyricWiki"
                             'msAppendDebug(lyrics)
                         End If
@@ -1412,9 +1412,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
                     If lyrics <> String.Empty Then
                         track.Lyrics = mfGetFixedLyrics(lyrics)
-                        Dim msg As String = String.Format("Added lyrics to ""{0}"" from {1}.", fGetName(track), lyricsSrc)
+                        Dim msg As String = String.Format("Added lyrics to ""{0}"" from {1}.", mfGetNameToSearch(track), lyricsSrc)
                         msAppendDebug(msg)
-                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + fGetName(track) + Chr(34))
+                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
                         mListLyricsAdded.Add(track.Location)
                     End If
 
@@ -1435,10 +1435,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 '' 5.34.5.7 iTSfv tried to fetch lyrics online for the songs that have no lyrics despite the "Import Lyrics from LyricWiki" being unchecked. [Jojo]
                 If My.Settings.LyricsFromLyricWiki AndAlso lyrics = String.Empty Then
                     Dim artist As String = mGetAlbumArtist(track)
-                    Dim song As String = fGetName(track)
-                    lyrics = mfGetLyricsFromLyricWiki(artist, song)
+                    Dim song As String = mfGetNameToSearch(track)
+                    lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
                     If lyrics <> String.Empty Then
-                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, fGetName(track))
+                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, mfGetNameToSearch(track))
                     End If
                 End If
 
@@ -5874,7 +5874,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
         If (My.Settings.DisableGroupedDiscCountUpdate = True AndAlso track.Grouping = "") Or lAlbumIsComplete = True Then
 
-            If f.Tag.DiscCount <> lDisc.DiscCount Then                
+            If f.Tag.DiscCount <> lDisc.DiscCount Then
                 track.DiscCount = lDisc.DiscCount
                 booTrackEdited = True
             End If
@@ -5882,7 +5882,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
         End If
 
         If f.Tag.Disc <> lDisc.DiscNumber Then
-            track.DiscNumber = lDisc.DiscNumber            
+            track.DiscNumber = lDisc.DiscNumber
             booTrackEdited = True
         End If
 
@@ -5891,7 +5891,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
             f.Tag.TrackCount = CUInt(track.TrackCount) '' very strange bug where TrackCount would be cleared otherwise
             f.Tag.Track = CUInt(track.TrackNumber) '' very strange bug where TrackNumber would be cleared otherwise
             f.Tag.Disc = CUInt(lDisc.DiscNumber)
-            f.Tag.DiscCount = CUInt(lDisc.DiscCount)            
+            f.Tag.DiscCount = CUInt(lDisc.DiscCount)
             f.Save()
             mListTracksCountUpdated.Add(track.Location)
         End If
@@ -5991,7 +5991,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
             If My.Settings.TagUnknownAlbum Then
                 track.Album = UNKNOWN_ALBUM
             Else
-                track.Album = fGetName(track) + " " + My.Settings.SingleDiscSuffix
+                track.Album = mfGetNameToSearch(track) + " " + My.Settings.SingleDiscSuffix
             End If
         Catch ex As Exception
             msAppendWarnings(ex.Message + " tagging blank album")
