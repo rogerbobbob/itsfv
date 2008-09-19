@@ -623,9 +623,6 @@ Public Module mAdapter
 
         str = mfGetFixedString(str)
 
-        Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
-        str = Encoding.UTF8.GetString(iso8859.GetBytes(str))
-
         Return mfStripHTMLTags(str)
 
     End Function
