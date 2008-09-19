@@ -54,7 +54,7 @@ Public Class frmLyricsViewer
         txtYear.Text = mSong.Year.ToString
         txtGenre.Text = mSong.Genre.Replace("&", "&&")
         If mSong.Lyrics Is Nothing Then
-            Dim temp As String = mfGetLyricsFromLyricWiki(mGetAlbumArtist(mSong), fGetName(mSong))
+            Dim temp As String = mfGetLyricsFromLyricWiki(New cXmlTrack(song, False))
             temp = mfGetFixedLyrics(temp)
             If String.IsNullOrEmpty(temp) = False Then
                 Dim fiTrack As New IO.FileInfo(song.Location)

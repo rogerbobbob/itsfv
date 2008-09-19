@@ -623,21 +623,8 @@ Public Module mAdapter
 
         str = mfGetFixedString(str)
 
-        'str = str.Replace("&amp;amp;", "and")
-        'str = str.Replace("&amp;quot;", Chr(34))
-
-        ' temporary fixe for fixing strange characters until a proper soln
-        'str = str.Replace("â", "'")
-        'str = str.Replace("â", Chr(34))
-        'str = str.Replace("â", Chr(34))
-
-        'str = str.Replace("Ã¡", "á")
-        'str = str.Replace("Ã©", "é")
-        'str = str.Replace("Ã­", "í")
-        'str = str.Replace("Ã³", "ó")
-        'str = str.Replace("Â¡", "¡")
-
-        str = str.Replace(vbCrLf + vbCrLf + vbCrLf, vbCrLf)
+        Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
+        str = Encoding.UTF8.GetString(iso8859.GetBytes(str))
 
         Return mfStripHTMLTags(str)
 
@@ -895,6 +882,26 @@ Public Structure WordLists
     Dim simpleWords As List(Of String)
     Dim capitalWords As List(Of String)
     Dim replaceWords As String()
+
+End Structure
+
+Public Structure ClosestMatch
+
+    Dim Letter As String
+    Dim Aliases As List(Of String)
+
+End Structure
+
+Public Structure TrackData
+
+    Public Sub New(ByVal artist As String, ByVal name As String)
+
+        Me.Artist = artist
+        Me.Name = name
+
+    End Sub
+    Dim Artist As String
+    Dim Name As String
 
 End Structure
 

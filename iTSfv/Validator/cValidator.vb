@@ -267,7 +267,7 @@ Public Class cValidator
 
             Dim lyrics As String = track.Tag.Lyrics
             If lyrics = String.Empty Then
-                lyrics = mfGetLyricsFromLyricWiki(mGetAlbumArtist(xt), mfGetNameToSearch(xt))
+                lyrics = mfGetLyricsFromLyricWiki(xt)
                 If lyrics <> String.Empty Then
                     bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(xt) + Chr(34))
                 End If
@@ -367,20 +367,20 @@ Public Class cValidator
                 Dim track As TagLib.File = TagLib.File.Create(filePath)
 
                 If track.Tag.Lyrics Is Nothing Then
-                    Dim lyricsWiki As New LyricWiki
+
                     Dim artist As String = fGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                    If lyricsWiki.checkSongExists(artist, song) = True Then
-                        Dim result As LyricsResult = lyricsWiki.getSong(fGetAlbumArtist(track), mfGetNameToSearch(track))
-                        track.Tag.Lyrics = result.lyrics
+                    Dim lyrics As String = mfGetLyricsFromLyricWiki(xt)
+
+                    If Not String.IsNullOrEmpty(lyrics) Then
+                        track.Tag.Lyrics = lyrics
                         bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
-                        msAppendDebug(String.Format("Added lyrics to ""{0}""", mfGetNameToSearch(track)))
                         TagLib.Id3v2.Tag.DefaultVersion = 3
                         TagLib.Id3v2.Tag.ForceDefaultVersion = True
                         track.Save()
                         success = True
                     End If
+
                 End If
 
             Catch ex As Exception
