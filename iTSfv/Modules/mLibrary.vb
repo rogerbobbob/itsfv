@@ -89,6 +89,9 @@ Public Module mLibrary
 
             Else
 
+                'TODO: CLOSEST MATCH IMPLEMENTATION
+
+                '' for testing only; these will be dynamic from a text file
                 'Dim cm As New ClosestMatch
                 'cm.Letter = "Z"
                 'cm.Aliases = New List(Of String)
