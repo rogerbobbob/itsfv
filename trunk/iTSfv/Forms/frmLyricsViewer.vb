@@ -11,6 +11,7 @@ Public Class frmLyricsViewer
     Private Sub frmLyricsViewer_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         My.Settings.LyricsViewerSize = Me.Size
         My.Settings.LyricsViewerLocation = Me.Location
+        Me.TopMost = My.Settings.LyricsViewerTopMost
     End Sub
 
     Private Sub frmLyricsViewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load        
@@ -108,4 +109,12 @@ Public Class frmLyricsViewer
 
     End Sub
 
+    Private Sub tlpDesc_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles tlpDesc.Paint
+
+    End Sub
+
+    Private Sub AlwaysOnTopToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmsTopMost.Click
+        cmsTopMost.Checked = Not cmsTopMost.Checked
+        Me.TopMost = cmsTopMost.Checked
+    End Sub
 End Class

@@ -74,15 +74,27 @@ Public Module mLibrary
         '' 5.31.5.1 Fixed stability for crashes during timeouts occured when downloading lyrics
         Try
 
-            If lyricsWiki.checkSongExists(artist, song) = True Then
+            '' CHECK FOR LYRICS WITH ALBUMARTIST AND BRACKETS STRIPPED OUT NAME
+            If lyricsWiki.checkSongExists(track.AlbumArtist, song) = True Then
 
                 mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lyrics = lyricsWiki.getSong(artist, song).lyrics
 
+                '' CHECK FOR LYRICS WITH ORIGINAL NAME
+            ElseIf lyricsWiki.checkSongExists(track.AlbumArtist, track.Name) = True Then
+
+                artist = track.AlbumArtist
+                song = track.Name
+                mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                lyrics = lyricsWiki.getSong(artist, song).lyrics
+
+                '' CHECK FOR LYRICS WITH ARTIST AND BRACKETS STRIPPED OUT NAME
             ElseIf lyricsWiki.checkSongExists(track.Artist, song) = True Then
 
                 artist = track.Artist
+                song = mfGetNameToSearch(track)
                 mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lyrics = lyricsWiki.getSong(artist, song).lyrics

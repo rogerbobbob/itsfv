@@ -25,6 +25,8 @@ Partial Class frmLyricsViewer
         Me.components = New System.ComponentModel.Container
         Me.txtLyrics = New System.Windows.Forms.TextBox
         Me.pbArtwork = New System.Windows.Forms.PictureBox
+        Me.cmsOptions = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cmsTopMost = New System.Windows.Forms.ToolStripMenuItem
         Me.tmrSecond = New System.Windows.Forms.Timer(Me.components)
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel
         Me.tlpDesc = New System.Windows.Forms.TableLayoutPanel
@@ -42,6 +44,7 @@ Partial Class frmLyricsViewer
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         CType(Me.pbArtwork, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmsOptions.SuspendLayout()
         Me.tlpMain.SuspendLayout()
         Me.tlpDesc.SuspendLayout()
         Me.pDesc.SuspendLayout()
@@ -63,6 +66,7 @@ Partial Class frmLyricsViewer
         '
         'pbArtwork
         '
+        Me.pbArtwork.ContextMenuStrip = Me.cmsOptions
         Me.pbArtwork.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pbArtwork.Location = New System.Drawing.Point(3, 3)
         Me.pbArtwork.Name = "pbArtwork"
@@ -70,6 +74,20 @@ Partial Class frmLyricsViewer
         Me.pbArtwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbArtwork.TabIndex = 3
         Me.pbArtwork.TabStop = False
+        '
+        'cmsOptions
+        '
+        Me.cmsOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmsTopMost})
+        Me.cmsOptions.Name = "cmsOptions"
+        Me.cmsOptions.Size = New System.Drawing.Size(155, 48)
+        '
+        'AlwaysOnTopToolStripMenuItem
+        '
+        Me.cmsTopMost.Checked = Global.iTSfv.My.MySettings.Default.LyricsViewerTopMost
+        Me.cmsTopMost.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cmsTopMost.Name = "AlwaysOnTopToolStripMenuItem"
+        Me.cmsTopMost.Size = New System.Drawing.Size(154, 22)
+        Me.cmsTopMost.Text = "&Always On Top"
         '
         'tmrSecond
         '
@@ -253,6 +271,7 @@ Partial Class frmLyricsViewer
         Me.Text = "frmLyricsViewer"
         Me.TopMost = True
         CType(Me.pbArtwork, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cmsOptions.ResumeLayout(False)
         Me.tlpMain.ResumeLayout(False)
         Me.tlpMain.PerformLayout()
         Me.tlpDesc.ResumeLayout(False)
@@ -279,4 +298,6 @@ Partial Class frmLyricsViewer
     Friend WithEvents txtArtist As System.Windows.Forms.Label
     Friend WithEvents txtName As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cmsOptions As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents cmsTopMost As System.Windows.Forms.ToolStripMenuItem
 End Class
