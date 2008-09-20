@@ -710,16 +710,6 @@ Public Module mAdapter
         Return File.Exists(My.Settings.UrlToCoverArtLocation)
     End Function
 
-    Public Function mfGetTruncatedText(ByVal oString As String) As String
-
-        'If oString.Length > SBAR_MAX_CHAR Then
-        '    oString = oString.Substring(0, 94)
-        'End If
-
-        Return oString
-
-    End Function
-
     Public Function mfGetTruncatedText(ByVal oString As String, _
                                                  ByVal oToolTip As ToolTip, _
                                                  ByVal oStatusStrip As StatusStrip) As String

@@ -9118,7 +9118,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
             '***************************
 
             If String.Empty <> mpProgressDiscsMsg Then
-                sBarDisc.Text = mfGetTruncatedText(mpProgressDiscsMsg)
+                sBarDisc.Text = mpProgressDiscsMsg
             End If
 
             '***************************
@@ -9156,7 +9156,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
             If sBarDisc.Text.Contains("Ready") = False Then
                 sBarDisc.Text = (String.Format("Ready. Found {0} Tracks.", mTracksCount))
             ElseIf mpProgressDiscsMsg.Contains("Ready") Then
-                sBarDisc.Text = mfGetTruncatedText(mpProgressDiscsMsg)
+                sBarDisc.Text = mpProgressDiscsMsg
             End If
 
             '***************************
@@ -9164,9 +9164,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
             '***************************
 
             If String.Empty <> mpProgressTracksMsg Then
-                sBarTrack.Text = mfGetTruncatedText("Idle. Last Action: " + mpProgressTracksMsg)
+                sBarTrack.Text = "Idle. Last Action: " + mpProgressTracksMsg
             ElseIf sBarTrack.Text.Contains("Idle") Then
-                sBarTrack.Text = mfGetTruncatedText(mpProgressTracksMsg)
+                sBarTrack.Text = mpProgressTracksMsg
             End If
 
         End If

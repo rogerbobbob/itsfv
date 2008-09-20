@@ -176,6 +176,7 @@ Partial Class frmOptions
         Me.gbRulesAddNewFiles = New System.Windows.Forms.GroupBox
         Me.chkFilesAddArtworkClear = New System.Windows.Forms.CheckBox
         Me.gbRulesExplorer = New System.Windows.Forms.GroupBox
+        Me.chkForceTags = New System.Windows.Forms.CheckBox
         Me.chkSilentMusicAdd = New System.Windows.Forms.CheckBox
         Me.lblAddMode = New System.Windows.Forms.Label
         Me.lblMinutes = New System.Windows.Forms.Label
@@ -421,7 +422,6 @@ Partial Class frmOptions
         Me.lblRestartApp = New System.Windows.Forms.Label
         Me.btnApply = New System.Windows.Forms.Button
         Me.btnRestart = New System.Windows.Forms.Button
-        Me.chkForceTags = New System.Windows.Forms.CheckBox
         Me.tcOptions.SuspendLayout()
         Me.tpValidate.SuspendLayout()
         Me.tcValidate.SuspendLayout()
@@ -740,6 +740,7 @@ Partial Class frmOptions
         '
         Me.chkRemoveDoubleSpaces.AutoSize = True
         Me.chkRemoveDoubleSpaces.Checked = Global.iTSfv.My.MySettings.Default.RemoveDoubleSpaces
+        Me.chkRemoveDoubleSpaces.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRemoveDoubleSpaces.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveDoubleSpaces", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.chkRemoveDoubleSpaces.Location = New System.Drawing.Point(18, 90)
         Me.chkRemoveDoubleSpaces.Name = "chkRemoveDoubleSpaces"
@@ -2308,6 +2309,19 @@ Partial Class frmOptions
         Me.gbRulesExplorer.TabIndex = 23
         Me.gbRulesExplorer.TabStop = False
         Me.gbRulesExplorer.Text = "Rules for Explorer"
+        '
+        'chkForceTags
+        '
+        Me.chkForceTags.AutoSize = True
+        Me.chkForceTags.Checked = Global.iTSfv.My.MySettings.Default.ForceTagsAddNew
+        Me.chkForceTags.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkForceTags.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ForceTagsAddNew", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkForceTags.Location = New System.Drawing.Point(13, 111)
+        Me.chkForceTags.Name = "chkForceTags"
+        Me.chkForceTags.Size = New System.Drawing.Size(240, 17)
+        Me.chkForceTags.TabIndex = 29
+        Me.chkForceTags.Text = "Refresh tags when adding new files to Library"
+        Me.chkForceTags.UseVisualStyleBackColor = True
         '
         'chkSilentMusicAdd
         '
@@ -5076,19 +5090,6 @@ Partial Class frmOptions
         Me.btnRestart.Text = "&Restart"
         Me.btnRestart.UseVisualStyleBackColor = True
         Me.btnRestart.Visible = False
-        '
-        'chkForceTags
-        '
-        Me.chkForceTags.AutoSize = True
-        Me.chkForceTags.Checked = Global.iTSfv.My.MySettings.Default.ForceTagsAddNew
-        Me.chkForceTags.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkForceTags.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ForceTagsAddNew", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkForceTags.Location = New System.Drawing.Point(13, 111)
-        Me.chkForceTags.Name = "chkForceTags"
-        Me.chkForceTags.Size = New System.Drawing.Size(240, 17)
-        Me.chkForceTags.TabIndex = 29
-        Me.chkForceTags.Text = "Refresh tags when adding new files to Library"
-        Me.chkForceTags.UseVisualStyleBackColor = True
         '
         'frmOptions
         '

@@ -1,6 +1,7 @@
 Version 5.60 - 20081231?
 
-5.60.20.2 When searching for lyrics, iTSfv will consider Artist tag as well as the AlbumArtist tag[pt_ha]
+5.60.20.3 Did not find lyrics for songs with brackets such as Sufjan Stevens: Flint (For The Unemployed And Underpaid) from LyricWiki [pt_ha]
+5.60.20.2 When searching for lyrics, iTSfv will consider Artist tag as well as the AlbumArtist tag [pt_ha]
 5.60.20.1 Removed dependence from iLyics and ensured lyrics are imported in UTF-8 [pt_ha]
 5.60.20.0 Added new command line flag "synchroclean" which is the same as "add_folder remove_dead"
 5.60.19.0 Forcing tags to be refreshed while adding new files to library is now an option in Options : Explorer [Steffen M.]

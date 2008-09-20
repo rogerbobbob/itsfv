@@ -2722,7 +2722,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property RemoveDoubleSpaces() As Boolean
             Get
                 Return CType(Me("RemoveDoubleSpaces"),Boolean)
@@ -3446,6 +3446,18 @@ Namespace My
             Get
                 Return CType(Me("iTSfv_org_lyricwiki_LyricWiki"),String)
             End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property LyricsViewerTopMost() As Boolean
+            Get
+                Return CType(Me("LyricsViewerTopMost"),Boolean)
+            End Get
+            Set
+                Me("LyricsViewerTopMost") = value
+            End Set
         End Property
     End Class
 End Namespace
