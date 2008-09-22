@@ -9444,6 +9444,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub GoogleGroupsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GoogleGroupsToolStripMenuItem.Click
         Process.Start("http://groups.google.com/group/itsfv")
     End Sub
+
+    Private Sub ProjectHomeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectHomeToolStripMenuItem.Click
+        Process.Start("http://itsfv.googlecode.com")
+    End Sub
 End Class
 
 
