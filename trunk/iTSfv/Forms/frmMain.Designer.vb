@@ -371,6 +371,7 @@ Partial Class frmMain
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.btnStatistics = New System.Windows.Forms.Button
         Me.btnStop = New System.Windows.Forms.Button
+        Me.ProjectHomeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ssAppTrack.SuspendLayout()
         Me.cmsApp.SuspendLayout()
         Me.tcTabs.SuspendLayout()
@@ -3290,7 +3291,7 @@ Partial Class frmMain
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miManual, Me.SupportForumsToolStripMenuItem, Me.VersionHistoryToolStripMenuItem1, Me.ToolStripSeparator9, Me.tsmiDonate, Me.ToolStripSeparator21, Me.SubmitDebugReportToolStripMenuItem, Me.CheckForUpdatesToolStripMenuItem1, Me.miAbout})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miManual, Me.SupportForumsToolStripMenuItem, Me.ProjectHomeToolStripMenuItem, Me.VersionHistoryToolStripMenuItem1, Me.ToolStripSeparator9, Me.tsmiDonate, Me.ToolStripSeparator21, Me.SubmitDebugReportToolStripMenuItem, Me.CheckForUpdatesToolStripMenuItem1, Me.miAbout})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
@@ -3577,6 +3578,12 @@ Partial Class frmMain
         Me.btnStop.Text = "&Stop..."
         Me.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStop.UseVisualStyleBackColor = True
+        '
+        'ProjectHomeToolStripMenuItem
+        '
+        Me.ProjectHomeToolStripMenuItem.Name = "ProjectHomeToolStripMenuItem"
+        Me.ProjectHomeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProjectHomeToolStripMenuItem.Text = "Project &Home..."
         '
         'frmMain
         '
@@ -4042,5 +4049,6 @@ Partial Class frmMain
     Friend WithEvents tsmSetInfo As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents chkPlayedCountImportPCNT As System.Windows.Forms.CheckBox
     Friend WithEvents GoogleGroupsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProjectHomeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
 
