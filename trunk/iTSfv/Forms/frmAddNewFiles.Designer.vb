@@ -44,6 +44,7 @@ Partial Class frmAddNewFiles
         Me.chkOverwriteTags = New System.Windows.Forms.CheckBox
         Me.txtAdviceAlbumArtist = New System.Windows.Forms.TextBox
         Me.lblAdvice = New System.Windows.Forms.Label
+        Me.btnAutofill = New System.Windows.Forms.Button
         Me.gbAlbumTags.SuspendLayout()
         CType(Me.nudYear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudDiscCount, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -265,12 +266,22 @@ Partial Class frmAddNewFiles
         Me.lblAdvice.TabIndex = 16
         Me.lblAdvice.Text = "Recommended Album Artist:"
         '
+        'btnAutofill
+        '
+        Me.btnAutofill.Location = New System.Drawing.Point(31, 250)
+        Me.btnAutofill.Name = "btnAutofill"
+        Me.btnAutofill.Size = New System.Drawing.Size(75, 23)
+        Me.btnAutofill.TabIndex = 17
+        Me.btnAutofill.Text = "&Autofill"
+        Me.btnAutofill.UseVisualStyleBackColor = True
+        '
         'frmAddNewFiles
         '
-        Me.AcceptButton = Me.btnNo
+        Me.AcceptButton = Me.btnAutofill
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(378, 318)
+        Me.Controls.Add(Me.btnAutofill)
         Me.Controls.Add(Me.lblAdvice)
         Me.Controls.Add(Me.txtAdviceAlbumArtist)
         Me.Controls.Add(Me.chkOverwriteTags)
@@ -316,4 +327,5 @@ Partial Class frmAddNewFiles
     Friend WithEvents chkArtist As System.Windows.Forms.CheckBox
     Friend WithEvents txtAdviceAlbumArtist As System.Windows.Forms.TextBox
     Friend WithEvents lblAdvice As System.Windows.Forms.Label
+    Friend WithEvents btnAutofill As System.Windows.Forms.Button
 End Class
