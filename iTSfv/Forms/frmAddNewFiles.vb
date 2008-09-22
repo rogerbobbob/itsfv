@@ -172,5 +172,10 @@ Public Class frmAddNewFiles
     Private Sub cboAlbumArtist_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlbumArtist.SelectedIndexChanged
         ' nothing
     End Sub
+
+    Private Sub btnAutofill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAutofill.Click
+        chkOverwriteTags.Checked = True
+        cboAlbumArtist.Text = txtAdviceAlbumArtist.Text
+    End Sub
 End Class
 
