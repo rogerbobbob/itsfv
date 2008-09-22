@@ -941,5 +941,8 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     <Setting Name="LyricsViewerTopMost" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ExportTracksLastFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

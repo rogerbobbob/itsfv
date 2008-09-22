@@ -313,19 +313,23 @@ Public Class frmMain
                 filePaths.Sort()
                 filePaths.Reverse()
 
-                Dim booSingleAlbum As Boolean = True
+                Dim bSingleAlbum As Boolean = True
+
                 Try
                     For i As Integer = 0 To filePaths.Count - 2
                         Dim f1 As TagLib.File = TagLib.File.Create(filePaths(i))
                         Dim f2 As TagLib.File = TagLib.File.Create(filePaths(i + 1))
                         TagLib.Id3v2.Tag.DefaultVersion = 3
                         TagLib.Id3v2.Tag.ForceDefaultVersion = True
-                        booSingleAlbum = booSingleAlbum And (f1.Tag.Album.Trim.Equals(f2.Tag.Album.Trim))
+                        bSingleAlbum = bSingleAlbum And (f1.Tag.Album.Trim.Equals(f2.Tag.Album.Trim))
                     Next
                 Catch ex As Exception
-                    booSingleAlbum = False
+                    bSingleAlbum = False
                     msAppendWarnings(String.Format("Error reading {0} while checking if files belong to a single album.", Path.GetDirectoryName(filePaths(0))))
                 End Try
+
+                Dim xd As New cXmlDisc(filePaths)
+                Dim aaf As New cXmlDiscArtistFinder(xd)
 
                 bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, filePaths.Count)
 
@@ -336,8 +340,17 @@ Public Class frmMain
                 If mCurrJobTypeMain = cBwJob.JobType.SCHEDULE_DO Or _
                  mCurrJobTypeMain = JobType.COMMAND_LINE Or _
                    My.Settings.SyncSilent = True Then
+
                     ans = Windows.Forms.DialogResult.Yes
+
+                    If bSingleAlbum = True Then
+                        lAddNewFilesDialogBox.chkOverwriteTags.Checked = True
+                        lAddNewFilesDialogBox.cboAlbumArtist.Text = aaf.AlbumArtist
+                        lAddNewFilesDialogBox.chkAlbumArtist.Checked = True
+                    End If
+
                 Else
+
                     Try
                         Dim f As TagLib.File = TagLib.File.Create(filePaths(0))
                         TagLib.Id3v2.Tag.DefaultVersion = 3
@@ -348,22 +361,20 @@ Public Class frmMain
                     End Try
 
                     'lAddNewFilesDialogBox.chkOverwriteTags.Enabled = booSingleAlbum
-                    lAddNewFilesDialogBox.AcceptButton = If(booSingleAlbum, lAddNewFilesDialogBox.btnYes, lAddNewFilesDialogBox.btnNo)
+
+                    lAddNewFilesDialogBox.txtAdviceAlbumArtist.Text = aaf.AlbumArtist
+
+                    If bSingleAlbum Then
+                        lAddNewFilesDialogBox.AcceptButton = lAddNewFilesDialogBox.btnYes
+                    Else
+                        lAddNewFilesDialogBox.AcceptButton = lAddNewFilesDialogBox.btnNo
+                    End If
 
                     lAddNewFilesDialogBox.ShowDialog()
 
                     ans = lAddNewFilesDialogBox.DialogResult
 
-                End If
-
-
-                If booSingleAlbum = True And mCurrJobTypeMain = JobType.COMMAND_LINE Then
-                    Dim xd As New cXmlDisc(filePaths)
-                    Dim aaf As New cXmlDiscArtistFinder(xd)
-                    lAddNewFilesDialogBox.chkOverwriteTags.Checked = True
-                    lAddNewFilesDialogBox.cboAlbumArtist.Text = aaf.AlbumArtist
-                    lAddNewFilesDialogBox.chkAlbumArtist.Checked = True
-                End If
+                End If ' of whether or not to show Add New Files dialog
 
                 If ans = Windows.Forms.DialogResult.Yes Then
 
@@ -470,7 +481,7 @@ Public Class frmMain
 
                                 If mListInfoPaths.Count > 0 Then
 
-                                    If booSingleAlbum = True Then
+                                    If bSingleAlbum = True Then
 
                                         msAppendDebug("Found single album. Starting to copy log/nfo files...")
                                         Dim dirAlbum As String = Path.GetDirectoryName(track.Location)
@@ -1367,7 +1378,6 @@ mItunesApp.SelectedTracks.Count > 0 Then
                             retry += 1
                         End While
                         If lyrics <> String.Empty Then
-                            bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
                             lyricsSrc = "LyricWiki"
                             'msAppendDebug(lyrics)
                         End If
@@ -1412,9 +1422,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
                     If lyrics <> String.Empty Then
                         track.Lyrics = mfGetFixedLyrics(lyrics)
-                        Dim msg As String = String.Format("Added lyrics to ""{0}"" from {1}.", mfGetNameToSearch(track), lyricsSrc)
+                        Dim msg As String = String.Format("Added lyrics to ""{0}"" from {1}.", track.Name, lyricsSrc)
                         msAppendDebug(msg)
-                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
+                        mfUpdateStatusBarText(msg, True)
                         mListLyricsAdded.Add(track.Location)
                     End If
 
@@ -1437,9 +1447,6 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     Dim artist As String = mGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
                     lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
-                    If lyrics <> String.Empty Then
-                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, mfGetNameToSearch(track))
-                    End If
                 End If
 
                 If lyrics <> String.Empty Then
@@ -1477,7 +1484,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
                     Using sw As New StreamWriter(lyricsPath, False)
                         sw.WriteLine(mfGetFixedLyrics(lyrics))
-                        msAppendDebug(String.Format("Exported Lyrics as {0}", lyricsPath))
+                        Dim msg As String = String.Format("Exported Lyrics as {0}", lyricsPath)
+                        msAppendDebug(msg)
+                        mfUpdateStatusBarText(msg, True)
                     End Using
 
                 End If
@@ -8193,6 +8202,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
         If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
             If dlg.DirectoryPath.Length > 0 Then
                 Dim task As New cBwJob(cBwJob.JobType.EXPORT_TRACKS)
+                My.Settings.ExportTracksLastFolder = dlg.DirectoryPath
                 task.mMessage = dlg.DirectoryPath
                 bwApp.RunWorkerAsync(task)
             End If

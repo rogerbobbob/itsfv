@@ -269,7 +269,7 @@ Public Class cValidator
             If lyrics = String.Empty Then
                 lyrics = mfGetLyricsFromLyricWiki(xt)
                 If lyrics <> String.Empty Then
-                    bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(xt) + Chr(34))
+                    bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + xt.Name + Chr(34))
                 End If
             End If
 
@@ -374,7 +374,7 @@ Public Class cValidator
 
                     If Not String.IsNullOrEmpty(lyrics) Then
                         track.Tag.Lyrics = lyrics
-                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + mfGetNameToSearch(track) + Chr(34))
+                        bwApp.ReportProgress(ProgressType.FOUND_LYRICS, Chr(34) + xt.Name + Chr(34))
                         TagLib.Id3v2.Tag.DefaultVersion = 3
                         TagLib.Id3v2.Tag.ForceDefaultVersion = True
                         track.Save()
