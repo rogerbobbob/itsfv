@@ -176,6 +176,10 @@ Public Class frmAddNewFiles
     Private Sub btnAutofill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAutofill.Click
         chkOverwriteTags.Checked = True
         cboAlbumArtist.Text = txtAdviceAlbumArtist.Text
+        If nudDiscCount.Value = 0 And nudDiscNumber.Value = 0 Then
+            nudDiscCount.Value = 1
+            nudDiscNumber.Value = 1
+        End If
     End Sub
 End Class
 

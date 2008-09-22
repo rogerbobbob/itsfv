@@ -2314,7 +2314,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
             If My.Settings.WritePOPM Then
                 bEdited = tl.SetFramePOPM(track.PlayedCount, track.Rating)
-                mfUpdateStatusBarText(String.Format("Setting PlayedCount|Rating for {0} as {1}|{2}", track.Name, track.PlayedCount, track.Rating), True)
+                ' mfUpdateStatusBarText(String.Format("Setting PlayedCount|Rating for {0} as {1}|{2}", track.Name, track.PlayedCount, track.Rating), True)
             End If
 
             If My.Settings.WritePCNT Then
@@ -6235,70 +6235,91 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     End Function
 
-    Private Sub ssBwAppDeleteMissingTracks(ByVal bDeleteTracksNotInHDD As Boolean, ByVal bDeleteNonMusicFolderTracks As Boolean)
+    Private Function ssBwAppDeleteMissingTracks(ByVal bDeleteTracksNotInHDD As Boolean, ByVal bDeleteNonMusicFolderTracks As Boolean) As Boolean
 
-        If bDeleteTracksNotInHDD = True OrElse bDeleteNonMusicFolderTracks = True Then
+        Dim success As Boolean = True
 
-            msAppendDebug("Looking for tracks outside of music folders to remove")
+        For Each musicFolder As String In My.Settings.MusicFolderLocations
 
-            If chkResume.Checked Then
-                bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count - mLastCheckedTrackID + 1)
-            Else
-                bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count)
+            If musicFolder.EndsWith(Path.DirectorySeparatorChar) = False Then
+                musicFolder += Path.DirectorySeparatorChar
             End If
 
-            For i As Integer = mMainLibraryTracks.Count To fGetLastCheckTrackID() Step -1
+            If Directory.Exists(musicFolder) = False Then
+                msAppendDebug("One or more music folders are inaccessible. Quitting removal of missing tracks...")
+                success = False
+                Exit For
+            End If
 
-                sPausePendingCheck()
-                If bwApp.CancellationPending Then
-                    bwApp.ReportProgress(ProgressType.READY)
-                    Exit Sub
+        Next
+
+        If success Then
+
+            If bDeleteTracksNotInHDD = True OrElse bDeleteNonMusicFolderTracks = True Then
+
+                msAppendDebug("Looking for tracks outside of music folders to remove")
+
+                If chkResume.Checked Then
+                    bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count - mLastCheckedTrackID + 1)
+                Else
+                    bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count)
                 End If
 
-                Dim track As IITTrack = mMainLibraryTracks.Item(i)
+                For i As Integer = mMainLibraryTracks.Count To fGetLastCheckTrackID() Step -1
 
-                If track.Kind = ITTrackKind.ITTrackKindFile Then
-
-                    Dim booTrackDeleted As Boolean = False
-
-                    If bDeleteNonMusicFolderTracks = True Then
-                        bwApp.ReportProgress(ProgressType.DELETE_TRACKS_DEAD_ALIEN, track.Album)
-                    Else
-                        bwApp.ReportProgress(ProgressType.DELETE_TRACKS_DEAD, track.Album)
+                    sPausePendingCheck()
+                    If bwApp.CancellationPending Then
+                        bwApp.ReportProgress(ProgressType.READY)
+                        Exit Function
                     End If
 
-                    If bDeleteNonMusicFolderTracks = True AndAlso bDeleteNonMusicFolderTracks = True Then
-                        '**************************
-                        ' DELETE NON-MUSIC-FOLDER
-                        '**************************
-                        booTrackDeleted = mfDeleteNonMusicFolderTrack(CType(track, IITFileOrCDTrack))
-                    End If
+                    Dim track As IITTrack = mMainLibraryTracks.Item(i)
 
-                    If bDeleteTracksNotInHDD = True Then
-                        '**************************
-                        ' DELETE NON-EXISTANT FILES
-                        '**************************
-                        If booTrackDeleted = False Then
-                            booTrackDeleted = booTrackDeleted And mfDeleteTrackNotInHDD(CType(track, IITFileOrCDTrack))
+                    If track.Kind = ITTrackKind.ITTrackKindFile Then
+
+                        Dim booTrackDeleted As Boolean = False
+
+                        If bDeleteNonMusicFolderTracks = True Then
+                            bwApp.ReportProgress(ProgressType.DELETE_TRACKS_DEAD_ALIEN, track.Album)
+                        Else
+                            bwApp.ReportProgress(ProgressType.DELETE_TRACKS_DEAD, track.Album)
                         End If
+
+                        If bDeleteNonMusicFolderTracks = True AndAlso bDeleteNonMusicFolderTracks = True Then
+                            '**************************
+                            ' DELETE NON-MUSIC-FOLDER
+                            '**************************
+                            booTrackDeleted = mfDeleteNonMusicFolderTrack(CType(track, IITFileOrCDTrack))
+                        End If
+
+                        If bDeleteTracksNotInHDD = True Then
+                            '**************************
+                            ' DELETE NON-EXISTANT FILES
+                            '**************************
+                            If booTrackDeleted = False Then
+                                booTrackDeleted = booTrackDeleted And mfDeleteTrackNotInHDD(CType(track, IITFileOrCDTrack))
+                            End If
+                        End If
+
+                        mProgressDiscsCurrent += 1
+
                     End If
 
-                    mProgressDiscsCurrent += 1
+                Next
 
-                End If
+                bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count)
 
-            Next
+                Dim msg As String = String.Format("Removed {0} dead and {1} foreign tracks", mListFileNotFound.Count, mListTracksNonMusicFolder.Count)
+                msAppendDebug(msg)
 
-            bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count)
+                bwApp.ReportProgress(ProgressType.READY, msg)
 
-            Dim msg As String = String.Format("Removed {0} dead and {1} foreign tracks", mListFileNotFound.Count, mListTracksNonMusicFolder.Count)
-            msAppendDebug(msg)
-
-            bwApp.ReportProgress(ProgressType.READY, msg)
+            End If
 
         End If
 
-    End Sub
+
+    End Function
 
 
 
