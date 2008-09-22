@@ -42,6 +42,8 @@ Partial Class frmAddNewFiles
         Me.chkAlbum = New System.Windows.Forms.CheckBox
         Me.txtAlbum = New System.Windows.Forms.TextBox
         Me.chkOverwriteTags = New System.Windows.Forms.CheckBox
+        Me.txtAdviceAlbumArtist = New System.Windows.Forms.TextBox
+        Me.lblAdvice = New System.Windows.Forms.Label
         Me.gbAlbumTags.SuspendLayout()
         CType(Me.nudYear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudDiscCount, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -245,12 +247,32 @@ Partial Class frmAddNewFiles
         Me.chkOverwriteTags.Text = "Overwrite &Tags ( Warning: Only add ONE album at a time )"
         Me.chkOverwriteTags.UseVisualStyleBackColor = True
         '
+        'txtAdviceAlbumArtist
+        '
+        Me.txtAdviceAlbumArtist.BackColor = System.Drawing.SystemColors.Info
+        Me.txtAdviceAlbumArtist.Location = New System.Drawing.Point(175, 285)
+        Me.txtAdviceAlbumArtist.Name = "txtAdviceAlbumArtist"
+        Me.txtAdviceAlbumArtist.ReadOnly = True
+        Me.txtAdviceAlbumArtist.Size = New System.Drawing.Size(175, 20)
+        Me.txtAdviceAlbumArtist.TabIndex = 15
+        '
+        'lblAdvice
+        '
+        Me.lblAdvice.AutoSize = True
+        Me.lblAdvice.Location = New System.Drawing.Point(29, 288)
+        Me.lblAdvice.Name = "lblAdvice"
+        Me.lblAdvice.Size = New System.Drawing.Size(140, 13)
+        Me.lblAdvice.TabIndex = 16
+        Me.lblAdvice.Text = "Recommended Album Artist:"
+        '
         'frmAddNewFiles
         '
         Me.AcceptButton = Me.btnNo
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(378, 289)
+        Me.ClientSize = New System.Drawing.Size(378, 318)
+        Me.Controls.Add(Me.lblAdvice)
+        Me.Controls.Add(Me.txtAdviceAlbumArtist)
         Me.Controls.Add(Me.chkOverwriteTags)
         Me.Controls.Add(Me.gbAlbumTags)
         Me.Controls.Add(Me.btnYes)
@@ -292,4 +314,6 @@ Partial Class frmAddNewFiles
     Friend WithEvents cboGenre As System.Windows.Forms.ComboBox
     Friend WithEvents cboArtist As System.Windows.Forms.ComboBox
     Friend WithEvents chkArtist As System.Windows.Forms.CheckBox
+    Friend WithEvents txtAdviceAlbumArtist As System.Windows.Forms.TextBox
+    Friend WithEvents lblAdvice As System.Windows.Forms.Label
 End Class

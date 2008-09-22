@@ -3459,6 +3459,18 @@ Namespace My
                 Me("LyricsViewerTopMost") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ExportTracksLastFolder() As String
+            Get
+                Return CType(Me("ExportTracksLastFolder"),String)
+            End Get
+            Set
+                Me("ExportTracksLastFolder") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

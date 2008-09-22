@@ -65,108 +65,48 @@ Public Module mLibrary
     Public Function mfGetLyricsFromLyricWiki(ByVal track As cXmlTrack) As String
 
         Dim lyrics As String = ""
-
-        Dim artist As String = track.AlbumArtist
-        Dim song As String = mfGetNameToSearch(track)
+        Dim artist As String = ""
+        Dim song As String = ""
 
         Dim lyricsWiki As New org.lyricwiki.LyricWiki
 
-        '' 5.31.5.1 Fixed stability for crashes during timeouts occured when downloading lyrics
         Try
 
-            '' CHECK FOR LYRICS WITH ALBUMARTIST AND BRACKETS STRIPPED OUT NAME
-            If lyricsWiki.checkSongExists(track.AlbumArtist, song) = True Then
+            If lyricsWiki.checkSongExists(track.Artist, track.Name) = True Then
 
-                mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                artist = track.Artist
+                song = track.Name
+
+                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lyrics = lyricsWiki.getSong(artist, song).lyrics
 
-                '' CHECK FOR LYRICS WITH ORIGINAL NAME
             ElseIf lyricsWiki.checkSongExists(track.AlbumArtist, track.Name) = True Then
 
                 artist = track.AlbumArtist
                 song = track.Name
-                mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
+
+                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lyrics = lyricsWiki.getSong(artist, song).lyrics
 
-                '' CHECK FOR LYRICS WITH ARTIST AND BRACKETS STRIPPED OUT NAME
-            ElseIf lyricsWiki.checkSongExists(track.Artist, song) = True Then
+            ElseIf lyricsWiki.checkSongExists(track.Artist, mfGetNameToSearch(track)) = True Then
 
                 artist = track.Artist
                 song = mfGetNameToSearch(track)
-                mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", artist, song))
+
+                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lyrics = lyricsWiki.getSong(artist, song).lyrics
 
-            Else
+            ElseIf lyricsWiki.checkSongExists(track.AlbumArtist, mfGetNameToSearch(track)) = True Then
 
-                'TODO: CLOSEST MATCH IMPLEMENTATION
+                artist = track.AlbumArtist
+                song = mfGetNameToSearch(track)
 
-                '' for testing only; these will be dynamic from a text file
-                'Dim cm As New ClosestMatch
-                'cm.Letter = "Z"
-                'cm.Aliases = New List(Of String)
-                'cm.Aliases.Add("Ž")
-                'cm.Aliases.Add("Ź")
-
-                'Dim cm2 As New ClosestMatch
-                'cm2.Aliases = New List(Of String)
-                'cm2.Letter = "C"
-                'cm2.Aliases.Add("Ć")
-
-                'Dim cm3 As New ClosestMatch
-                'cm3.Aliases = New List(Of String)
-                'cm3.Letter = "Ávalanche"
-                'cm3.Aliases.Add("Avalanche")
-
-
-                'Dim cmList As New List(Of ClosestMatch)
-
-                'Dim searches As New List(Of TrackData)
-
-                'cmList.Add(cm)
-                'cmList.Add(cm2)
-                'cmList.Add(cm3)
-
-                'Dim td As New TrackData(artist, song)
-
-                'For Each cc As ClosestMatch In cmList
-
-                '    For Each ll As String In cc.Aliases
-
-                '        td.Artist = td.Artist.Replace(ll.ToUpper, cc.Letter.ToUpper)
-                '        td.Artist = td.Artist.Replace(ll.ToLower, cc.Letter.ToLower)
-                '        td.Name = td.Name.Replace(ll.ToUpper, cc.Letter.ToUpper)
-                '        td.Name = td.Name.Replace(ll.ToLower, cc.Letter.ToLower)
-
-                '        If searches.Contains(td) = False Then
-                '            searches.Add(td)
-                '        End If
-
-                '    Next
-
-                'Next
-
-                'For Each ss As TrackData In searches
-
-                '    mfUpdateStatusBarText(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", ss.Artist, ss.Name), True)
-                '    msAppendDebug(String.Format("Looking up LyricWiki for Artist: ""{0}"", Song: ""{1}""", ss.Artist, ss.Name))
-
-                '    '' 5.31.5.1 Fixed stability for crashes during timeouts occured when downloading lyrics
-                '    Try
-                '        If lyricsWiki.checkSongExists(ss.Artist, ss.Name) = True Then
-
-                '            Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
-                '            Dim result As org.lyricwiki.LyricsResult = lyricsWiki.getSong(ss.Artist, ss.Name)
-                '            lyrics = Encoding.UTF8.GetString(iso8859.GetBytes(result.lyrics))
-                '            Exit For
-                '        End If
-                '    Catch ex As Exception
-                '        msAppendWarnings(ex.Message)
-                '    End Try
-
-                'Next
+                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                lyrics = lyricsWiki.getSong(artist, song).lyrics
 
             End If
 
