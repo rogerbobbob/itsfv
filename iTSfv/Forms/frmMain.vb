@@ -1002,6 +1002,16 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
         End If
 
+        If My.Settings.FillSortAlbumArtist Then
+            Try
+                If String.IsNullOrEmpty(track.SortArtist) Then
+                    track.SortAlbumArtist = track.SortArtist
+                End If
+            Catch ex As Exception
+                msAppendWarnings(ex.Message)
+            End Try
+        End If
+
     End Sub
 
 
@@ -1234,7 +1244,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         Dim booNewIsSquared As Boolean = (ar < 1.1) And (ar > 0.9)
 
                         If My.Settings.ArtworkSquaredPrefer = True AndAlso booNewIsSquared = False Then
-                            msAppendDebug(String.Format("{0} with {1}x{2} will be ignored because it could cause White Borders.", srcNew.ArtworkPath, folderArtwork.Width, folderArtwork.Height))
+                            Dim msg As String = String.Format("{0} with {1}x{2} will be ignored because it could cause White Borders.", srcNew.ArtworkPath, folderArtwork.Width, folderArtwork.Height)
+                            mfUpdateStatusBarText(msg, True)
+                            msAppendDebug(msg)
                         End If
 
                         Dim booOldIsLowRes As Boolean = argReplaceArt.Width < My.Settings.LowResArtworkWidth Or argReplaceArt.Height < My.Settings.LowResArtworkHeight
@@ -1379,7 +1391,8 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         End While
                         If lyrics <> String.Empty Then
                             lyricsSrc = "LyricWiki"
-                            'msAppendDebug(lyrics)
+                            ' have to add this becaues the statusbar update from mfGetLyricsFromLyricWiki is too fast 
+                            bwApp.ReportProgress(ProgressType.FOUND_LYRICS_FOR, String.Format("Artist: ""{0}"", Song: ""{1}""", track.Artist, track.Name))
                         End If
 
                     End If
@@ -6587,7 +6600,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     mProgressDiscsCurrent += 1
                     mfUpdateStatusBarText(String.Format("Exporting {0} to {1}", e.UserState.ToString, mCurrJob.mMessage), False)
 
-                Case ProgressType.FOUND_LYRICS
+                Case ProgressType.FOUND_LYRICS_FOR
                     mfUpdateStatusBarText(String.Format("Found Lyrics for {0}", e.UserState.ToString), False)
 
                 Case ProgressType.GETTING_TRACK_INFO
@@ -6678,7 +6691,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                                 If t.Kind = ITTrackKind.ITTrackKindFile Then
                                     lst.Add(CType(t, IITFileOrCDTrack))
                                 End If
-                            Next                            
+                            Next
                             If lst.Count > 0 Then
                                 mfUpdateStatusBarText(fTracksAreStandard(lst), False)
                             Else
@@ -6775,7 +6788,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     'pBarDiscs.Value = 0
                     'pBarDiscs.Maximum = CType(e.UserState, Integer)
 
-                Case ProgressType.UPDATE_THUMBNAIL_IN_ARTIST_FOLDER                    
+                Case ProgressType.UPDATE_THUMBNAIL_IN_ARTIST_FOLDER
                     mfUpdateStatusBarText("Forcing Thumbnail for " + userStateString, False)
 
                 Case ProgressType.UPDATE_TRACKS_PROGRESS_BAR_MAX
@@ -6789,7 +6802,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     Select Case mCurrJobTypeMain
                         Case cBwJob.JobType.ADJUST_RATINGS
                             prefix = "Adjusting My Rating: "
-                    End Select                    
+                    End Select
                     mfUpdateStatusBarText(prefix + lDisc.Name, False)
 
                 Case ProgressType.WRITE_APPLICATION_SETTINGS

@@ -346,6 +346,7 @@ Partial Class frmMain
         Me.DiggToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OhlohToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.WakoopaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectHomeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.VersionHistoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator
         Me.tsmiDonate = New System.Windows.Forms.ToolStripMenuItem
@@ -371,7 +372,6 @@ Partial Class frmMain
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.btnStatistics = New System.Windows.Forms.Button
         Me.btnStop = New System.Windows.Forms.Button
-        Me.ProjectHomeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ssAppTrack.SuspendLayout()
         Me.cmsApp.SuspendLayout()
         Me.tcTabs.SuspendLayout()
@@ -3374,6 +3374,12 @@ Partial Class frmMain
         Me.WakoopaToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.WakoopaToolStripMenuItem.Text = "&Wakoopa..."
         '
+        'ProjectHomeToolStripMenuItem
+        '
+        Me.ProjectHomeToolStripMenuItem.Name = "ProjectHomeToolStripMenuItem"
+        Me.ProjectHomeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProjectHomeToolStripMenuItem.Text = "Project &Home..."
+        '
         'VersionHistoryToolStripMenuItem1
         '
         Me.VersionHistoryToolStripMenuItem1.Name = "VersionHistoryToolStripMenuItem1"
@@ -3578,12 +3584,6 @@ Partial Class frmMain
         Me.btnStop.Text = "&Stop..."
         Me.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStop.UseVisualStyleBackColor = True
-        '
-        'ProjectHomeToolStripMenuItem
-        '
-        Me.ProjectHomeToolStripMenuItem.Name = "ProjectHomeToolStripMenuItem"
-        Me.ProjectHomeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ProjectHomeToolStripMenuItem.Text = "Project &Home..."
         '
         'frmMain
         '

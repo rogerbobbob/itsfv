@@ -944,5 +944,8 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     <Setting Name="ExportTracksLastFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="FillSortAlbumArtist" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -306,7 +306,7 @@ Public Class frmWMPfv
                 pbarTracks.Increment(1)
                 sBarLeft.Text = String.Format("Checking dead or foreign tracks to delete in: {0}", userStateString)
 
-            Case ProgressType.FOUND_LYRICS
+            Case ProgressType.FOUND_LYRICS_FOR
                 pBarDiscs.Style = ProgressBarStyle.Continuous
                 pBarDiscs.Increment(1)
                 sBarLeft.Text = String.Format("Found Lyrics for {0}", e.UserState.ToString)
