@@ -241,7 +241,7 @@ Public Class frmValidator
             Case ProgressType.CLEAR_DISCS_LISTBOX
                 lbDiscs.Items.Clear()
 
-            Case ProgressType.FOUND_LYRICS
+            Case ProgressType.FOUND_LYRICS_FOR
                 pBarDiscs.Increment(1)
                 sBarTrack.Text = String.Format("Found Lyrics for {0}", e.UserState.ToString)
 
