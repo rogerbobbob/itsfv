@@ -1004,7 +1004,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
         If My.Settings.FillSortAlbumArtist Then
             Try
-                If String.IsNullOrEmpty(track.SortArtist) Then
+                If Not String.IsNullOrEmpty(track.SortArtist) Then
                     track.SortAlbumArtist = track.SortArtist
                 End If
             Catch ex As Exception
