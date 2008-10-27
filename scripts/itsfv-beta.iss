@@ -42,7 +42,7 @@ end;
 [Setup]
 
 AppName=iTSfv
-AppVerName=iTSfv 5.60.22 BETA
+AppVerName=iTSfv 5.60.22.1 BETA
 ;VersionInfoVersion=5.5.2.5
 ;VersionInfoTextVersion=5.5.2.5 BETA
 VersionInfoCompany=BetaONE

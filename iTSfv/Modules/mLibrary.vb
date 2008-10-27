@@ -1,4 +1,4 @@
-﻿Imports iTunesLib
+Imports iTunesLib
 Imports System.Text
 Imports System.IO
 Imports System.Text.RegularExpressions
@@ -61,6 +61,30 @@ Public Module mLibrary
 
     End Function
 
+    Private Function checkSongExists(ByVal artist As String, ByVal song As String) As LyricWikiSong
+
+        Dim lws As New LyricWikiSong
+        lws.found = False
+        lws.lyrics = String.Empty
+
+        Dim lyricsWiki As New org.lyricwiki.LyricWiki
+        If lyricsWiki.checkSongExists(artist, song) = True Then
+            Dim temp As String = lyricsWiki.getSong(artist, song).lyrics
+            If temp <> "Not found" Then
+                lws.found = True
+                lws.lyrics = temp
+            End If
+        End If
+
+        Return lws
+
+    End Function
+
+    Private Structure LyricWikiSong
+        Dim found As Boolean
+        Dim lyrics As String
+    End Structure
+
 
     Public Function mfGetLyricsFromLyricWiki(ByVal track As cXmlTrack) As String
 
@@ -72,41 +96,57 @@ Public Module mLibrary
 
         Try
 
-            If lyricsWiki.checkSongExists(track.Artist, track.Name) = True Then
+            Dim lws As New LyricWikiSong
+            lws = checkSongExists(track.Artist, track.Name)
+            If lws.found Then
 
                 artist = track.Artist
                 song = track.Name
 
                 mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                lyrics = lyricsWiki.getSong(artist, song).lyrics
+                lyrics = lws.lyrics
 
-            ElseIf lyricsWiki.checkSongExists(track.AlbumArtist, track.Name) = True Then
+            Else
 
-                artist = track.AlbumArtist
-                song = track.Name
+                lws = checkSongExists(track.AlbumArtist, track.Name)
+                If lws.found Then
 
-                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                lyrics = lyricsWiki.getSong(artist, song).lyrics
+                    artist = track.AlbumArtist
+                    song = track.Name
 
-            ElseIf lyricsWiki.checkSongExists(track.Artist, mfGetNameToSearch(track)) = True Then
+                    mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                    msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                    lyrics = lws.lyrics
 
-                artist = track.Artist
-                song = mfGetNameToSearch(track)
+                Else
 
-                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                lyrics = lyricsWiki.getSong(artist, song).lyrics
+                    lws = checkSongExists(track.Artist, mfGetNameToSearch(track))
+                    If lws.found Then
+                        artist = track.Artist
+                        song = mfGetNameToSearch(track)
 
-            ElseIf lyricsWiki.checkSongExists(track.AlbumArtist, mfGetNameToSearch(track)) = True Then
+                        mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                        msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                        lyrics = lws.lyrics
 
-                artist = track.AlbumArtist
-                song = mfGetNameToSearch(track)
+                    Else
 
-                mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
-                msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                lyrics = lyricsWiki.getSong(artist, song).lyrics
+                        lws = checkSongExists(track.AlbumArtist, mfGetNameToSearch(track))
+                        If lws.found Then
+
+                            artist = track.AlbumArtist
+                            song = mfGetNameToSearch(track)
+
+                            mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                            msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
+                            lyrics = lws.lyrics
+
+                        End If
+
+                    End If
+
+                End If
 
             End If
 
