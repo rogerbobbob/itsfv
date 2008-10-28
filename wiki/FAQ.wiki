@@ -1,9 +1,7 @@
 #summary Frequently Asked Questions
 #labels last.fm,playedcount,troubleshooting
 
-{{{
 <wiki:toc/>
-}}}
 
 = !ReverseScrobble =
 
