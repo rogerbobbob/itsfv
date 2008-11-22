@@ -38,6 +38,7 @@ Partial Class frmOptions
         Me.chkCapitalizeWordNewTrack = New System.Windows.Forms.CheckBox
         Me.chkModifiedDateRetain = New System.Windows.Forms.CheckBox
         Me.tpTracksAlbumArtist = New System.Windows.Forms.TabPage
+        Me.GroupBox55 = New System.Windows.Forms.GroupBox
         Me.gpRulesMultiArtist = New System.Windows.Forms.GroupBox
         Me.lblMostCommonArtistPerc = New System.Windows.Forms.Label
         Me.tpTracksArtwork = New System.Windows.Forms.TabPage
@@ -292,10 +293,10 @@ Partial Class frmOptions
         Me.chkCapitalizeLowerCaseAuto = New System.Windows.Forms.CheckBox
         Me.chkRemoveDoubleSpaces = New System.Windows.Forms.CheckBox
         Me.chkFillSortAlbumArtist = New System.Windows.Forms.CheckBox
+        Me.chkOverwriteAlbumArtist = New System.Windows.Forms.CheckBox
         Me.nudMostCommonArtist = New System.Windows.Forms.NumericUpDown
         Me.chkMostCommonArtistPerc = New System.Windows.Forms.CheckBox
         Me.chkMostCommonAlbumArtist = New System.Windows.Forms.CheckBox
-        Me.chkOverwriteAlbumArtist = New System.Windows.Forms.CheckBox
         Me.chkArtworkSetFrontCover = New System.Windows.Forms.CheckBox
         Me.chkOnlyHighResArtwork = New System.Windows.Forms.CheckBox
         Me.chkLyricsOverwrite = New System.Windows.Forms.CheckBox
@@ -408,6 +409,7 @@ Partial Class frmOptions
         Me.txtPathMp3tag = New System.Windows.Forms.TextBox
         Me.txtPathAAD = New System.Windows.Forms.TextBox
         Me.chkAADCLIforMissingArtworkOnly = New System.Windows.Forms.CheckBox
+        Me.chkArtworkItunes = New System.Windows.Forms.CheckBox
         Me.chkArtworkfromAADCLI = New System.Windows.Forms.CheckBox
         Me.chkArtworkFromTrack = New System.Windows.Forms.CheckBox
         Me.chkArtworkCache = New System.Windows.Forms.CheckBox
@@ -423,7 +425,6 @@ Partial Class frmOptions
         Me.chkCacheSelectedTracks = New System.Windows.Forms.CheckBox
         Me.chkCacheLibrary = New System.Windows.Forms.CheckBox
         Me.chkWarnRemoveLosResArtwork = New System.Windows.Forms.CheckBox
-        Me.GroupBox55 = New System.Windows.Forms.GroupBox
         Me.tcOptions.SuspendLayout()
         Me.tpValidate.SuspendLayout()
         Me.tcValidate.SuspendLayout()
@@ -434,6 +435,7 @@ Partial Class frmOptions
         Me.tcTracks.SuspendLayout()
         Me.tpTracksRules.SuspendLayout()
         Me.tpTracksAlbumArtist.SuspendLayout()
+        Me.GroupBox55.SuspendLayout()
         Me.gpRulesMultiArtist.SuspendLayout()
         Me.tpTracksArtwork.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
@@ -569,7 +571,6 @@ Partial Class frmOptions
         CType(Me.nudNonAudioFiles, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudPowerDelay, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudSMTPPort, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox55.SuspendLayout()
         Me.SuspendLayout()
         '
         'tcOptions
@@ -747,6 +748,17 @@ Partial Class frmOptions
         Me.tpTracksAlbumArtist.TabIndex = 3
         Me.tpTracksAlbumArtist.Text = "AlbumArtist"
         Me.tpTracksAlbumArtist.UseVisualStyleBackColor = True
+        '
+        'GroupBox55
+        '
+        Me.GroupBox55.Controls.Add(Me.chkFillSortAlbumArtist)
+        Me.GroupBox55.Controls.Add(Me.chkOverwriteAlbumArtist)
+        Me.GroupBox55.Location = New System.Drawing.Point(15, 105)
+        Me.GroupBox55.Name = "GroupBox55"
+        Me.GroupBox55.Size = New System.Drawing.Size(492, 74)
+        Me.GroupBox55.TabIndex = 29
+        Me.GroupBox55.TabStop = False
+        Me.GroupBox55.Text = "Fill missing AlbumArtist using Artist tag"
         '
         'gpRulesMultiArtist
         '
@@ -3278,7 +3290,7 @@ Partial Class frmOptions
         'GroupBox49
         '
         Me.GroupBox49.Controls.Add(Me.chkAADCLIforMissingArtworkOnly)
-        Me.GroupBox49.Location = New System.Drawing.Point(12, 193)
+        Me.GroupBox49.Location = New System.Drawing.Point(12, 236)
         Me.GroupBox49.Name = "GroupBox49"
         Me.GroupBox49.Size = New System.Drawing.Size(512, 52)
         Me.GroupBox49.TabIndex = 25
@@ -3287,6 +3299,7 @@ Partial Class frmOptions
         '
         'gbArtworkSources
         '
+        Me.gbArtworkSources.Controls.Add(Me.chkArtworkItunes)
         Me.gbArtworkSources.Controls.Add(Me.chkArtworkfromAADCLI)
         Me.gbArtworkSources.Controls.Add(Me.chkArtworkFromTrack)
         Me.gbArtworkSources.Controls.Add(Me.chkArtworkCache)
@@ -3295,7 +3308,7 @@ Partial Class frmOptions
         Me.gbArtworkSources.Controls.Add(Me.chkArtworkFromFolder)
         Me.gbArtworkSources.Location = New System.Drawing.Point(12, 96)
         Me.gbArtworkSources.Name = "gbArtworkSources"
-        Me.gbArtworkSources.Size = New System.Drawing.Size(512, 91)
+        Me.gbArtworkSources.Size = New System.Drawing.Size(512, 115)
         Me.gbArtworkSources.TabIndex = 23
         Me.gbArtworkSources.TabStop = False
         Me.gbArtworkSources.Text = "Artwork Sources"
@@ -3546,6 +3559,18 @@ Partial Class frmOptions
         Me.chkFillSortAlbumArtist.Text = "Update ""Sort Album Artist"" tag from ""Sort Artist"" tag "
         Me.chkFillSortAlbumArtist.UseVisualStyleBackColor = True
         '
+        'chkOverwriteAlbumArtist
+        '
+        Me.chkOverwriteAlbumArtist.AutoSize = True
+        Me.chkOverwriteAlbumArtist.Checked = Global.iTSfv.My.MySettings.Default.OverwriteAlbumArtist
+        Me.chkOverwriteAlbumArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "OverwriteAlbumArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkOverwriteAlbumArtist.Location = New System.Drawing.Point(13, 22)
+        Me.chkOverwriteAlbumArtist.Name = "chkOverwriteAlbumArtist"
+        Me.chkOverwriteAlbumArtist.Size = New System.Drawing.Size(144, 17)
+        Me.chkOverwriteAlbumArtist.TabIndex = 27
+        Me.chkOverwriteAlbumArtist.Text = "Overwrite AlbumArtist tag"
+        Me.chkOverwriteAlbumArtist.UseVisualStyleBackColor = True
+        '
         'nudMostCommonArtist
         '
         Me.nudMostCommonArtist.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.iTSfv.My.MySettings.Default, "MostCommonArtistPerc", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
@@ -3585,18 +3610,6 @@ Partial Class frmOptions
         Me.chkMostCommonAlbumArtist.Text = "Choose most common Artist in a multi-artist Disc before considering ""Various Arti" & _
             "sts"" tag"
         Me.chkMostCommonAlbumArtist.UseVisualStyleBackColor = True
-        '
-        'chkOverwriteAlbumArtist
-        '
-        Me.chkOverwriteAlbumArtist.AutoSize = True
-        Me.chkOverwriteAlbumArtist.Checked = Global.iTSfv.My.MySettings.Default.OverwriteAlbumArtist
-        Me.chkOverwriteAlbumArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "OverwriteAlbumArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkOverwriteAlbumArtist.Location = New System.Drawing.Point(13, 22)
-        Me.chkOverwriteAlbumArtist.Name = "chkOverwriteAlbumArtist"
-        Me.chkOverwriteAlbumArtist.Size = New System.Drawing.Size(144, 17)
-        Me.chkOverwriteAlbumArtist.TabIndex = 27
-        Me.chkOverwriteAlbumArtist.Text = "Overwrite AlbumArtist tag"
-        Me.chkOverwriteAlbumArtist.UseVisualStyleBackColor = True
         '
         'chkArtworkSetFrontCover
         '
@@ -4917,12 +4930,24 @@ Partial Class frmOptions
         Me.chkAADCLIforMissingArtworkOnly.Text = "Album Art Download XUI CLI"
         Me.chkAADCLIforMissingArtworkOnly.UseVisualStyleBackColor = True
         '
+        'chkArtworkItunes
+        '
+        Me.chkArtworkItunes.AutoSize = True
+        Me.chkArtworkItunes.Checked = Global.iTSfv.My.MySettings.Default.ArtworkSrcItunes
+        Me.chkArtworkItunes.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ArtworkSrcItunes", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkArtworkItunes.Location = New System.Drawing.Point(12, 65)
+        Me.chkArtworkItunes.Name = "chkArtworkItunes"
+        Me.chkArtworkItunes.Size = New System.Drawing.Size(142, 17)
+        Me.chkArtworkItunes.TabIndex = 25
+        Me.chkArtworkItunes.Text = "iTunes Store (encrypted)"
+        Me.chkArtworkItunes.UseVisualStyleBackColor = True
+        '
         'chkArtworkfromAADCLI
         '
         Me.chkArtworkfromAADCLI.AutoSize = True
         Me.chkArtworkfromAADCLI.Checked = Global.iTSfv.My.MySettings.Default.ArtworkSrcAADCLI
         Me.chkArtworkfromAADCLI.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ArtworkSrcAADCLI", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkArtworkfromAADCLI.Location = New System.Drawing.Point(12, 42)
+        Me.chkArtworkfromAADCLI.Location = New System.Drawing.Point(282, 42)
         Me.chkArtworkfromAADCLI.Name = "chkArtworkfromAADCLI"
         Me.chkArtworkfromAADCLI.Size = New System.Drawing.Size(171, 17)
         Me.chkArtworkfromAADCLI.TabIndex = 24
@@ -4935,7 +4960,7 @@ Partial Class frmOptions
         Me.chkArtworkFromTrack.Checked = Global.iTSfv.My.MySettings.Default.ArtworkSrcTrack
         Me.chkArtworkFromTrack.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkArtworkFromTrack.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ArtworkSrcTrack", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkArtworkFromTrack.Location = New System.Drawing.Point(282, 42)
+        Me.chkArtworkFromTrack.Location = New System.Drawing.Point(12, 88)
         Me.chkArtworkFromTrack.Name = "chkArtworkFromTrack"
         Me.chkArtworkFromTrack.Size = New System.Drawing.Size(158, 17)
         Me.chkArtworkFromTrack.TabIndex = 3
@@ -4961,7 +4986,7 @@ Partial Class frmOptions
         Me.chkArtworkFromAAD.Checked = Global.iTSfv.My.MySettings.Default.ArtworkSrcAAD
         Me.chkArtworkFromAAD.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkArtworkFromAAD.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ArtworkSrcAAD", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkArtworkFromAAD.Location = New System.Drawing.Point(12, 65)
+        Me.chkArtworkFromAAD.Location = New System.Drawing.Point(12, 42)
         Me.chkArtworkFromAAD.Name = "chkArtworkFromAAD"
         Me.chkArtworkFromAAD.Size = New System.Drawing.Size(152, 17)
         Me.chkArtworkFromAAD.TabIndex = 2
@@ -5107,17 +5132,6 @@ Partial Class frmOptions
         Me.chkWarnRemoveLosResArtwork.Text = "Warn if Remove Low Resolution Artwork checkbox is checked"
         Me.chkWarnRemoveLosResArtwork.UseVisualStyleBackColor = True
         '
-        'GroupBox55
-        '
-        Me.GroupBox55.Controls.Add(Me.chkFillSortAlbumArtist)
-        Me.GroupBox55.Controls.Add(Me.chkOverwriteAlbumArtist)
-        Me.GroupBox55.Location = New System.Drawing.Point(15, 105)
-        Me.GroupBox55.Name = "GroupBox55"
-        Me.GroupBox55.Size = New System.Drawing.Size(492, 74)
-        Me.GroupBox55.TabIndex = 29
-        Me.GroupBox55.TabStop = False
-        Me.GroupBox55.Text = "Fill missing AlbumArtist using Artist tag"
-        '
         'frmOptions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -5145,6 +5159,8 @@ Partial Class frmOptions
         Me.tpTracksRules.ResumeLayout(False)
         Me.tpTracksRules.PerformLayout()
         Me.tpTracksAlbumArtist.ResumeLayout(False)
+        Me.GroupBox55.ResumeLayout(False)
+        Me.GroupBox55.PerformLayout()
         Me.gpRulesMultiArtist.ResumeLayout(False)
         Me.gpRulesMultiArtist.PerformLayout()
         Me.tpTracksArtwork.ResumeLayout(False)
@@ -5354,8 +5370,6 @@ Partial Class frmOptions
         CType(Me.nudNonAudioFiles, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudPowerDelay, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudSMTPPort, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox55.ResumeLayout(False)
-        Me.GroupBox55.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -5761,4 +5775,5 @@ Partial Class frmOptions
     Friend WithEvents chkForceTags As System.Windows.Forms.CheckBox
     Friend WithEvents chkFillSortAlbumArtist As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox55 As System.Windows.Forms.GroupBox
+    Friend WithEvents chkArtworkItunes As System.Windows.Forms.CheckBox
 End Class

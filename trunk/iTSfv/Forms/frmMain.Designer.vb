@@ -473,7 +473,7 @@ Partial Class frmMain
         Me.sBarTrack.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.sBarTrack.Name = "sBarTrack"
         Me.sBarTrack.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
-        Me.sBarTrack.Size = New System.Drawing.Size(539, 17)
+        Me.sBarTrack.Size = New System.Drawing.Size(537, 17)
         Me.sBarTrack.Spring = True
         Me.sBarTrack.Text = "Idle."
         Me.sBarTrack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -482,7 +482,7 @@ Partial Class frmMain
         '
         Me.sTrackProgress.BackColor = System.Drawing.SystemColors.Info
         Me.sTrackProgress.Name = "sTrackProgress"
-        Me.sTrackProgress.Size = New System.Drawing.Size(32, 17)
+        Me.sTrackProgress.Size = New System.Drawing.Size(34, 17)
         Me.sTrackProgress.Text = "0.0%"
         '
         'pbarTrack
@@ -504,167 +504,167 @@ Partial Class frmMain
         '
         Me.cmsApp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmShowApp, Me.ToolStripSeparator18, Me.OpenTracksReportToolStripMenuItem, Me.OpenMusicFolderToolStripMenuItem, Me.LogFilesToolStripMenuItem, Me.TaskToolStripMenuItem, Me.ValidateSelectedTracksToolStripMenuItem, Me.QuickValidationToolStripMenuItem, Me.ToolStripSeparator1, Me.AboutToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.VersionHistoryToolStripMenuItem, Me.CheckForUpdatesToolStripMenuItem, Me.ToolStripSeparator3, Me.SendToSystemTrayToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.cmsApp.Name = "cMenu"
-        Me.cmsApp.Size = New System.Drawing.Size(215, 308)
+        Me.cmsApp.Size = New System.Drawing.Size(207, 308)
         '
         'tsmShowApp
         '
         Me.tsmShowApp.Enabled = False
         Me.tsmShowApp.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.tsmShowApp.Name = "tsmShowApp"
-        Me.tsmShowApp.Size = New System.Drawing.Size(214, 22)
+        Me.tsmShowApp.Size = New System.Drawing.Size(206, 22)
         Me.tsmShowApp.Text = "&Show iTSfv..."
         '
         'ToolStripSeparator18
         '
         Me.ToolStripSeparator18.Name = "ToolStripSeparator18"
-        Me.ToolStripSeparator18.Size = New System.Drawing.Size(211, 6)
+        Me.ToolStripSeparator18.Size = New System.Drawing.Size(203, 6)
         '
         'OpenTracksReportToolStripMenuItem
         '
         Me.OpenTracksReportToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.report
         Me.OpenTracksReportToolStripMenuItem.Name = "OpenTracksReportToolStripMenuItem"
-        Me.OpenTracksReportToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.OpenTracksReportToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.OpenTracksReportToolStripMenuItem.Text = "Open &Tracks Report..."
         '
         'OpenMusicFolderToolStripMenuItem
         '
         Me.OpenMusicFolderToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.musicfolder
         Me.OpenMusicFolderToolStripMenuItem.Name = "OpenMusicFolderToolStripMenuItem"
-        Me.OpenMusicFolderToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.OpenMusicFolderToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.OpenMusicFolderToolStripMenuItem.Text = "Open &Music Folder..."
         '
         'LogFilesToolStripMenuItem
         '
         Me.LogFilesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenAlbumsToolStripMenuItem, Me.OpenNoniTSStandardTrackListwToolStripMenuItem, Me.TracksThatArtworkWasAddedToolStripMenuItem, Me.TracksThatRatingWasAdjustedToolStripMenuItem, Me.TrackCountUpdatedTracksToolStripMenuItem, Me.TracksWithLowResolutionArtworkToolStripMenuItem, Me.TracksWithMultipleArtworkToolStripMenuItem, Me.TracksWithNoArtworkToolStripMenuItem, Me.TracksWithNoLyricsToolStripMenuItem, Me.MusicFolderActivityToolStripMenuItem, Me.ToolStripSeparator2, Me.SToolStripMenuItem, Me.OpenWarningsToolStripMenuItem})
         Me.LogFilesToolStripMenuItem.Name = "LogFilesToolStripMenuItem"
-        Me.LogFilesToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.LogFilesToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.LogFilesToolStripMenuItem.Text = "Open &Log Files"
         '
         'OpenAlbumsToolStripMenuItem
         '
         Me.OpenAlbumsToolStripMenuItem.Name = "OpenAlbumsToolStripMenuItem"
-        Me.OpenAlbumsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.OpenAlbumsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.OpenAlbumsToolStripMenuItem.Text = "&Albums with Inconsecutive Track Numbers..."
         '
         'OpenNoniTSStandardTrackListwToolStripMenuItem
         '
         Me.OpenNoniTSStandardTrackListwToolStripMenuItem.Name = "OpenNoniTSStandardTrackListwToolStripMenuItem"
-        Me.OpenNoniTSStandardTrackListwToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.OpenNoniTSStandardTrackListwToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.OpenNoniTSStandardTrackListwToolStripMenuItem.Text = "Tracks not iTunes Store compliant..."
         '
         'TracksThatArtworkWasAddedToolStripMenuItem
         '
         Me.TracksThatArtworkWasAddedToolStripMenuItem.Name = "TracksThatArtworkWasAddedToolStripMenuItem"
-        Me.TracksThatArtworkWasAddedToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksThatArtworkWasAddedToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksThatArtworkWasAddedToolStripMenuItem.Text = "&Tracks that Artwork was added..."
         '
         'TracksThatRatingWasAdjustedToolStripMenuItem
         '
         Me.TracksThatRatingWasAdjustedToolStripMenuItem.Name = "TracksThatRatingWasAdjustedToolStripMenuItem"
-        Me.TracksThatRatingWasAdjustedToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksThatRatingWasAdjustedToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksThatRatingWasAdjustedToolStripMenuItem.Text = "Tracks that Rating was adjusted..."
         '
         'TrackCountUpdatedTracksToolStripMenuItem
         '
         Me.TrackCountUpdatedTracksToolStripMenuItem.Name = "TrackCountUpdatedTracksToolStripMenuItem"
-        Me.TrackCountUpdatedTracksToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TrackCountUpdatedTracksToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TrackCountUpdatedTracksToolStripMenuItem.Text = "Tracks that Track Count was updated..."
         '
         'TracksWithLowResolutionArtworkToolStripMenuItem
         '
         Me.TracksWithLowResolutionArtworkToolStripMenuItem.Name = "TracksWithLowResolutionArtworkToolStripMenuItem"
-        Me.TracksWithLowResolutionArtworkToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksWithLowResolutionArtworkToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksWithLowResolutionArtworkToolStripMenuItem.Text = "Tracks with low resolution Artwork..."
         '
         'TracksWithMultipleArtworkToolStripMenuItem
         '
         Me.TracksWithMultipleArtworkToolStripMenuItem.Name = "TracksWithMultipleArtworkToolStripMenuItem"
-        Me.TracksWithMultipleArtworkToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksWithMultipleArtworkToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksWithMultipleArtworkToolStripMenuItem.Text = "Tracks with multiple Artwork..."
         '
         'TracksWithNoArtworkToolStripMenuItem
         '
         Me.TracksWithNoArtworkToolStripMenuItem.Name = "TracksWithNoArtworkToolStripMenuItem"
-        Me.TracksWithNoArtworkToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksWithNoArtworkToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksWithNoArtworkToolStripMenuItem.Text = "&Tracks without Artwork..."
         '
         'TracksWithNoLyricsToolStripMenuItem
         '
         Me.TracksWithNoLyricsToolStripMenuItem.Name = "TracksWithNoLyricsToolStripMenuItem"
-        Me.TracksWithNoLyricsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksWithNoLyricsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksWithNoLyricsToolStripMenuItem.Text = "Tracks without Lyrics..."
         '
         'MusicFolderActivityToolStripMenuItem
         '
         Me.MusicFolderActivityToolStripMenuItem.Name = "MusicFolderActivityToolStripMenuItem"
-        Me.MusicFolderActivityToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.MusicFolderActivityToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.MusicFolderActivityToolStripMenuItem.Text = "Music Folder Activity..."
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(284, 6)
         '
         'SToolStripMenuItem
         '
         Me.SToolStripMenuItem.Name = "SToolStripMenuItem"
-        Me.SToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.SToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.SToolStripMenuItem.Text = "&Errors..."
         '
         'OpenWarningsToolStripMenuItem
         '
         Me.OpenWarningsToolStripMenuItem.Name = "OpenWarningsToolStripMenuItem"
-        Me.OpenWarningsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.OpenWarningsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.OpenWarningsToolStripMenuItem.Text = "&Warnings..."
         '
         'TaskToolStripMenuItem
         '
         Me.TaskToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdjustRatingsToolStripMenuItem, Me.CopyTrackInfoToClipboardToolStripMenuItem})
         Me.TaskToolStripMenuItem.Name = "TaskToolStripMenuItem"
-        Me.TaskToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.TaskToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.TaskToolStripMenuItem.Text = "&Tasks"
         '
         'AdjustRatingsToolStripMenuItem
         '
         Me.AdjustRatingsToolStripMenuItem.Name = "AdjustRatingsToolStripMenuItem"
-        Me.AdjustRatingsToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.AdjustRatingsToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.AdjustRatingsToolStripMenuItem.Text = "&Adjust Ratings"
         '
         'CopyTrackInfoToClipboardToolStripMenuItem
         '
         Me.CopyTrackInfoToClipboardToolStripMenuItem.Name = "CopyTrackInfoToClipboardToolStripMenuItem"
-        Me.CopyTrackInfoToClipboardToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.CopyTrackInfoToClipboardToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.CopyTrackInfoToClipboardToolStripMenuItem.Text = "&Copy Track Info to Clipboard"
         '
         'ValidateSelectedTracksToolStripMenuItem
         '
         Me.ValidateSelectedTracksToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValidateToolStripMenuItem})
         Me.ValidateSelectedTracksToolStripMenuItem.Name = "ValidateSelectedTracksToolStripMenuItem"
-        Me.ValidateSelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.ValidateSelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.ValidateSelectedTracksToolStripMenuItem.Text = "&Selected Tracks"
         '
         'ValidateToolStripMenuItem
         '
         Me.ValidateToolStripMenuItem.Name = "ValidateToolStripMenuItem"
-        Me.ValidateToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.ValidateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.ValidateToolStripMenuItem.Text = "&Validate"
         '
         'QuickValidationToolStripMenuItem
         '
         Me.QuickValidationToolStripMenuItem.Name = "QuickValidationToolStripMenuItem"
         Me.QuickValidationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.QuickValidationToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.QuickValidationToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.QuickValidationToolStripMenuItem.Text = "&Validate last 100 Tracks"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(211, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(203, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.AboutToolStripMenuItem.Text = "&About..."
         '
         'OptionsToolStripMenuItem
@@ -672,39 +672,39 @@ Partial Class frmMain
         Me.OptionsToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.application_edit
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         Me.OptionsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.OptionsToolStripMenuItem.Text = "&Options..."
         '
         'VersionHistoryToolStripMenuItem
         '
         Me.VersionHistoryToolStripMenuItem.Name = "VersionHistoryToolStripMenuItem"
-        Me.VersionHistoryToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.VersionHistoryToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.VersionHistoryToolStripMenuItem.Text = "&Version History..."
         '
         'CheckForUpdatesToolStripMenuItem
         '
         Me.CheckForUpdatesToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.world
         Me.CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem"
-        Me.CheckForUpdatesToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.CheckForUpdatesToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.CheckForUpdatesToolStripMenuItem.Text = "&Check for Updates..."
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(211, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(203, 6)
         '
         'SendToSystemTrayToolStripMenuItem
         '
         Me.SendToSystemTrayToolStripMenuItem.Name = "SendToSystemTrayToolStripMenuItem"
         Me.SendToSystemTrayToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12
-        Me.SendToSystemTrayToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.SendToSystemTrayToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.SendToSystemTrayToolStripMenuItem.Text = "&Send to System Tray"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources._exit
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'chkWinExportArtwork
@@ -1978,18 +1978,18 @@ Partial Class frmMain
         '
         Me.cmsFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowInWindowsExplorerToolStripMenuItem, Me.RemoveFromListToolStripMenuItem})
         Me.cmsFiles.Name = "cmsFiles"
-        Me.cmsFiles.Size = New System.Drawing.Size(223, 48)
+        Me.cmsFiles.Size = New System.Drawing.Size(213, 48)
         '
         'ShowInWindowsExplorerToolStripMenuItem
         '
         Me.ShowInWindowsExplorerToolStripMenuItem.Name = "ShowInWindowsExplorerToolStripMenuItem"
-        Me.ShowInWindowsExplorerToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ShowInWindowsExplorerToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ShowInWindowsExplorerToolStripMenuItem.Text = "&Show in Windows Explorer..."
         '
         'RemoveFromListToolStripMenuItem
         '
         Me.RemoveFromListToolStripMenuItem.Name = "RemoveFromListToolStripMenuItem"
-        Me.RemoveFromListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.RemoveFromListToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.RemoveFromListToolStripMenuItem.Text = "&Remove from List"
         '
         'chkAddFile
@@ -2113,68 +2113,68 @@ Partial Class frmMain
         '
         Me.cmsDiscs.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayDiscInITunesToolStripMenuItem, Me.ValidateDiscToolStripMenuItem, Me.ToolStripSeparator16, Me.CreatePlaylistToolStripMenuItem, Me.ShowDiscInWindowsExplroerToolStripMenuItem, Me.tsmCopyTracklist, Me.ToolStripSeparator24, Me.ArtworkSearchToolStripMenuItem, Me.GoogleSearchToolStripMenuItem, Me.Mp3tagSelectedDisc})
         Me.cmsDiscs.Name = "cDiscs"
-        Me.cmsDiscs.Size = New System.Drawing.Size(223, 192)
+        Me.cmsDiscs.Size = New System.Drawing.Size(213, 192)
         '
         'PlayDiscInITunesToolStripMenuItem
         '
         Me.PlayDiscInITunesToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.control_play
         Me.PlayDiscInITunesToolStripMenuItem.Name = "PlayDiscInITunesToolStripMenuItem"
-        Me.PlayDiscInITunesToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.PlayDiscInITunesToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.PlayDiscInITunesToolStripMenuItem.Text = "&Play Disc in iTunes"
         '
         'ValidateDiscToolStripMenuItem
         '
         Me.ValidateDiscToolStripMenuItem.Name = "ValidateDiscToolStripMenuItem"
-        Me.ValidateDiscToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ValidateDiscToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ValidateDiscToolStripMenuItem.Text = "&Validate Disc"
         '
         'ToolStripSeparator16
         '
         Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
-        Me.ToolStripSeparator16.Size = New System.Drawing.Size(219, 6)
+        Me.ToolStripSeparator16.Size = New System.Drawing.Size(209, 6)
         '
         'CreatePlaylistToolStripMenuItem
         '
         Me.CreatePlaylistToolStripMenuItem.Name = "CreatePlaylistToolStripMenuItem"
-        Me.CreatePlaylistToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.CreatePlaylistToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.CreatePlaylistToolStripMenuItem.Text = "&Create Playlist..."
         '
         'ShowDiscInWindowsExplroerToolStripMenuItem
         '
         Me.ShowDiscInWindowsExplroerToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.folder_explore
         Me.ShowDiscInWindowsExplroerToolStripMenuItem.Name = "ShowDiscInWindowsExplroerToolStripMenuItem"
-        Me.ShowDiscInWindowsExplroerToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ShowDiscInWindowsExplroerToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ShowDiscInWindowsExplroerToolStripMenuItem.Text = "&Show in Windows Explorer..."
         '
         'tsmCopyTracklist
         '
         Me.tsmCopyTracklist.Image = Global.iTSfv.My.Resources.Resources.page_copy
         Me.tsmCopyTracklist.Name = "tsmCopyTracklist"
-        Me.tsmCopyTracklist.Size = New System.Drawing.Size(222, 22)
+        Me.tsmCopyTracklist.Size = New System.Drawing.Size(212, 22)
         Me.tsmCopyTracklist.Text = "Copy &Tracklist to Clipboard"
         '
         'ToolStripSeparator24
         '
         Me.ToolStripSeparator24.Name = "ToolStripSeparator24"
-        Me.ToolStripSeparator24.Size = New System.Drawing.Size(219, 6)
+        Me.ToolStripSeparator24.Size = New System.Drawing.Size(209, 6)
         '
         'ArtworkSearchToolStripMenuItem
         '
         Me.ArtworkSearchToolStripMenuItem.Name = "ArtworkSearchToolStripMenuItem"
-        Me.ArtworkSearchToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ArtworkSearchToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ArtworkSearchToolStripMenuItem.Text = "&Artwork Search using AAD..."
         '
         'GoogleSearchToolStripMenuItem
         '
         Me.GoogleSearchToolStripMenuItem.Name = "GoogleSearchToolStripMenuItem"
-        Me.GoogleSearchToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.GoogleSearchToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.GoogleSearchToolStripMenuItem.Text = "&Google this Disc..."
         '
         'Mp3tagSelectedDisc
         '
         Me.Mp3tagSelectedDisc.Image = Global.iTSfv.My.Resources.Resources.mp3tag
         Me.Mp3tagSelectedDisc.Name = "Mp3tagSelectedDisc"
-        Me.Mp3tagSelectedDisc.Size = New System.Drawing.Size(222, 22)
+        Me.Mp3tagSelectedDisc.Size = New System.Drawing.Size(212, 22)
         Me.Mp3tagSelectedDisc.Text = "Mp3tag..."
         '
         'pbArtwork
@@ -2654,14 +2654,14 @@ Partial Class frmMain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAddFolderToLib, Me.OpenToolStripMenuItem, Me.CreatePlaylistOfSelectedTracksToolStripMenuItem, Me.ToolStripSeparator7, Me.miSendToTray, Me.ToolStripSeparator4, Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'tsmAddFolderToLib
         '
         Me.tsmAddFolderToLib.Image = Global.iTSfv.My.Resources.Resources.folder_add
         Me.tsmAddFolderToLib.Name = "tsmAddFolderToLib"
-        Me.tsmAddFolderToLib.Size = New System.Drawing.Size(261, 22)
+        Me.tsmAddFolderToLib.Size = New System.Drawing.Size(252, 22)
         Me.tsmAddFolderToLib.Text = "&Add folder to Library..."
         '
         'OpenToolStripMenuItem
@@ -2670,44 +2670,44 @@ Partial Class frmMain
         Me.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.OpenToolStripMenuItem.Text = "&Open Statistics File..."
         '
         'CreatePlaylistOfSelectedTracksToolStripMenuItem
         '
         Me.CreatePlaylistOfSelectedTracksToolStripMenuItem.Name = "CreatePlaylistOfSelectedTracksToolStripMenuItem"
-        Me.CreatePlaylistOfSelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.CreatePlaylistOfSelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.CreatePlaylistOfSelectedTracksToolStripMenuItem.Text = "&Save Playlist of Selected Tracks As..."
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(249, 6)
         '
         'miSendToTray
         '
         Me.miSendToTray.Name = "miSendToTray"
         Me.miSendToTray.ShortcutKeys = System.Windows.Forms.Keys.F12
-        Me.miSendToTray.Size = New System.Drawing.Size(261, 22)
+        Me.miSendToTray.Size = New System.Drawing.Size(252, 22)
         Me.miSendToTray.Text = "Send to System Tray"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(249, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Image = Global.iTSfv.My.Resources.Resources._exit
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(261, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(252, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'miJobs
         '
         Me.miJobs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miAdjustRatings, Me.miStatistics, Me.tsmUpdatePlayedCount, Me.ToolStripSeparator17, Me.DeleteDeadOrForeignTracksToolStripMenuItem, Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem, Me.miSynchroclean, Me.ToolStripSeparator6, Me.PlayFirstTrackToolStripMenuItem, Me.ToolStripSeparator5, Me.miValidateSelected, Me.ValidateLast100TracksToolStripMenuItem, Me.ValidateITunesMusicLibraryToolStripMenuItem, Me.ToolStripSeparator26, Me.VerboseModeToolStripMenuItem})
         Me.miJobs.Name = "miJobs"
-        Me.miJobs.Size = New System.Drawing.Size(42, 20)
+        Me.miJobs.Size = New System.Drawing.Size(41, 20)
         Me.miJobs.Text = "&Jobs"
         '
         'miAdjustRatings
@@ -2715,33 +2715,33 @@ Partial Class frmMain
         Me.miAdjustRatings.Image = Global.iTSfv.My.Resources.Resources.star
         Me.miAdjustRatings.Name = "miAdjustRatings"
         Me.miAdjustRatings.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.miAdjustRatings.Size = New System.Drawing.Size(377, 22)
+        Me.miAdjustRatings.Size = New System.Drawing.Size(347, 22)
         Me.miAdjustRatings.Text = "Adjust track &Ratings according to play pattern"
         '
         'miStatistics
         '
         Me.miStatistics.Image = Global.iTSfv.My.Resources.Resources.chart_bar
         Me.miStatistics.Name = "miStatistics"
-        Me.miStatistics.Size = New System.Drawing.Size(377, 22)
+        Me.miStatistics.Size = New System.Drawing.Size(347, 22)
         Me.miStatistics.Text = "Display iTunes Music Library Statistics..."
         '
         'tsmUpdatePlayedCount
         '
         Me.tsmUpdatePlayedCount.Image = Global.iTSfv.My.Resources.Resources.LastFM
         Me.tsmUpdatePlayedCount.Name = "tsmUpdatePlayedCount"
-        Me.tsmUpdatePlayedCount.Size = New System.Drawing.Size(377, 22)
+        Me.tsmUpdatePlayedCount.Size = New System.Drawing.Size(347, 22)
         Me.tsmUpdatePlayedCount.Text = "Update Track PlayedCount in iTunes using Last.fm Profile"
         '
         'ToolStripSeparator17
         '
         Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(374, 6)
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(344, 6)
         '
         'DeleteDeadOrForeignTracksToolStripMenuItem
         '
         Me.DeleteDeadOrForeignTracksToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.database_delete
         Me.DeleteDeadOrForeignTracksToolStripMenuItem.Name = "DeleteDeadOrForeignTracksToolStripMenuItem"
-        Me.DeleteDeadOrForeignTracksToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.DeleteDeadOrForeignTracksToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.DeleteDeadOrForeignTracksToolStripMenuItem.Text = "&Remove dead or foreign tracks from Library..."
         '
         'AddNewFilesNotInITunesMusicLibraryToolStripMenuItem
@@ -2749,392 +2749,392 @@ Partial Class frmMain
         Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.folder_find
         Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.Name = "AddNewFilesNotInITunesMusicLibraryToolStripMenuItem"
         Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.AddNewFilesNotInITunesMusicLibraryToolStripMenuItem.Text = "&Find New Tracks not in iTunes Music Library..."
         '
         'miSynchroclean
         '
         Me.miSynchroclean.Image = Global.iTSfv.My.Resources.Resources.database_refresh
         Me.miSynchroclean.Name = "miSynchroclean"
-        Me.miSynchroclean.Size = New System.Drawing.Size(377, 22)
+        Me.miSynchroclean.Size = New System.Drawing.Size(347, 22)
         Me.miSynchroclean.Text = "Synchroclean® iTunes Music Library..."
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(374, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(344, 6)
         '
         'PlayFirstTrackToolStripMenuItem
         '
         Me.PlayFirstTrackToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.control_play
         Me.PlayFirstTrackToolStripMenuItem.Name = "PlayFirstTrackToolStripMenuItem"
         Me.PlayFirstTrackToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.PlayFirstTrackToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.PlayFirstTrackToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.PlayFirstTrackToolStripMenuItem.Text = "&Play Album"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(374, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(344, 6)
         '
         'miValidateSelected
         '
         Me.miValidateSelected.Name = "miValidateSelected"
-        Me.miValidateSelected.Size = New System.Drawing.Size(377, 22)
+        Me.miValidateSelected.Size = New System.Drawing.Size(347, 22)
         Me.miValidateSelected.Text = "Validate &Selected Tracks"
         '
         'ValidateLast100TracksToolStripMenuItem
         '
         Me.ValidateLast100TracksToolStripMenuItem.Name = "ValidateLast100TracksToolStripMenuItem"
         Me.ValidateLast100TracksToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.ValidateLast100TracksToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.ValidateLast100TracksToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.ValidateLast100TracksToolStripMenuItem.Text = "&Validate Last 100 Tracks"
         '
         'ValidateITunesMusicLibraryToolStripMenuItem
         '
         Me.ValidateITunesMusicLibraryToolStripMenuItem.Name = "ValidateITunesMusicLibraryToolStripMenuItem"
-        Me.ValidateITunesMusicLibraryToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.ValidateITunesMusicLibraryToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.ValidateITunesMusicLibraryToolStripMenuItem.Text = "&Validate iTunes Music Library"
         '
         'ToolStripSeparator26
         '
         Me.ToolStripSeparator26.Name = "ToolStripSeparator26"
-        Me.ToolStripSeparator26.Size = New System.Drawing.Size(374, 6)
+        Me.ToolStripSeparator26.Size = New System.Drawing.Size(344, 6)
         '
         'VerboseModeToolStripMenuItem
         '
         Me.VerboseModeToolStripMenuItem.Checked = True
         Me.VerboseModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.VerboseModeToolStripMenuItem.Name = "VerboseModeToolStripMenuItem"
-        Me.VerboseModeToolStripMenuItem.Size = New System.Drawing.Size(377, 22)
+        Me.VerboseModeToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.VerboseModeToolStripMenuItem.Text = "Show Verbose Mode"
         '
         'LogsToolStripMenuItem
         '
         Me.LogsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenTracksReportToolStripMenuItem1, Me.ToolStripSeparator14, Me.ArtworkToolStripMenuItem, Me.LyricsToolStripMenuItem, Me.tsmTrackTags, Me.ToolStripSeparator11, Me.TracksThatRatingWasAdjustedToolStripMenuItem1, Me.TracksNotITunesStoreCompliantToolStripMenuItem, Me.TracksThatTrackCountWasUpdatedToolStripMenuItem, Me.ToolStripSeparator12, Me.LibraryToolStripMenuItem, Me.FileSystemToolStripMenuItem, Me.ToolStripSeparator22, Me.AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem, Me.ToolStripSeparator13, Me.DebugToolStripMenuItem, Me.ErrorsToolStripMenuItem, Me.WarningsToolStripMenuItem, Me.ToolStripSeparator20, Me.BrowseLogsFolderToolStripMenuItem1})
         Me.LogsToolStripMenuItem.Name = "LogsToolStripMenuItem"
-        Me.LogsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.LogsToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.LogsToolStripMenuItem.Text = "&Logs"
         '
         'OpenTracksReportToolStripMenuItem1
         '
         Me.OpenTracksReportToolStripMenuItem1.Image = Global.iTSfv.My.Resources.Resources.report
         Me.OpenTracksReportToolStripMenuItem1.Name = "OpenTracksReportToolStripMenuItem1"
-        Me.OpenTracksReportToolStripMenuItem1.Size = New System.Drawing.Size(310, 22)
+        Me.OpenTracksReportToolStripMenuItem1.Size = New System.Drawing.Size(287, 22)
         Me.OpenTracksReportToolStripMenuItem1.Text = "Validation &Report..."
         '
         'ToolStripSeparator14
         '
         Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        Me.ToolStripSeparator14.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(284, 6)
         '
         'ArtworkToolStripMenuItem
         '
         Me.ArtworkToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TracksThatArtworkWasAddedToolStripMenuItem1, Me.TracksWithmultipleArtworkToolStripMenuItem1, Me.TracksWithoutArtworkToolStripMenuItem, Me.TracksThatArtworkIsLowResolutionToolStripMenuItem, Me.tsmiArtworkConverted})
         Me.ArtworkToolStripMenuItem.Name = "ArtworkToolStripMenuItem"
-        Me.ArtworkToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.ArtworkToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.ArtworkToolStripMenuItem.Text = "Track &Artwork"
         '
         'TracksThatArtworkWasAddedToolStripMenuItem1
         '
         Me.TracksThatArtworkWasAddedToolStripMenuItem1.Name = "TracksThatArtworkWasAddedToolStripMenuItem1"
-        Me.TracksThatArtworkWasAddedToolStripMenuItem1.Size = New System.Drawing.Size(348, 22)
+        Me.TracksThatArtworkWasAddedToolStripMenuItem1.Size = New System.Drawing.Size(332, 22)
         Me.TracksThatArtworkWasAddedToolStripMenuItem1.Text = "Tracks that &Artwork was added..."
         '
         'TracksWithmultipleArtworkToolStripMenuItem1
         '
         Me.TracksWithmultipleArtworkToolStripMenuItem1.Name = "TracksWithmultipleArtworkToolStripMenuItem1"
-        Me.TracksWithmultipleArtworkToolStripMenuItem1.Size = New System.Drawing.Size(348, 22)
+        Me.TracksWithmultipleArtworkToolStripMenuItem1.Size = New System.Drawing.Size(332, 22)
         Me.TracksWithmultipleArtworkToolStripMenuItem1.Text = "Tracks with &Multiple Artwork..."
         '
         'TracksWithoutArtworkToolStripMenuItem
         '
         Me.TracksWithoutArtworkToolStripMenuItem.Name = "TracksWithoutArtworkToolStripMenuItem"
-        Me.TracksWithoutArtworkToolStripMenuItem.Size = New System.Drawing.Size(348, 22)
+        Me.TracksWithoutArtworkToolStripMenuItem.Size = New System.Drawing.Size(332, 22)
         Me.TracksWithoutArtworkToolStripMenuItem.Text = "Tracks without Artwork..."
         '
         'TracksThatArtworkIsLowResolutionToolStripMenuItem
         '
         Me.TracksThatArtworkIsLowResolutionToolStripMenuItem.Name = "TracksThatArtworkIsLowResolutionToolStripMenuItem"
-        Me.TracksThatArtworkIsLowResolutionToolStripMenuItem.Size = New System.Drawing.Size(348, 22)
+        Me.TracksThatArtworkIsLowResolutionToolStripMenuItem.Size = New System.Drawing.Size(332, 22)
         Me.TracksThatArtworkIsLowResolutionToolStripMenuItem.Text = "Tracks that Artwork is &Low Resolution..."
         '
         'tsmiArtworkConverted
         '
         Me.tsmiArtworkConverted.Name = "tsmiArtworkConverted"
-        Me.tsmiArtworkConverted.Size = New System.Drawing.Size(348, 22)
+        Me.tsmiArtworkConverted.Size = New System.Drawing.Size(332, 22)
         Me.tsmiArtworkConverted.Text = "Tracks that Artwork was Converted to JPEG format..."
         '
         'LyricsToolStripMenuItem
         '
         Me.LyricsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TracksWithoutLyricsToolStripMenuItem, Me.TracksLyricsWereAddedToolStripMenuItem})
         Me.LyricsToolStripMenuItem.Name = "LyricsToolStripMenuItem"
-        Me.LyricsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.LyricsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.LyricsToolStripMenuItem.Text = "Track &Lyrics"
         '
         'TracksWithoutLyricsToolStripMenuItem
         '
         Me.TracksWithoutLyricsToolStripMenuItem.Name = "TracksWithoutLyricsToolStripMenuItem"
-        Me.TracksWithoutLyricsToolStripMenuItem.Size = New System.Drawing.Size(240, 22)
+        Me.TracksWithoutLyricsToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.TracksWithoutLyricsToolStripMenuItem.Text = "Tracks without &Lyrics..."
         '
         'TracksLyricsWereAddedToolStripMenuItem
         '
         Me.TracksLyricsWereAddedToolStripMenuItem.Name = "TracksLyricsWereAddedToolStripMenuItem"
-        Me.TracksLyricsWereAddedToolStripMenuItem.Size = New System.Drawing.Size(240, 22)
+        Me.TracksLyricsWereAddedToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.TracksLyricsWereAddedToolStripMenuItem.Text = "Tracks that Lyrics were Added..."
         '
         'tsmTrackTags
         '
         Me.tsmTrackTags.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmTrackTagsBPM, Me.tsmTrackTagsRefreshed, Me.TrackMetatagVersionsToolStripMenuItem})
         Me.tsmTrackTags.Name = "tsmTrackTags"
-        Me.tsmTrackTags.Size = New System.Drawing.Size(310, 22)
+        Me.tsmTrackTags.Size = New System.Drawing.Size(287, 22)
         Me.tsmTrackTags.Text = "Track &Tags"
         '
         'tsmTrackTagsBPM
         '
         Me.tsmTrackTagsBPM.Name = "tsmTrackTagsBPM"
-        Me.tsmTrackTagsBPM.Size = New System.Drawing.Size(249, 22)
+        Me.tsmTrackTagsBPM.Size = New System.Drawing.Size(243, 22)
         Me.tsmTrackTagsBPM.Text = "Tracks without BPM..."
         '
         'tsmTrackTagsRefreshed
         '
         Me.tsmTrackTagsRefreshed.Name = "tsmTrackTagsRefreshed"
-        Me.tsmTrackTagsRefreshed.Size = New System.Drawing.Size(249, 22)
+        Me.tsmTrackTagsRefreshed.Size = New System.Drawing.Size(243, 22)
         Me.tsmTrackTagsRefreshed.Text = "Tracks that Tags were refreshed..."
         '
         'TrackMetatagVersionsToolStripMenuItem
         '
         Me.TrackMetatagVersionsToolStripMenuItem.Name = "TrackMetatagVersionsToolStripMenuItem"
-        Me.TrackMetatagVersionsToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.TrackMetatagVersionsToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.TrackMetatagVersionsToolStripMenuItem.Text = "Track &Metatag versions..."
         '
         'ToolStripSeparator11
         '
         Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
-        Me.ToolStripSeparator11.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator11.Size = New System.Drawing.Size(284, 6)
         '
         'TracksThatRatingWasAdjustedToolStripMenuItem1
         '
         Me.TracksThatRatingWasAdjustedToolStripMenuItem1.Name = "TracksThatRatingWasAdjustedToolStripMenuItem1"
-        Me.TracksThatRatingWasAdjustedToolStripMenuItem1.Size = New System.Drawing.Size(310, 22)
+        Me.TracksThatRatingWasAdjustedToolStripMenuItem1.Size = New System.Drawing.Size(287, 22)
         Me.TracksThatRatingWasAdjustedToolStripMenuItem1.Text = "Tracks that &Rating was adjusted..."
         '
         'TracksNotITunesStoreCompliantToolStripMenuItem
         '
         Me.TracksNotITunesStoreCompliantToolStripMenuItem.Name = "TracksNotITunesStoreCompliantToolStripMenuItem"
-        Me.TracksNotITunesStoreCompliantToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksNotITunesStoreCompliantToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksNotITunesStoreCompliantToolStripMenuItem.Text = "Tracks not iTunes Store compliant..."
         '
         'TracksThatTrackCountWasUpdatedToolStripMenuItem
         '
         Me.TracksThatTrackCountWasUpdatedToolStripMenuItem.Name = "TracksThatTrackCountWasUpdatedToolStripMenuItem"
-        Me.TracksThatTrackCountWasUpdatedToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.TracksThatTrackCountWasUpdatedToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.TracksThatTrackCountWasUpdatedToolStripMenuItem.Text = "Tracks that Track &Count was updated..."
         '
         'ToolStripSeparator12
         '
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
-        Me.ToolStripSeparator12.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator12.Size = New System.Drawing.Size(284, 6)
         '
         'LibraryToolStripMenuItem
         '
         Me.LibraryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DuplicateTracksToolStripMenuItem})
         Me.LibraryToolStripMenuItem.Name = "LibraryToolStripMenuItem"
-        Me.LibraryToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.LibraryToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.LibraryToolStripMenuItem.Text = "&Library"
         '
         'DuplicateTracksToolStripMenuItem
         '
         Me.DuplicateTracksToolStripMenuItem.Name = "DuplicateTracksToolStripMenuItem"
-        Me.DuplicateTracksToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.DuplicateTracksToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.DuplicateTracksToolStripMenuItem.Text = "&Duplicate Tracks..."
         '
         'FileSystemToolStripMenuItem
         '
         Me.FileSystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FoldersWithOneFileToolStripMenuItem, Me.FoldersWithoutArtworkToolStripMenuItem, Me.FoldersWithoutAudioToolStripMenuItem, Me.ToolStripSeparator25, Me.tsmMusicFolderActivity})
         Me.FileSystemToolStripMenuItem.Name = "FileSystemToolStripMenuItem"
-        Me.FileSystemToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.FileSystemToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.FileSystemToolStripMenuItem.Text = "&File System"
         '
         'FoldersWithOneFileToolStripMenuItem
         '
         Me.FoldersWithOneFileToolStripMenuItem.Name = "FoldersWithOneFileToolStripMenuItem"
-        Me.FoldersWithOneFileToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.FoldersWithOneFileToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.FoldersWithOneFileToolStripMenuItem.Text = "Folders with &one File..."
         '
         'FoldersWithoutArtworkToolStripMenuItem
         '
         Me.FoldersWithoutArtworkToolStripMenuItem.Name = "FoldersWithoutArtworkToolStripMenuItem"
-        Me.FoldersWithoutArtworkToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.FoldersWithoutArtworkToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.FoldersWithoutArtworkToolStripMenuItem.Text = "&Folders without Artwork..."
         '
         'FoldersWithoutAudioToolStripMenuItem
         '
         Me.FoldersWithoutAudioToolStripMenuItem.Name = "FoldersWithoutAudioToolStripMenuItem"
-        Me.FoldersWithoutAudioToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.FoldersWithoutAudioToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.FoldersWithoutAudioToolStripMenuItem.Text = "Folders without Audio..."
         '
         'ToolStripSeparator25
         '
         Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
-        Me.ToolStripSeparator25.Size = New System.Drawing.Size(207, 6)
+        Me.ToolStripSeparator25.Size = New System.Drawing.Size(198, 6)
         '
         'tsmMusicFolderActivity
         '
         Me.tsmMusicFolderActivity.Name = "tsmMusicFolderActivity"
-        Me.tsmMusicFolderActivity.Size = New System.Drawing.Size(210, 22)
+        Me.tsmMusicFolderActivity.Size = New System.Drawing.Size(201, 22)
         Me.tsmMusicFolderActivity.Text = "&Music Folder Activity..."
         '
         'ToolStripSeparator22
         '
         Me.ToolStripSeparator22.Name = "ToolStripSeparator22"
-        Me.ToolStripSeparator22.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator22.Size = New System.Drawing.Size(284, 6)
         '
         'AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem
         '
         Me.AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem.Name = "AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem"
-        Me.AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.AlbumsWithInconsecutiveTrackNumbersToolStripMenuItem.Text = "&Albums with Inconsecutive Track Numbers..."
         '
         'ToolStripSeparator13
         '
         Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(284, 6)
         '
         'DebugToolStripMenuItem
         '
         Me.DebugToolStripMenuItem.Name = "DebugToolStripMenuItem"
-        Me.DebugToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.DebugToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.DebugToolStripMenuItem.Text = "&Debug..."
         '
         'ErrorsToolStripMenuItem
         '
         Me.ErrorsToolStripMenuItem.Name = "ErrorsToolStripMenuItem"
-        Me.ErrorsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.ErrorsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.ErrorsToolStripMenuItem.Text = "&Errors..."
         '
         'WarningsToolStripMenuItem
         '
         Me.WarningsToolStripMenuItem.Name = "WarningsToolStripMenuItem"
-        Me.WarningsToolStripMenuItem.Size = New System.Drawing.Size(310, 22)
+        Me.WarningsToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.WarningsToolStripMenuItem.Text = "&Warnings..."
         '
         'ToolStripSeparator20
         '
         Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
-        Me.ToolStripSeparator20.Size = New System.Drawing.Size(307, 6)
+        Me.ToolStripSeparator20.Size = New System.Drawing.Size(284, 6)
         '
         'BrowseLogsFolderToolStripMenuItem1
         '
         Me.BrowseLogsFolderToolStripMenuItem1.Image = Global.iTSfv.My.Resources.Resources.folder_explore
         Me.BrowseLogsFolderToolStripMenuItem1.Name = "BrowseLogsFolderToolStripMenuItem1"
-        Me.BrowseLogsFolderToolStripMenuItem1.Size = New System.Drawing.Size(310, 22)
+        Me.BrowseLogsFolderToolStripMenuItem1.Size = New System.Drawing.Size(287, 22)
         Me.BrowseLogsFolderToolStripMenuItem1.Text = "&Browse Logs Folder..."
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IgnoreWordsToolStripMenuItem, Me.CapitalWordsToolStripMenuItem, Me.SimpleWordsToolStripMenuItem, Me.ReplaceWordsToolStripMenuItem, Me.SkipWordsToolStripMenuItem, Me.ToolStripSeparator19, Me.BrowseSettingsFolderToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(58, 20)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'IgnoreWordsToolStripMenuItem
         '
         Me.IgnoreWordsToolStripMenuItem.Name = "IgnoreWordsToolStripMenuItem"
-        Me.IgnoreWordsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.IgnoreWordsToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.IgnoreWordsToolStripMenuItem.Text = "&Ignore Words..."
         '
         'CapitalWordsToolStripMenuItem
         '
         Me.CapitalWordsToolStripMenuItem.Name = "CapitalWordsToolStripMenuItem"
-        Me.CapitalWordsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.CapitalWordsToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.CapitalWordsToolStripMenuItem.Text = "&Capital Words..."
         '
         'SimpleWordsToolStripMenuItem
         '
         Me.SimpleWordsToolStripMenuItem.Name = "SimpleWordsToolStripMenuItem"
-        Me.SimpleWordsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.SimpleWordsToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.SimpleWordsToolStripMenuItem.Text = "Simple Words..."
         '
         'ReplaceWordsToolStripMenuItem
         '
         Me.ReplaceWordsToolStripMenuItem.Name = "ReplaceWordsToolStripMenuItem"
-        Me.ReplaceWordsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.ReplaceWordsToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.ReplaceWordsToolStripMenuItem.Text = "Replace Words..."
         '
         'SkipWordsToolStripMenuItem
         '
         Me.SkipWordsToolStripMenuItem.Name = "SkipWordsToolStripMenuItem"
-        Me.SkipWordsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.SkipWordsToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.SkipWordsToolStripMenuItem.Text = "Skip Words in Album..."
         '
         'ToolStripSeparator19
         '
         Me.ToolStripSeparator19.Name = "ToolStripSeparator19"
-        Me.ToolStripSeparator19.Size = New System.Drawing.Size(199, 6)
+        Me.ToolStripSeparator19.Size = New System.Drawing.Size(193, 6)
         '
         'BrowseSettingsFolderToolStripMenuItem
         '
         Me.BrowseSettingsFolderToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.folder_explore
         Me.BrowseSettingsFolderToolStripMenuItem.Name = "BrowseSettingsFolderToolStripMenuItem"
-        Me.BrowseSettingsFolderToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.BrowseSettingsFolderToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.BrowseSettingsFolderToolStripMenuItem.Text = "&Browse Settings Folder..."
         '
         'FoldersToolStripMenuItem
         '
         Me.FoldersToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BrowseMusicFolderToolStripMenuItem, Me.ToolStripSeparator15, Me.BrowseITMSArtworksFolderToolStripMenuItem, Me.BrowseLogsFolderToolStripMenuItem, Me.SettingsFolderToolStripMenuItem, Me.BrowseTemporaryFiToolStripMenuItem})
         Me.FoldersToolStripMenuItem.Name = "FoldersToolStripMenuItem"
-        Me.FoldersToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.FoldersToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.FoldersToolStripMenuItem.Text = "&Folders"
         '
         'BrowseMusicFolderToolStripMenuItem
         '
         Me.BrowseMusicFolderToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.musicfolder
         Me.BrowseMusicFolderToolStripMenuItem.Name = "BrowseMusicFolderToolStripMenuItem"
-        Me.BrowseMusicFolderToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.BrowseMusicFolderToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.BrowseMusicFolderToolStripMenuItem.Text = "&Music Folder..."
         '
         'ToolStripSeparator15
         '
         Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
-        Me.ToolStripSeparator15.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(168, 6)
         '
         'BrowseITMSArtworksFolderToolStripMenuItem
         '
         Me.BrowseITMSArtworksFolderToolStripMenuItem.Name = "BrowseITMSArtworksFolderToolStripMenuItem"
-        Me.BrowseITMSArtworksFolderToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.BrowseITMSArtworksFolderToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.BrowseITMSArtworksFolderToolStripMenuItem.Text = "&Artwork Folder..."
         '
         'BrowseLogsFolderToolStripMenuItem
         '
         Me.BrowseLogsFolderToolStripMenuItem.Name = "BrowseLogsFolderToolStripMenuItem"
-        Me.BrowseLogsFolderToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.BrowseLogsFolderToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.BrowseLogsFolderToolStripMenuItem.Text = "&Logs Folder..."
         '
         'SettingsFolderToolStripMenuItem
         '
         Me.SettingsFolderToolStripMenuItem.Name = "SettingsFolderToolStripMenuItem"
-        Me.SettingsFolderToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.SettingsFolderToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.SettingsFolderToolStripMenuItem.Text = "&Settings Folder..."
         '
         'BrowseTemporaryFiToolStripMenuItem
         '
         Me.BrowseTemporaryFiToolStripMenuItem.Name = "BrowseTemporaryFiToolStripMenuItem"
-        Me.BrowseTemporaryFiToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.BrowseTemporaryFiToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.BrowseTemporaryFiToolStripMenuItem.Text = "&Temporary Folder..."
         '
         'SelectedTracksToolStripMenuItem
         '
         Me.SelectedTracksToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SavePlaylistOfSelectedTracksAsToolStripMenuItem, Me.tsmiSelectedTracksValidate, Me.ToolStripSeparator23, Me.CopyInfoToClipboardToolStripMenuItem, Me.Mp3tagSelectedTracks, Me.tsmTiunesStoreArtworkGrabSelected, Me.SearchArtworkToolStripMenuItem, Me.tsmiSearch})
         Me.SelectedTracksToolStripMenuItem.Name = "SelectedTracksToolStripMenuItem"
-        Me.SelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(100, 20)
+        Me.SelectedTracksToolStripMenuItem.Size = New System.Drawing.Size(94, 20)
         Me.SelectedTracksToolStripMenuItem.Text = "&Selected Tracks"
         '
         'SavePlaylistOfSelectedTracksAsToolStripMenuItem
         '
         Me.SavePlaylistOfSelectedTracksAsToolStripMenuItem.Name = "SavePlaylistOfSelectedTracksAsToolStripMenuItem"
-        Me.SavePlaylistOfSelectedTracksAsToolStripMenuItem.Size = New System.Drawing.Size(323, 22)
+        Me.SavePlaylistOfSelectedTracksAsToolStripMenuItem.Size = New System.Drawing.Size(308, 22)
         Me.SavePlaylistOfSelectedTracksAsToolStripMenuItem.Text = "&Save Playlist As..."
         '
         'tsmiSelectedTracksValidate
@@ -3143,55 +3143,55 @@ Partial Class frmMain
         Me.tsmiSelectedTracksValidate.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CheckToolStripMenuItem, Me.EditTracksToolStripMenuItem, Me.LibraryToolStripMenuItem1, Me.tsmSelectedTracksValidateFS})
         Me.tsmiSelectedTracksValidate.Name = "tsmiSelectedTracksValidate"
         Me.tsmiSelectedTracksValidate.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D0), System.Windows.Forms.Keys)
-        Me.tsmiSelectedTracksValidate.Size = New System.Drawing.Size(323, 22)
+        Me.tsmiSelectedTracksValidate.Size = New System.Drawing.Size(308, 22)
         Me.tsmiSelectedTracksValidate.Text = "&Validate"
         '
         'CheckToolStripMenuItem
         '
         Me.CheckToolStripMenuItem.Name = "CheckToolStripMenuItem"
         Me.CheckToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D1), System.Windows.Forms.Keys)
-        Me.CheckToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.CheckToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.CheckToolStripMenuItem.Text = "&Check"
         '
         'EditTracksToolStripMenuItem
         '
         Me.EditTracksToolStripMenuItem.Name = "EditTracksToolStripMenuItem"
         Me.EditTracksToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D2), System.Windows.Forms.Keys)
-        Me.EditTracksToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.EditTracksToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.EditTracksToolStripMenuItem.Text = "&Tracks"
         '
         'LibraryToolStripMenuItem1
         '
         Me.LibraryToolStripMenuItem1.Name = "LibraryToolStripMenuItem1"
         Me.LibraryToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D3), System.Windows.Forms.Keys)
-        Me.LibraryToolStripMenuItem1.Size = New System.Drawing.Size(173, 22)
+        Me.LibraryToolStripMenuItem1.Size = New System.Drawing.Size(166, 22)
         Me.LibraryToolStripMenuItem1.Text = "&Library"
         '
         'tsmSelectedTracksValidateFS
         '
         Me.tsmSelectedTracksValidateFS.Name = "tsmSelectedTracksValidateFS"
         Me.tsmSelectedTracksValidateFS.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D4), System.Windows.Forms.Keys)
-        Me.tsmSelectedTracksValidateFS.Size = New System.Drawing.Size(173, 22)
+        Me.tsmSelectedTracksValidateFS.Size = New System.Drawing.Size(166, 22)
         Me.tsmSelectedTracksValidateFS.Text = "&File System"
         '
         'ToolStripSeparator23
         '
         Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
-        Me.ToolStripSeparator23.Size = New System.Drawing.Size(320, 6)
+        Me.ToolStripSeparator23.Size = New System.Drawing.Size(305, 6)
         '
         'CopyInfoToClipboardToolStripMenuItem
         '
         Me.CopyInfoToClipboardToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.page_copy
         Me.CopyInfoToClipboardToolStripMenuItem.Name = "CopyInfoToClipboardToolStripMenuItem"
         Me.CopyInfoToClipboardToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyInfoToClipboardToolStripMenuItem.Size = New System.Drawing.Size(323, 22)
+        Me.CopyInfoToClipboardToolStripMenuItem.Size = New System.Drawing.Size(308, 22)
         Me.CopyInfoToClipboardToolStripMenuItem.Text = "&Copy Info to Clipboard"
         '
         'Mp3tagSelectedTracks
         '
         Me.Mp3tagSelectedTracks.Image = Global.iTSfv.My.Resources.Resources.mp3tag
         Me.Mp3tagSelectedTracks.Name = "Mp3tagSelectedTracks"
-        Me.Mp3tagSelectedTracks.Size = New System.Drawing.Size(323, 22)
+        Me.Mp3tagSelectedTracks.Size = New System.Drawing.Size(308, 22)
         Me.Mp3tagSelectedTracks.Text = "Edit using Mp3tag..."
         '
         'tsmTiunesStoreArtworkGrabSelected
@@ -3199,14 +3199,14 @@ Partial Class frmMain
         Me.tsmTiunesStoreArtworkGrabSelected.Image = Global.iTSfv.My.Resources.Resources.folder_image
         Me.tsmTiunesStoreArtworkGrabSelected.Name = "tsmTiunesStoreArtworkGrabSelected"
         Me.tsmTiunesStoreArtworkGrabSelected.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Down), System.Windows.Forms.Keys)
-        Me.tsmTiunesStoreArtworkGrabSelected.Size = New System.Drawing.Size(323, 22)
+        Me.tsmTiunesStoreArtworkGrabSelected.Size = New System.Drawing.Size(308, 22)
         Me.tsmTiunesStoreArtworkGrabSelected.Text = "&Export iTunes Store track &Artwork..."
         Me.tsmTiunesStoreArtworkGrabSelected.ToolTipText = "Select a track in iTunes Store and click me"
         '
         'SearchArtworkToolStripMenuItem
         '
         Me.SearchArtworkToolStripMenuItem.Name = "SearchArtworkToolStripMenuItem"
-        Me.SearchArtworkToolStripMenuItem.Size = New System.Drawing.Size(323, 22)
+        Me.SearchArtworkToolStripMenuItem.Size = New System.Drawing.Size(308, 22)
         Me.SearchArtworkToolStripMenuItem.Text = "&Search for Artwork using AAD..."
         '
         'tsmiSearch
@@ -3215,57 +3215,57 @@ Partial Class frmMain
         Me.tsmiSearch.Image = Global.iTSfv.My.Resources.Resources.world
         Me.tsmiSearch.Name = "tsmiSearch"
         Me.tsmiSearch.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
-        Me.tsmiSearch.Size = New System.Drawing.Size(323, 22)
+        Me.tsmiSearch.Size = New System.Drawing.Size(308, 22)
         Me.tsmiSearch.Text = "&Search using Google..."
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlbumArtDownloaderToolStripMenuItem, Me.tsmItunesArtworkGrabber, Me.tsmLyricsViewer, Me.tsmSetInfo, Me.Mp3tagToolStripMenuItem, Me.FileValidatorToolStripMenuItem, Me.TrackReplaceAssistantToolStripMenuItem, Me.ToolStripSeparator10, Me.AlwaysOnTopToolStripMenuItem, Me.miToolsOptions})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'AlbumArtDownloaderToolStripMenuItem
         '
         Me.AlbumArtDownloaderToolStripMenuItem.Name = "AlbumArtDownloaderToolStripMenuItem"
-        Me.AlbumArtDownloaderToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.AlbumArtDownloaderToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.AlbumArtDownloaderToolStripMenuItem.Text = "Album Art Downloader XUI..."
         '
         'tsmItunesArtworkGrabber
         '
         Me.tsmItunesArtworkGrabber.Name = "tsmItunesArtworkGrabber"
-        Me.tsmItunesArtworkGrabber.Size = New System.Drawing.Size(238, 22)
+        Me.tsmItunesArtworkGrabber.Size = New System.Drawing.Size(229, 22)
         Me.tsmItunesArtworkGrabber.Text = "iTunes Store Artwork &Grabber..."
         '
         'tsmLyricsViewer
         '
         Me.tsmLyricsViewer.Name = "tsmLyricsViewer"
-        Me.tsmLyricsViewer.Size = New System.Drawing.Size(238, 22)
+        Me.tsmLyricsViewer.Size = New System.Drawing.Size(229, 22)
         Me.tsmLyricsViewer.Text = "&Lyric Viewer..."
         '
         'tsmSetInfo
         '
         Me.tsmSetInfo.Name = "tsmSetInfo"
-        Me.tsmSetInfo.Size = New System.Drawing.Size(238, 22)
+        Me.tsmSetInfo.Size = New System.Drawing.Size(229, 22)
         Me.tsmSetInfo.Text = "&Set Info..."
         '
         'Mp3tagToolStripMenuItem
         '
         Me.Mp3tagToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.mp3tag
         Me.Mp3tagToolStripMenuItem.Name = "Mp3tagToolStripMenuItem"
-        Me.Mp3tagToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.Mp3tagToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.Mp3tagToolStripMenuItem.Text = "&Mp3tag..."
         '
         'FileValidatorToolStripMenuItem
         '
         Me.FileValidatorToolStripMenuItem.Name = "FileValidatorToolStripMenuItem"
-        Me.FileValidatorToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.FileValidatorToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.FileValidatorToolStripMenuItem.Text = "TagLib# Audio &File Validator..."
         '
         'TrackReplaceAssistantToolStripMenuItem
         '
         Me.TrackReplaceAssistantToolStripMenuItem.Name = "TrackReplaceAssistantToolStripMenuItem"
-        Me.TrackReplaceAssistantToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.TrackReplaceAssistantToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.TrackReplaceAssistantToolStripMenuItem.Text = "&Track Replace Assistant..."
         Me.TrackReplaceAssistantToolStripMenuItem.ToolTipText = "Track Replace Assistant... (for similar kind files e.g. 128 Kib/s MP3 by 192 Kib/" & _
             "s VBR MP3 etc.)"
@@ -3273,12 +3273,12 @@ Partial Class frmMain
         'ToolStripSeparator10
         '
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(235, 6)
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(226, 6)
         '
         'AlwaysOnTopToolStripMenuItem
         '
         Me.AlwaysOnTopToolStripMenuItem.Name = "AlwaysOnTopToolStripMenuItem"
-        Me.AlwaysOnTopToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.AlwaysOnTopToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.AlwaysOnTopToolStripMenuItem.Text = "&Always On Top"
         '
         'miToolsOptions
@@ -3286,140 +3286,140 @@ Partial Class frmMain
         Me.miToolsOptions.Image = Global.iTSfv.My.Resources.Resources.application_edit
         Me.miToolsOptions.Name = "miToolsOptions"
         Me.miToolsOptions.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.miToolsOptions.Size = New System.Drawing.Size(238, 22)
+        Me.miToolsOptions.Size = New System.Drawing.Size(229, 22)
         Me.miToolsOptions.Text = "&Options..."
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miManual, Me.SupportForumsToolStripMenuItem, Me.ProjectHomeToolStripMenuItem, Me.VersionHistoryToolStripMenuItem1, Me.ToolStripSeparator9, Me.tsmiDonate, Me.ToolStripSeparator21, Me.SubmitDebugReportToolStripMenuItem, Me.CheckForUpdatesToolStripMenuItem1, Me.miAbout})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'miManual
         '
         Me.miManual.Image = Global.iTSfv.My.Resources.Resources.page_white_acrobat
         Me.miManual.Name = "miManual"
-        Me.miManual.Size = New System.Drawing.Size(180, 22)
+        Me.miManual.Size = New System.Drawing.Size(175, 22)
         Me.miManual.Text = "&Manual..."
         '
         'SupportForumsToolStripMenuItem
         '
         Me.SupportForumsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GoogleGroupsToolStripMenuItem, Me.HydrogenAudioToolStripMenuItem, Me.ILoungeToolStripMenuItem, Me.SourceForgeToolStripMenuItem, Me.ToolStripSeparator8, Me.BetaVersionsToolStripMenuItem, Me.SVNRepositoryToolStripMenuItem, Me.ToolStripSeparator27, Me.DiggToolStripMenuItem, Me.OhlohToolStripMenuItem, Me.WakoopaToolStripMenuItem})
         Me.SupportForumsToolStripMenuItem.Name = "SupportForumsToolStripMenuItem"
-        Me.SupportForumsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SupportForumsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.SupportForumsToolStripMenuItem.Text = "&Forums / Links"
         '
         'GoogleGroupsToolStripMenuItem
         '
         Me.GoogleGroupsToolStripMenuItem.Name = "GoogleGroupsToolStripMenuItem"
-        Me.GoogleGroupsToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.GoogleGroupsToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.GoogleGroupsToolStripMenuItem.Text = "Google &Groups.."
         '
         'HydrogenAudioToolStripMenuItem
         '
         Me.HydrogenAudioToolStripMenuItem.Name = "HydrogenAudioToolStripMenuItem"
-        Me.HydrogenAudioToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.HydrogenAudioToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.HydrogenAudioToolStripMenuItem.Text = "&HydrogenAudio..."
         '
         'ILoungeToolStripMenuItem
         '
         Me.ILoungeToolStripMenuItem.Name = "ILoungeToolStripMenuItem"
-        Me.ILoungeToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ILoungeToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.ILoungeToolStripMenuItem.Text = "&iLounge..."
         '
         'SourceForgeToolStripMenuItem
         '
         Me.SourceForgeToolStripMenuItem.Name = "SourceForgeToolStripMenuItem"
-        Me.SourceForgeToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.SourceForgeToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.SourceForgeToolStripMenuItem.Text = "&SourceForge..."
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(165, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(157, 6)
         '
         'BetaVersionsToolStripMenuItem
         '
         Me.BetaVersionsToolStripMenuItem.Name = "BetaVersionsToolStripMenuItem"
-        Me.BetaVersionsToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.BetaVersionsToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.BetaVersionsToolStripMenuItem.Text = "&Beta Versions..."
         '
         'SVNRepositoryToolStripMenuItem
         '
         Me.SVNRepositoryToolStripMenuItem.Name = "SVNRepositoryToolStripMenuItem"
-        Me.SVNRepositoryToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.SVNRepositoryToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.SVNRepositoryToolStripMenuItem.Text = "S&VN Repository..."
         '
         'ToolStripSeparator27
         '
         Me.ToolStripSeparator27.Name = "ToolStripSeparator27"
-        Me.ToolStripSeparator27.Size = New System.Drawing.Size(165, 6)
+        Me.ToolStripSeparator27.Size = New System.Drawing.Size(157, 6)
         '
         'DiggToolStripMenuItem
         '
         Me.DiggToolStripMenuItem.Name = "DiggToolStripMenuItem"
-        Me.DiggToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.DiggToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.DiggToolStripMenuItem.Text = "&Digg..."
         '
         'OhlohToolStripMenuItem
         '
         Me.OhlohToolStripMenuItem.Name = "OhlohToolStripMenuItem"
-        Me.OhlohToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.OhlohToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.OhlohToolStripMenuItem.Text = "&Ohloh..."
         '
         'WakoopaToolStripMenuItem
         '
         Me.WakoopaToolStripMenuItem.Name = "WakoopaToolStripMenuItem"
-        Me.WakoopaToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.WakoopaToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.WakoopaToolStripMenuItem.Text = "&Wakoopa..."
         '
         'ProjectHomeToolStripMenuItem
         '
         Me.ProjectHomeToolStripMenuItem.Name = "ProjectHomeToolStripMenuItem"
-        Me.ProjectHomeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProjectHomeToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.ProjectHomeToolStripMenuItem.Text = "Project &Home..."
         '
         'VersionHistoryToolStripMenuItem1
         '
         Me.VersionHistoryToolStripMenuItem1.Name = "VersionHistoryToolStripMenuItem1"
-        Me.VersionHistoryToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.VersionHistoryToolStripMenuItem1.Size = New System.Drawing.Size(175, 22)
         Me.VersionHistoryToolStripMenuItem1.Text = "&Version History..."
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
-        Me.ToolStripSeparator9.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(172, 6)
         '
         'tsmiDonate
         '
         Me.tsmiDonate.Name = "tsmiDonate"
-        Me.tsmiDonate.Size = New System.Drawing.Size(180, 22)
+        Me.tsmiDonate.Size = New System.Drawing.Size(175, 22)
         Me.tsmiDonate.Text = "&Donate..."
         '
         'ToolStripSeparator21
         '
         Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
-        Me.ToolStripSeparator21.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator21.Size = New System.Drawing.Size(172, 6)
         '
         'SubmitDebugReportToolStripMenuItem
         '
         Me.SubmitDebugReportToolStripMenuItem.Image = Global.iTSfv.My.Resources.Resources.email
         Me.SubmitDebugReportToolStripMenuItem.Name = "SubmitDebugReportToolStripMenuItem"
-        Me.SubmitDebugReportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SubmitDebugReportToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.SubmitDebugReportToolStripMenuItem.Text = "Submit &Bug Report"
         '
         'CheckForUpdatesToolStripMenuItem1
         '
         Me.CheckForUpdatesToolStripMenuItem1.Image = Global.iTSfv.My.Resources.Resources.world
         Me.CheckForUpdatesToolStripMenuItem1.Name = "CheckForUpdatesToolStripMenuItem1"
-        Me.CheckForUpdatesToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.CheckForUpdatesToolStripMenuItem1.Size = New System.Drawing.Size(175, 22)
         Me.CheckForUpdatesToolStripMenuItem1.Text = "&Check for Updates..."
         '
         'miAbout
         '
         Me.miAbout.Name = "miAbout"
-        Me.miAbout.Size = New System.Drawing.Size(180, 22)
+        Me.miAbout.Size = New System.Drawing.Size(175, 22)
         Me.miAbout.Text = "&About..."
         '
         'bwDiscsBrowserInfo

@@ -14,6 +14,7 @@ Public Module mFileSystem
     Public Const TEMP_TRACK_ARTWORK_NAME As String = "TrackArtwork"
     Public Const TEMP_CACHE_ARTWORK_NAME As String = "XmlArtwork"
     Public Const TEMP_FOLDER_ARTWORK_NAME As String = "FolderArtwork"
+    Public Const TEMP_STORE_ARTWORK_NAME As String = "StoreArtwork"
 
     Public Const DLG_FILTER_URLTOCOVERART As String = "Vista Media Center Artwork Dictionary (UrlToCoverArt.dat)|UrlToCoverArt.dat"
     Public Const DLG_FILTER_STATS As String = "iTSfv Statistics Files (*-stats.cache)|*-stats.cache"
