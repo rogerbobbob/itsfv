@@ -15,6 +15,9 @@ Public Class cArtworkSources
         If My.Settings.ArtworkSrcITMS Then
             fGetArtworkSourceFromWeb(lDisc)
         End If
+        If My.Settings.ArtworkSrcItunes Then
+            fGetArtworkSourceFromStore(lDisc)
+        End If
         If My.Settings.ArtworkSrcCache Then
             fGetArtworkSourceFromCache(lDisc)
         End If
@@ -27,6 +30,7 @@ Public Class cArtworkSources
         If My.Settings.ArtworkSrcAAD Then
             fGetArtworkSourceFromAAD(lDisc)
         End If
+
         If My.Settings.ArtworkSrcAADCLI Then
             If (My.Settings.AADCLIOnlyIfNoArtwork = True AndAlso lDisc.FirstTrack.Artwork.Count = 0) Or _
             My.Settings.AADCLIOnlyIfNoArtwork = False Then
@@ -102,6 +106,44 @@ Public Class cArtworkSources
         End Try
 
     End Sub
+
+    Private Function fGetArtworkSourceFromStore(ByVal lDisc As cInfoDisc) As cArtworkSource
+
+        Dim firstTrack As IITFileOrCDTrack = lDisc.Tracks.Item(0)
+        Dim src As cArtworkSource = New cArtworkSource(firstTrack)
+
+        If firstTrack.Artwork.Count = 0 Or _
+        firstTrack.Artwork.Count > 0 AndAlso firstTrack.Artwork(1).IsDownloadedArtwork = False Then
+
+            Try
+
+                Dim ag As New cArtworkGrabberIT(firstTrack)
+                Dim trackAgent As IITFileOrCDTrack = ag.fDownloadArtwork()
+                If trackAgent IsNot Nothing Then
+                    If trackAgent.Artwork.Count > 0 Then
+                        'TEMP_STORE_ARTWORK_NAME
+                        Dim trackArtworkPath As String = mfGetTempArtworkCachePath(TEMP_STORE_ARTWORK_NAME, firstTrack)
+                        trackAgent.Artwork(1).SaveArtworkToFile(trackArtworkPath)
+                        src.ArtworkType = ArtworkSourceType.iTunes
+                        src.ArtworkPath = trackArtworkPath
+                        sAddArtworkSourceToList(src)
+                    End If
+                End If
+
+                If File.Exists(trackAgent.Location) Then
+                    File.Delete(trackAgent.Location)
+                End If
+
+                trackAgent.Delete()
+            Catch ex As Exception
+                msAppendWarnings(ex.Message + " while adding iTunes Artwork source to Artwork Sources")
+            End Try
+
+        End If
+
+        Return src
+
+    End Function
 
     Private Function fGetArtworkSourceFromWeb(ByVal lDisc As cInfoDisc) As cArtworkSource
 
