@@ -4224,6 +4224,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                                 Try
                                     Dim trackNew As IITTrack = job.Tracks.Item(1)
                                     lListNewTrackLocations.Add(fileNewPath)
+
                                     trackNew.PlayedCount += trackOld.PlayedCount
                                     trackNew.Rating = trackOld.Rating
                                     trackNew.PlayedDate = trackOld.PlayedDate

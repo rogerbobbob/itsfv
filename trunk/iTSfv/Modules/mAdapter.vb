@@ -621,9 +621,12 @@ Public Module mAdapter
         '    Next
         'End If
 
-        str = mfGetFixedString(str)
+        If String.IsNullOrEmpty(str) = False Then
+            str = mfGetFixedString(str)
+            str = mfStripHTMLTags(str)
+        End If
 
-        Return mfStripHTMLTags(str)
+        Return str
 
     End Function
 
