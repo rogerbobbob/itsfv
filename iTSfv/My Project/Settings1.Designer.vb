@@ -1847,7 +1847,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("100")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("32")>  _
         Public Property LyricsCharMin() As Decimal
             Get
                 Return CType(Me("LyricsCharMin"),Decimal)
@@ -3493,6 +3493,18 @@ Namespace My
             End Get
             Set
                 Me("ArtworkSrcItunes") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("15")>  _
+        Public Property MinCharLyricsWeb() As Decimal
+            Get
+                Return CType(Me("MinCharLyricsWeb"),Decimal)
+            End Get
+            Set
+                Me("MinCharLyricsWeb") = value
             End Set
         End Property
     End Class

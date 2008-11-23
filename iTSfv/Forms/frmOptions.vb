@@ -64,10 +64,10 @@ Public Class frmOptions
 
         ttApp.SetToolTip(rbImArtworkFolderDefault, rbImArtworkFolderDefault.Text)
         ttApp.SetToolTip(rbExArtworkFolderDefault, rbExArtworkFolderDefault.Text)
-        ttApp.SetToolTip(cboExArtworkFilenamePatterns, fGetText("TagsSupported.txt"))
-        ttApp.SetToolTip(cboImArtworkFileName, fGetText("TagsSupported.txt"))
-        ttApp.SetToolTip(cboPlaylistFileNamePattern, fGetText("TagsSupported.txt"))
-        ttApp.SetToolTip(txtGoogleTrack, fGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(cboExArtworkFilenamePatterns, mfGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(cboImArtworkFileName, mfGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(cboPlaylistFileNamePattern, mfGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(txtGoogleTrack, mfGetText("TagsSupported.txt"))
 
         Dim sbLossless As New StringBuilder
         sbLossless.AppendLine("This folder is used for:")
@@ -83,6 +83,9 @@ Public Class frmOptions
         tcFileSystem.SelectedTab = tpFSArtwork
 
         mBooDiscsReload = False
+
+        hpApp.SetHelpString(cboExArtworkFilenamePatterns, mfGetText("TagsSupported.txt"))
+        hpApp.SetHelpString(cboPlaylistFileNamePattern, mfGetText("TagsSupported.txt"))
 
     End Sub
 
@@ -1453,5 +1456,10 @@ Public Class frmOptions
 
     Private Sub chkPrevRating_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPrevRating.CheckedChanged
         chkPrevRating.CheckState = CheckState.Indeterminate
+    End Sub
+
+    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+        Dim h As New dlgHelp(mfGetText("TagsSupported.txt"))
+        h.ShowDialog()
     End Sub
 End Class

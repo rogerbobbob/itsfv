@@ -483,7 +483,7 @@ Public Module mFileSystem
 
             If File.Exists(mFilePathReplaceWords) = False Then
                 Using sw As New StreamWriter(mFilePathReplaceWords)
-                    sw.WriteLine(fGetText("replace-words.txt"))
+                    sw.WriteLine(mfGetText("replace-words.txt"))
                 End Using
             End If
 

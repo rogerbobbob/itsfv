@@ -6,7 +6,7 @@ Public Class frmVer
 
         Me.Text = String.Format("{0} {1} Version History", Application.ProductName, Application.ProductVersion)
 
-        txtVer.Text = fGetText("VersionHistory.txt")
+        txtVer.Text = mfGetText("VersionHistory.txt")
 
     End Sub
 
