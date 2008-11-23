@@ -1,6 +1,9 @@
 Version 5.60 - 20081231?
 
-5.60.23.0 Ability to import Artwork from iTunes Store for selected tracks already in the library
+5.60.24.1 Removed possibility where carriage return would be replaced in Lyrics with carriage return and a line return [Jojo]
+5.60.24.0 Import Lyrics from LyricWiki if the character count is at least a user configurable number [Jojo]
+5.60.23.1 Delete Dead or Foreign Track checkBoxes in Library tab did not work while validating selected tracks
+5.60.23.0 Ability to import Artwork from iTunes Store for selected tracks already in the library [Jojo]
 5.60.22.1 When LyricWiki "Not Found" was erraneously treated as lyrics were found [pt_ha]
 5.60.22.0 Option to fill "Sort Album Artist" tag from "Sort Artist" tag as part of filling Album Artist tag from Artist tag [pt_ha]
 5.60.21.1 Removal of missing tracks will be skipped if iTSfv finds out one or more music folder locations are inaccessble at the time of operation

@@ -524,7 +524,7 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="LyricsCharMin" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">32</Value>
     </Setting>
     <Setting Name="WMP_MusicFolderPaths" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
@@ -949,6 +949,9 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     </Setting>
     <Setting Name="ArtworkSrcItunes" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MinCharLyricsWeb" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">15</Value>
     </Setting>
   </Settings>
 </SettingsFile>

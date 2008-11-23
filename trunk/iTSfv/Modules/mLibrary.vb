@@ -38,7 +38,7 @@ Public Module mLibrary
 
     End Function
 
-    Public Function mfHasLyrics(ByVal track As iTunesLib.IITFileOrCDTrack) As Boolean
+    Public Function mfHasLyrics(ByVal track As iTunesLib.IITFileOrCDTrack, ByVal minChar As Decimal) As Boolean
 
         Dim boo As Boolean = True
 
@@ -50,7 +50,7 @@ Public Module mLibrary
 
         '' 5.34.5.1 Minimum number of characters in Lyrics tag before track is considered to have no lyrics is now optional in Options > Checks [Jojo]
         Try
-            If track.Lyrics Is Nothing OrElse track.Lyrics.ToString.Length < My.Settings.LyricsCharMin Then
+            If track.Lyrics Is Nothing OrElse track.Lyrics.ToString.Length <= minChar Then
                 boo = False
             End If
         Catch ex As Exception

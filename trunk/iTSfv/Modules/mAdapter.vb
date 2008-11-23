@@ -157,7 +157,7 @@ Public Module mAdapter
     End Function
 
 
-    Public Function fGetText(ByVal strName As String) As String
+    Public Function mfGetText(ByVal strName As String) As String
 
         Try
             ' get the current assembly
@@ -702,8 +702,6 @@ Public Module mAdapter
                 sss = sss.Replace(word(1), word(2))
             End If
         Next
-
-        sss = sss.Replace(vbLf, vbCrLf)
 
         Return sss
 

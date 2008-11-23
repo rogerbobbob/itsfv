@@ -861,14 +861,14 @@ Public Class frmMain
         End If
         bwApp.RunWorkerAsync(t)
 
-        ttApp.SetToolTip(chkReplaceWithNewKind, fGetText("UpdateToIdenticalButDifferentKindFiles.txt"))
-        ttApp.SetToolTip(btnReplaceTracks, fGetText("UpdateToIdenticalButDifferentKindFiles.txt"))
-        ttApp.SetToolTip(btnRecover, fGetText("BrowsePreviousXMLlibrary.txt"))
-        ttApp.SetToolTip(chkItunesStoreStandard, fGetText("ItunesStoreStandard.txt"))
-        ttApp.SetToolTip(chkImportArtwork, fGetText("AddArtworkFromArtworkJpg.txt"))
-        ttApp.SetToolTip(cboExportFilePattern, fGetText("TagsSupported.txt"))
-        ttApp.SetToolTip(cboExportFilePattern, fGetText("TagsSupported.txt"))
-        ttApp.SetToolTip(cboClipboardPattern, fGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(chkReplaceWithNewKind, mfGetText("UpdateToIdenticalButDifferentKindFiles.txt"))
+        ttApp.SetToolTip(btnReplaceTracks, mfGetText("UpdateToIdenticalButDifferentKindFiles.txt"))
+        ttApp.SetToolTip(btnRecover, mfGetText("BrowsePreviousXMLlibrary.txt"))
+        ttApp.SetToolTip(chkItunesStoreStandard, mfGetText("ItunesStoreStandard.txt"))
+        ttApp.SetToolTip(chkImportArtwork, mfGetText("AddArtworkFromArtworkJpg.txt"))
+        ttApp.SetToolTip(cboExportFilePattern, mfGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(cboExportFilePattern, mfGetText("TagsSupported.txt"))
+        ttApp.SetToolTip(cboClipboardPattern, mfGetText("TagsSupported.txt"))
 
         btnAdjustRatings.Text = chkLibraryAdjustRatings.Text & " for all tracks in Library"
         btnReplaceTracks.Text = chkReplaceWithNewKind.Text & " (e.g. AAC with MP3 or MP3 with AAC)"
@@ -1018,7 +1018,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sCheckTrackLyrics(ByVal track As iTunesLib.IITFileOrCDTrack)
 
         Try
-            If mfHasLyrics(track) = False Then
+            If mfHasLyrics(track, My.Settings.LyricsCharMin) = False Then
                 mListMissingLyrics.Add(track.Location)
             End If
         Catch ex As Exception
@@ -1370,11 +1370,14 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Function fLyricsImport(ByVal track As IITFileOrCDTrack) As Boolean
 
+        ' user interaction procedure
+        ' 
+
         If track IsNot Nothing AndAlso track.Location IsNot Nothing Then
 
             If Not My.Settings.FormatsIgnore.Contains(Path.GetExtension(track.Location)) Then
 
-                If mfHasLyrics(track) = False Or My.Settings.LyricsOverwrite = True Then
+                If mfHasLyrics(track, 0) = False Or My.Settings.LyricsOverwrite = True Then
 
                     Dim lyrics As String = String.Empty
                     Dim lyricsSrc As String = String.Empty
@@ -1389,6 +1392,11 @@ mItunesApp.SelectedTracks.Count > 0 Then
                             lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
                             retry += 1
                         End While
+
+                        If lyrics.Length < My.Settings.MinCharLyricsWeb Then
+                            lyrics = String.Empty
+                        End If
+
                         If lyrics <> String.Empty Then
                             lyricsSrc = "LyricWiki"
                             ' have to add this becaues the statusbar update from mfGetLyricsFromLyricWiki is too fast 
@@ -3265,9 +3273,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
         Dim success As Boolean = False
 
         If chkDeleteNonMusicFolderTracks.Checked Then
-            success = ffSafelyDeleteMissingTracks()
+            success = ffSafelyDeleteDeadForeignTracks()
         Else
-            ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
+            ssBwAppDeleteDeadTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
         End If
 
         Return success
@@ -3711,15 +3719,15 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
         If cli.Synchroclean Then
             sBwAppFindNewTracksFromHDD()
-            ssBwAppDeleteMissingTracks(bDeleteTracksNotInHDD:=True, bDeleteNonMusicFolderTracks:=False)
+            ssBwAppDeleteDeadTracks(bDeleteTracksNotInHDD:=True, bDeleteNonMusicFolderTracks:=False)
         Else
 
             If cli.RemoveDeadForeignFiles Then
-                ssBwAppDeleteMissingTracks(True, True)
+                ssBwAppDeleteDeadTracks(True, True)
             ElseIf cli.RemoveDeadFiles Then
-                ssBwAppDeleteMissingTracks(True, False)
+                ssBwAppDeleteDeadTracks(True, False)
             ElseIf cli.RemoveForeignFiles Then
-                ssBwAppDeleteMissingTracks(False, True)
+                ssBwAppDeleteDeadTracks(False, True)
             End If
 
             If cli.AddFiles Then
@@ -4260,7 +4268,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     End Function
 
-    Private Function ffSafelyDeleteMissingTracks() As Boolean
+    Private Function ffSafelyDeleteDeadForeignTracks() As Boolean
 
         msAppendDebug("Safety checks initiated before removing tracks outside of music folders.")
         Dim success As Boolean = False
@@ -4289,13 +4297,13 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 Environment.NewLine & fGetLibraryParser.MusicFolder & Environment.NewLine & Environment.NewLine & "Set iTunes Music folder location to where you primarily store music ({0}) and retry to remove tracks outside of music folder or add another location using iTSfv Options. iTSfv will continue to remove tracks that do not exist.", guessedFolder), _
                 Application.ProductName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK Then
 
-                ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
+                ssBwAppDeleteDeadTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked)
                 success = True
 
             End If
 
         Else
-            ssBwAppDeleteMissingTracks(chkDeleteTracksNotInHDD.Checked, True)
+            ssBwAppDeleteDeadTracks(chkDeleteTracksNotInHDD.Checked, True)
             success = True
         End If
 
@@ -4305,7 +4313,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Sub sBwAppSynchroclean()
 
-        If ffSafelyDeleteMissingTracks() = True Then
+        If ffSafelyDeleteDeadForeignTracks() = True Then
             If Not bwApp.CancellationPending Then
                 sBwAppFindNewTracksFromHDD()
             End If
@@ -4379,6 +4387,8 @@ mItunesApp.SelectedTracks.Count > 0 Then
         'bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, tracks.Count)
 
         If tracks IsNot Nothing Then
+
+            ssBwAppDeleteDeadTracks(chkDeleteTracksNotInHDD.Checked, chkDeleteNonMusicFolderTracks.Checked, tracks)
 
             ' we need to recreate hash table
             mTableDiscs = New Hashtable
@@ -6249,7 +6259,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     End Function
 
-    Private Function ssBwAppDeleteMissingTracks(ByVal bDeleteTracksNotInHDD As Boolean, ByVal bDeleteNonMusicFolderTracks As Boolean) As Boolean
+    Private Function ssBwAppDeleteDeadTracks(ByVal bDeleteTracksNotInHDD As Boolean, _
+                                             ByVal bDeleteNonMusicFolderTracks As Boolean, _
+                                             Optional ByVal lTracks As IITTrackCollection = Nothing) As Boolean
 
         Dim success As Boolean = True
 
@@ -6269,6 +6281,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
         If success Then
 
+            If lTracks Is Nothing Then
+                lTracks = mMainLibraryTracks
+            End If
+
             If bDeleteTracksNotInHDD = True OrElse bDeleteNonMusicFolderTracks = True Then
 
                 msAppendDebug("Looking for tracks outside of music folders to remove")
@@ -6279,7 +6295,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, mMainLibraryTracks.Count)
                 End If
 
-                For i As Integer = mMainLibraryTracks.Count To fGetLastCheckTrackID() Step -1
+                For i As Integer = lTracks.Count To 1 Step -1
 
                     sPausePendingCheck()
                     If bwApp.CancellationPending Then
@@ -6287,7 +6303,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         Exit Function
                     End If
 
-                    Dim track As IITTrack = mMainLibraryTracks.Item(i)
+                    Dim track As IITTrack = lTracks.Item(i)
 
                     If track.Kind = ITTrackKind.ITTrackKindFile Then
 
