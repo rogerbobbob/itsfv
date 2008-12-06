@@ -31,7 +31,7 @@ Public Module mFileSystem
                                         "on", "onto", "out", "over", "to", "up", "with", "and", _
                                         "but", "or", "nor", "a", "an", "the"}
     Private mSkipWords As String() = {"CDM", "CDS", "[Single]", "OST"}
-    Private mIgnoreWords As String() = {"Y34RZ3R0R3M1X3D", "II", "III", "IV"}
+    Private mIgnoreWords As String() = {"US", "UK", "(US", "(UK", "Y34RZ3R0R3M1X3D", "II", "III", "IV"}
 
     ' configure when initializing dirs
     Friend mTempFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + Path.DirectorySeparatorChar
