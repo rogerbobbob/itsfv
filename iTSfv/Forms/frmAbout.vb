@@ -18,6 +18,7 @@
         msg.AppendLine("")
         msg.AppendLine("Chris Daniels for the iTSfv icon,")
         msg.AppendLine("Mark James for the Silk icon set 1.3.")
+        msg.AppendLine("Senthil Kumar for iLyrics,")
         msg.AppendLine()
         msg.AppendLine("Running from: " & Application.ExecutablePath)
         msg.AppendLine()
