@@ -79,14 +79,14 @@ Partial Class frmLyricsViewer
         '
         Me.cmsOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmsTopMost})
         Me.cmsOptions.Name = "cmsOptions"
-        Me.cmsOptions.Size = New System.Drawing.Size(155, 48)
+        Me.cmsOptions.Size = New System.Drawing.Size(147, 26)
         '
-        'AlwaysOnTopToolStripMenuItem
+        'cmsTopMost
         '
         Me.cmsTopMost.Checked = Global.iTSfv.My.MySettings.Default.LyricsViewerTopMost
         Me.cmsTopMost.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cmsTopMost.Name = "AlwaysOnTopToolStripMenuItem"
-        Me.cmsTopMost.Size = New System.Drawing.Size(154, 22)
+        Me.cmsTopMost.Name = "cmsTopMost"
+        Me.cmsTopMost.Size = New System.Drawing.Size(146, 22)
         Me.cmsTopMost.Text = "&Always On Top"
         '
         'tmrSecond
@@ -266,7 +266,6 @@ Partial Class frmLyricsViewer
         Me.Controls.Add(Me.tlpMain)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "frmLyricsViewer"
-        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "frmLyricsViewer"
         Me.TopMost = True
