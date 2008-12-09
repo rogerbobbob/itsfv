@@ -243,9 +243,17 @@ Public Class cArtworkSources
             Dim psi As New ProcessStartInfo(My.Settings.ExePathAADConsole)
 
             psi.WindowStyle = ProcessWindowStyle.Minimized
-            psi.Arguments = String.Format("/artist ""{0}"" /album ""{1}"" /minSize {2} /minAspect {3} /path ""{4}""", _
-                                          mLibrary.fGetArtist(firstTrack), mLibrary.fGetAlbum(firstTrack), _
-                                          My.Settings.LowResArtworkWidth, 0.9, pathArtwork)
+
+            If Path.GetFileName(My.Settings.ExePathAADConsole).ToLower = "aad.exe" Then
+                psi.Arguments = String.Format("/artist ""{0}"" /album ""{1}"" /minSize {2} /minAspect {3} /path ""{4}""", _
+                                              mLibrary.fGetArtist(firstTrack), mLibrary.fGetAlbum(firstTrack), _
+                                              My.Settings.LowResArtworkWidth, 0.9, pathArtwork)
+            Else
+                psi.Arguments = String.Format("/artist ""{0}"" /album ""{1}"" /minSize {2} /path ""{3}""", _
+                              mLibrary.fGetArtist(firstTrack), mLibrary.fGetAlbum(firstTrack), _
+                              My.Settings.LowResArtworkWidth, pathArtwork)
+            End If
+
             p.StartInfo = psi
             p.Start()
 
