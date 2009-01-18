@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft User Network")]
 [assembly: AssemblyProduct("McoreSystem")]
-[assembly: AssemblyCopyright("Copyright © 2005-2008 ~*McoreD*~")]
+[assembly: AssemblyCopyright("Copyright © 2005-2009 McoreD")]
 [assembly: AssemblyTrademark("Microsoft User Network")]
 [assembly: AssemblyCulture("")]		
 
@@ -26,7 +26,7 @@ using System.Runtime.CompilerServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.13.2.0")]
+[assembly: AssemblyVersion("1.13.2.1")]
 
 //
 // In order to sign your assembly you must specify a key to use. Refer to the 
@@ -56,4 +56,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
-[assembly: AssemblyFileVersionAttribute("1.13.2.0")]
+[assembly: AssemblyFileVersionAttribute("1.13.2.1")]
