@@ -345,7 +345,7 @@ namespace McoreSystem
                         if (mRelNotes != null)
                         {
                             frmVer v = new frmVer(this.AppIcon, this.AppImage,
-                                            getMsgOutdated(mAppName, OutdatedMsgStyle.BetaVersionAvailble, false),
+                                            getMsgOutdated(mAppName, OutdatedMsgStyle.NewVersionOfAppAvailable, false),
                                             mRelNotes);
                             v.Text = this.GetApplicationTitle(this.mAppName, GetRemoteVersion(), VersionDepth.MajorMinorBuildRevision);
                             v.ShowDialog();
