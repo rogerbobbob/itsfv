@@ -712,18 +712,22 @@ Public Module mAdapter
 
     Public Function mfGetFixedString(ByVal sss As String) As String
 
-        Dim replaceWords As List(Of String) = mfGetReplaceWords()
+        If (Not String.IsNullOrEmpty(sss)) Then
 
-        For Each line In replaceWords
-            Dim word() As String = System.Text.RegularExpressions.Regex.Split(line, ",,,,")
-            If word.Length = 2 Then
-                sss = sss.Replace(word(0), word(1))
-            ElseIf word.Length = 4 Then
-                sss = sss.Replace(word(1), word(2))
-            End If
-        Next
+            Dim replaceWords As List(Of String) = mfGetReplaceWords()
 
-        sss = sss.Trim
+            For Each line In replaceWords
+                Dim word() As String = System.Text.RegularExpressions.Regex.Split(line, ",,,,")
+                If word.Length = 2 Then
+                    sss = sss.Replace(word(0), word(1))
+                ElseIf word.Length = 4 Then
+                    sss = sss.Replace(word(1), word(2))
+                End If
+            Next
+
+            sss = sss.Trim
+
+        End If
 
         Return sss
 
