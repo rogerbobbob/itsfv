@@ -392,8 +392,10 @@ Public Module mFileSystem
            Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\MediaPlayer\Preferences", True)
                 If regKey.GetValue("TrackFoldersDirectories0") IsNot Nothing Then
                     My.Settings.WMP_MusicFolderPath = CStr(regKey.GetValue("TrackFoldersDirectories0"))
-                    If My.Settings.WMP_MusicFolderPath.EndsWith(Path.DirectorySeparatorChar) = False Then
-                        My.Settings.WMP_MusicFolderPath += My.Settings.WMP_MusicFolderPath + Path.DirectorySeparatorChar
+                    If (Not String.IsNullOrEmpty(My.Settings.WMP_MusicFolderPath)) Then
+                        If My.Settings.WMP_MusicFolderPath.EndsWith(Path.DirectorySeparatorChar) = False Then
+                            My.Settings.WMP_MusicFolderPath += My.Settings.WMP_MusicFolderPath + Path.DirectorySeparatorChar
+                        End If
                     End If
                 End If
             End If
@@ -524,7 +526,7 @@ Public Module mFileSystem
             End If
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Console.WriteLine(ex.ToString())
         End Try
 
     End Sub

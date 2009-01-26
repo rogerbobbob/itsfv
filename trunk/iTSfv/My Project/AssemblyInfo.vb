@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("iTunes Store file validator")> 
 <Assembly: AssemblyCompany("SourceForge, Inc")> 
 <Assembly: AssemblyProduct("iTSfv")> 
-<Assembly: AssemblyCopyright("Copyright © McoreD 2006-2008")> 
+<Assembly: AssemblyCopyright("Copyright © McoreD 2006-2009")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(True)> 
