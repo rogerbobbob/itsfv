@@ -288,7 +288,6 @@ Public Class frmMain
 
     End Sub
 
-
     Private Sub sAddFilesToLibrary()
 
         ' prevent modifying the file add list
@@ -591,6 +590,7 @@ Public Class frmMain
         If My.Settings.AddFilesMode = AddFilesType.COPY Then
 
             extFiles.AddRange(Directory.GetFiles(dirPath, "*.nfo", SearchOption.AllDirectories))
+            extFiles.AddRange(Directory.GetFiles(dirPath, "*.cue", SearchOption.AllDirectories))
             extFiles.AddRange(Directory.GetFiles(dirPath, "*.log", SearchOption.AllDirectories))
             extFiles.AddRange(Directory.GetFiles(dirPath, "*.txt", SearchOption.AllDirectories))
 
@@ -660,7 +660,7 @@ Public Class frmMain
                         File.Delete(f)
                     Next
                 Catch ex As Exception
-
+                    Console.Write(ex.ToString())
                 End Try
             End If
         End If
@@ -669,17 +669,23 @@ Public Class frmMain
 
     Private Sub sCleanFS()
 
-        Dim fi As New FileInfo(mFilePathMusicFolderActivity)
-        If fi.Exists AndAlso fi.Length = 0 Then
-            fi.Delete()
-        End If
+        Try
 
-        Dim fiDebug As New FileInfo(mFilePathDebugLog)
-        If fiDebug.Exists AndAlso fiDebug.Length = 0 Then
-            fi.Delete()
-        End If
+            Dim fi As New FileInfo(mFilePathMusicFolderActivity)
+            If fi.Exists AndAlso fi.Length = 0 Then
+                fi.Delete()
+            End If
 
-        sCleanFSTemp()
+            Dim fiDebug As New FileInfo(mFilePathDebugLog)
+            If fiDebug.Exists AndAlso fiDebug.Length = 0 Then
+                fi.Delete()
+            End If
+
+            sCleanFSTemp()
+
+        Catch ex As Exception
+            Console.Write(ex.ToString())
+        End Try
 
     End Sub
 

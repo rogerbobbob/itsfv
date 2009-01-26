@@ -1,5 +1,6 @@
-Version 5.60 - 20081231?
+Version 5.60 - 20090715
 
+5.60.25.1 Fixed rare System.ArgumentNullException: Value cannot be null error on new systems [RGB]
 5.60.25.0 Importing Lyrics via LyricWiki feature is now enabled by default to support iLyrics behaviour
 5.60.24.1 Removed possibility where carriage return would be replaced in Lyrics with carriage return and a line return [Jojo]
 5.60.24.0 Import Lyrics from LyricWiki if the character count is at least a user configurable number [Jojo]
