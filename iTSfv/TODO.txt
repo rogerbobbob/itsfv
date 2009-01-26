@@ -1,3 +1,4 @@
+spawn seperate thread for getting genre from last.fm while adding music
 lyricwiki close matches via closest-matches.txt e.g. a,,,,ã,,,,â
 import artwork using iTunes Store Artwork
 stats for file size in OneTouch

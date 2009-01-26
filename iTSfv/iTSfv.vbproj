@@ -318,6 +318,7 @@
     <Compile Include="Validator\cValidator.vb" />
     <Compile Include="Validator\cValidatorOptions.vb" />
     <Compile Include="Validator\cXmlDiscArtistFinder.vb" />
+    <Compile Include="Validator\cXmlDiscNumberFinder.vb" />
     <Compile Include="Web References\org.lyricwiki\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
