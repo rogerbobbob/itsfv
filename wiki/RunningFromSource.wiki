@@ -1,5 +1,5 @@
 #summary How to run iTSfv from Source
-#labels Phase-Support
+#labels Phase-Support,Featured
 <wiki:toc max_depth="2" />
 = Requirements =
 
@@ -76,6 +76,4 @@ close SmartSVN.
 [http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
  * You can insert break points and debug iTSfv. 
  * If you would like to join the development by committing source, please leave a comment in this page. 
-
-
 
