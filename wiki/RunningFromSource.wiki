@@ -52,6 +52,7 @@ Now we are back to Check out Project
 iTSfv\trunk
 }}}
 is recommended.
+
 [http://i37.tinypic.com/2hmhjc9.png]
  * Select the *trunk* folder
 [http://i34.tinypic.com/2n1rlm8.png]
@@ -76,4 +77,3 @@ close SmartSVN.
 [http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
  * You can insert break points and debug iTSfv. 
  * If you would like to join the development by committing source, please leave a comment in this page. 
-
