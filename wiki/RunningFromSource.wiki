@@ -68,7 +68,7 @@ iTSfv\trunk
 SmartSVN will be now checking out source
 [http://i37.tinypic.com/xf6ik0.png]
 After SmartSVN is down checking source
-[http://wmwiki.com/mcored/screenshots/trunk-20090205103634.png]
+[http://wmwiki.com/mcored/screenshots/iTSfv_-_SmartSVN_Professional_5_demo_until_02092009-20090205103735.png]
 close SmartSVN. 
 
 = Using Visual Studio=
