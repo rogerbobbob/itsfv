@@ -1,5 +1,5 @@
 #summary Frequently Asked Questions
-#labels last.fm,playedcount,troubleshooting
+#labels Featured,playedcount,troubleshooting
 
 <wiki:toc/>
 
