@@ -77,6 +77,6 @@ close SmartSVN.
  * Press Play button in the toolbar
 [http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
  * You will be running iTSfv from source. About Window of iTSfv: 
-[http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
+[http://wmwiki.com/mcored/screenshots/About_iTSfv-20090205104030.png]
  * You can insert break points and debug iTSfv. 
  * If you would like to join the development by committing source, please leave a comment in this page. 
