@@ -53,7 +53,7 @@ iTSfv\trunk
 }}}
 is recommended.
 [http://i37.tinypic.com/2hmhjc9.png]
- * Select the folder trunk
+ * Select the *trunk* folder
 [http://i34.tinypic.com/2n1rlm8.png]
  * Press Next
  * Rename 'trunk' to iTSfv
