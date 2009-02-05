@@ -47,11 +47,14 @@ Now we are back to Check out Project
  * Select *trunk* folder
 [http://i34.tinypic.com/10nf6t3.png]
  * Press Next
- * Create folder path Visual Studio 2008\Projects\Google Code\iTSfv\trunk (this is the suggested folder path; you may have any folder path you wish. However satisfying at least
+ * Create folder path 
+{{{
+Visual Studio 2008\Projects\Google Code\iTSfv\trunk
+}}}
+This is the suggested folder path; you may have any folder path you wish. However satisfying at least folder hierarchy below is recommended.
 {{{
 iTSfv\trunk
 }}}
-is recommended.
 
 [http://i37.tinypic.com/2hmhjc9.png]
  * Select the *trunk* folder
