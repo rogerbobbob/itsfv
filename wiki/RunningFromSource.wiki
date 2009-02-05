@@ -1,0 +1,61 @@
+#summary How to run iTSfv from Source
+#labels Phase-Support
+
+= Requirements =
+
+ * Visual Studio 2008 
+ * Latest iTunes 
+ * Portable Archive (requires JRE 1.4.1 or higher, no Explorer integration) from http://www.syntevo.com/smartsvn/download.html
+ * Google Code Password from http://code.google.com/hosting/settings
+
+= Setting up SmartSVN =
+
+==What you want to do?==
+[http://i38.tinypic.com/oi5cgk.png]
+
+==Check out Project==
+[http://i37.tinypic.com/v5agxh.png]
+
+ # Click Manage
+ # Click Add in Repository Files
+
+===Add Repository File===
+[http://i36.tinypic.com/1127fpy.png]
+
+ * Enter SVN URL
+{{{
+https://itsfv.googlecode.com/svn
+}}}
+
+[http://i35.tinypic.com/16bn69d.png]
+
+ * Press OK
+ * Now Add Repository file will look like: 
+[http://i36.tinypic.com/eld89u.png]
+ * Press Next 
+ * Enter Google UserName and Google Code Password
+[http://i36.tinypic.com/24159o1.png]
+ * Accept Server Finger Print
+[http://i37.tinypic.com/2mmwr9f.png]
+ * Click Finish
+
+
+Now we are back to Check out Project
+[http://i33.tinypic.com/t7yb7d.png]
+
+ * Press Next
+ * Select *trunk* folder
+[http://i34.tinypic.com/10nf6t3.png]
+ * Press Next
+ * Create folder path Visual Studio 2008\Projects\iTSfv\trunk 
+[http://i37.tinypic.com/2hmhjc9.png]
+ * Select the folder trunk
+[http://i34.tinypic.com/2n1rlm8.png]
+ * Press Next
+ * Rename 'trunk' to iTSfv
+[http://i33.tinypic.com/fxzcxd.png]
+ * Press Finish
+[http://i35.tinypic.com/2e2noud.png]
+
+SmartSVN will be now checking out source
+[http://i37.tinypic.com/xf6ik0.png]
