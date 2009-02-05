@@ -1,12 +1,12 @@
 #summary How to run iTSfv from Source
 #labels Phase-Support
-
+<wiki:toc max_depth="2" />
 = Requirements =
 
- * Visual Studio 2008 
- * Latest iTunes 
  * Portable Archive (requires JRE 1.4.1 or higher, no Explorer integration) from http://www.syntevo.com/smartsvn/download.html
  * Google Code Password from http://code.google.com/hosting/settings
+ * Latest iTunes 
+ * Visual Studio 2008 
 
 = Setting up SmartSVN =
 
@@ -59,3 +59,5 @@ Now we are back to Check out Project
 
 SmartSVN will be now checking out source
 [http://i37.tinypic.com/xf6ik0.png]
+
+=Setting up Visual Studio=
