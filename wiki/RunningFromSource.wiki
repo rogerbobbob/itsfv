@@ -5,7 +5,7 @@
 
  * Portable Archive (requires JRE 1.4.1 or higher, no Explorer integration) from http://www.syntevo.com/smartsvn/download.html
  * Google Code Password from http://code.google.com/hosting/settings
- * Latest iTunes 
+ * Latest iTunes
  * Visual Studio 2008 
 
 = Setting up SmartSVN =
@@ -63,5 +63,19 @@ is recommended.
 
 SmartSVN will be now checking out source
 [http://i37.tinypic.com/xf6ik0.png]
+After SmartSVN is down checking source
+[http://wmwiki.com/mcored/screenshots/trunk-20090205103634.png]
+close SmartSVN. 
 
-=Setting up Visual Studio=
+= Using Visual Studio=
+ * Double click the Visual Studio Solution file
+[http://wmwiki.com/mcored/screenshots/trunk-20090205103634.png]
+ * Press Play button in the toolbar
+[http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
+ * You will be running iTSfv from source. About Window of iTSfv: 
+[http://wmwiki.com/mcored/screenshots/iTSfv_-_Microsoft_Visual_Studio-20090205103841.png]
+ * You can insert break points and debug iTSfv. 
+ * If you would like to join the development by committing source, please leave a comment in this page. 
+
+
+
