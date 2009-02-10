@@ -12,7 +12,7 @@ Public Module mAdapter
 
     Friend mAppInfo As New McoreSystem.AppInfo(Application.ProductName, _
                     Application.ProductVersion, _
-                    AppInfo.SoftwareCycle.ALPHA)
+                    AppInfo.SoftwareCycle.BETA)
 
     Friend WithEvents mItunesApp As IiTunes
     Friend mWebClient As New WebClient
