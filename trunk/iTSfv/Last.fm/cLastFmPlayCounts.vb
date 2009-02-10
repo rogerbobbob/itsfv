@@ -9,8 +9,8 @@ Public Class cLastFmPlayCounts
     Private mSongs As New Dictionary(Of String, cXmlTrack)
     Private mSongKeys As New List(Of String)
 
-    Private Const mUrlChartsList As String = "http://ws.audioscrobbler.com/1.0/user/%UserName%/weeklychartlist.xml"
-    Private Const mUrlChart As String = "http://ws.audioscrobbler.com/1.0/user/%UserName%/weeklytrackchart.xml?from=%From%&to=%To%"
+    Private Const mUrlChartsList As String = "http://ws.audioscrobbler.com/2.0/user/%UserName%/weeklychartlist.xml"
+    Private Const mUrlChart As String = "http://ws.audioscrobbler.com/2.0/user/%UserName%/weeklytrackchart.xml?from=%From%&to=%To%"
 
     Private mBwApp As BackgroundWorker
 
@@ -18,10 +18,6 @@ Public Class cLastFmPlayCounts
 
         mUserName = lUserName
         mBwApp = lBwApp
-
-        'For i As Integer = 0 To x.ChildNodes.Count - 1
-        '    'Console.Writeline(x.ChildNodes(i).Name)
-        'Next
 
         mfUpdateStatusBarText(String.Format("Loading Last.fm Charts for {0}...", My.Settings.LastFmUserName), secondary:=False)
 
@@ -35,79 +31,80 @@ Public Class cLastFmPlayCounts
 
         If strm IsNot Nothing Then
 
-            Try
+            ' Try
 
-                Dim xtrCharts As New XmlTextReader(strm)
+            Dim xtrCharts As New XmlTextReader(strm)
 
-                While xtrCharts.Read
+            While xtrCharts.Read
 
-                    If mBwApp.CancellationPending Then
-                        Exit Sub
+                If mBwApp.CancellationPending Then
+                    Exit Sub
+                End If
+
+                mProgressTracksCurrent = -1
+
+                If xtrCharts.NodeType = XmlNodeType.Element Then
+
+                    If xtrCharts.Name.Equals("chart") Then
+                        xtrCharts.MoveToNextAttribute()
+                        Dim urlChart As String = gUrlChart.Replace("%From%", xtrCharts.Value)
+                        xtrCharts.MoveToNextAttribute()
+                        urlChart = urlChart.Replace("%To%", xtrCharts.Value)
+                        'Console.Writeline(urlChart)
+                        listCharts.Add(urlChart)
                     End If
 
-                    mProgressTracksCurrent = -1
+                End If
 
-                    If xtrCharts.NodeType = XmlNodeType.Element Then
+            End While
 
-                        If xtrCharts.Name.Equals("chart") Then
-                            xtrCharts.MoveToNextAttribute()
-                            Dim urlChart As String = gUrlChart.Replace("%From%", xtrCharts.Value)
-                            xtrCharts.MoveToNextAttribute()
-                            urlChart = urlChart.Replace("%To%", xtrCharts.Value)
-                            'Console.Writeline(urlChart)
-                            listCharts.Add(urlChart)
+            mProgressTracksMax = listCharts.Count
+            mProgressTracksCurrent = 0
+
+            For Each url As String In listCharts
+
+                If mBwApp.CancellationPending Then
+                    Exit Sub
+                End If
+
+                Dim xtrSongs As New XmlTextReader(url)
+
+                Dim song As New cXmlTrack
+
+                While xtrSongs.Read
+
+                    If xtrSongs.NodeType = XmlNodeType.Element Then
+                        If xtrSongs.Name.Equals("artist") Then
+                            song.Artist = xtrSongs.ReadInnerXml
                         End If
+                        If xtrSongs.Name.Equals("name") Then
+                            song.Name = xtrSongs.ReadInnerXml
+                        End If
+                        If xtrSongs.Name.Equals("playcount") Then
+                            Console.WriteLine(xtrSongs.ReadInnerXml)
+                            Integer.TryParse(xtrSongs.ReadInnerXml, song.PlayedCount)
+                        End If
+                    End If
+
+                    If String.Empty <> song.Artist AndAlso String.Empty <> song.Name Then
+
+                        ''Console.Writeline(song.Artist + " - " + song.Name)
+                        sAddUpdateSong(song)
+                        song = New cXmlTrack
 
                     End If
 
                 End While
 
-                mProgressTracksMax = listCharts.Count
-                mProgressTracksCurrent = 0
+                mProgressTracksCurrent += 1
 
-                For Each url As String In listCharts
+            Next
 
-                    If mBwApp.CancellationPending Then
-                        Exit Sub
-                    End If
+            ' Catch ex As Exception
 
-                    Dim xtrSongs As New XmlTextReader(url)
+            ' msAppendWarnings(ex.Message + " while reading last.fm charts...")
 
-                    Dim song As New cXmlTrack
-
-                    While xtrSongs.Read
-
-                        If xtrSongs.NodeType = XmlNodeType.Element Then
-                            If xtrSongs.Name.Equals("artist") Then
-                                song.Artist = xtrSongs.ReadInnerXml
-                            End If
-                            If xtrSongs.Name.Equals("name") Then
-                                song.Name = xtrSongs.ReadInnerXml
-                            End If
-                            If xtrSongs.Name.Equals("playcount") Then
-                                song.PlayedCount = CInt(xtrSongs.ReadInnerXml)
-                            End If
-                        End If
-
-                        If String.Empty <> song.Artist AndAlso String.Empty <> song.Name Then
-
-                            ''Console.Writeline(song.Artist + " - " + song.Name)
-                            sAddUpdateSong(song)
-                            song = New cXmlTrack
-
-                        End If
-
-                    End While
-
-                    mProgressTracksCurrent += 1
-
-                Next
-
-            Catch ex As Exception
-
-                msAppendWarnings(ex.Message + " while reading last.fm charts...")
-
-            End Try
+            ' End Try
 
         End If ' stream is not nothing
 
