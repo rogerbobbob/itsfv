@@ -173,11 +173,7 @@ Public Class cArtworkSources
                 If track.Artwork.Count > 0 Then
                     If track.Artwork.Item(1).IsDownloadedArtwork = False Then
                         src = New cArtworkSource(track)
-                        Dim trackArtworkPath As String = mfGetTempArtworkCachePath(TEMP_TRACK_ARTWORK_NAME, track)
-                        'Dim img As Image = mTagLibJobs.mfImageFromFile(track.Location)
-                        'src.Width = img.Width
-                        'src.Height = img.Height
-                        'img.Save(trackArtworkPath)
+                        Dim trackArtworkPath As String = mfGetTempArtworkCachePath(TEMP_TRACK_ARTWORK_NAME, track)                        
                         track.Artwork(1).SaveArtworkToFile(trackArtworkPath)
                         src.ArtworkType = ArtworkSourceType.Track
                         src.ArtworkPath = trackArtworkPath

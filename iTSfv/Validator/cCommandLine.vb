@@ -24,27 +24,23 @@ Public Class cCommandLine
 
     Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParser.CommandLineParser)
 
-        Dim anEntry As CommandLineEntry
         ' create a flag type entry that accepts a -f (file) 
         ' flag, (meaning the next parameter is a file 
         ' name), and is required 
-        anEntry = parser.CreateEntry _
-           (CommandTypeEnum.Flag, FLAG_ADD_FOLDER)
-        parser.Entries.Add(anEntry)
+        Dim dirArg As CommandLineEntry = parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADD_FOLDER)
+        parser.Entries.Add(dirArg)
 
         ' store the new Entry in a local reference
         ' for use with the next CommandLineEntry's 
         ' MustFollow property.
-        Dim fileEntry As CommandLineEntry
-        fileEntry = anEntry
+        Dim dirVal As CommandLineEntry = dirArg
 
         ' now create am ExistingFile type entry that must
         ' follow the -f flag.
-        anEntry = parser.CreateEntry _
-        (CommandTypeEnum.ExistingFolder)
-        anEntry.MustFollowEntry = fileEntry
-        parser.Entries.Add(anEntry)
+        dirArg = parser.CreateEntry(CommandTypeEnum.ExistingFolder)
+        dirArg.MustFollowEntry = dirVal
 
+        parser.Entries.Add(dirArg)
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADD_FILES))
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_ADJUST_RATINGS))
         parser.Entries.Add(parser.CreateEntry(CommandTypeEnum.Flag, FLAG_REMOVE_DEAD))
