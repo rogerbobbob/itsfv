@@ -14,9 +14,9 @@
 //#include "scripts\products\dotnetfx11sp1.iss"
 
 #include "scripts\products\dotnetfx20.iss"
-#include "scripts\products\dotnetfx20lp.iss"
+//#include "scripts\products\dotnetfx20lp.iss"
 #include "scripts\products\dotnetfx20sp1.iss"
-#include "scripts\products\dotnetfx20sp1lp.iss"
+//#include "scripts\products\dotnetfx20sp1lp.iss"
 
 #include "scripts\products\dotnetfx35.iss"
 //#include "scripts\products\dotnetfx35lp.iss"
