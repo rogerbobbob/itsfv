@@ -65,18 +65,33 @@ Public Module mAdapter
     End Function
 
     Public Sub msCheckUpdatesAuto(ByVal sBarLeft As ToolStripStatusLabel)
-        If My.Settings.AutoCheckUpdates Then
-            Dim uc As New cUpdateChecker(My.Forms.frmMain.Icon, My.Resources.itsfv2, _
-                                         sBarLeft, manual:=False)
-            uc.CheckUpdates()
-        End If
+
+        'If My.Settings.AutoCheckUpdates Then
+        '    Dim uc As New cUpdateChecker(My.Forms.frmMain.Icon, My.Resources.itsfv2, _
+        '                                 sBarLeft, manual:=False)
+        '    uc.CheckUpdates()
+        'End If
+
+        CheckUpdates(manual:=False)
+
+
+    End Sub
+
+    Private Sub CheckUpdates(ByVal manual As Boolean)
+        Dim uc As New McoreSystem.UpdateChecker("http://code.google.com/p/itsfv/downloads/list")
+        uc.Manual = manual
+        uc.CheckUpdates()
     End Sub
 
     Public Sub msShowUpdatesManual(ByVal sBarLeft As ToolStripStatusLabel)
-        Dim uc As New cUpdateChecker(My.Forms.frmMain.Icon, My.Resources.itsfv2, _
-                                    sBarLeft, manual:=True)
-        uc.CheckUpdates()
+
+        'Dim uc As New cUpdateChecker(My.Forms.frmMain.Icon, My.Resources.itsfv2, _
+        '                            sBarLeft, manual:=True)
+        'uc.CheckUpdates()
+
+        CheckUpdates(manual:=True)
         sBarLeft.Text = String.Empty
+
     End Sub
 
     Public Function mfValidRestoreFile(ByVal filePath As String) As Boolean
