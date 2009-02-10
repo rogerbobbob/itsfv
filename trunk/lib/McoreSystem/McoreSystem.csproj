@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{31F006C6-E007-4954-816F-0F83EFC7484D}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -142,6 +142,7 @@
     <Compile Include="frmVer.Designer.cs">
       <DependentUpon>frmVer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateChecker.cs" />
     <Compile Include="WindowsController.cs" />
   </ItemGroup>
   <ItemGroup>
