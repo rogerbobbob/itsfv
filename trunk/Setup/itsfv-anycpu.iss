@@ -18,7 +18,7 @@
 #include "scripts\products\dotnetfx20sp1.iss"
 //#include "scripts\products\dotnetfx20sp1lp.iss"
 
-#include "scripts\products\dotnetfx35.iss"
+//#include "scripts\products\dotnetfx35.iss"
 //#include "scripts\products\dotnetfx35lp.iss"
 //#include "scripts\products\dotnetfx35sp1.iss"
 //#include "scripts\products\dotnetfx35sp1lp.iss"
@@ -26,18 +26,23 @@
 //#include "scripts\products\mdac28.iss"
 //#include "scripts\products\jet4sp8.iss"
 
+#define ExeName "iTSfv"		
+#define ExePath "H:\Users\Mihajlo\Documents\Visual Studio 2008\Projects\iTSfv\trunk\iTSfv\bin\iTSfv.exe"
+#define MyAppVersion GetFileVersion(ExePath)
+
 [CustomMessages]
 win2000sp3_title=Windows 2000 Service Pack 3
 winxpsp2_title=Windows XP Service Pack 2
 
 
 [Setup]
-AppName=TDMaker
-AppVerName=iTSfv 5.60.25.1 BETA
-VersionInfoVersion=5.60.25.1
-VersionInfoTextVersion=5.60.25.1
-VersionInfoCompany=BetaONE
+AppName={#ExeName}
+AppVerName={#ExeName} {#MyAppVersion}
+AppVersion={#MyAppVersion}
+VersionInfoVersion={#MyAppVersion}
+VersionInfoTextVersion={#MyAppVersion}
 VersionInfoDescription=iTunes Store file validator
+VersionInfoCompany=BetaONE
 AppPublisher=BetaONE
 AppPublisherURL=http://code.google.com/p/itsfv
 AppSupportURL=http://code.google.com/p/itsfv
@@ -50,6 +55,7 @@ InfoBeforeFile=..\iTSfv\VersionHistory.txt
 SolidCompression=yes
 ;PrivilegesRequired=none
 OutputDir=..\..\Output\
+OutputBaseFilename={#ExeName}-{#MyAppVersion}-setup
 ArchitecturesInstallIn64BitMode=x64 ia64
 DirExistsWarning=no
 CreateAppDir=true
@@ -115,13 +121,13 @@ begin
 	
 	if (minwinversion(5, 0) and minspversion(5, 0, 4)) then begin
 		dotnetfx20sp1();
-		dotnetfx20sp1lp();
+//		dotnetfx20sp1lp();
 	end else begin
 		dotnetfx20();
-		dotnetfx20lp();
+//		dotnetfx20lp();
 	end;
 	
-dotnetfx35();
+//dotnetfx35();
 	//dotnetfx35lp();
 	//dotnetfx35sp1();
 	//dotnetfx35sp1lp();
