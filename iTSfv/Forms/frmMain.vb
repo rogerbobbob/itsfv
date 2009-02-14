@@ -4790,10 +4790,14 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 End If
 
                 If chkPlayedCountOverride.Checked Then
-                    track.PlayedCount = CType(track.PlayedCount + nudPlayedCount.Value, Integer)
+                    bwApp.ReportProgress(ProgressType.UPDATE_STATUSBAR_TEXT, String.Format("Incrementing PlayedCount for {0} by {1}", track.Name, nudPlayedCountOverride.Value))
+                    track.PlayedCount = CType(track.PlayedCount + nudPlayedCountOverride.Value, Integer)
                 End If
 
-                bwApp.ReportProgress(ProgressType.OVERRIDE_TAGS, track.Name)
+                If chkRatingOverride.Checked Then
+                    bwApp.ReportProgress(ProgressType.UPDATE_STATUSBAR_TEXT, String.Format("Incrementing Rating for {0} by {1}", track.Name, nudRatingOverride.Value))
+                    track.Rating = CType(track.Rating + nudRatingOverride.Value, Integer)
+                End If
 
             Next
 
@@ -6682,7 +6686,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     mProgressDiscsCurrent += 1
                     mfUpdateStatusBarText("Offsetting " & userStateString, False)
 
-                Case ProgressType.OVERRIDE_TAGS
+                Case ProgressType.UPDATE_STATUSBAR_TEXT
                     mProgressDiscsCurrent += 1
                     mfUpdateStatusBarText("Overriding " & userStateString, False)
 

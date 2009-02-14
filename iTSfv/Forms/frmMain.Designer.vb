@@ -148,7 +148,9 @@ Partial Class frmMain
         Me.nudOffsetTrackNum = New System.Windows.Forms.NumericUpDown
         Me.btnOffsetTrackNum = New System.Windows.Forms.Button
         Me.gbOverride = New System.Windows.Forms.GroupBox
-        Me.nudPlayedCount = New System.Windows.Forms.NumericUpDown
+        Me.nudRatingOverride = New System.Windows.Forms.NumericUpDown
+        Me.chkRatingOverride = New System.Windows.Forms.CheckBox
+        Me.nudPlayedCountOverride = New System.Windows.Forms.NumericUpDown
         Me.chkPlayedCountOverride = New System.Windows.Forms.CheckBox
         Me.btnOverride = New System.Windows.Forms.Button
         Me.dtpPlayedDate = New System.Windows.Forms.DateTimePicker
@@ -392,7 +394,8 @@ Partial Class frmMain
         Me.gbOffset.SuspendLayout()
         CType(Me.nudOffsetTrackNum, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbOverride.SuspendLayout()
-        CType(Me.nudPlayedCount, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudRatingOverride, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudPlayedCountOverride, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpSTExport.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -451,10 +454,10 @@ Partial Class frmMain
         'ssAppTrack
         '
         Me.ssAppTrack.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2, Me.sBarTrack, Me.sTrackProgress, Me.pbarTrack})
-        Me.ssAppTrack.Location = New System.Drawing.Point(0, 431)
+        Me.ssAppTrack.Location = New System.Drawing.Point(0, 540)
         Me.ssAppTrack.Name = "ssAppTrack"
         Me.ssAppTrack.ShowItemToolTips = True
-        Me.ssAppTrack.Size = New System.Drawing.Size(704, 22)
+        Me.ssAppTrack.Size = New System.Drawing.Size(784, 22)
         Me.ssAppTrack.TabIndex = 4
         Me.ssAppTrack.Text = "StatusStrip1"
         '
@@ -473,7 +476,7 @@ Partial Class frmMain
         Me.sBarTrack.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.sBarTrack.Name = "sBarTrack"
         Me.sBarTrack.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
-        Me.sBarTrack.Size = New System.Drawing.Size(539, 17)
+        Me.sBarTrack.Size = New System.Drawing.Size(619, 17)
         Me.sBarTrack.Spring = True
         Me.sBarTrack.Text = "Idle."
         Me.sBarTrack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -749,7 +752,7 @@ Partial Class frmMain
         Me.tcTabs.Multiline = True
         Me.tcTabs.Name = "tcTabs"
         Me.tcTabs.SelectedIndex = 0
-        Me.tcTabs.Size = New System.Drawing.Size(681, 244)
+        Me.tcTabs.Size = New System.Drawing.Size(761, 326)
         Me.tcTabs.TabIndex = 9
         '
         'tpSettings
@@ -759,7 +762,7 @@ Partial Class frmMain
         Me.tpSettings.Location = New System.Drawing.Point(4, 23)
         Me.tpSettings.Name = "tpSettings"
         Me.tpSettings.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSettings.Size = New System.Drawing.Size(673, 217)
+        Me.tpSettings.Size = New System.Drawing.Size(753, 299)
         Me.tpSettings.TabIndex = 0
         Me.tpSettings.Tag = "Main"
         Me.tpSettings.Text = "Validate"
@@ -776,7 +779,7 @@ Partial Class frmMain
         Me.tcValidate.Location = New System.Drawing.Point(3, 3)
         Me.tcValidate.Name = "tcValidate"
         Me.tcValidate.SelectedIndex = 0
-        Me.tcValidate.Size = New System.Drawing.Size(667, 211)
+        Me.tcValidate.Size = New System.Drawing.Size(747, 293)
         Me.tcValidate.TabIndex = 17
         '
         'tpChecks
@@ -795,7 +798,7 @@ Partial Class frmMain
         Me.tpChecks.Location = New System.Drawing.Point(4, 23)
         Me.tpChecks.Name = "tpChecks"
         Me.tpChecks.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpChecks.Size = New System.Drawing.Size(659, 184)
+        Me.tpChecks.Size = New System.Drawing.Size(739, 266)
         Me.tpChecks.TabIndex = 0
         Me.tpChecks.Text = "Checks"
         Me.ttApp.SetToolTip(Me.tpChecks, "Checks in this tab do not modify tracks or library or file system any way.")
@@ -806,7 +809,7 @@ Partial Class frmMain
         Me.btnValidateTracksChecks.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnValidateTracksChecks.AutoSize = True
         Me.btnValidateTracksChecks.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnValidateTracksChecks.Location = New System.Drawing.Point(451, 144)
+        Me.btnValidateTracksChecks.Location = New System.Drawing.Point(531, 226)
         Me.btnValidateTracksChecks.Name = "btnValidateTracksChecks"
         Me.btnValidateTracksChecks.Size = New System.Drawing.Size(188, 25)
         Me.btnValidateTracksChecks.TabIndex = 18
@@ -819,7 +822,7 @@ Partial Class frmMain
         Me.chkCheckMetatag.AutoSize = True
         Me.chkCheckMetatag.Checked = Global.iTSfv.My.MySettings.Default.CheckMetatag
         Me.chkCheckMetatag.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckMetatag", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckMetatag.Location = New System.Drawing.Point(370, 33)
+        Me.chkCheckMetatag.Location = New System.Drawing.Point(450, 33)
         Me.chkCheckMetatag.Name = "chkCheckMetatag"
         Me.chkCheckMetatag.Size = New System.Drawing.Size(156, 17)
         Me.chkCheckMetatag.TabIndex = 17
@@ -832,7 +835,7 @@ Partial Class frmMain
         Me.chkCheckBPM.AutoSize = True
         Me.chkCheckBPM.Checked = Global.iTSfv.My.MySettings.Default.CheckBPM
         Me.chkCheckBPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckBPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckBPM.Location = New System.Drawing.Point(370, 10)
+        Me.chkCheckBPM.Location = New System.Drawing.Point(450, 10)
         Me.chkCheckBPM.Name = "chkCheckBPM"
         Me.chkCheckBPM.Size = New System.Drawing.Size(167, 17)
         Me.chkCheckBPM.TabIndex = 16
@@ -944,7 +947,7 @@ Partial Class frmMain
         Me.tpEditTracks.Location = New System.Drawing.Point(4, 23)
         Me.tpEditTracks.Name = "tpEditTracks"
         Me.tpEditTracks.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpEditTracks.Size = New System.Drawing.Size(659, 184)
+        Me.tpEditTracks.Size = New System.Drawing.Size(739, 266)
         Me.tpEditTracks.TabIndex = 1
         Me.tpEditTracks.Text = "Tracks"
         Me.ttApp.SetToolTip(Me.tpEditTracks, "This tab consists of operations that modify iTunes track tags ")
@@ -956,7 +959,7 @@ Partial Class frmMain
         Me.chkConvertArtworkJPG.AutoSize = True
         Me.chkConvertArtworkJPG.Checked = Global.iTSfv.My.MySettings.Default.ConvertArtworkJPG
         Me.chkConvertArtworkJPG.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ConvertArtworkJPG", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkConvertArtworkJPG.Location = New System.Drawing.Point(369, 79)
+        Me.chkConvertArtworkJPG.Location = New System.Drawing.Point(449, 79)
         Me.chkConvertArtworkJPG.Name = "chkConvertArtworkJPG"
         Me.chkConvertArtworkJPG.Size = New System.Drawing.Size(176, 17)
         Me.chkConvertArtworkJPG.TabIndex = 22
@@ -968,7 +971,7 @@ Partial Class frmMain
         Me.btnValidateSelectedTracks.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnValidateSelectedTracks.AutoSize = True
         Me.btnValidateSelectedTracks.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnValidateSelectedTracks.Location = New System.Drawing.Point(451, 144)
+        Me.btnValidateSelectedTracks.Location = New System.Drawing.Point(531, 226)
         Me.btnValidateSelectedTracks.Name = "btnValidateSelectedTracks"
         Me.btnValidateSelectedTracks.Size = New System.Drawing.Size(188, 25)
         Me.btnValidateSelectedTracks.TabIndex = 21
@@ -1025,7 +1028,7 @@ Partial Class frmMain
         Me.chkWriteGenre.AutoSize = True
         Me.chkWriteGenre.Checked = Global.iTSfv.My.MySettings.Default.WriteGenre
         Me.chkWriteGenre.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "WriteGenre", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkWriteGenre.Location = New System.Drawing.Point(369, 10)
+        Me.chkWriteGenre.Location = New System.Drawing.Point(449, 10)
         Me.chkWriteGenre.Name = "chkWriteGenre"
         Me.chkWriteGenre.Size = New System.Drawing.Size(190, 17)
         Me.chkWriteGenre.TabIndex = 20
@@ -1039,7 +1042,7 @@ Partial Class frmMain
         Me.chkRemoveLowResArtwork.Checked = Global.iTSfv.My.MySettings.Default.RemoveLowResArtwork
         Me.chkRemoveLowResArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveLowResArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.chkRemoveLowResArtwork.ForeColor = System.Drawing.Color.Red
-        Me.chkRemoveLowResArtwork.Location = New System.Drawing.Point(369, 56)
+        Me.chkRemoveLowResArtwork.Location = New System.Drawing.Point(449, 56)
         Me.chkRemoveLowResArtwork.Name = "chkRemoveLowResArtwork"
         Me.chkRemoveLowResArtwork.Size = New System.Drawing.Size(171, 17)
         Me.chkRemoveLowResArtwork.TabIndex = 15
@@ -1052,7 +1055,7 @@ Partial Class frmMain
         Me.chkUpdateInfoFromFile.AutoSize = True
         Me.chkUpdateInfoFromFile.Checked = Global.iTSfv.My.MySettings.Default.UpdateInfoFromFile
         Me.chkUpdateInfoFromFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "UpdateInfoFromFile", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkUpdateInfoFromFile.Location = New System.Drawing.Point(369, 33)
+        Me.chkUpdateInfoFromFile.Location = New System.Drawing.Point(449, 33)
         Me.chkUpdateInfoFromFile.Name = "chkUpdateInfoFromFile"
         Me.chkUpdateInfoFromFile.Size = New System.Drawing.Size(210, 17)
         Me.chkUpdateInfoFromFile.TabIndex = 19
@@ -1098,7 +1101,7 @@ Partial Class frmMain
         Me.tpEditLibrary.ImageKey = "database_edit.png"
         Me.tpEditLibrary.Location = New System.Drawing.Point(4, 23)
         Me.tpEditLibrary.Name = "tpEditLibrary"
-        Me.tpEditLibrary.Size = New System.Drawing.Size(659, 184)
+        Me.tpEditLibrary.Size = New System.Drawing.Size(739, 266)
         Me.tpEditLibrary.TabIndex = 2
         Me.tpEditLibrary.Text = "Library"
         Me.ttApp.SetToolTip(Me.tpEditLibrary, "This tab consists of operations that modifies the iTunes Library playlist. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This" & _
@@ -1134,7 +1137,7 @@ Partial Class frmMain
         Me.btnValidateSelectedTracksLibrary.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnValidateSelectedTracksLibrary.AutoSize = True
         Me.btnValidateSelectedTracksLibrary.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnValidateSelectedTracksLibrary.Location = New System.Drawing.Point(451, 144)
+        Me.btnValidateSelectedTracksLibrary.Location = New System.Drawing.Point(531, 226)
         Me.btnValidateSelectedTracksLibrary.Name = "btnValidateSelectedTracksLibrary"
         Me.btnValidateSelectedTracksLibrary.Size = New System.Drawing.Size(188, 25)
         Me.btnValidateSelectedTracksLibrary.TabIndex = 17
@@ -1187,7 +1190,7 @@ Partial Class frmMain
         Me.tpFileSystem.ImageKey = "folder_edit.png"
         Me.tpFileSystem.Location = New System.Drawing.Point(4, 23)
         Me.tpFileSystem.Name = "tpFileSystem"
-        Me.tpFileSystem.Size = New System.Drawing.Size(659, 184)
+        Me.tpFileSystem.Size = New System.Drawing.Size(739, 266)
         Me.tpFileSystem.TabIndex = 3
         Me.tpFileSystem.Text = "File System"
         Me.ttApp.SetToolTip(Me.tpFileSystem, "This tab consists of operations that interacts with the Windows file system. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Th" & _
@@ -1199,7 +1202,7 @@ Partial Class frmMain
         Me.btnValidateSelectedTracksFolder.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnValidateSelectedTracksFolder.AutoSize = True
         Me.btnValidateSelectedTracksFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnValidateSelectedTracksFolder.Location = New System.Drawing.Point(451, 144)
+        Me.btnValidateSelectedTracksFolder.Location = New System.Drawing.Point(531, 226)
         Me.btnValidateSelectedTracksFolder.Name = "btnValidateSelectedTracksFolder"
         Me.btnValidateSelectedTracksFolder.Size = New System.Drawing.Size(188, 25)
         Me.btnValidateSelectedTracksFolder.TabIndex = 16
@@ -1292,7 +1295,7 @@ Partial Class frmMain
         Me.tpSelectedTracks.Location = New System.Drawing.Point(4, 23)
         Me.tpSelectedTracks.Name = "tpSelectedTracks"
         Me.tpSelectedTracks.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSelectedTracks.Size = New System.Drawing.Size(673, 217)
+        Me.tpSelectedTracks.Size = New System.Drawing.Size(753, 299)
         Me.tpSelectedTracks.TabIndex = 1
         Me.tpSelectedTracks.Text = "Selected Tracks"
         Me.tpSelectedTracks.UseVisualStyleBackColor = True
@@ -1308,7 +1311,7 @@ Partial Class frmMain
         Me.tcSelectedTracks.Location = New System.Drawing.Point(3, 3)
         Me.tcSelectedTracks.Name = "tcSelectedTracks"
         Me.tcSelectedTracks.SelectedIndex = 0
-        Me.tcSelectedTracks.Size = New System.Drawing.Size(667, 211)
+        Me.tcSelectedTracks.Size = New System.Drawing.Size(747, 293)
         Me.tcSelectedTracks.TabIndex = 15
         '
         'tpEditor
@@ -1338,7 +1341,7 @@ Partial Class frmMain
         Me.tpEditor.Location = New System.Drawing.Point(4, 23)
         Me.tpEditor.Name = "tpEditor"
         Me.tpEditor.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpEditor.Size = New System.Drawing.Size(659, 184)
+        Me.tpEditor.Size = New System.Drawing.Size(739, 266)
         Me.tpEditor.TabIndex = 1
         Me.tpEditor.Text = "Editor"
         Me.tpEditor.UseVisualStyleBackColor = True
@@ -1642,7 +1645,7 @@ Partial Class frmMain
         Me.tpSTClipboard.Location = New System.Drawing.Point(4, 23)
         Me.tpSTClipboard.Name = "tpSTClipboard"
         Me.tpSTClipboard.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSTClipboard.Size = New System.Drawing.Size(659, 184)
+        Me.tpSTClipboard.Size = New System.Drawing.Size(739, 266)
         Me.tpSTClipboard.TabIndex = 4
         Me.tpSTClipboard.Text = "Clipboard"
         Me.tpSTClipboard.UseVisualStyleBackColor = True
@@ -1653,7 +1656,7 @@ Partial Class frmMain
         Me.chkClipboardSort.AutoSize = True
         Me.chkClipboardSort.Checked = True
         Me.chkClipboardSort.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkClipboardSort.Location = New System.Drawing.Point(16, 152)
+        Me.chkClipboardSort.Location = New System.Drawing.Point(16, 234)
         Me.chkClipboardSort.Name = "chkClipboardSort"
         Me.chkClipboardSort.Size = New System.Drawing.Size(113, 17)
         Me.chkClipboardSort.TabIndex = 2
@@ -1669,7 +1672,7 @@ Partial Class frmMain
         Me.gbClipBoardTags.Controls.Add(Me.cboClipboardPattern)
         Me.gbClipBoardTags.Location = New System.Drawing.Point(10, 10)
         Me.gbClipBoardTags.Name = "gbClipBoardTags"
-        Me.gbClipBoardTags.Size = New System.Drawing.Size(626, 132)
+        Me.gbClipBoardTags.Size = New System.Drawing.Size(706, 214)
         Me.gbClipBoardTags.TabIndex = 1
         Me.gbClipBoardTags.TabStop = False
         Me.gbClipBoardTags.Text = "Use the following pattern"
@@ -1684,7 +1687,7 @@ Partial Class frmMain
         Me.lblClipboard.Name = "lblClipboard"
         Me.lblClipboard.ReadOnly = True
         Me.lblClipboard.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.lblClipboard.Size = New System.Drawing.Size(614, 80)
+        Me.lblClipboard.Size = New System.Drawing.Size(694, 162)
         Me.lblClipboard.TabIndex = 3
         '
         'cboClipboardPattern
@@ -1694,14 +1697,14 @@ Partial Class frmMain
         Me.cboClipboardPattern.FormattingEnabled = True
         Me.cboClipboardPattern.Location = New System.Drawing.Point(6, 19)
         Me.cboClipboardPattern.Name = "cboClipboardPattern"
-        Me.cboClipboardPattern.Size = New System.Drawing.Size(614, 21)
+        Me.cboClipboardPattern.Size = New System.Drawing.Size(694, 21)
         Me.cboClipboardPattern.Sorted = True
         Me.cboClipboardPattern.TabIndex = 2
         '
         'btnClipboard
         '
         Me.btnClipboard.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnClipboard.Location = New System.Drawing.Point(451, 148)
+        Me.btnClipboard.Location = New System.Drawing.Point(531, 230)
         Me.btnClipboard.Name = "btnClipboard"
         Me.btnClipboard.Size = New System.Drawing.Size(179, 23)
         Me.btnClipboard.TabIndex = 0
@@ -1716,7 +1719,7 @@ Partial Class frmMain
         Me.tpSTCheat.Location = New System.Drawing.Point(4, 23)
         Me.tpSTCheat.Name = "tpSTCheat"
         Me.tpSTCheat.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSTCheat.Size = New System.Drawing.Size(659, 184)
+        Me.tpSTCheat.Size = New System.Drawing.Size(739, 266)
         Me.tpSTCheat.TabIndex = 5
         Me.tpSTCheat.Text = "Cheat"
         Me.tpSTCheat.UseVisualStyleBackColor = True
@@ -1725,7 +1728,7 @@ Partial Class frmMain
         '
         Me.gbOffset.Controls.Add(Me.nudOffsetTrackNum)
         Me.gbOffset.Controls.Add(Me.btnOffsetTrackNum)
-        Me.gbOffset.Location = New System.Drawing.Point(11, 94)
+        Me.gbOffset.Location = New System.Drawing.Point(11, 124)
         Me.gbOffset.Name = "gbOffset"
         Me.gbOffset.Size = New System.Drawing.Size(630, 56)
         Me.gbOffset.TabIndex = 6
@@ -1751,30 +1754,50 @@ Partial Class frmMain
         '
         'gbOverride
         '
-        Me.gbOverride.Controls.Add(Me.nudPlayedCount)
+        Me.gbOverride.Controls.Add(Me.nudRatingOverride)
+        Me.gbOverride.Controls.Add(Me.chkRatingOverride)
+        Me.gbOverride.Controls.Add(Me.nudPlayedCountOverride)
         Me.gbOverride.Controls.Add(Me.chkPlayedCountOverride)
         Me.gbOverride.Controls.Add(Me.btnOverride)
         Me.gbOverride.Controls.Add(Me.dtpPlayedDate)
         Me.gbOverride.Controls.Add(Me.chkPlayedDateOverride)
         Me.gbOverride.Location = New System.Drawing.Point(11, 13)
         Me.gbOverride.Name = "gbOverride"
-        Me.gbOverride.Size = New System.Drawing.Size(630, 75)
+        Me.gbOverride.Size = New System.Drawing.Size(630, 105)
         Me.gbOverride.TabIndex = 5
         Me.gbOverride.TabStop = False
         Me.gbOverride.Text = "Override"
         '
-        'nudPlayedCount
+        'nudRatingOverride
         '
-        Me.nudPlayedCount.Location = New System.Drawing.Point(182, 43)
-        Me.nudPlayedCount.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
-        Me.nudPlayedCount.Name = "nudPlayedCount"
-        Me.nudPlayedCount.Size = New System.Drawing.Size(131, 20)
-        Me.nudPlayedCount.TabIndex = 4
+        Me.nudRatingOverride.Location = New System.Drawing.Point(182, 68)
+        Me.nudRatingOverride.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
+        Me.nudRatingOverride.Name = "nudRatingOverride"
+        Me.nudRatingOverride.Size = New System.Drawing.Size(131, 20)
+        Me.nudRatingOverride.TabIndex = 6
+        '
+        'chkRatingOverride
+        '
+        Me.chkRatingOverride.AutoSize = True
+        Me.chkRatingOverride.Location = New System.Drawing.Point(9, 68)
+        Me.chkRatingOverride.Name = "chkRatingOverride"
+        Me.chkRatingOverride.Size = New System.Drawing.Size(121, 17)
+        Me.chkRatingOverride.TabIndex = 5
+        Me.chkRatingOverride.Text = "Increment Rating by"
+        Me.chkRatingOverride.UseVisualStyleBackColor = True
+        '
+        'nudPlayedCountOverride
+        '
+        Me.nudPlayedCountOverride.Location = New System.Drawing.Point(182, 42)
+        Me.nudPlayedCountOverride.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
+        Me.nudPlayedCountOverride.Name = "nudPlayedCountOverride"
+        Me.nudPlayedCountOverride.Size = New System.Drawing.Size(131, 20)
+        Me.nudPlayedCountOverride.TabIndex = 4
         '
         'chkPlayedCountOverride
         '
         Me.chkPlayedCountOverride.AutoSize = True
-        Me.chkPlayedCountOverride.Location = New System.Drawing.Point(9, 43)
+        Me.chkPlayedCountOverride.Location = New System.Drawing.Point(9, 42)
         Me.chkPlayedCountOverride.Name = "chkPlayedCountOverride"
         Me.chkPlayedCountOverride.Size = New System.Drawing.Size(153, 17)
         Me.chkPlayedCountOverride.TabIndex = 3
@@ -1783,7 +1806,7 @@ Partial Class frmMain
         '
         'btnOverride
         '
-        Me.btnOverride.Location = New System.Drawing.Point(319, 43)
+        Me.btnOverride.Location = New System.Drawing.Point(549, 76)
         Me.btnOverride.Name = "btnOverride"
         Me.btnOverride.Size = New System.Drawing.Size(75, 23)
         Me.btnOverride.TabIndex = 2
@@ -1819,7 +1842,7 @@ Partial Class frmMain
         Me.tpSTExport.Location = New System.Drawing.Point(4, 23)
         Me.tpSTExport.Name = "tpSTExport"
         Me.tpSTExport.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSTExport.Size = New System.Drawing.Size(659, 184)
+        Me.tpSTExport.Size = New System.Drawing.Size(739, 266)
         Me.tpSTExport.TabIndex = 6
         Me.tpSTExport.Text = "Export"
         Me.tpSTExport.UseVisualStyleBackColor = True
@@ -1831,7 +1854,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.btnArtworkExport)
         Me.GroupBox1.Location = New System.Drawing.Point(10, 100)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(610, 55)
+        Me.GroupBox1.Size = New System.Drawing.Size(690, 55)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "iTunes Album Art (requires an iTunes Store account)"
@@ -1855,7 +1878,7 @@ Partial Class frmMain
         Me.GroupBox2.Controls.Add(Me.btnCopyTo)
         Me.GroupBox2.Location = New System.Drawing.Point(10, 10)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(610, 84)
+        Me.GroupBox2.Size = New System.Drawing.Size(690, 84)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Export Tracks with the following File Pattern"
@@ -1879,7 +1902,7 @@ Partial Class frmMain
         Me.cboExportFilePattern.FormattingEnabled = True
         Me.cboExportFilePattern.Location = New System.Drawing.Point(15, 22)
         Me.cboExportFilePattern.Name = "cboExportFilePattern"
-        Me.cboExportFilePattern.Size = New System.Drawing.Size(564, 21)
+        Me.cboExportFilePattern.Size = New System.Drawing.Size(644, 21)
         Me.cboExportFilePattern.Sorted = True
         Me.cboExportFilePattern.TabIndex = 1
         '
@@ -1901,7 +1924,7 @@ Partial Class frmMain
         Me.tpExplorer.Location = New System.Drawing.Point(4, 23)
         Me.tpExplorer.Name = "tpExplorer"
         Me.tpExplorer.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpExplorer.Size = New System.Drawing.Size(673, 217)
+        Me.tpExplorer.Size = New System.Drawing.Size(753, 299)
         Me.tpExplorer.TabIndex = 3
         Me.tpExplorer.Text = "Explorer"
         Me.tpExplorer.UseVisualStyleBackColor = True
@@ -1914,7 +1937,7 @@ Partial Class frmMain
         Me.tcExplorer.Location = New System.Drawing.Point(3, 3)
         Me.tcExplorer.Name = "tcExplorer"
         Me.tcExplorer.SelectedIndex = 0
-        Me.tcExplorer.Size = New System.Drawing.Size(667, 211)
+        Me.tcExplorer.Size = New System.Drawing.Size(747, 293)
         Me.tcExplorer.TabIndex = 18
         '
         'tpExplorerFiles
@@ -1928,7 +1951,7 @@ Partial Class frmMain
         Me.tpExplorerFiles.Location = New System.Drawing.Point(4, 22)
         Me.tpExplorerFiles.Name = "tpExplorerFiles"
         Me.tpExplorerFiles.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpExplorerFiles.Size = New System.Drawing.Size(659, 185)
+        Me.tpExplorerFiles.Size = New System.Drawing.Size(739, 267)
         Me.tpExplorerFiles.TabIndex = 0
         Me.tpExplorerFiles.Text = "Files"
         Me.tpExplorerFiles.UseVisualStyleBackColor = True
@@ -1937,7 +1960,7 @@ Partial Class frmMain
         '
         Me.chkReplaceWithNewKind.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkReplaceWithNewKind.AutoSize = True
-        Me.chkReplaceWithNewKind.Location = New System.Drawing.Point(392, 6)
+        Me.chkReplaceWithNewKind.Location = New System.Drawing.Point(472, 6)
         Me.chkReplaceWithNewKind.Name = "chkReplaceWithNewKind"
         Me.chkReplaceWithNewKind.Size = New System.Drawing.Size(255, 17)
         Me.chkReplaceWithNewKind.TabIndex = 2
@@ -1951,7 +1974,7 @@ Partial Class frmMain
         Me.chkValidate.Checked = Global.iTSfv.My.MySettings.Default.ValidateAfterAdding
         Me.chkValidate.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkValidate.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ValidateAfterAdding", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkValidate.Location = New System.Drawing.Point(392, 52)
+        Me.chkValidate.Location = New System.Drawing.Point(472, 52)
         Me.chkValidate.Name = "chkValidate"
         Me.chkValidate.Size = New System.Drawing.Size(236, 17)
         Me.chkValidate.TabIndex = 5
@@ -1971,7 +1994,7 @@ Partial Class frmMain
         Me.lbFiles.Name = "lbFiles"
         Me.lbFiles.ScrollAlwaysVisible = True
         Me.lbFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lbFiles.Size = New System.Drawing.Size(371, 169)
+        Me.lbFiles.Size = New System.Drawing.Size(451, 247)
         Me.lbFiles.Sorted = True
         Me.lbFiles.TabIndex = 0
         '
@@ -2000,7 +2023,7 @@ Partial Class frmMain
         Me.chkAddFile.Checked = Global.iTSfv.My.MySettings.Default.AddNewFilesAfterScan
         Me.chkAddFile.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkAddFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "AddNewFilesAfterScan", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkAddFile.Location = New System.Drawing.Point(392, 29)
+        Me.chkAddFile.Location = New System.Drawing.Point(472, 29)
         Me.chkAddFile.Name = "chkAddFile"
         Me.chkAddFile.Size = New System.Drawing.Size(253, 17)
         Me.chkAddFile.TabIndex = 3
@@ -2013,7 +2036,7 @@ Partial Class frmMain
         Me.btnFindNewFiles.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnFindNewFiles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btnFindNewFiles.Image = Global.iTSfv.My.Resources.Resources.folder_find
-        Me.btnFindNewFiles.Location = New System.Drawing.Point(392, 109)
+        Me.btnFindNewFiles.Location = New System.Drawing.Point(472, 109)
         Me.btnFindNewFiles.Name = "btnFindNewFiles"
         Me.btnFindNewFiles.Size = New System.Drawing.Size(238, 23)
         Me.btnFindNewFiles.TabIndex = 1
@@ -2024,7 +2047,7 @@ Partial Class frmMain
         'btnClearFilesListBox
         '
         Me.btnClearFilesListBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnClearFilesListBox.Location = New System.Drawing.Point(392, 138)
+        Me.btnClearFilesListBox.Location = New System.Drawing.Point(472, 138)
         Me.btnClearFilesListBox.Name = "btnClearFilesListBox"
         Me.btnClearFilesListBox.Size = New System.Drawing.Size(238, 23)
         Me.btnClearFilesListBox.TabIndex = 4
@@ -2037,7 +2060,7 @@ Partial Class frmMain
         Me.tpExplorerActivity.Location = New System.Drawing.Point(4, 22)
         Me.tpExplorerActivity.Name = "tpExplorerActivity"
         Me.tpExplorerActivity.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpExplorerActivity.Size = New System.Drawing.Size(659, 185)
+        Me.tpExplorerActivity.Size = New System.Drawing.Size(739, 267)
         Me.tpExplorerActivity.TabIndex = 1
         Me.tpExplorerActivity.Text = "Activity"
         Me.tpExplorerActivity.UseVisualStyleBackColor = True
@@ -2050,7 +2073,7 @@ Partial Class frmMain
         Me.txtActivity.Name = "txtActivity"
         Me.txtActivity.ReadOnly = True
         Me.txtActivity.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtActivity.Size = New System.Drawing.Size(653, 179)
+        Me.txtActivity.Size = New System.Drawing.Size(733, 261)
         Me.txtActivity.TabIndex = 0
         '
         'tpDiscsBrowser
@@ -2064,7 +2087,7 @@ Partial Class frmMain
         Me.tpDiscsBrowser.Location = New System.Drawing.Point(4, 23)
         Me.tpDiscsBrowser.Name = "tpDiscsBrowser"
         Me.tpDiscsBrowser.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpDiscsBrowser.Size = New System.Drawing.Size(673, 217)
+        Me.tpDiscsBrowser.Size = New System.Drawing.Size(753, 299)
         Me.tpDiscsBrowser.TabIndex = 4
         Me.tpDiscsBrowser.Text = "Discs Browser"
         Me.tpDiscsBrowser.UseVisualStyleBackColor = True
@@ -2106,7 +2129,7 @@ Partial Class frmMain
         Me.lbDiscs.HorizontalScrollbar = True
         Me.lbDiscs.Location = New System.Drawing.Point(112, 6)
         Me.lbDiscs.Name = "lbDiscs"
-        Me.lbDiscs.Size = New System.Drawing.Size(552, 199)
+        Me.lbDiscs.Size = New System.Drawing.Size(632, 277)
         Me.lbDiscs.Sorted = True
         Me.lbDiscs.TabIndex = 0
         '
@@ -2195,7 +2218,7 @@ Partial Class frmMain
         Me.tpBackupRestore.Location = New System.Drawing.Point(4, 23)
         Me.tpBackupRestore.Name = "tpBackupRestore"
         Me.tpBackupRestore.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpBackupRestore.Size = New System.Drawing.Size(673, 217)
+        Me.tpBackupRestore.Size = New System.Drawing.Size(753, 299)
         Me.tpBackupRestore.TabIndex = 5
         Me.tpBackupRestore.Text = "Tags"
         Me.tpBackupRestore.UseVisualStyleBackColor = True
@@ -2208,7 +2231,7 @@ Partial Class frmMain
         Me.tcTags.Location = New System.Drawing.Point(3, 3)
         Me.tcTags.Name = "tcTags"
         Me.tcTags.SelectedIndex = 0
-        Me.tcTags.Size = New System.Drawing.Size(667, 211)
+        Me.tcTags.Size = New System.Drawing.Size(747, 293)
         Me.tcTags.TabIndex = 18
         '
         'tpTagsBackupRestore
@@ -2218,7 +2241,7 @@ Partial Class frmMain
         Me.tpTagsBackupRestore.Location = New System.Drawing.Point(4, 22)
         Me.tpTagsBackupRestore.Name = "tpTagsBackupRestore"
         Me.tpTagsBackupRestore.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpTagsBackupRestore.Size = New System.Drawing.Size(659, 185)
+        Me.tpTagsBackupRestore.Size = New System.Drawing.Size(739, 267)
         Me.tpTagsBackupRestore.TabIndex = 0
         Me.tpTagsBackupRestore.Text = "Backup/Restore"
         Me.tpTagsBackupRestore.UseVisualStyleBackColor = True
@@ -2310,7 +2333,7 @@ Partial Class frmMain
         Me.tpTagsRecover.Location = New System.Drawing.Point(4, 22)
         Me.tpTagsRecover.Name = "tpTagsRecover"
         Me.tpTagsRecover.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpTagsRecover.Size = New System.Drawing.Size(659, 185)
+        Me.tpTagsRecover.Size = New System.Drawing.Size(739, 267)
         Me.tpTagsRecover.TabIndex = 1
         Me.tpTagsRecover.Text = "Recover"
         Me.tpTagsRecover.UseVisualStyleBackColor = True
@@ -2350,7 +2373,7 @@ Partial Class frmMain
         Me.tpOneTouch.Location = New System.Drawing.Point(4, 23)
         Me.tpOneTouch.Name = "tpOneTouch"
         Me.tpOneTouch.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpOneTouch.Size = New System.Drawing.Size(673, 217)
+        Me.tpOneTouch.Size = New System.Drawing.Size(753, 299)
         Me.tpOneTouch.TabIndex = 6
         Me.tpOneTouch.Text = "OneTouch"
         Me.tpOneTouch.UseVisualStyleBackColor = True
@@ -2366,7 +2389,7 @@ Partial Class frmMain
         Me.tcOneTouch.Location = New System.Drawing.Point(3, 3)
         Me.tcOneTouch.Name = "tcOneTouch"
         Me.tcOneTouch.SelectedIndex = 0
-        Me.tcOneTouch.Size = New System.Drawing.Size(667, 211)
+        Me.tcOneTouch.Size = New System.Drawing.Size(747, 293)
         Me.tcOneTouch.TabIndex = 11
         '
         'tpAdvGeneral
@@ -2377,7 +2400,7 @@ Partial Class frmMain
         Me.tpAdvGeneral.Location = New System.Drawing.Point(4, 23)
         Me.tpAdvGeneral.Name = "tpAdvGeneral"
         Me.tpAdvGeneral.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpAdvGeneral.Size = New System.Drawing.Size(659, 184)
+        Me.tpAdvGeneral.Size = New System.Drawing.Size(739, 266)
         Me.tpAdvGeneral.TabIndex = 0
         Me.tpAdvGeneral.Text = "General"
         Me.tpAdvGeneral.UseVisualStyleBackColor = True
@@ -2402,7 +2425,7 @@ Partial Class frmMain
         Me.tpAdvTracks.Location = New System.Drawing.Point(4, 23)
         Me.tpAdvTracks.Name = "tpAdvTracks"
         Me.tpAdvTracks.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpAdvTracks.Size = New System.Drawing.Size(659, 184)
+        Me.tpAdvTracks.Size = New System.Drawing.Size(739, 266)
         Me.tpAdvTracks.TabIndex = 3
         Me.tpAdvTracks.Text = "Tracks"
         Me.tpAdvTracks.UseVisualStyleBackColor = True
@@ -2447,7 +2470,7 @@ Partial Class frmMain
         Me.tpAdvLibrary.Location = New System.Drawing.Point(4, 23)
         Me.tpAdvLibrary.Name = "tpAdvLibrary"
         Me.tpAdvLibrary.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpAdvLibrary.Size = New System.Drawing.Size(659, 184)
+        Me.tpAdvLibrary.Size = New System.Drawing.Size(739, 266)
         Me.tpAdvLibrary.TabIndex = 1
         Me.tpAdvLibrary.Text = "Library"
         Me.tpAdvLibrary.UseVisualStyleBackColor = True
@@ -2514,7 +2537,7 @@ Partial Class frmMain
         Me.tpAdvFilesystem.Location = New System.Drawing.Point(4, 23)
         Me.tpAdvFilesystem.Name = "tpAdvFilesystem"
         Me.tpAdvFilesystem.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpAdvFilesystem.Size = New System.Drawing.Size(659, 184)
+        Me.tpAdvFilesystem.Size = New System.Drawing.Size(739, 266)
         Me.tpAdvFilesystem.TabIndex = 4
         Me.tpAdvFilesystem.Text = "File System"
         Me.tpAdvFilesystem.UseVisualStyleBackColor = True
@@ -2554,7 +2577,7 @@ Partial Class frmMain
         Me.tpSchedule.Location = New System.Drawing.Point(4, 23)
         Me.tpSchedule.Name = "tpSchedule"
         Me.tpSchedule.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpSchedule.Size = New System.Drawing.Size(673, 217)
+        Me.tpSchedule.Size = New System.Drawing.Size(753, 299)
         Me.tpSchedule.TabIndex = 7
         Me.tpSchedule.Text = "Scheduled Tasks"
         Me.tpSchedule.UseVisualStyleBackColor = True
@@ -2565,7 +2588,7 @@ Partial Class frmMain
         Me.btnSchRun.AutoSize = True
         Me.btnSchRun.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btnSchRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSchRun.Location = New System.Drawing.Point(509, 176)
+        Me.btnSchRun.Location = New System.Drawing.Point(589, 258)
         Me.btnSchRun.Name = "btnSchRun"
         Me.btnSchRun.Size = New System.Drawing.Size(150, 25)
         Me.btnSchRun.TabIndex = 3
@@ -2611,7 +2634,7 @@ Partial Class frmMain
         Me.btnValidateSelected.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnValidateSelected.Enabled = False
         Me.btnValidateSelected.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnValidateSelected.Location = New System.Drawing.Point(313, 6)
+        Me.btnValidateSelected.Location = New System.Drawing.Point(393, 6)
         Me.btnValidateSelected.Name = "btnValidateSelected"
         Me.btnValidateSelected.Size = New System.Drawing.Size(140, 22)
         Me.btnValidateSelected.TabIndex = 0
@@ -2647,7 +2670,7 @@ Partial Class frmMain
         Me.msApp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.miJobs, Me.LogsToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.FoldersToolStripMenuItem, Me.SelectedTracksToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.msApp.Location = New System.Drawing.Point(0, 0)
         Me.msApp.Name = "msApp"
-        Me.msApp.Size = New System.Drawing.Size(704, 24)
+        Me.msApp.Size = New System.Drawing.Size(784, 24)
         Me.msApp.TabIndex = 17
         Me.msApp.Text = "MenuStrip1"
         '
@@ -3460,7 +3483,7 @@ Partial Class frmMain
         '
         Me.chkDiscComplete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkDiscComplete.AutoSize = True
-        Me.chkDiscComplete.Location = New System.Drawing.Point(87, 11)
+        Me.chkDiscComplete.Location = New System.Drawing.Point(167, 11)
         Me.chkDiscComplete.Name = "chkDiscComplete"
         Me.chkDiscComplete.Size = New System.Drawing.Size(213, 17)
         Me.chkDiscComplete.TabIndex = 18
@@ -3470,9 +3493,9 @@ Partial Class frmMain
         'ssAppDisc
         '
         Me.ssAppDisc.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.sBarDisc, Me.pBarDiscs})
-        Me.ssAppDisc.Location = New System.Drawing.Point(0, 409)
+        Me.ssAppDisc.Location = New System.Drawing.Point(0, 518)
         Me.ssAppDisc.Name = "ssAppDisc"
-        Me.ssAppDisc.Size = New System.Drawing.Size(704, 22)
+        Me.ssAppDisc.Size = New System.Drawing.Size(784, 22)
         Me.ssAppDisc.SizingGrip = False
         Me.ssAppDisc.TabIndex = 19
         Me.ssAppDisc.Text = "StatusStrip1"
@@ -3491,7 +3514,7 @@ Partial Class frmMain
         Me.sBarDisc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.sBarDisc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.sBarDisc.Name = "sBarDisc"
-        Me.sBarDisc.Size = New System.Drawing.Size(571, 17)
+        Me.sBarDisc.Size = New System.Drawing.Size(651, 17)
         Me.sBarDisc.Spring = True
         Me.sBarDisc.Text = "Ready."
         Me.sBarDisc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -3510,10 +3533,10 @@ Partial Class frmMain
         Me.lbVerbose.BackColor = System.Drawing.SystemColors.Control
         Me.lbVerbose.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbVerbose.FormattingEnabled = True
-        Me.lbVerbose.Location = New System.Drawing.Point(3, 290)
+        Me.lbVerbose.Location = New System.Drawing.Point(3, 372)
         Me.lbVerbose.Name = "lbVerbose"
         Me.lbVerbose.ScrollAlwaysVisible = True
-        Me.lbVerbose.Size = New System.Drawing.Size(681, 69)
+        Me.lbVerbose.Size = New System.Drawing.Size(761, 95)
         Me.lbVerbose.TabIndex = 20
         '
         'bwQueueFiles
@@ -3536,7 +3559,7 @@ Partial Class frmMain
         Me.tlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
         Me.tlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
         Me.tlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.tlpMain.Size = New System.Drawing.Size(687, 371)
+        Me.tlpMain.Size = New System.Drawing.Size(767, 480)
         Me.tlpMain.TabIndex = 21
         '
         'TableLayoutPanel2
@@ -3551,11 +3574,11 @@ Partial Class frmMain
         Me.TableLayoutPanel2.Controls.Add(Me.btnStatistics, 3, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnStop, 0, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 253)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 335)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(681, 31)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(761, 31)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'btnStatistics
@@ -3564,7 +3587,7 @@ Partial Class frmMain
         Me.btnStatistics.AutoSize = True
         Me.btnStatistics.ImageKey = "chart_bar.png"
         Me.btnStatistics.ImageList = Me.ilTabs
-        Me.btnStatistics.Location = New System.Drawing.Point(459, 5)
+        Me.btnStatistics.Location = New System.Drawing.Point(539, 5)
         Me.btnStatistics.Name = "btnStatistics"
         Me.btnStatistics.Size = New System.Drawing.Size(219, 23)
         Me.btnStatistics.TabIndex = 10
@@ -3592,7 +3615,7 @@ Partial Class frmMain
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(704, 453)
+        Me.ClientSize = New System.Drawing.Size(784, 562)
         Me.ContextMenuStrip = Me.cmsApp
         Me.Controls.Add(Me.ssAppDisc)
         Me.Controls.Add(Me.ssAppTrack)
@@ -3633,7 +3656,8 @@ Partial Class frmMain
         CType(Me.nudOffsetTrackNum, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbOverride.ResumeLayout(False)
         Me.gbOverride.PerformLayout()
-        CType(Me.nudPlayedCount, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudRatingOverride, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudPlayedCountOverride, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpSTExport.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -3766,7 +3790,7 @@ Partial Class frmMain
     Friend WithEvents btnSynchroclean As System.Windows.Forms.Button
     Friend WithEvents tpSTCheat As System.Windows.Forms.TabPage
     Friend WithEvents chkPlayedDateOverride As System.Windows.Forms.CheckBox
-    Friend WithEvents nudPlayedCount As System.Windows.Forms.NumericUpDown
+    Friend WithEvents nudPlayedCountOverride As System.Windows.Forms.NumericUpDown
     Friend WithEvents chkPlayedCountOverride As System.Windows.Forms.CheckBox
     Friend WithEvents btnOverride As System.Windows.Forms.Button
     Friend WithEvents dtpPlayedDate As System.Windows.Forms.DateTimePicker
@@ -4051,5 +4075,7 @@ Partial Class frmMain
     Friend WithEvents chkPlayedCountImportPCNT As System.Windows.Forms.CheckBox
     Friend WithEvents GoogleGroupsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProjectHomeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents nudRatingOverride As System.Windows.Forms.NumericUpDown
+    Friend WithEvents chkRatingOverride As System.Windows.Forms.CheckBox
 End Class
 
