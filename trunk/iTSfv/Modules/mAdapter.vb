@@ -640,24 +640,24 @@ Public Module mAdapter
             str = mfGetFixedString(str)
             str = mfStripHTMLTags(str)
 
-            If str.IndexOf(vbCrlf) = -1 Then
-                Console.WriteLine(str)
-                ' split lines
-                str = str.Replace(". ", ",")
-                Dim lyrics() As String = str.Split(CChar(","))
-                Dim sbLyrics As New StringBuilder
-                For Each l As String In lyrics
-                    Console.WriteLine(l)
-                    If l.Length < 20 Then
-                        sbLyrics.Append(l)
-                        sbLyrics.Append(", ")
+            'If str.IndexOf(vbCrlf) = -1 Then
+            '    Console.WriteLine(str)
+            '    ' split lines
+            '    str = str.Replace(". ", ",")
+            '    Dim lyrics() As String = str.Split(CChar(","))
+            '    Dim sbLyrics As New StringBuilder
+            '    For Each l As String In lyrics
+            '        Console.WriteLine(l)
+            '        If l.Length < 20 Then
+            '            sbLyrics.Append(l)
+            '            sbLyrics.Append(", ")
 
-                    Else
-                        sbLyrics.AppendLine(l.Trim)
-                    End If
-                Next
-                str = sbLyrics.ToString
-            End If
+            '        Else
+            '            sbLyrics.AppendLine(l.Trim)
+            '        End If
+            '    Next
+            '    str = sbLyrics.ToString
+            'End If
 
         End If
 
