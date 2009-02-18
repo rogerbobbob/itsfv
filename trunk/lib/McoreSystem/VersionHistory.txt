@@ -1,5 +1,6 @@
 Version History
 
+1.14.0.0 New UpdateChecker class for GoogleCode {Jaex}
 1.13.2.1 New Versions were mistakenly announced as Beta Versions
 1.13.2.0 Multiple application update check locations are now supported
 1.13.1.0 Multiple application download directory locations are now supported
