@@ -1,5 +1,6 @@
 Version 5.60 - 20090715
 
+5.61.00.1 iTSfv will not attempt to replace ", " by a new Line or any other built-in string replacements anymore [ptha]
 5.61.00.0 Ability to manually override Rating including half ratings by incrementing from -100 to 100. [ptha]
 5.60.25.2 Conversion from string "" to type 'Integer' is not valid. while reading last.fm charts... [EvilPuppetMaster]
 5.60.25.1 Fixed System.ArgumentNullException: Value cannot be null error on new when no WMP is installed [RGB]
