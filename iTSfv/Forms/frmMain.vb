@@ -5212,7 +5212,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
             Dim finishTime As Date = Now
             Dim diff As TimeSpan = finishTime - startTime
-            msAppendDebug(String.Format("Duration: {0}", fGetHMStoString(diff.TotalSeconds).ToString))
+            msAppendDebug(String.Format("Duration: {0}", fGetHMStoString(diff.TotalSeconds)))
 
             bwApp.ReportProgress(ProgressType.CLEANING_TEMP_DIR)
             msAppendDebug(String.Format("Cleaning Temporary Files... in {0}", My.Settings.TempDir))

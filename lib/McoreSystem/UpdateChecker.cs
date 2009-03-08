@@ -44,6 +44,8 @@ namespace McoreSystem
                 if (!string.IsNullOrEmpty(updateValues[1]) && new Version(updateValues[1]).CompareTo(new Version(Application.ProductVersion)) > 0)
                 {
                     StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("New version available");
+                    sb.AppendLine();
                     sb.AppendLine("Current version:\t" + Application.ProductVersion);
                     sb.AppendLine("Latest version:\t" + updateValues[1]);
                     sb.AppendLine();
@@ -51,7 +53,7 @@ namespace McoreSystem
                     sb.AppendLine();
                     sb.AppendLine("Press OK to download latest version.");
 
-                    if (MessageBox.Show(sb.ToString(), "New version available", MessageBoxButtons.OKCancel,
+                    if (MessageBox.Show(sb.ToString(), Application.ProductName, MessageBoxButtons.OKCancel,
                         MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         Process.Start(updateValues[0]);
