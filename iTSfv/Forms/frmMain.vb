@@ -9488,6 +9488,31 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub ProjectHomeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectHomeToolStripMenuItem.Click
         Process.Start("http://itsfv.googlecode.com")
     End Sub
+
+    Private Sub SaveStatisticsFileAsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveStatisticsFileAsToolStripMenuItem.Click
+        SaveStatisticsFile()
+    End Sub
+
+    Private Sub SaveStatisticsFile()
+
+        If mStatsMaker Is Nothing Then
+            sShowStatistics(mStatsMaker)
+        End If
+
+        If mStatsMaker IsNot Nothing Then
+
+            Dim dlg As New SaveFileDialog
+            dlg.InitialDirectory = My.Settings.LogsDir
+            dlg.Filter = DLG_FILTER_STATS
+            dlg.FileName = String.Format("{0}-{1}-stats.cache", mXmlLibParser.LibraryPersistantID, Now.ToString("yyyyMMdd"))
+            If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
+                mfWriteObjectToFileBF(mStatsMaker, dlg.FileName)
+            End If
+
+        End If
+
+    End Sub
+
 End Class
 
 
