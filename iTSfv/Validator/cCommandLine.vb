@@ -1,4 +1,4 @@
-﻿Imports CommandLineParser
+﻿Imports CommandLineParserLib
 Imports System.Text
 
 Public Class cCommandLine
@@ -22,7 +22,7 @@ Public Class cCommandLine
     Const FLAG_SYNCHROCLEAN As String = "synchroclean"
     Const FLAG_VALIDATE_LIBRARY As String = "validate_library"
 
-    Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParser.CommandLineParser)
+    Private Sub SetupCommandLineEntries(ByVal parser As CommandLineParserLib.CommandLineParser)
 
         ' create a flag type entry that accepts a -f (file) 
         ' flag, (meaning the next parameter is a file 
@@ -129,7 +129,7 @@ Public Class cCommandLine
         '' ONLY WORKS IF ARGUMENTS ARE SET 
         If Environment.GetCommandLineArgs.Length > 1 Then
 
-            Dim parser As New CommandLineParser.CommandLineParser
+            Dim parser As New CommandLineParserLib.CommandLineParser
             SetupCommandLineEntries(parser)
 
             Dim strArgs As String = Environment.CommandLine

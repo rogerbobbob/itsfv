@@ -637,8 +637,11 @@ Public Module mAdapter
         'End If
 
         If String.IsNullOrEmpty(str) = False Then
+
             str = mfGetFixedString(str)
             str = mfStripHTMLTags(str)
+            str = str.Replace("''", "")
+            str = str.Replace("'''", "")
 
             'If str.IndexOf(vbCrlf) = -1 Then
             '    Console.WriteLine(str)
