@@ -266,7 +266,6 @@
     <Compile Include="Forms\frmVer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="iTunesLib\cIITFileOrCDTrack.vb" />
     <Compile Include="iTunesLib\cITCGen.vb" />
     <Compile Include="Last.fm\cLastFmGenreTagger.vb" />
     <Compile Include="Modules\mAdapter.vb" />
@@ -503,7 +502,7 @@
     <COMReference Include="iTunesLib">
       <Guid>{9E93C96F-CF0D-43F6-8BA8-B807A3370712}</Guid>
       <VersionMajor>1</VersionMajor>
-      <VersionMinor>11</VersionMinor>
+      <VersionMinor>12</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>

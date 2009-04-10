@@ -23,7 +23,7 @@ Imports System.Net.Mail
 Imports iTSfv.cBwJob
 Imports System.ComponentModel
 Imports System.Text
-Imports CommandLineParser
+Imports CommandLineParserLib
 Imports System.Net
 Imports System.Collections.Specialized
 
