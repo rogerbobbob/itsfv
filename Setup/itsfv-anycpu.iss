@@ -27,7 +27,7 @@
 //#include "scripts\products\jet4sp8.iss"
 
 #define ExeName "iTSfv"		
-#define ExePath "H:\Users\Mihajlo\Documents\Visual Studio 2008\Projects\iTSfv\trunk\iTSfv\bin\iTSfv.exe"
+#define ExePath "..\iTSfv\bin\iTSfv.exe"
 #define MyAppVersion GetFileVersion(ExePath)
 
 [CustomMessages]
@@ -92,6 +92,9 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\iTSfv"; Filename: 
 [Run]
 Filename: "{app}\iTSfv.exe"; Description: "{cm:LaunchProgram,iTSfv}"; Flags: nowait postinstall skipifsilent
 ;Filename: "{app}\manual-iTSfv.pdf"; Description: "{cm:LaunchProgram,iTSfv Manual}"; Flags: nowait unchecked postinstall shellexec skipifsilent
+
+[InstallDelete]
+Type: files; Name: "{app}\CommandLineParser.dll"
 
 [Code]
 function InitializeSetup(): Boolean;
