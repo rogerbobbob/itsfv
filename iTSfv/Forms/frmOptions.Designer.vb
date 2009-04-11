@@ -428,6 +428,8 @@ Partial Class frmOptions
         Me.btnApply = New System.Windows.Forms.Button
         Me.btnRestart = New System.Windows.Forms.Button
         Me.hpApp = New System.Windows.Forms.HelpProvider
+        Me.TabPage15 = New System.Windows.Forms.TabPage
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox
         Me.tcOptions.SuspendLayout()
         Me.tpValidate.SuspendLayout()
         Me.tcValidate.SuspendLayout()
@@ -575,6 +577,7 @@ Partial Class frmOptions
         Me.gbArtworkChooseHighRes.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.tpWarnings.SuspendLayout()
+        Me.TabPage15.SuspendLayout()
         Me.SuspendLayout()
         '
         'tcOptions
@@ -1492,7 +1495,6 @@ Partial Class frmOptions
         'TabPage11
         '
         Me.TabPage11.Controls.Add(Me.GroupBox53)
-        Me.TabPage11.Controls.Add(Me.GroupBox34)
         Me.TabPage11.Location = New System.Drawing.Point(4, 22)
         Me.TabPage11.Name = "TabPage11"
         Me.TabPage11.Padding = New System.Windows.Forms.Padding(3)
@@ -1504,7 +1506,7 @@ Partial Class frmOptions
         'GroupBox53
         '
         Me.GroupBox53.Controls.Add(Me.chkRatingUpdateOnlyIfHigher)
-        Me.GroupBox53.Location = New System.Drawing.Point(10, 68)
+        Me.GroupBox53.Location = New System.Drawing.Point(16, 16)
         Me.GroupBox53.Name = "GroupBox53"
         Me.GroupBox53.Size = New System.Drawing.Size(465, 59)
         Me.GroupBox53.TabIndex = 30
@@ -1527,9 +1529,9 @@ Partial Class frmOptions
         '
         Me.GroupBox34.Controls.Add(Me.Label11)
         Me.GroupBox34.Controls.Add(Me.nudPieNumber)
-        Me.GroupBox34.Location = New System.Drawing.Point(10, 10)
+        Me.GroupBox34.Location = New System.Drawing.Point(16, 56)
         Me.GroupBox34.Name = "GroupBox34"
-        Me.GroupBox34.Size = New System.Drawing.Size(465, 52)
+        Me.GroupBox34.Size = New System.Drawing.Size(465, 56)
         Me.GroupBox34.TabIndex = 23
         Me.GroupBox34.TabStop = False
         Me.GroupBox34.Text = "Rules for Statistics"
@@ -3037,6 +3039,7 @@ Partial Class frmOptions
         '
         Me.TabControl1.Controls.Add(Me.tpLibraryRating)
         Me.TabControl1.Controls.Add(Me.tpLibrarySync)
+        Me.TabControl1.Controls.Add(Me.TabPage15)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(3, 3)
         Me.TabControl1.Name = "TabControl1"
@@ -5170,6 +5173,28 @@ Partial Class frmOptions
         Me.btnRestart.UseVisualStyleBackColor = True
         Me.btnRestart.Visible = False
         '
+        'TabPage15
+        '
+        Me.TabPage15.Controls.Add(Me.CheckBox1)
+        Me.TabPage15.Controls.Add(Me.GroupBox34)
+        Me.TabPage15.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage15.Name = "TabPage15"
+        Me.TabPage15.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage15.Size = New System.Drawing.Size(634, 366)
+        Me.TabPage15.TabIndex = 2
+        Me.TabPage15.Text = "Statistics"
+        Me.TabPage15.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(16, 16)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
+        Me.CheckBox1.TabIndex = 24
+        Me.CheckBox1.Text = "CheckBox1"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmOptions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -5410,6 +5435,8 @@ Partial Class frmOptions
         Me.GroupBox8.PerformLayout()
         Me.tpWarnings.ResumeLayout(False)
         Me.tpWarnings.PerformLayout()
+        Me.TabPage15.ResumeLayout(False)
+        Me.TabPage15.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -5819,4 +5846,6 @@ Partial Class frmOptions
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents hpApp As System.Windows.Forms.HelpProvider
     Friend WithEvents nudMinCharLyricsWeb As System.Windows.Forms.NumericUpDown
+    Friend WithEvents TabPage15 As System.Windows.Forms.TabPage
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 End Class

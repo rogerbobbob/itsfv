@@ -589,10 +589,14 @@ Public Class frmMain
 
         If My.Settings.AddFilesMode = AddFilesType.COPY Then
 
-            extFiles.AddRange(Directory.GetFiles(dirPath, "*.nfo", SearchOption.AllDirectories))
-            extFiles.AddRange(Directory.GetFiles(dirPath, "*.cue", SearchOption.AllDirectories))
-            extFiles.AddRange(Directory.GetFiles(dirPath, "*.log", SearchOption.AllDirectories))
-            extFiles.AddRange(Directory.GetFiles(dirPath, "*.txt", SearchOption.AllDirectories))
+            Try
+                extFiles.AddRange(Directory.GetFiles(dirPath, "*.nfo", SearchOption.AllDirectories))
+                extFiles.AddRange(Directory.GetFiles(dirPath, "*.cue", SearchOption.AllDirectories))
+                extFiles.AddRange(Directory.GetFiles(dirPath, "*.log", SearchOption.AllDirectories))
+                extFiles.AddRange(Directory.GetFiles(dirPath, "*.txt", SearchOption.AllDirectories))
+            Catch ex As Exception
+                msAppendWarnings(ex.ToString)
+            End Try
 
             ' add jpgs if there are more than one jpg
             Dim jpgFiles As New List(Of String)

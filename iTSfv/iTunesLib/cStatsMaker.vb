@@ -74,6 +74,15 @@ Imports iTSfv.cBwJob
         End Set
     End Property
 
+    Private Function IsValidTrack(ByVal xt As cXmlTrack) As Boolean
+
+        Dim bValid As Boolean = xt.TrackType = TrackTypeXML.FILE ' if tracks is a mp3 file
+        bValid = bValid And mfTagsComplete(track:=xt) ' if track is a properly tagged file
+
+        Return bValid
+
+    End Function
+
 
     Public Sub New(ByVal bwApp As BackgroundWorker, ByVal xmlParser As cLibraryParser)
 
@@ -114,38 +123,33 @@ Imports iTSfv.cBwJob
 
         For Each track As cXmlTrack In xmlParser.TrackCollection
 
-            If track.TrackType = TrackTypeXML.FILE Then
+            If IsValidTrack(xt:=track) Then
+
                 sLoadTrackToTracksTable(CType(track, cXmlTrack))
+
+                mCountFileTracks += 1
+
+                ' need for adjusting rating
+                mMaxPlayedCount = Math.Max(mMaxPlayedCount, track.PlayedCount)
+                If track.Duration > mMaxTrackDuration Then
+
+                    mMaxTrackDuration = track.Duration
+                    mLongestTrack.Name = track.Name
+                    mLongestTrack.Artist = track.Artist
+                    mLongestTrack.Album = track.Album
+
+                End If
+
+                lTotalTrackDuration += track.Duration
+                mTotalPlayTime = CULng(mTotalPlayTime + (track.Duration * track.PlayedCount))
+
+                ' for statistics, the subs take ONLY fully tagged tags
+                sLoadTrackToGenreTable(CType(track, cXmlTrack))
+                sLoadTrackToArtistsTable(CType(track, cXmlTrack))
+                sLoadTrackToAlbumArtistsTable(CType(track, cXmlTrack))
+                sLoadTrackToAlbumsTable(CType(track, cXmlTrack))
+
             End If
-
-            If mfTagsComplete(track) Then
-
-                If track.TrackType = TrackTypeXML.FILE Then
-                    mCountFileTracks += 1
-
-                    ' need for adjusting rating
-                    mMaxPlayedCount = Math.Max(mMaxPlayedCount, track.PlayedCount)
-                    If track.Duration > mMaxTrackDuration Then
-
-                        mMaxTrackDuration = track.Duration
-                        mLongestTrack.Name = track.Name
-                        mLongestTrack.Artist = track.Artist
-                        mLongestTrack.Album = track.Album
-
-                    End If
-
-                    lTotalTrackDuration += track.Duration
-                    mTotalPlayTime = CULng(mTotalPlayTime + (track.Duration * track.PlayedCount))
-
-                    ' for statistics, the subs take ONLY fully tagged tags
-                    sLoadTrackToGenreTable(CType(track, cXmlTrack))
-                    sLoadTrackToArtistsTable(CType(track, cXmlTrack))
-                    sLoadTrackToAlbumArtistsTable(CType(track, cXmlTrack))
-                    sLoadTrackToAlbumsTable(CType(track, cXmlTrack))
-
-                End If ' if tracks is a mp3 file
-
-            End If ' if track is a properly tagged file
 
             If bwApp.CancellationPending Then
                 Exit Sub

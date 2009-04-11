@@ -15,7 +15,8 @@
     <VerifyUploadedFiles>true</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <StartArguments>add_folder "M:"</StartArguments>
+    <StartArguments>
+    </StartArguments>
     <StartWorkingDirectory>
     </StartWorkingDirectory>
   </PropertyGroup>
