@@ -113,7 +113,7 @@ begin
 	//if (not iis()) then exit;
 	
 	msi20('2.0');
-	msi31('3.0');
+	msi31('3.1');
 //	ie6('5.0.2919');
 	
 	//dotnetfx11();

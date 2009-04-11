@@ -237,6 +237,7 @@ Partial Class frmMain
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmAddFolderToLib = New System.Windows.Forms.ToolStripMenuItem
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.SaveStatisticsFileAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CreatePlaylistOfSelectedTracksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator
         Me.miSendToTray = New System.Windows.Forms.ToolStripMenuItem
@@ -374,7 +375,6 @@ Partial Class frmMain
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.btnStatistics = New System.Windows.Forms.Button
         Me.btnStop = New System.Windows.Forms.Button
-        Me.SaveStatisticsFileAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ssAppTrack.SuspendLayout()
         Me.cmsApp.SuspendLayout()
         Me.tcTabs.SuspendLayout()
@@ -2698,6 +2698,12 @@ Partial Class frmMain
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.OpenToolStripMenuItem.Text = "&Open Statistics File..."
         '
+        'SaveStatisticsFileAsToolStripMenuItem
+        '
+        Me.SaveStatisticsFileAsToolStripMenuItem.Name = "SaveStatisticsFileAsToolStripMenuItem"
+        Me.SaveStatisticsFileAsToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
+        Me.SaveStatisticsFileAsToolStripMenuItem.Text = "Save S&tatistics File As..."
+        '
         'CreatePlaylistOfSelectedTracksToolStripMenuItem
         '
         Me.CreatePlaylistOfSelectedTracksToolStripMenuItem.Name = "CreatePlaylistOfSelectedTracksToolStripMenuItem"
@@ -3609,12 +3615,6 @@ Partial Class frmMain
         Me.btnStop.Text = "&Stop..."
         Me.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStop.UseVisualStyleBackColor = True
-        '
-        'SaveStatisticsFileAsToolStripMenuItem
-        '
-        Me.SaveStatisticsFileAsToolStripMenuItem.Name = "SaveStatisticsFileAsToolStripMenuItem"
-        Me.SaveStatisticsFileAsToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
-        Me.SaveStatisticsFileAsToolStripMenuItem.Text = "Save S&tatistics File As..."
         '
         'frmMain
         '
