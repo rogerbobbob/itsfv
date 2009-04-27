@@ -1,0 +1,18 @@
+#summary Tips & Tricks
+#labels Phase-Support
+<wiki:toc max_depth="1" />
+
+= Artwork =
+== Searching Artwork using Album Art Downloader XUI ==
+
+Configure Album Art Downloader path
+
+[http://i41.tinypic.com/2qlx261.png]
+
+In Options, have Album Art Downloader XUI selected: 
+
+[http://i44.tinypic.com/2vwvhx3.png]
+
+Optionally have "Manually choose Best Artwork" checkBox selected (recommended)
+
+[http://i44.tinypic.com/29blpcl.png]
