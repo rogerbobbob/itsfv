@@ -16,3 +16,7 @@ In Options, have Album Art Downloader XUI selected:
 Optionally have "Manually choose Best Artwork" checkBox selected (recommended)
 
 [http://i44.tinypic.com/29blpcl.png]
+
+Choose the best artwork:
+
+[http://i41.tinypic.com/zupg0g.png]
