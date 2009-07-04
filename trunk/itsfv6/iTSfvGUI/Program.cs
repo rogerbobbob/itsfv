@@ -7,6 +7,8 @@ namespace itsfv6
 {
     static class Program
     {
+
+        public static iTSfvLib.Adapter Linker = new iTSfvLib.Adapter();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

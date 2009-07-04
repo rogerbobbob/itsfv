@@ -15,5 +15,10 @@ namespace itsfv6
         {
             InitializeComponent();
         }
+
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            Program.Linker.LoadApplication(); 
+        }
     }
 }
