@@ -162,7 +162,7 @@ Public Class frmAddNewFiles
     End Sub
 
     Private Sub chkArtist_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkArtist.CheckedChanged
-        cboArtist.Enabled = chkArtist.Checked
+        cboArtist.Enabled = chkArtist.Checked        
     End Sub
 
     Private Sub cboArtist_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboArtist.SelectedIndexChanged
@@ -180,6 +180,10 @@ Public Class frmAddNewFiles
             nudDiscCount.Value = 1
             nudDiscNumber.Value = 1
         End If
+    End Sub
+
+    Private Sub cboArtist_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboArtist.TextChanged
+        chkArtist.Checked = True
     End Sub
 End Class
 

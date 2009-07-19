@@ -272,7 +272,7 @@ Public Class cInfoDisc
             l.Append(track.TrackNumber.ToString("00") + " " + track.Name)
 
             If bBitRate = True Then
-                l.Append(String.Format(" [{0} Kibit/s]", track.BitRate))
+                l.Append(String.Format(" [{0} Kb/s]", track.BitRate))
             End If
 
             If bSize = True Then
