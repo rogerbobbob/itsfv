@@ -1,3 +1,5 @@
+5.61.02.0 Changes to Lyrics Viewer due to recent LyricWiki API issues 
+
 Version 5.61 - 20090715
 
 5.61.01.2 Prevented possible crash while scanning for new music files

@@ -1399,7 +1399,8 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         '******************
                         Dim retry As Integer = 0
                         While retry < 3 And lyrics = String.Empty
-                            lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
+                            Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
+                            lyrics = lws.LyricInfo.lyrics
                             retry += 1
                         End While
 
@@ -1477,7 +1478,8 @@ mItunesApp.SelectedTracks.Count > 0 Then
                 If My.Settings.LyricsFromLyricWiki AndAlso lyrics = String.Empty Then
                     Dim artist As String = mGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    lyrics = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
+                    Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
+                    lyrics = lws.LyricInfo.lyrics
                 End If
 
                 If lyrics <> String.Empty Then
