@@ -55,18 +55,24 @@ Public Class frmLyricsViewer
         txtYear.Text = mSong.Year.ToString
         txtGenre.Text = mSong.Genre.Replace("&", "&&")
         If mSong.Lyrics Is Nothing Then
-            Dim temp As String = mfGetLyricsFromLyricWiki(New cXmlTrack(song, False))
-            temp = mfGetFixedLyrics(temp)
-            If String.IsNullOrEmpty(temp) = False Then
-                Dim fiTrack As New IO.FileInfo(song.Location)
-                Dim wasReadOnly As Boolean = fiTrack.IsReadOnly
-                If wasReadOnly Then fiTrack.IsReadOnly = False
-                mSong.Lyrics = temp
-                If wasReadOnly Then fiTrack.IsReadOnly = True
+            Dim temp As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(song, False))
+            If (temp.LyricInfo IsNot Nothing) Then
+                Dim lyrics As String = mfGetFixedLyrics(temp.LyricInfo.lyrics)
+                If String.IsNullOrEmpty(lyrics) = False Then
+                    Dim fiTrack As New IO.FileInfo(song.Location)
+                    Dim wasReadOnly As Boolean = fiTrack.IsReadOnly
+                    If wasReadOnly Then fiTrack.IsReadOnly = False
+                    mSong.Lyrics = lyrics
+                    If wasReadOnly Then fiTrack.IsReadOnly = True
+                End If
+                wbLyricWiki.Navigate(temp.LyricInfo.url)
             End If
-            txtLyrics.Text = mSong.Lyrics
+            wbLyricWiki.Visible = temp.LyricInfo IsNot Nothing
+            txtLyrics.Visible = Not wbLyricWiki.Visible
         Else
             txtLyrics.Text = mSong.Lyrics
+            wbLyricWiki.Visible = False
+            txtLyrics.Visible = Not wbLyricWiki.Visible
         End If
         If mSong.Artwork.Count > 0 Then
             pbArtwork.Image = mfImageFromFile(mSong.Location)
@@ -117,4 +123,5 @@ Public Class frmLyricsViewer
         cmsTopMost.Checked = Not cmsTopMost.Checked
         Me.TopMost = cmsTopMost.Checked
     End Sub
+
 End Class

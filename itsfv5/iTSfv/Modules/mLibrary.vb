@@ -64,15 +64,16 @@ Public Module mLibrary
     Private Function checkSongExists(ByVal artist As String, ByVal song As String) As LyricWikiSong
 
         Dim lws As New LyricWikiSong
-        lws.found = False
-        lws.lyrics = String.Empty
+        lws.Found = False
 
         Dim lyricsWiki As New org.lyricwiki.LyricWiki
         If lyricsWiki.checkSongExists(artist, song) = True Then
-            Dim temp As String = lyricsWiki.getSong(artist, song).lyrics
+            Dim lr As org.lyricwiki.LyricsResult
+            lr = lyricsWiki.getSong(artist, song)
+            Dim temp As String = lr.lyrics
             If temp <> "Not found" Then
-                lws.found = True
-                lws.lyrics = temp
+                lws.Found = True
+                lws.LyricInfo = lr
             End If
         End If
 
@@ -80,67 +81,64 @@ Public Module mLibrary
 
     End Function
 
-    Private Structure LyricWikiSong
-        Dim found As Boolean
-        Dim lyrics As String
+    Public Structure LyricWikiSong
+        Dim Found As Boolean
+        Dim LyricInfo As org.lyricwiki.LyricsResult
     End Structure
 
 
-    Public Function mfGetLyricsFromLyricWiki(ByVal track As cXmlTrack) As String
+    Public Function mfGetLyricsFromLyricWiki(ByVal track As cXmlTrack) As LyricWikiSong
 
-        Dim lyrics As String = ""
         Dim artist As String = ""
         Dim song As String = ""
 
         Dim lyricsWiki As New org.lyricwiki.LyricWiki
+        Dim lws As New LyricWikiSong
+        lws.LyricInfo = New org.lyricwiki.LyricsResult
 
         Try
-
-            Dim lws As New LyricWikiSong
             lws = checkSongExists(track.Artist, track.Name)
-            If lws.found Then
+            If lws.Found Then
 
                 artist = track.Artist
                 song = track.Name
 
                 mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                lyrics = lws.lyrics
+                lws.LyricInfo.lyrics = lws.LyricInfo.lyrics
 
             Else
 
                 lws = checkSongExists(track.AlbumArtist, track.Name)
-                If lws.found Then
+                If lws.Found Then
 
                     artist = track.AlbumArtist
                     song = track.Name
 
                     mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                     msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                    lyrics = lws.lyrics
+                    lws.LyricInfo.lyrics = lws.LyricInfo.lyrics
 
                 Else
 
                     lws = checkSongExists(track.Artist, mfGetNameToSearch(track))
-                    If lws.found Then
+                    If lws.Found Then
                         artist = track.Artist
                         song = mfGetNameToSearch(track)
 
                         mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                         msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                        lyrics = lws.lyrics
 
                     Else
 
                         lws = checkSongExists(track.AlbumArtist, mfGetNameToSearch(track))
-                        If lws.found Then
+                        If lws.Found Then
 
                             artist = track.AlbumArtist
                             song = mfGetNameToSearch(track)
 
                             mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                             msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                            lyrics = lws.lyrics
 
                         End If
 
@@ -155,9 +153,11 @@ Public Module mLibrary
         End Try
 
         Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
-        lyrics = Encoding.UTF8.GetString(iso8859.GetBytes(lyrics))
+        If (lws.LyricInfo IsNot Nothing) Then
+            lws.LyricInfo.lyrics = Encoding.UTF8.GetString(iso8859.GetBytes(lws.LyricInfo.lyrics))
+        End If
 
-        Return lyrics
+        Return lws
 
     End Function
 
