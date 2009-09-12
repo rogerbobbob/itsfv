@@ -17,6 +17,7 @@ namespace iTSfvLib
             try
             {
                 mApp = new iTunesApp();
+                Console.WriteLine(mApp.Version);
             }
             catch (Exception ex)
             {

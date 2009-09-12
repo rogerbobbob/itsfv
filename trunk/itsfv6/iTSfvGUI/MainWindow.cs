@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace itsfv6
+namespace iTSfvGUI
 {
     public partial class MainWindow : Form
     {
@@ -18,7 +18,7 @@ namespace itsfv6
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
-            Program.Linker.LoadApplication(); 
+           Program.Linker.LoadApplication(); 
         }
     }
 }

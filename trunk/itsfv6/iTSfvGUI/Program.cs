@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using iTSfvLib;
 
-namespace itsfv6
+namespace iTSfvGUI
 {
-    static class Program
+   public static class Program
     {
 
-        public static iTSfvLib.Adapter Linker = new iTSfvLib.Adapter();
+       public static Adapter Linker = new Adapter(); 
+                              
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

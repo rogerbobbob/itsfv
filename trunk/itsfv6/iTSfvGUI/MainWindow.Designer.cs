@@ -1,4 +1,4 @@
-﻿namespace itsfv6
+﻿namespace iTSfvGUI
 {
     partial class MainWindow
     {

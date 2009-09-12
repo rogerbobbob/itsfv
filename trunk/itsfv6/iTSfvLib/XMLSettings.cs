@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.ComponentModel;
 using System.IO;
 
-namespace iTSfvCLI
+namespace iTSfvLib
 {
     [XmlRoot("Settings")]
     public class XMLSettings
