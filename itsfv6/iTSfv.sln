@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 10
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvGUI", "iTSfvGUI\iTSfvGUI.csproj", "{FCF3E10D-5724-4F70-ABEF-90D119B035C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvLib", "iTSfvLib\iTSfvLib.csproj", "{C1D1A1ED-B33E-471F-91FA-4A65C4ADAA75}"

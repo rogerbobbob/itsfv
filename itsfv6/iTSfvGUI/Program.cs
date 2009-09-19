@@ -8,7 +8,6 @@ namespace iTSfvGUI
 {
    public static class Program
     {
-
        public static Adapter Linker = new Adapter(); 
                               
         /// <summary>
@@ -19,7 +18,7 @@ namespace iTSfvGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            Application.Run(new SelectedTracksWizard());
         }
     }
 }
