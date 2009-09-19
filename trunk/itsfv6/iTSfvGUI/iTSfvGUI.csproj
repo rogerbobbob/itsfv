@@ -59,16 +59,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="ValidatorWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <Compile Include="ValidatorWizard.Designer.cs">
+      <DependentUpon>ValidatorWizard.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <EmbeddedResource Include="SelectedTracksWizard.resx">
+      <DependentUpon>SelectedTracksWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidatorWizard.resx">
+      <DependentUpon>ValidatorWizard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +91,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SelectedTracksWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectedTracksWizard.Designer.cs">
+      <DependentUpon>SelectedTracksWizard.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

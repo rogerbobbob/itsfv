@@ -1,6 +1,6 @@
 ﻿namespace iTSfvGUI
 {
-    partial class MainWindow
+    partial class ValidatorWizard
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // MainWindow
+            // ValidatorWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "MainWindow";
+            this.Name = "ValidatorWizard";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.ValidatorWizard_Load);
             this.Shown += new System.EventHandler(this.MainWindow_Shown);
             this.ResumeLayout(false);
 

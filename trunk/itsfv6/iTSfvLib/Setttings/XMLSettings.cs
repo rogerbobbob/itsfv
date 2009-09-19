@@ -9,9 +9,9 @@ using System.IO;
 namespace iTSfvLib
 {
     [XmlRoot("Settings")]
-    public class XMLSettings
+    public class XMLValidatorSettings
     {
-        public XMLSettings()
+        public XMLValidatorSettings()
         {
             //~~~~~~~~~~~~~~~~~~~~~
             //  Capture
@@ -304,8 +304,6 @@ namespace iTSfvLib
             ARGBColor
         }
 
-
-
         #endregion
 
         #region I/O Methods
@@ -318,7 +316,7 @@ namespace iTSfvLib
             if (!Directory.Exists(Path.GetDirectoryName(filePath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-            XmlSerializer xs = new XmlSerializer(typeof(XMLSettings));
+            XmlSerializer xs = new XmlSerializer(typeof(XMLValidatorSettings));
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {
                 xs.Serialize(fs, this);
@@ -330,7 +328,7 @@ namespace iTSfvLib
              }*/
         }
 
-        public static XMLSettings Read(string filePath)
+        public static XMLValidatorSettings Read(string filePath)
         {
             if (!Directory.Exists(Path.GetDirectoryName(filePath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
@@ -339,10 +337,10 @@ namespace iTSfvLib
             {
                 try
                 {
-                    XmlSerializer xs = new XmlSerializer(typeof(XMLSettings));
+                    XmlSerializer xs = new XmlSerializer(typeof(XMLValidatorSettings));
                     using (FileStream fs = new FileStream(filePath, FileMode.Open))
                     {
-                        return (XMLSettings)xs.Deserialize(fs);
+                        return (XMLValidatorSettings)xs.Deserialize(fs);
                     }
                 }
                 catch (Exception ex)
@@ -353,7 +351,7 @@ namespace iTSfvLib
                 }
             }
 
-            return new XMLSettings();
+            return new XMLValidatorSettings();
         }
 
         #endregion

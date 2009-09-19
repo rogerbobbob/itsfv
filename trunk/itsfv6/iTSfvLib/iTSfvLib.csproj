@@ -54,11 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOrCDTrack.cs" />
+    <Compile Include="Helpers\Editors\DiscNumberFinder.cs" />
+    <Compile Include="Player\FileOrCDTrack.cs" />
+    <Compile Include="Helpers\LastfmHelper.cs" />
+    <Compile Include="Helpers\Lyrics\IlyricsHelper.cs" />
+    <Compile Include="Helpers\Lyrics\LyricsflyHelper.cs" />
+    <Compile Include="Helpers\LyricsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapter.cs" />
-    <Compile Include="Track.cs" />
-    <Compile Include="XMLSettings.cs" />
+    <Compile Include="Player\Track.cs" />
+    <Compile Include="Setttings\XMLSettings.cs" />
+    <Compile Include="Static\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="iTunesLib">
@@ -69,9 +75,6 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Static\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
