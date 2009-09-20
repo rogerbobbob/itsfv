@@ -5,7 +5,10 @@ using System.Text;
 
 namespace iTSfvLib
 {
-    class IlyricsHelper : LyricsHelper 
+    /// <summary>
+    /// Holds one or more albums by an AlbumArtist
+    /// </summary>
+    class AlbumArtist
     {
     }
 }
