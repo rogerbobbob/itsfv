@@ -11,9 +11,9 @@ Public Class frmSetInfo
 
     Public Sub sEditTracks()
 
-        If mItunesApp.SelectedTracks IsNot Nothing Then
+        If mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing Then
 
-            Dim tracks As IITTrackCollection = mItunesApp.SelectedTracks
+            Dim tracks As IITTrackCollection = mItunesApp.BrowserWindow.SelectedTracks
 
             For Each track As IITTrack In tracks
                 If track.Kind = ITTrackKind.ITTrackKindFile Then

@@ -17,7 +17,6 @@ Imports Graphing.V3
 Imports iTunesLib
 Imports System.IO
 Imports McoreSystem
-Imports iTSfv.org.lyricwiki
 Imports System.Xml.Serialization
 Imports System.Net.Mail
 Imports iTSfv.cBwJob
@@ -907,10 +906,10 @@ Public Class frmMain
 
         Dim tsmi As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
 
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso _
-mItunesApp.SelectedTracks.Count > 0 Then
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso _
+mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
-            Dim track As IITTrack = mItunesApp.SelectedTracks.Item(1)
+            Dim track As IITTrack = mItunesApp.BrowserWindow.SelectedTracks.Item(1)
             Dim url As String = String.Concat(tsmi.Tag, mfEncodeUrl(mfGetStringFromPattern(My.Settings.GoogleTrack, track)))
             Process.Start(url)
 
@@ -1400,7 +1399,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         Dim retry As Integer = 0
                         While retry < 3 And lyrics = String.Empty
                             Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
-                            lyrics = lws.LyricInfo.lyrics
+                            lyrics = lws.Lyrics
                             retry += 1
                         End While
 
@@ -1479,7 +1478,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                     Dim artist As String = mGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
                     Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
-                    lyrics = lws.LyricInfo.lyrics
+                    lyrics = lws.Lyrics
                 End If
 
                 If lyrics <> String.Empty Then
@@ -4338,7 +4337,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sBwAppReplaceTracks()
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         If tracks IsNot Nothing Then
 
@@ -4394,7 +4393,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sBwAppValidateTracksSelected()
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         'bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, tracks.Count)
 
@@ -4437,7 +4436,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
         ' 5.10.0.0 Support exporting selected tracks to another directory specified
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, tracks.Count)
 
@@ -4515,7 +4514,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sBwAppEditSelectedTracks()
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         If tracks IsNot Nothing Then
 
@@ -4777,7 +4776,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sBwAppOverrideTags()
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, tracks.Count)
 
@@ -5872,9 +5871,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
             sBwAppLibraryBackup(mMainLibraryTracks)
 
-        ElseIf mItunesApp.SelectedTracks IsNot Nothing Then
+        ElseIf mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing Then
 
-            sBwAppLibraryBackup(mItunesApp.SelectedTracks)
+            sBwAppLibraryBackup(mItunesApp.BrowserWindow.SelectedTracks)
 
         End If
 
@@ -6468,7 +6467,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
     Private Sub sBwAppOffsetTrackNumber()
 
         Dim tracks As IITTrackCollection
-        tracks = mItunesApp.SelectedTracks
+        tracks = mItunesApp.BrowserWindow.SelectedTracks
 
         bwApp.ReportProgress(ProgressType.UPDATE_DISCS_PROGRESS_BAR_MAX, tracks.Count)
 
@@ -6715,7 +6714,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
                         mfUpdateStatusBarText("Ready. " & userStateString, False)
                     ElseIf mCurrJobTypeMain = cBwJob.JobType.VALIDATE_TRACKS_SELECTED Then
                         Dim tracks As IITTrackCollection
-                        tracks = mItunesApp.SelectedTracks
+                        tracks = mItunesApp.BrowserWindow.SelectedTracks
                         If tracks IsNot Nothing Then
                             Dim lst As New List(Of IITFileOrCDTrack)
                             Dim tracksMax As Integer = Math.Min(25, tracks.Count)
@@ -7976,7 +7975,7 @@ mItunesApp.SelectedTracks.Count > 0 Then
         ' 5.30.4.2 Double clicking Validate Selected Tracks button could have crashed iTSfv because BackgroundWorker is busy
         If bwApp.IsBusy = False And mfWarnLowResArtworkProceed(chkRemoveLowResArtwork.Checked) = True Then
 
-            If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso mItunesApp.SelectedTracks.Count > 0 Then
+            If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
                 sSettingsSave()
                 'sLogSettings()
@@ -8354,8 +8353,8 @@ mItunesApp.SelectedTracks.Count > 0 Then
     End Sub
 
     Private Sub sButtonCreatePlaylistSelected()
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing Then
-            sCreatePlaylist(mItunesApp.SelectedTracks)
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing Then
+            sCreatePlaylist(mItunesApp.BrowserWindow.SelectedTracks)
         End If
 
     End Sub
@@ -8508,15 +8507,15 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
                 Dim songs As New List(Of String)
 
-                If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing Then
+                If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing Then
 
                     If bAll Then
-                        For Each track As IITTrack In mItunesApp.SelectedTracks
+                        For Each track As IITTrack In mItunesApp.BrowserWindow.SelectedTracks
                             songs.Add(mfGetStringFromPattern(cboClipboardPattern.Text, track))
                         Next
                     Else
-                        If mItunesApp.SelectedTracks.Count > 0 Then
-                            songs.Add(mfGetStringFromPattern(cboClipboardPattern.Text, mItunesApp.SelectedTracks(1)))
+                        If mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
+                            songs.Add(mfGetStringFromPattern(cboClipboardPattern.Text, mItunesApp.BrowserWindow.SelectedTracks(1)))
                         End If
                     End If
 
@@ -8900,10 +8899,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Sub SearchArtworkToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchArtworkToolStripMenuItem.Click
 
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso _
-        mItunesApp.SelectedTracks.Count > 0 Then
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso _
+        mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
-            Dim track As IITTrack = mItunesApp.SelectedTracks.Item(1)
+            Dim track As IITTrack = mItunesApp.BrowserWindow.SelectedTracks.Item(1)
             Dim ar As String = String.Empty
             If track.Kind = ITTrackKind.ITTrackKindFile Then
                 If CType(track, IITFileOrCDTrack).AlbumArtist <> String.Empty Then
@@ -8948,10 +8947,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Sub Mp3tagToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Mp3tagSelectedTracks.Click
 
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso _
- mItunesApp.SelectedTracks.Count > 0 Then
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso _
+ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
-            Dim track As IITTrack = mItunesApp.SelectedTracks.Item(1)
+            Dim track As IITTrack = mItunesApp.BrowserWindow.SelectedTracks.Item(1)
             If track.Kind = ITTrackKind.ITTrackKindFile Then
                 fMp3TagDirectory(Path.GetDirectoryName(CType(track, IITFileOrCDTrack).Location))
             End If
@@ -8991,9 +8990,9 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Sub sShowLyricViewer()
 
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso mItunesApp.SelectedTracks.Count > 0 Then
-            If mItunesApp.SelectedTracks(1).Kind = ITTrackKind.ITTrackKindFile Then
-                Dim lv As New frmLyricsViewer(CType(mItunesApp.SelectedTracks(1), IITFileOrCDTrack))
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
+            If mItunesApp.BrowserWindow.SelectedTracks(1).Kind = ITTrackKind.ITTrackKindFile Then
+                Dim lv As New frmLyricsViewer(CType(mItunesApp.BrowserWindow.SelectedTracks(1), IITFileOrCDTrack))
                 lv.Show()
             End If
         Else
@@ -9130,19 +9129,19 @@ mItunesApp.SelectedTracks.Count > 0 Then
 
     Private Sub sBwAppExportArtworkSelected()
 
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing Then
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing Then
 
-            If mItunesApp.SelectedTracks.Count = 1 Then
+            If mItunesApp.BrowserWindow.SelectedTracks.Count = 1 Then
 
-                Dim track As IITTrack = mItunesApp.SelectedTracks.Item(1)
+                Dim track As IITTrack = mItunesApp.BrowserWindow.SelectedTracks.Item(1)
                 Dim ag As New cArtworkGrabberIT(track)
                 mArtworkJobStatus = ag.fDownloadArtwork()
 
-            ElseIf mItunesApp.SelectedTracks.Count > 1 Then
+            ElseIf mItunesApp.BrowserWindow.SelectedTracks.Count > 1 Then
 
-                mProgressTracksMax = mItunesApp.SelectedTracks.Count
+                mProgressTracksMax = mItunesApp.BrowserWindow.SelectedTracks.Count
 
-                For Each track As IITTrack In mItunesApp.SelectedTracks
+                For Each track As IITTrack In mItunesApp.BrowserWindow.SelectedTracks
 
                     If track.Kind = ITTrackKind.ITTrackKindFile Then
 
@@ -9389,10 +9388,10 @@ mItunesApp.SelectedTracks.Count > 0 Then
     End Sub
 
     Private Sub tsmiSearch_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tsmiSearch.DoubleClick
-        If mItunesApp IsNot Nothing AndAlso mItunesApp.SelectedTracks IsNot Nothing AndAlso _
-mItunesApp.SelectedTracks.Count > 0 Then
+        If mItunesApp IsNot Nothing AndAlso mItunesApp.BrowserWindow.SelectedTracks IsNot Nothing AndAlso _
+mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
-            Dim track As IITTrack = mItunesApp.SelectedTracks.Item(1)
+            Dim track As IITTrack = mItunesApp.BrowserWindow.SelectedTracks.Item(1)
             Dim url As String = "http://www.google.com/search?q=" + mfEncodeUrl(mfGetStringFromPattern(My.Settings.GoogleTrack, track))
             Process.Start(url)
 
