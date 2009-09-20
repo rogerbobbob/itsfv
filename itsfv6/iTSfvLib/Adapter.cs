@@ -29,8 +29,8 @@ namespace iTSfvLib
                 {
                     if (null == mApp)
                     {
-                        Console.WriteLine("Loading " + mApp.Version);
                         mApp = new iTunesApp();
+                        Console.WriteLine("Loading " + mApp.Version);
                     }
                     return mApp;
                 }
@@ -45,16 +45,21 @@ namespace iTSfvLib
 
         #region Selected Tracks
 
-        public IITTrackCollection GetSelectedTracks()
+        public List<XmlTrack> GetSelectedTracks()
         {
-            return LoadApp.SelectedTracks;
+            List<XmlTrack> temp = new List<XmlTrack>();
+            foreach (IITTrack track in LoadApp.BrowserWindow.SelectedTracks)
+            {
+                temp.Add(new XmlTrack(track));
+            }
+            return temp;
         }
 
         public int SelectedTracksCount
         {
             get
             {
-                IITTrackCollection temp = GetSelectedTracks();
+                List<XmlTrack> temp = GetSelectedTracks();
                 return (null == temp ? 0 : temp.Count);
             }
         }

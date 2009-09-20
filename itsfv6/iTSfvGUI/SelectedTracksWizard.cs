@@ -24,6 +24,10 @@ namespace iTSfvGUI
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            foreach (XmlTrack track in Program.Linker.GetSelectedTracks())
+            {
+                Console.WriteLine(track.Name);
+            }
             MessageBox.Show(Program.Linker.SelectedTracksCount.ToString());
         }
     }
