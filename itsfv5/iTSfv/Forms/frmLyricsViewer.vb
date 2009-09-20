@@ -56,8 +56,8 @@ Public Class frmLyricsViewer
         txtGenre.Text = mSong.Genre.Replace("&", "&&")
         If mSong.Lyrics Is Nothing Then
             Dim temp As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(song, False))
-            If (temp.LyricInfo IsNot Nothing) Then
-                Dim lyrics As String = mfGetFixedLyrics(temp.LyricInfo.lyrics)
+            If (temp.Lyrics IsNot Nothing) Then
+                Dim lyrics As String = mfGetFixedLyrics(temp.Lyrics)
                 If String.IsNullOrEmpty(lyrics) = False Then
                     Dim fiTrack As New IO.FileInfo(song.Location)
                     Dim wasReadOnly As Boolean = fiTrack.IsReadOnly
@@ -65,9 +65,9 @@ Public Class frmLyricsViewer
                     mSong.Lyrics = lyrics
                     If wasReadOnly Then fiTrack.IsReadOnly = True
                 End If
-                wbLyricWiki.Navigate(temp.LyricInfo.url)
+                wbLyricWiki.Navigate(temp.URL)
             End If
-            wbLyricWiki.Visible = temp.LyricInfo IsNot Nothing
+            wbLyricWiki.Visible = temp.URL IsNot Nothing
             txtLyrics.Visible = Not wbLyricWiki.Visible
         Else
             txtLyrics.Text = mSong.Lyrics

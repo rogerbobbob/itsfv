@@ -1,7 +1,6 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports iTSfv.cBwJob
-Imports iTSfv.org.lyricwiki
 
 Public Class cValidator
 
@@ -268,7 +267,7 @@ Public Class cValidator
             Dim lyrics As String = track.Tag.Lyrics
             If lyrics = String.Empty Then
                 Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(xt)
-                lyrics = lws.LyricInfo.lyrics
+                lyrics = lws.Lyrics
                 If lyrics <> String.Empty Then
                     bwApp.ReportProgress(ProgressType.FOUND_LYRICS_FOR, Chr(34) + xt.Name + Chr(34))
                 End If
@@ -372,7 +371,7 @@ Public Class cValidator
                     Dim artist As String = fGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
                     Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(xt)
-                    Dim lyrics As String = lws.LyricInfo.lyrics
+                    Dim lyrics As String = lws.Lyrics
 
                     If Not String.IsNullOrEmpty(lyrics) Then
                         track.Tag.Lyrics = lyrics
