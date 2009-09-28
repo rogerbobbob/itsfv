@@ -48,13 +48,27 @@ namespace iTSfvLib
         public List<XmlTrack> GetSelectedTracks()
         {
             List<XmlTrack> temp = new List<XmlTrack>();
-            foreach (IITTrack track in LoadApp.BrowserWindow.SelectedTracks)
+            if (null != LoadApp.BrowserWindow.SelectedTracks)
             {
-                temp.Add(new XmlTrack(track));
+                foreach (IITTrack track in LoadApp.BrowserWindow.SelectedTracks)
+                {
+                    temp.Add(new XmlTrack(track));
+                }
+            }
+            else if (null != LoadApp.SelectedTracks)
+            {
+                foreach (IITTrack track in LoadApp.SelectedTracks)
+                {
+                    temp.Add(new XmlTrack(track));
+                }
             }
             return temp;
         }
 
+        /// <summary>
+        /// Method to get the track count of Selected tracks 
+        /// If no tracks are selected then returns 0
+        /// </summary>
         public int SelectedTracksCount
         {
             get

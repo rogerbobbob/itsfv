@@ -6,10 +6,13 @@ using iTSfvLib;
 
 namespace iTSfvGUI
 {
-   public static class Program
+    public static class Program
     {
-       public static Adapter Linker = new Adapter(); 
-                              
+        public static Adapter Linker = new Adapter();
+        // Windows
+        public static ValidatorWizard gValidator = null;
+        public static LogViewer gLogViewer = null;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,7 +21,9 @@ namespace iTSfvGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SelectedTracksWizard());
+            gLogViewer = new LogViewer();
+            gValidator = new ValidatorWizard();
+            Application.Run(gValidator);
         }
     }
 }
