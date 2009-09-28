@@ -8,6 +8,8 @@ namespace iTSfvLib
 {
     public class XmlTrack
     {
+        private IITTrack mTrack = null; 
+
         #region "Read/Write Properties"
 
         public string Album { get; set; }
@@ -63,6 +65,7 @@ namespace iTSfvLib
 
         #region "Read Only Properties"
 
+        public ITRatingKind ratingKind { get; private set; }
         public ITRatingKind AlbumRatingKind { get; private set; }
         public IITPlaylistCollection Playlists { get; private set; }
         public bool Podcast { get; private set; }
@@ -89,52 +92,14 @@ namespace iTSfvLib
 
         #endregion
 
-        #region "Methods"
-
-        public IITArtwork AddArtworkFromFile(string filePath)
+        public XmlTrack(string fp)
         {
-            return this.AddArtworkFromFile(filePath);
+
         }
 
-        public void Delete()
+        public XmlTrack(string fp, bool artwork)
         {
-            this.Delete();
-        }
 
-        public void GetITObjectIDs(out int sourceID, out int playlistID, out int trackID, out int databaseID)
-        {
-            this.GetITObjectIDs(out sourceID, out playlistID, out trackID, out databaseID);
-        }
-
-        public void Play()
-        {
-            this.Play();
-        }
-
-        #endregion
-
-
-        public void Reveal()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-        public void UpdateInfoFromFile()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdatePodcastFeed()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITRatingKind ratingKind
-        {
-            get { throw new NotImplementedException(); }
         }
 
         public XmlTrack(IITTrack track)
@@ -152,5 +117,85 @@ namespace iTSfvLib
 
         }
 
+        #region "Methods"
+
+        public IITArtwork AddArtworkFromFile(string filePath)
+        {
+            try
+            {
+                return mTrack.AddArtworkFromFile(filePath);
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error adding artwork", ex);
+                return null;
+            }
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                this.mTrack.Delete();
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error deleting track", ex);
+            }
+        }
+
+        public void Play()
+        {
+            try
+            {
+                mTrack.Play();
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error playing track", ex);
+            }
+        }
+
+        #endregion
+
+        public void UpdateInfoFromFile()
+        {
+            try
+            {
+                GetFileOrCDTrack().UpdateInfoFromFile();
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error updating info from file", ex);
+            }
+        }
+
+        public IITFileOrCDTrack GetFileOrCDTrack()
+        {
+            try
+            {
+                if (mTrack.Kind == ITTrackKind.ITTrackKindFile)
+                {
+                    return mTrack as IITFileOrCDTrack;
+                }
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error returning FileOrCDTrack", ex);
+            }
+            return null;
+        }
+
+        public void UpdatePodcastFeed()
+        {
+            try
+            {
+                GetFileOrCDTrack().UpdatePodcastFeed();
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error updating podcast field", ex);
+            }
+        }      
     }
 }

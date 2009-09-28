@@ -54,8 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Finders\AlbumArtistFinder.cs" />
+    <Compile Include="Helpers\Validators\FileSystemValidator.cs" />
+    <Compile Include="Helpers\Validators\LibraryValidator.cs" />
+    <Compile Include="Helpers\Validators\StandardsChecker.cs" />
+    <Compile Include="Static\FileSystem.cs" />
     <Compile Include="Player\XmlAlbumArtist.cs" />
-    <Compile Include="Helpers\Editors\DiscNumberFinder.cs" />
+    <Compile Include="Helpers\Finders\DiscNumberFinder.cs" />
     <Compile Include="Player\XmlAlbum.cs" />
     <Compile Include="Player\XmlDisc.cs" />
     <Compile Include="Player\XmlTrack.cs" />
@@ -67,6 +72,7 @@
     <Compile Include="Adapter.cs" />
     <Compile Include="Setttings\XMLSettings.cs" />
     <Compile Include="Static\Enums.cs" />
+    <Compile Include="Helpers\Validators\TracksValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="iTunesLib">
