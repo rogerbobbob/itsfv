@@ -61,7 +61,7 @@ Public Class cDiscArtistFinder
             If bArtistIsSame = True Then
                 mDiscArtist = oAlbumArtist ' this will not get assigned if strAlbumArtist is empty
             Else
-                mDiscArtist = VARIOUS_ARTISTS                
+                mDiscArtist = VARIOUS_ARTISTS
             End If
 
         End If
@@ -70,6 +70,14 @@ Public Class cDiscArtistFinder
         'msUpdateStatusBarText(String.Format("AlbumArtist: ""{0}""", mDiscArtist), append:=False)
 
     End Sub
+
+    Public Function UpdateDisc() As cInfoDisc
+
+        mDisc.Artist = Me.AlbumArtist
+        mDisc.Confidence = mConfidence
+        Return mDisc
+
+    End Function
 
     Private Function fGetTopArtist() As String
 

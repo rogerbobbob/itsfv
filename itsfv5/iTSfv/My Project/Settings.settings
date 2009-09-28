@@ -950,5 +950,14 @@ PointBlank|http://bt.point-blank.cc/?search=</Value>
     <Setting Name="MinCharLyricsWeb" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
+    <Setting Name="CopyAlbumArtistToSortArtist" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RemoveLyrics" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RemoveComments" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -40,7 +40,6 @@ Public Class frmMain
     Private mHtml As New TreeGUI.cHtml
     Private mAppTitle As String = mAppInfo.GetApplicationTitle
     Private mStringDecompilePattern As String = ""
-    Private mTagRemove As String = "Lyrics"
 
     ' Lists/Logs
     Private mListNoArtwork As New List(Of String)
@@ -859,7 +858,6 @@ Public Class frmMain
 
         cboTrimDirection.SelectedIndex = 1
         cboAppendChar.SelectedIndex = 0
-        cboTagRemove.SelectedIndex = My.Settings.TagRemoveIndex
 
         Dim t As cBwJob
         Dim args() As String = Environment.GetCommandLineArgs
@@ -961,8 +959,9 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
     End Function
 
-    Private Sub sTracksAlbumArtist(ByVal track As iTunesLib.IITFileOrCDTrack, ByVal AlbumArtist As String)
+    Private Sub sTracksAlbumArtist(ByVal track As iTunesLib.IITFileOrCDTrack, ByVal lDisc As cInfoDisc)
 
+        Dim AlbumArtist As String = lDisc.Artist
         Dim countMissingAlbumArtist As Integer = 0
         Dim trackLoc As String = "dead track"
 
@@ -1011,9 +1010,33 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
         End If
 
-        If My.Settings.FillSortAlbumArtist Then
+        ' Fill Sort Artist
+
+        If String.IsNullOrEmpty(track.SortArtist) Then
+            Dim sortArtist As String = track.AlbumArtist
+            If sortArtist.StartsWith("The ") Then
+                sortArtist = sortArtist.Remove(0, 4)
+            End If
+            track.SortArtist = sortArtist
+        End If
+
+        If Not String.IsNullOrEmpty(track.AlbumArtist) And My.Settings.CopyAlbumArtistToSortArtist Then
             Try
-                If Not String.IsNullOrEmpty(track.SortArtist) Then
+                Dim sortArtist As String = track.AlbumArtist
+                If sortArtist.StartsWith("The ") Then
+                    sortArtist = sortArtist.Remove(0, 4)
+                End If
+                If track.SortArtist <> sortArtist Then
+                    track.SortArtist = sortArtist
+                End If
+            Catch ex As Exception
+                msAppendWarnings(ex.Message)
+            End Try
+        End If
+
+        If Not String.IsNullOrEmpty(track.SortArtist) And My.Settings.FillSortAlbumArtist Then
+            Try
+                If String.IsNullOrEmpty(track.SortAlbumArtist) Then
                     track.SortAlbumArtist = track.SortArtist
                 End If
             Catch ex As Exception
@@ -2419,7 +2442,7 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
             ' COPY ARTIST TO ALBUMARTIST 
             '***************************
             If chkEditCopyArtistToAlbumArtist.Checked Then
-                sTracksAlbumArtist(track, lDisc.Artist)
+                sTracksAlbumArtist(track, lDisc)
             End If
 
             '*********************************
@@ -2694,7 +2717,8 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
                 '' Fill AlbumArtist for the Disc
                 Dim aaf As New cDiscArtistFinder(lDisc)
-                lDisc.Artist = aaf.AlbumArtist
+                lDisc = aaf.UpdateDisc
+
                 ''Console.Writeline(lDisc.Artist)
 
                 '' Fill Genre from Last.fm
@@ -4753,19 +4777,28 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
         Try
             If track.Kind = ITTrackKind.ITTrackKindFile Then
-                Dim msg As String = String.Format("Removing {0} in ""{1}""", mTagRemove, track.Name)
-                If mTagRemove.Equals("Lyrics") Then
+                Dim msg As String = String.Empty
+                Dim tags As String = String.Empty
+                If My.Settings.RemoveLyrics Then
+                    msg = String.Format("Removing {0} in ""{1}""", "Lyrics", track.Name)
+                    tags = "Lyrics"
                     If CType(track, IITFileOrCDTrack).Lyrics <> String.Empty Then
                         CType(track, IITFileOrCDTrack).Lyrics = ""
                     End If
-                ElseIf mTagRemove.Equals("Comments") Then
+                    msAppendDebug(msg)
+                End If
+                If My.Settings.RemoveComments Then
+                    If My.Settings.RemoveLyrics Then
+                        tags = "Lyrics and Comments"
+                    Else
+                        tags = "Comments"
+                    End If
+                    msg = String.Format("Removing {0} in ""{1}""", "Comments", track.Name)
                     If CType(track, IITFileOrCDTrack).Comment <> String.Empty Then
                         CType(track, IITFileOrCDTrack).Comment = ""
-
                     End If
                 End If
-                msAppendDebug(msg)
-                bwApp.ReportProgress(ProgressType.REMOVING_TAGS, msg)
+                bwApp.ReportProgress(ProgressType.REMOVING_TAGS, String.Format("Removing {0} in ""{1}""", tags, track.Name))
             End If
         Catch ex As Exception
             msAppendWarnings(ex.Message + " while removing tags")
@@ -6017,15 +6050,6 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
             mTableAlbums.Add(albumTitle, lAlbum)
         End If
 
-        ''Console.Writeline(lAlbum.Discs.Count)
-        'For Each ldisc As cInfoDisc In lAlbum.Discs
-        '    'Console.Writeline(ldisc.AlbumName)
-        'Next
-
-        ' this contains method doesnt work from session to session
-        'If Not (lAlbum.Discs.Contains(disc)) Then
-        '    lAlbum.Discs.Add(disc)
-        'End If
         If Not (lAlbum.HasDisc(disc)) Then
             lAlbum.Discs.Add(disc)
         End If
@@ -7112,7 +7136,6 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
         My.Settings.ScheduleAdjustRatings = chkSheduleAdjustRating.Checked
         My.Settings.ScheduleFindNewFilesHDD = chkScheduleFindNewFilesHDD.Checked
 
-        My.Settings.TagRemoveIndex = cboTagRemove.SelectedIndex
         My.Settings.ResumeValidation = chkResume.Checked
 
         If Not String.IsNullOrEmpty(cboExportFilePattern.Text) Then
@@ -9461,14 +9484,6 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
     Private Sub btnImportPOPM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImportPOPM.Click
         sButtonImportPOPM()
-    End Sub
-
-    Private Sub cboTagRemove_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboTagRemove.SelectedIndexChanged
-        mTagRemove = cboTagRemove.Text
-    End Sub
-
-    Private Sub chkTagRemove_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTagRemove.CheckedChanged
-        cboTagRemove.Enabled = chkTagRemove.Checked
     End Sub
 
     Private Sub cboExportFilePattern_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboExportFilePattern.TextChanged
