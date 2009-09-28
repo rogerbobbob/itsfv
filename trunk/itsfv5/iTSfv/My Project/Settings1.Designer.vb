@@ -3497,6 +3497,42 @@ Namespace My
                 Me("MinCharLyricsWeb") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property CopyAlbumArtistToSortArtist() As Boolean
+            Get
+                Return CType(Me("CopyAlbumArtistToSortArtist"),Boolean)
+            End Get
+            Set
+                Me("CopyAlbumArtistToSortArtist") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property RemoveLyrics() As Boolean
+            Get
+                Return CType(Me("RemoveLyrics"),Boolean)
+            End Get
+            Set
+                Me("RemoveLyrics") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property RemoveComments() As Boolean
+            Get
+                Return CType(Me("RemoveComments"),Boolean)
+            End Get
+            Set
+                Me("RemoveComments") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

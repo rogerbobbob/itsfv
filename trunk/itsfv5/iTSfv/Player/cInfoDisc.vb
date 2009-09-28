@@ -243,6 +243,15 @@ Public Class cInfoDisc
         End Set
     End Property
 
+    Public Property Confidence() As Double
+        Get
+
+        End Get
+        Set(ByVal value As Double)
+
+        End Set
+    End Property
+
     Public Function fGetArtwork() As Image
 
         Try
