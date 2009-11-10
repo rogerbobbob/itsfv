@@ -43,7 +43,8 @@ Partial Class frmLyricsViewer
         Me.Label1 = New System.Windows.Forms.Label
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel
         Me.panelLyics = New System.Windows.Forms.Panel
-        Me.txtLyrics = New System.Windows.Forms.TextBox
+        Me.btnEditLyrics = New System.Windows.Forms.Button
+        Me.txtLyrics = New System.Windows.Forms.RichTextBox
         Me.cmsOptions.SuspendLayout()
         Me.tlpDesc.SuspendLayout()
         CType(Me.pbArtwork, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,6 +101,7 @@ Partial Class frmLyricsViewer
         '
         'pDesc
         '
+        Me.pDesc.Controls.Add(Me.btnEditLyrics)
         Me.pDesc.Controls.Add(Me.txtGenre)
         Me.pDesc.Controls.Add(Me.txtYear)
         Me.pDesc.Controls.Add(Me.txtAlbumArtist)
@@ -257,15 +259,26 @@ Partial Class frmLyricsViewer
         Me.panelLyics.Size = New System.Drawing.Size(578, 350)
         Me.panelLyics.TabIndex = 1
         '
+        'btnEditLyrics
+        '
+        Me.btnEditLyrics.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEditLyrics.Enabled = False
+        Me.btnEditLyrics.Location = New System.Drawing.Point(248, 168)
+        Me.btnEditLyrics.Name = "btnEditLyrics"
+        Me.btnEditLyrics.Size = New System.Drawing.Size(107, 23)
+        Me.btnEditLyrics.TabIndex = 12
+        Me.btnEditLyrics.Text = "&Submit Correction..."
+        Me.btnEditLyrics.UseVisualStyleBackColor = True
+        '
         'txtLyrics
         '
         Me.txtLyrics.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtLyrics.Location = New System.Drawing.Point(0, 0)
-        Me.txtLyrics.Multiline = True
         Me.txtLyrics.Name = "txtLyrics"
         Me.txtLyrics.ReadOnly = True
         Me.txtLyrics.Size = New System.Drawing.Size(578, 350)
         Me.txtLyrics.TabIndex = 0
+        Me.txtLyrics.Text = ""
         '
         'frmLyricsViewer
         '
@@ -285,7 +298,6 @@ Partial Class frmLyricsViewer
         Me.pDesc.PerformLayout()
         Me.tlpMain.ResumeLayout(False)
         Me.panelLyics.ResumeLayout(False)
-        Me.panelLyics.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -309,5 +321,6 @@ Partial Class frmLyricsViewer
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents tlpMain As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents panelLyics As System.Windows.Forms.Panel
-    Friend WithEvents txtLyrics As System.Windows.Forms.TextBox
+    Friend WithEvents txtLyrics As System.Windows.Forms.RichTextBox
+    Friend WithEvents btnEditLyrics As System.Windows.Forms.Button
 End Class
