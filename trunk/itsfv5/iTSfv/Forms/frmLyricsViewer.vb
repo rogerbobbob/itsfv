@@ -8,6 +8,7 @@ Public Class frmLyricsViewer
     Private mSong As IITFileOrCDTrack = Nothing
     Private mArtwork As Image = Nothing
     Private mSongChanged As Boolean = False
+    Private mLyrics As Lyrics = Nothing
 
     Private Sub frmLyricsViewer_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         My.Settings.LyricsViewerSize = Me.Size
@@ -56,18 +57,19 @@ Public Class frmLyricsViewer
         txtYear.Text = mSong.Year.ToString
         txtGenre.Text = mSong.Genre.Replace("&", "&&")
         If mSong.Lyrics Is Nothing Then
-            Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(song, False))
-            If (lws.Text IsNot Nothing) Then
-                Dim lyrics As String = mfGetFixedLyrics(lws.Text)
+            mLyrics = mfGetLyrics(New cXmlTrack(song, False))
+            If mLyrics.Text IsNot Nothing Then
+                Dim lyrics As String = mfGetFixedLyrics(mLyrics.Text)
                 If String.IsNullOrEmpty(lyrics) = False Then
                     Dim fiTrack As New IO.FileInfo(song.Location)
                     Dim wasReadOnly As Boolean = fiTrack.IsReadOnly
                     If wasReadOnly Then fiTrack.IsReadOnly = False
                     mSong.Lyrics = lyrics
                     If wasReadOnly Then fiTrack.IsReadOnly = True
-                End If                
-            End If                        
+                End If
+            End If
         End If
+        btnEditLyrics.Enabled = mLyrics IsNot Nothing
         txtLyrics.Text = mSong.Lyrics
         If mSong.Artwork.Count > 0 Then
             pbArtwork.Image = mfImageFromFile(mSong.Location)
@@ -119,4 +121,12 @@ Public Class frmLyricsViewer
         Me.TopMost = cmsTopMost.Checked
     End Sub
 
+    Private Sub btnEditLyrics_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditLyrics.Click
+
+        If Not mLyrics Is Nothing Then
+            Dim lf As New Lyricsfly
+            lf.EditLyrics(mLyrics)
+        End If
+
+    End Sub
 End Class
