@@ -2,6 +2,7 @@ Imports iTunesLib
 Imports System.Text
 Imports System.IO
 Imports System.Text.RegularExpressions
+Imports UploadersLib.TextServices
 
 Public Module mLibrary
 
@@ -61,42 +62,27 @@ Public Module mLibrary
 
     End Function
 
-    Private Function checkSongExists(ByVal artist As String, ByVal song As String) As LyricWikiSong
+    Private Function checkSongExists(ByVal artist As String, ByVal song As String) As UploadersLib.TextServices.Lyrics
 
-        Dim lws As New LyricWikiSong
-        lws.Found = False
+        Dim lyrics As UploadersLib.TextServices.Lyrics
 
-        Dim lyricsWiki As New LyricsflyHelper(artist, song)
-        If lyricsWiki.checkSongExist = True Then
-            Dim lr As New LyricWikiSong
-            Dim temp As String = lr.Lyrics
-            If temp <> "Not found" Then
-                lws.Found = True
-                lws.Lyrics = lr.Lyrics
-            End If
-        End If
+        Dim lyricsWiki As New UploadersLib.TextServices.Lyricsfly()
+        lyrics = lyricsWiki.SearchLyrics(artist, song)
 
-        Return lws
+        Return lyrics
 
     End Function
 
-    Public Structure LyricWikiSong
-        Dim Found As Boolean
-        Dim URL As String
-        Dim Lyrics As String
-    End Structure
-
-
-    Public Function mfGetLyricsFromLyricWiki(ByVal track As cXmlTrack) As LyricWikiSong
+    Public Function mfGetLyrics(ByVal track As cXmlTrack) As UploadersLib.TextServices.Lyrics
 
         Dim artist As String = ""
         Dim song As String = ""
 
-        Dim lws As New LyricWikiSong
+        Dim lws As New Lyrics
 
         Try
             lws = checkSongExists(track.Artist, track.Name)
-            If lws.Found Then
+            If Not String.IsNullOrEmpty(lws.Text) Then
 
                 artist = track.Artist
                 song = track.Name
@@ -107,7 +93,7 @@ Public Module mLibrary
             Else
 
                 lws = checkSongExists(track.AlbumArtist, track.Name)
-                If lws.Found Then
+                If Not String.IsNullOrEmpty(lws.Text) Then
 
                     artist = track.AlbumArtist
                     song = track.Name
@@ -118,7 +104,7 @@ Public Module mLibrary
                 Else
 
                     lws = checkSongExists(track.Artist, mfGetNameToSearch(track))
-                    If lws.Found Then
+                    If Not String.IsNullOrEmpty(lws.Text) Then
                         artist = track.Artist
                         song = mfGetNameToSearch(track)
 
@@ -128,7 +114,7 @@ Public Module mLibrary
                     Else
 
                         lws = checkSongExists(track.AlbumArtist, mfGetNameToSearch(track))
-                        If lws.Found Then
+                        If Not String.IsNullOrEmpty(lws.Text) Then
 
                             artist = track.AlbumArtist
                             song = mfGetNameToSearch(track)
@@ -149,8 +135,9 @@ Public Module mLibrary
         End Try
 
         Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
-        If (lws.Lyrics IsNot Nothing) And (lws.Lyrics IsNot Nothing) Then
-            lws.Lyrics = Encoding.UTF8.GetString(iso8859.GetBytes(lws.Lyrics))
+
+        If Not String.IsNullOrEmpty(lws.Text) Then
+            lws.Text = Encoding.UTF8.GetString(iso8859.GetBytes(lws.Text))
         End If
 
         Return lws
@@ -273,7 +260,7 @@ Public Module mLibrary
 
     Public Function mfTagLibAlbumArtist(ByVal lAlbumArtists As String()) As String
 
-        Dim sb As New stringbuilder
+        Dim sb As New StringBuilder
 
         If lAlbumArtists.Length > 0 Then
 

@@ -25,6 +25,7 @@ Imports System.Text
 Imports CommandLineParserLib
 Imports System.Net
 Imports System.Collections.Specialized
+Imports UploadersLib.TextServices
 
 Public Class frmMain
 
@@ -1421,8 +1422,8 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
                         '******************
                         Dim retry As Integer = 0
                         While retry < 3 And lyrics = String.Empty
-                            Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
-                            lyrics = lws.Lyrics
+                            Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
+                            lyrics = lws.Text
                             retry += 1
                         End While
 
@@ -1431,7 +1432,7 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
                         End If
 
                         If lyrics <> String.Empty Then
-                            lyricsSrc = "LyricWiki"
+                            lyricsSrc = "Lyricsfly"
                             ' have to add this becaues the statusbar update from mfGetLyricsFromLyricWiki is too fast 
                             bwApp.ReportProgress(ProgressType.FOUND_LYRICS_FOR, String.Format("Artist: ""{0}"", Song: ""{1}""", track.Artist, track.Name))
                         End If
@@ -1496,12 +1497,12 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
             Try
                 Dim lyrics As String = track.Lyrics
-                '' 5.34.5.7 iTSfv tried to fetch lyrics online for the songs that have no lyrics despite the "Import Lyrics from LyricWiki" being unchecked. [Jojo]
+                '' 5.34.5.7 iTSfv tried to fetch lyrics online for the songs that have no lyrics despite the "Import Lyrics from Lyricsfly" being unchecked. [Jojo]
                 If My.Settings.LyricsFromLyricWiki AndAlso lyrics = String.Empty Then
                     Dim artist As String = mGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(track, False))
-                    lyrics = lws.Lyrics
+                    Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
+                    lyrics = lws.Text
                 End If
 
                 If lyrics <> String.Empty Then
@@ -7070,7 +7071,7 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
         ttApp.SetToolTip(chkWinExportArtwork, chkWinExportArtwork.Text)
 
         Dim srcDirLyricsIm As String = CStr(IIf(My.Settings.LyricsFromAlbumFolder, "Album folder", My.Settings.LyricsFolderPathIm))
-        Dim srcFilePatternIm As String = If(My.Settings.LyricsFromLyricWiki, "LyricWiki", If(My.Settings.LyricsPatternFromFileIm, "%FileName%", My.Settings.LyricsFilenamePatternIm))
+        Dim srcFilePatternIm As String = If(My.Settings.LyricsFromLyricWiki, "Lyricsfly", If(My.Settings.LyricsPatternFromFileIm, "%FileName%", My.Settings.LyricsFilenamePatternIm))
         chkImportLyrics.Text = String.Format("Import Lyrics from {0} using {1}", srcDirLyricsIm, If(My.Settings.LyricsFromLyricWiki, srcFilePatternIm, srcFilePatternIm + My.Settings.LyricsFileExtIm))
         ttApp.SetToolTip(chkImportLyrics, chkImportLyrics.Text)
         Dim srcDirLyricsEx As String = CStr(IIf(My.Settings.LyricsToAlbumFolder, "Album folder", My.Settings.LyricsFolderPathEx))
@@ -9533,6 +9534,9 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
 
     End Sub
 
+    Private Sub chkImportLyrics_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkImportLyrics.CheckedChanged
+
+    End Sub
 End Class
 
 

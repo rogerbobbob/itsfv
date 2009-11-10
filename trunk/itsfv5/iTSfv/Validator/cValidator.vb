@@ -266,8 +266,8 @@ Public Class cValidator
 
             Dim lyrics As String = track.Tag.Lyrics
             If lyrics = String.Empty Then
-                Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(xt)
-                lyrics = lws.Lyrics
+                Dim lws As UploadersLib.TextServices.Lyrics = mfGetLyrics(xt)
+                lyrics = lws.Text
                 If lyrics <> String.Empty Then
                     bwApp.ReportProgress(ProgressType.FOUND_LYRICS_FOR, Chr(34) + xt.Name + Chr(34))
                 End If
@@ -370,8 +370,8 @@ Public Class cValidator
 
                     Dim artist As String = fGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    Dim lws As LyricWikiSong = mfGetLyricsFromLyricWiki(xt)
-                    Dim lyrics As String = lws.Lyrics
+                    Dim lws As UploadersLib.TextServices.Lyrics = mfGetLyrics(xt)
+                    Dim lyrics As String = lws.Text
 
                     If Not String.IsNullOrEmpty(lyrics) Then
                         track.Tag.Lyrics = lyrics

@@ -1,4 +1,5 @@
 ﻿Imports iTunesLib
+Imports UploadersLib.TextServices
 
 Public Class frmLyricsViewer
 
@@ -14,7 +15,7 @@ Public Class frmLyricsViewer
         Me.TopMost = My.Settings.LyricsViewerTopMost
     End Sub
 
-    Private Sub frmLyricsViewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load        
+    Private Sub frmLyricsViewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Forms.frmMain.Icon
         miTunesApp = New iTunesLib.iTunesAppClass
     End Sub
@@ -55,25 +56,19 @@ Public Class frmLyricsViewer
         txtYear.Text = mSong.Year.ToString
         txtGenre.Text = mSong.Genre.Replace("&", "&&")
         If mSong.Lyrics Is Nothing Then
-            Dim temp As LyricWikiSong = mfGetLyricsFromLyricWiki(New cXmlTrack(song, False))
-            If (temp.Lyrics IsNot Nothing) Then
-                Dim lyrics As String = mfGetFixedLyrics(temp.Lyrics)
+            Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(song, False))
+            If (lws.Text IsNot Nothing) Then
+                Dim lyrics As String = mfGetFixedLyrics(lws.Text)
                 If String.IsNullOrEmpty(lyrics) = False Then
                     Dim fiTrack As New IO.FileInfo(song.Location)
                     Dim wasReadOnly As Boolean = fiTrack.IsReadOnly
                     If wasReadOnly Then fiTrack.IsReadOnly = False
                     mSong.Lyrics = lyrics
                     If wasReadOnly Then fiTrack.IsReadOnly = True
-                End If
-                wbLyricWiki.Navigate(temp.URL)
-            End If
-            wbLyricWiki.Visible = temp.URL IsNot Nothing
-            txtLyrics.Visible = Not wbLyricWiki.Visible
-        Else
-            txtLyrics.Text = mSong.Lyrics
-            wbLyricWiki.Visible = False
-            txtLyrics.Visible = Not wbLyricWiki.Visible
+                End If                
+            End If                        
         End If
+        txtLyrics.Text = mSong.Lyrics
         If mSong.Artwork.Count > 0 Then
             pbArtwork.Image = mfImageFromFile(mSong.Location)
         Else

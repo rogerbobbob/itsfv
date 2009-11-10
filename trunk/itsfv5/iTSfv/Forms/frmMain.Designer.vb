@@ -72,23 +72,48 @@ Partial Class frmMain
         Me.tcValidate = New System.Windows.Forms.TabControl
         Me.tpChecks = New System.Windows.Forms.TabPage
         Me.btnValidateTracksChecks = New System.Windows.Forms.Button
+        Me.chkCheckMetatag = New System.Windows.Forms.CheckBox
+        Me.chkCheckBPM = New System.Windows.Forms.CheckBox
+        Me.chkCheckFoldersWithoutArtwork = New System.Windows.Forms.CheckBox
+        Me.chkCheckEmbeddedArtwork = New System.Windows.Forms.CheckBox
+        Me.chkCheckArtworkLowRes = New System.Windows.Forms.CheckBox
+        Me.chkCheckLyrics = New System.Windows.Forms.CheckBox
+        Me.chkItunesStoreStandard = New System.Windows.Forms.CheckBox
+        Me.chkCheckTrackNum = New System.Windows.Forms.CheckBox
+        Me.chkCheckArtwork = New System.Windows.Forms.CheckBox
         Me.tpEditTracks = New System.Windows.Forms.TabPage
+        Me.chkEditCopyAlbumArtistToSortArtist = New System.Windows.Forms.CheckBox
+        Me.chkConvertArtworkJPG = New System.Windows.Forms.CheckBox
         Me.btnValidateSelectedTracks = New System.Windows.Forms.Button
         Me.chkMultiArtworkRemove = New System.Windows.Forms.CheckBox
         Me.chkImportArtwork = New System.Windows.Forms.CheckBox
         Me.chkEditTrackCountEtc = New System.Windows.Forms.CheckBox
         Me.chkEditEQbyGenre = New System.Windows.Forms.CheckBox
+        Me.chkWriteGenre = New System.Windows.Forms.CheckBox
+        Me.chkRemoveLowResArtwork = New System.Windows.Forms.CheckBox
+        Me.chkUpdateInfoFromFile = New System.Windows.Forms.CheckBox
+        Me.chkImportLyrics = New System.Windows.Forms.CheckBox
+        Me.chkRemoveNull = New System.Windows.Forms.CheckBox
         Me.tpEditLibrary = New System.Windows.Forms.TabPage
+        Me.chkPlayedCountImportPCNT = New System.Windows.Forms.CheckBox
+        Me.chkRatingsImportPOPM = New System.Windows.Forms.CheckBox
         Me.btnValidateSelectedTracksLibrary = New System.Windows.Forms.Button
         Me.chkDeleteNonMusicFolderTracks = New System.Windows.Forms.CheckBox
+        Me.chkLibraryAdjustRatings = New System.Windows.Forms.CheckBox
+        Me.chkValidationPlaylists = New System.Windows.Forms.CheckBox
         Me.tpFileSystem = New System.Windows.Forms.TabPage
         Me.btnValidateSelectedTracksFolder = New System.Windows.Forms.Button
         Me.chkWinExportPlaylist = New System.Windows.Forms.CheckBox
         Me.chkWinMakeReadOnly = New System.Windows.Forms.CheckBox
+        Me.chkExportLyrics = New System.Windows.Forms.CheckBox
+        Me.chkExportIndex = New System.Windows.Forms.CheckBox
+        Me.chkVistaThumbnailFix = New System.Windows.Forms.CheckBox
         Me.ilTabs = New System.Windows.Forms.ImageList(Me.components)
         Me.tpSelectedTracks = New System.Windows.Forms.TabPage
         Me.tcSelectedTracks = New System.Windows.Forms.TabControl
         Me.tpEditor = New System.Windows.Forms.TabPage
+        Me.chkRemoveComments = New System.Windows.Forms.CheckBox
+        Me.chkRemoveLyrics = New System.Windows.Forms.CheckBox
         Me.txtAppend = New System.Windows.Forms.TextBox
         Me.cboAppendChar = New System.Windows.Forms.ComboBox
         Me.chkAppendChar = New System.Windows.Forms.CheckBox
@@ -96,8 +121,19 @@ Partial Class frmMain
         Me.cboFind = New System.Windows.Forms.ComboBox
         Me.cboTrimDirection = New System.Windows.Forms.ComboBox
         Me.Label2 = New System.Windows.Forms.Label
+        Me.nudTrimChar = New System.Windows.Forms.NumericUpDown
         Me.chkTrimChar = New System.Windows.Forms.CheckBox
+        Me.chkTagRemove = New System.Windows.Forms.CheckBox
+        Me.chkDecompile = New System.Windows.Forms.CheckBox
+        Me.chkReplaceTextInTags = New System.Windows.Forms.CheckBox
+        Me.chkCapitalizeFirstLetter = New System.Windows.Forms.CheckBox
+        Me.chkStrict = New System.Windows.Forms.CheckBox
         Me.gbWriteTags = New System.Windows.Forms.GroupBox
+        Me.chkGenre = New System.Windows.Forms.CheckBox
+        Me.chkAlbumArtist = New System.Windows.Forms.CheckBox
+        Me.chkArtist = New System.Windows.Forms.CheckBox
+        Me.chkName = New System.Windows.Forms.CheckBox
+        Me.chkAlbum = New System.Windows.Forms.CheckBox
         Me.cboArtistsDecompiled = New System.Windows.Forms.ComboBox
         Me.chkRenameFile = New System.Windows.Forms.CheckBox
         Me.cboDecompileOptions = New System.Windows.Forms.ComboBox
@@ -125,16 +161,19 @@ Partial Class frmMain
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.btnArtworkExport = New System.Windows.Forms.Button
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.chkExportArtwork = New System.Windows.Forms.CheckBox
         Me.cboExportFilePattern = New System.Windows.Forms.ComboBox
         Me.btnCopyTo = New System.Windows.Forms.Button
         Me.tpExplorer = New System.Windows.Forms.TabPage
         Me.tcExplorer = New System.Windows.Forms.TabControl
         Me.tpExplorerFiles = New System.Windows.Forms.TabPage
         Me.chkReplaceWithNewKind = New System.Windows.Forms.CheckBox
+        Me.chkValidate = New System.Windows.Forms.CheckBox
         Me.lbFiles = New System.Windows.Forms.ListBox
         Me.cmsFiles = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ShowInWindowsExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.RemoveFromListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.chkAddFile = New System.Windows.Forms.CheckBox
         Me.btnFindNewFiles = New System.Windows.Forms.Button
         Me.btnClearFilesListBox = New System.Windows.Forms.Button
         Me.tpExplorerActivity = New System.Windows.Forms.TabPage
@@ -190,6 +229,7 @@ Partial Class frmMain
         Me.btnSchRun = New System.Windows.Forms.Button
         Me.chkScheduleFindNewFilesHDD = New System.Windows.Forms.CheckBox
         Me.chkSheduleAdjustRating = New System.Windows.Forms.CheckBox
+        Me.chkSchValidateLibrary = New System.Windows.Forms.CheckBox
         Me.btnValidateSelected = New System.Windows.Forms.Button
         Me.bwApp = New System.ComponentModel.BackgroundWorker
         Me.ttApp = New System.Windows.Forms.ToolTip(Me.components)
@@ -337,46 +377,6 @@ Partial Class frmMain
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.btnStatistics = New System.Windows.Forms.Button
         Me.btnStop = New System.Windows.Forms.Button
-        Me.chkCheckMetatag = New System.Windows.Forms.CheckBox
-        Me.chkCheckBPM = New System.Windows.Forms.CheckBox
-        Me.chkCheckFoldersWithoutArtwork = New System.Windows.Forms.CheckBox
-        Me.chkCheckEmbeddedArtwork = New System.Windows.Forms.CheckBox
-        Me.chkCheckArtworkLowRes = New System.Windows.Forms.CheckBox
-        Me.chkCheckLyrics = New System.Windows.Forms.CheckBox
-        Me.chkItunesStoreStandard = New System.Windows.Forms.CheckBox
-        Me.chkCheckTrackNum = New System.Windows.Forms.CheckBox
-        Me.chkCheckArtwork = New System.Windows.Forms.CheckBox
-        Me.chkEditCopyAlbumArtistToSortArtist = New System.Windows.Forms.CheckBox
-        Me.chkConvertArtworkJPG = New System.Windows.Forms.CheckBox
-        Me.chkWriteGenre = New System.Windows.Forms.CheckBox
-        Me.chkRemoveLowResArtwork = New System.Windows.Forms.CheckBox
-        Me.chkUpdateInfoFromFile = New System.Windows.Forms.CheckBox
-        Me.chkImportLyrics = New System.Windows.Forms.CheckBox
-        Me.chkRemoveNull = New System.Windows.Forms.CheckBox
-        Me.chkPlayedCountImportPCNT = New System.Windows.Forms.CheckBox
-        Me.chkRatingsImportPOPM = New System.Windows.Forms.CheckBox
-        Me.chkLibraryAdjustRatings = New System.Windows.Forms.CheckBox
-        Me.chkValidationPlaylists = New System.Windows.Forms.CheckBox
-        Me.chkExportLyrics = New System.Windows.Forms.CheckBox
-        Me.chkExportIndex = New System.Windows.Forms.CheckBox
-        Me.chkVistaThumbnailFix = New System.Windows.Forms.CheckBox
-        Me.chkRemoveComments = New System.Windows.Forms.CheckBox
-        Me.chkRemoveLyrics = New System.Windows.Forms.CheckBox
-        Me.nudTrimChar = New System.Windows.Forms.NumericUpDown
-        Me.chkTagRemove = New System.Windows.Forms.CheckBox
-        Me.chkDecompile = New System.Windows.Forms.CheckBox
-        Me.chkReplaceTextInTags = New System.Windows.Forms.CheckBox
-        Me.chkCapitalizeFirstLetter = New System.Windows.Forms.CheckBox
-        Me.chkStrict = New System.Windows.Forms.CheckBox
-        Me.chkGenre = New System.Windows.Forms.CheckBox
-        Me.chkAlbumArtist = New System.Windows.Forms.CheckBox
-        Me.chkArtist = New System.Windows.Forms.CheckBox
-        Me.chkName = New System.Windows.Forms.CheckBox
-        Me.chkAlbum = New System.Windows.Forms.CheckBox
-        Me.chkExportArtwork = New System.Windows.Forms.CheckBox
-        Me.chkValidate = New System.Windows.Forms.CheckBox
-        Me.chkAddFile = New System.Windows.Forms.CheckBox
-        Me.chkSchValidateLibrary = New System.Windows.Forms.CheckBox
         Me.ssAppTrack.SuspendLayout()
         Me.cmsApp.SuspendLayout()
         Me.tcTabs.SuspendLayout()
@@ -389,6 +389,7 @@ Partial Class frmMain
         Me.tpSelectedTracks.SuspendLayout()
         Me.tcSelectedTracks.SuspendLayout()
         Me.tpEditor.SuspendLayout()
+        CType(Me.nudTrimChar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbWriteTags.SuspendLayout()
         Me.tpSTClipboard.SuspendLayout()
         Me.gbClipBoardTags.SuspendLayout()
@@ -427,7 +428,6 @@ Partial Class frmMain
         Me.ssAppDisc.SuspendLayout()
         Me.tlpMain.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        CType(Me.nudTrimChar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnValidateLibrary
@@ -819,6 +819,119 @@ Partial Class frmMain
         Me.btnValidateTracksChecks.Text = "Check Standard in Selected Tracks"
         Me.btnValidateTracksChecks.UseVisualStyleBackColor = True
         '
+        'chkCheckMetatag
+        '
+        Me.chkCheckMetatag.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkCheckMetatag.AutoSize = True
+        Me.chkCheckMetatag.Checked = Global.iTSfv.My.MySettings.Default.CheckMetatag
+        Me.chkCheckMetatag.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckMetatag", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckMetatag.Location = New System.Drawing.Point(450, 33)
+        Me.chkCheckMetatag.Name = "chkCheckMetatag"
+        Me.chkCheckMetatag.Size = New System.Drawing.Size(156, 17)
+        Me.chkCheckMetatag.TabIndex = 17
+        Me.chkCheckMetatag.Text = "Check for Metatag versions"
+        Me.chkCheckMetatag.UseVisualStyleBackColor = True
+        '
+        'chkCheckBPM
+        '
+        Me.chkCheckBPM.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkCheckBPM.AutoSize = True
+        Me.chkCheckBPM.Checked = Global.iTSfv.My.MySettings.Default.CheckBPM
+        Me.chkCheckBPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckBPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckBPM.Location = New System.Drawing.Point(450, 10)
+        Me.chkCheckBPM.Name = "chkCheckBPM"
+        Me.chkCheckBPM.Size = New System.Drawing.Size(167, 17)
+        Me.chkCheckBPM.TabIndex = 16
+        Me.chkCheckBPM.Text = "Check for tracks without BPM"
+        Me.chkCheckBPM.UseVisualStyleBackColor = True
+        '
+        'chkCheckFoldersWithoutArtwork
+        '
+        Me.chkCheckFoldersWithoutArtwork.AutoSize = True
+        Me.chkCheckFoldersWithoutArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckFoldersWithoutArtwork
+        Me.chkCheckFoldersWithoutArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckFoldersWithoutArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckFoldersWithoutArtwork.Location = New System.Drawing.Point(10, 148)
+        Me.chkCheckFoldersWithoutArtwork.Name = "chkCheckFoldersWithoutArtwork"
+        Me.chkCheckFoldersWithoutArtwork.Size = New System.Drawing.Size(223, 17)
+        Me.chkCheckFoldersWithoutArtwork.TabIndex = 15
+        Me.chkCheckFoldersWithoutArtwork.Text = "Check for album folders without Folder.jpg"
+        Me.chkCheckFoldersWithoutArtwork.UseVisualStyleBackColor = True
+        '
+        'chkCheckEmbeddedArtwork
+        '
+        Me.chkCheckEmbeddedArtwork.AutoSize = True
+        Me.chkCheckEmbeddedArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckDownloadedArtwork
+        Me.chkCheckEmbeddedArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckDownloadedArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckEmbeddedArtwork.Location = New System.Drawing.Point(10, 56)
+        Me.chkCheckEmbeddedArtwork.Name = "chkCheckEmbeddedArtwork"
+        Me.chkCheckEmbeddedArtwork.Size = New System.Drawing.Size(261, 17)
+        Me.chkCheckEmbeddedArtwork.TabIndex = 14
+        Me.chkCheckEmbeddedArtwork.Text = "Check for tracks with iTunes downloaded Artwork"
+        Me.chkCheckEmbeddedArtwork.UseVisualStyleBackColor = True
+        '
+        'chkCheckArtworkLowRes
+        '
+        Me.chkCheckArtworkLowRes.AutoSize = True
+        Me.chkCheckArtworkLowRes.Checked = Global.iTSfv.My.MySettings.Default.CheckArtworkLowRes
+        Me.chkCheckArtworkLowRes.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckArtworkLowRes", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckArtworkLowRes.Location = New System.Drawing.Point(10, 102)
+        Me.chkCheckArtworkLowRes.Name = "chkCheckArtworkLowRes"
+        Me.chkCheckArtworkLowRes.Size = New System.Drawing.Size(178, 17)
+        Me.chkCheckArtworkLowRes.TabIndex = 13
+        Me.chkCheckArtworkLowRes.Text = "Check for low resolution Artwork"
+        Me.ttApp.SetToolTip(Me.chkCheckArtworkLowRes, "To specifiy low resolution dimensions, press F2")
+        Me.chkCheckArtworkLowRes.UseVisualStyleBackColor = True
+        '
+        'chkCheckLyrics
+        '
+        Me.chkCheckLyrics.AutoSize = True
+        Me.chkCheckLyrics.Checked = Global.iTSfv.My.MySettings.Default.CheckLyrics
+        Me.chkCheckLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckLyrics.Location = New System.Drawing.Point(10, 125)
+        Me.chkCheckLyrics.Name = "chkCheckLyrics"
+        Me.chkCheckLyrics.Size = New System.Drawing.Size(171, 17)
+        Me.chkCheckLyrics.TabIndex = 12
+        Me.chkCheckLyrics.Text = "Check for tracks without Lyrics"
+        Me.chkCheckLyrics.UseVisualStyleBackColor = True
+        '
+        'chkItunesStoreStandard
+        '
+        Me.chkItunesStoreStandard.AutoSize = True
+        Me.chkItunesStoreStandard.Checked = Global.iTSfv.My.MySettings.Default.CheckStandard
+        Me.chkItunesStoreStandard.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckStandard", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkItunesStoreStandard.Location = New System.Drawing.Point(10, 10)
+        Me.chkItunesStoreStandard.Name = "chkItunesStoreStandard"
+        Me.chkItunesStoreStandard.Size = New System.Drawing.Size(179, 17)
+        Me.chkItunesStoreStandard.TabIndex = 10
+        Me.chkItunesStoreStandard.Text = "Check for iTunes Store standard"
+        Me.chkItunesStoreStandard.UseVisualStyleBackColor = True
+        '
+        'chkCheckTrackNum
+        '
+        Me.chkCheckTrackNum.AutoSize = True
+        Me.chkCheckTrackNum.Checked = Global.iTSfv.My.MySettings.Default.CheckTrackCount
+        Me.chkCheckTrackNum.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCheckTrackNum.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckTrackCount", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckTrackNum.Location = New System.Drawing.Point(10, 79)
+        Me.chkCheckTrackNum.Name = "chkCheckTrackNum"
+        Me.chkCheckTrackNum.Size = New System.Drawing.Size(212, 17)
+        Me.chkCheckTrackNum.TabIndex = 9
+        Me.chkCheckTrackNum.Text = "Check for tracks without Track Number"
+        Me.chkCheckTrackNum.UseVisualStyleBackColor = True
+        '
+        'chkCheckArtwork
+        '
+        Me.chkCheckArtwork.AutoSize = True
+        Me.chkCheckArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckArtwork
+        Me.chkCheckArtwork.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCheckArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCheckArtwork.Location = New System.Drawing.Point(10, 33)
+        Me.chkCheckArtwork.Name = "chkCheckArtwork"
+        Me.chkCheckArtwork.Size = New System.Drawing.Size(180, 17)
+        Me.chkCheckArtwork.TabIndex = 3
+        Me.chkCheckArtwork.Text = "Check for tracks without Artwork"
+        Me.chkCheckArtwork.UseVisualStyleBackColor = True
+        '
         'tpEditTracks
         '
         Me.tpEditTracks.Controls.Add(Me.chkEditCopyAlbumArtistToSortArtist)
@@ -843,6 +956,31 @@ Partial Class frmMain
         Me.tpEditTracks.Text = "Tracks"
         Me.ttApp.SetToolTip(Me.tpEditTracks, "This tab consists of operations that modify iTunes track tags ")
         Me.tpEditTracks.UseVisualStyleBackColor = True
+        '
+        'chkEditCopyAlbumArtistToSortArtist
+        '
+        Me.chkEditCopyAlbumArtistToSortArtist.AutoSize = True
+        Me.chkEditCopyAlbumArtistToSortArtist.Checked = Global.iTSfv.My.MySettings.Default.CopyAlbumArtistToSortArtist
+        Me.chkEditCopyAlbumArtistToSortArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CopyAlbumArtistToSortArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkEditCopyAlbumArtistToSortArtist.Location = New System.Drawing.Point(8, 32)
+        Me.chkEditCopyAlbumArtistToSortArtist.Name = "chkEditCopyAlbumArtistToSortArtist"
+        Me.chkEditCopyAlbumArtistToSortArtist.Size = New System.Drawing.Size(246, 17)
+        Me.chkEditCopyAlbumArtistToSortArtist.TabIndex = 23
+        Me.chkEditCopyAlbumArtistToSortArtist.Text = "Ensure Sort Artist and Album Artist are identical"
+        Me.chkEditCopyAlbumArtistToSortArtist.UseVisualStyleBackColor = True
+        '
+        'chkConvertArtworkJPG
+        '
+        Me.chkConvertArtworkJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkConvertArtworkJPG.AutoSize = True
+        Me.chkConvertArtworkJPG.Checked = Global.iTSfv.My.MySettings.Default.ConvertArtworkJPG
+        Me.chkConvertArtworkJPG.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ConvertArtworkJPG", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkConvertArtworkJPG.Location = New System.Drawing.Point(448, 80)
+        Me.chkConvertArtworkJPG.Name = "chkConvertArtworkJPG"
+        Me.chkConvertArtworkJPG.Size = New System.Drawing.Size(176, 17)
+        Me.chkConvertArtworkJPG.TabIndex = 22
+        Me.chkConvertArtworkJPG.Text = "Convert Artwork to JPEG format"
+        Me.chkConvertArtworkJPG.UseVisualStyleBackColor = True
         '
         'btnValidateSelectedTracks
         '
@@ -900,6 +1038,73 @@ Partial Class frmMain
         Me.chkEditEQbyGenre.Text = "Set Track EQ based on Genre"
         Me.chkEditEQbyGenre.UseVisualStyleBackColor = True
         '
+        'chkWriteGenre
+        '
+        Me.chkWriteGenre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkWriteGenre.AutoSize = True
+        Me.chkWriteGenre.Checked = Global.iTSfv.My.MySettings.Default.WriteGenre
+        Me.chkWriteGenre.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "WriteGenre", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkWriteGenre.Location = New System.Drawing.Point(448, 8)
+        Me.chkWriteGenre.Name = "chkWriteGenre"
+        Me.chkWriteGenre.Size = New System.Drawing.Size(190, 17)
+        Me.chkWriteGenre.TabIndex = 20
+        Me.chkWriteGenre.Text = "Fill missing Genre tag using Last.fm"
+        Me.chkWriteGenre.UseVisualStyleBackColor = True
+        '
+        'chkRemoveLowResArtwork
+        '
+        Me.chkRemoveLowResArtwork.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkRemoveLowResArtwork.AutoSize = True
+        Me.chkRemoveLowResArtwork.Checked = Global.iTSfv.My.MySettings.Default.RemoveLowResArtwork
+        Me.chkRemoveLowResArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveLowResArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkRemoveLowResArtwork.ForeColor = System.Drawing.Color.Red
+        Me.chkRemoveLowResArtwork.Location = New System.Drawing.Point(448, 56)
+        Me.chkRemoveLowResArtwork.Name = "chkRemoveLowResArtwork"
+        Me.chkRemoveLowResArtwork.Size = New System.Drawing.Size(171, 17)
+        Me.chkRemoveLowResArtwork.TabIndex = 15
+        Me.chkRemoveLowResArtwork.Text = "&Remove low resolution artwork"
+        Me.chkRemoveLowResArtwork.UseVisualStyleBackColor = True
+        '
+        'chkUpdateInfoFromFile
+        '
+        Me.chkUpdateInfoFromFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkUpdateInfoFromFile.AutoSize = True
+        Me.chkUpdateInfoFromFile.Checked = Global.iTSfv.My.MySettings.Default.UpdateInfoFromFile
+        Me.chkUpdateInfoFromFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "UpdateInfoFromFile", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkUpdateInfoFromFile.Location = New System.Drawing.Point(448, 32)
+        Me.chkUpdateInfoFromFile.Name = "chkUpdateInfoFromFile"
+        Me.chkUpdateInfoFromFile.Size = New System.Drawing.Size(210, 17)
+        Me.chkUpdateInfoFromFile.TabIndex = 19
+        Me.chkUpdateInfoFromFile.Text = "Update Database refreshingTags in file"
+        Me.ttApp.SetToolTip(Me.chkUpdateInfoFromFile, "Validating iTunes Music Library with this setting checked will be extremely slow")
+        Me.chkUpdateInfoFromFile.UseVisualStyleBackColor = True
+        '
+        'chkImportLyrics
+        '
+        Me.chkImportLyrics.AutoSize = True
+        Me.chkImportLyrics.Checked = Global.iTSfv.My.MySettings.Default.LyricsImport
+        Me.chkImportLyrics.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkImportLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "LyricsImport", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkImportLyrics.Location = New System.Drawing.Point(8, 80)
+        Me.chkImportLyrics.Name = "chkImportLyrics"
+        Me.chkImportLyrics.Size = New System.Drawing.Size(211, 17)
+        Me.chkImportLyrics.TabIndex = 19
+        Me.chkImportLyrics.Text = "Import &Lyrics  to track from Album folder"
+        Me.chkImportLyrics.UseVisualStyleBackColor = True
+        '
+        'chkRemoveNull
+        '
+        Me.chkRemoveNull.AutoSize = True
+        Me.chkRemoveNull.Checked = Global.iTSfv.My.MySettings.Default.RemoveNullChar
+        Me.chkRemoveNull.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveNullChar", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkRemoveNull.Location = New System.Drawing.Point(8, 176)
+        Me.chkRemoveNull.Name = "chkRemoveNull"
+        Me.chkRemoveNull.Size = New System.Drawing.Size(230, 17)
+        Me.chkRemoveNull.TabIndex = 18
+        Me.chkRemoveNull.Text = "&Remove Null characters at the end of Tags"
+        Me.ttApp.SetToolTip(Me.chkRemoveNull, "Validating iTunes Music Library with this setting checked will be slow")
+        Me.chkRemoveNull.UseVisualStyleBackColor = True
+        '
         'tpEditLibrary
         '
         Me.tpEditLibrary.Controls.Add(Me.chkPlayedCountImportPCNT)
@@ -918,6 +1123,30 @@ Partial Class frmMain
         Me.ttApp.SetToolTip(Me.tpEditLibrary, "This tab consists of operations that modifies the iTunes Library playlist. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This" & _
                 " tab does not modify tags in Tracks.")
         Me.tpEditLibrary.UseVisualStyleBackColor = True
+        '
+        'chkPlayedCountImportPCNT
+        '
+        Me.chkPlayedCountImportPCNT.AutoSize = True
+        Me.chkPlayedCountImportPCNT.Checked = Global.iTSfv.My.MySettings.Default.PlayedCountImportPCNT
+        Me.chkPlayedCountImportPCNT.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "PlayedCountImportPCNT", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkPlayedCountImportPCNT.Location = New System.Drawing.Point(10, 102)
+        Me.chkPlayedCountImportPCNT.Name = "chkPlayedCountImportPCNT"
+        Me.chkPlayedCountImportPCNT.Size = New System.Drawing.Size(251, 17)
+        Me.chkPlayedCountImportPCNT.TabIndex = 19
+        Me.chkPlayedCountImportPCNT.Text = "Import PlayedCount from POPM or PCNT Frame"
+        Me.chkPlayedCountImportPCNT.UseVisualStyleBackColor = True
+        '
+        'chkRatingsImportPOPM
+        '
+        Me.chkRatingsImportPOPM.AutoSize = True
+        Me.chkRatingsImportPOPM.Checked = Global.iTSfv.My.MySettings.Default.RatingImportPOPM
+        Me.chkRatingsImportPOPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RatingImportPOPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkRatingsImportPOPM.Location = New System.Drawing.Point(10, 79)
+        Me.chkRatingsImportPOPM.Name = "chkRatingsImportPOPM"
+        Me.chkRatingsImportPOPM.Size = New System.Drawing.Size(178, 17)
+        Me.chkRatingsImportPOPM.TabIndex = 18
+        Me.chkRatingsImportPOPM.Text = "Import &Rating from POPM Frame"
+        Me.chkRatingsImportPOPM.UseVisualStyleBackColor = True
         '
         'btnValidateSelectedTracksLibrary
         '
@@ -940,6 +1169,30 @@ Partial Class frmMain
         Me.chkDeleteNonMusicFolderTracks.TabIndex = 14
         Me.chkDeleteNonMusicFolderTracks.Text = "Delete tracks not in Music Folders"
         Me.chkDeleteNonMusicFolderTracks.UseVisualStyleBackColor = True
+        '
+        'chkLibraryAdjustRatings
+        '
+        Me.chkLibraryAdjustRatings.AutoSize = True
+        Me.chkLibraryAdjustRatings.Checked = Global.iTSfv.My.MySettings.Default.LibraryAdjustRatings
+        Me.chkLibraryAdjustRatings.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "LibraryAdjustRatings", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkLibraryAdjustRatings.Location = New System.Drawing.Point(10, 56)
+        Me.chkLibraryAdjustRatings.Name = "chkLibraryAdjustRatings"
+        Me.chkLibraryAdjustRatings.Size = New System.Drawing.Size(227, 17)
+        Me.chkLibraryAdjustRatings.TabIndex = 15
+        Me.chkLibraryAdjustRatings.Text = "Adjust the Rating according to play pattern"
+        Me.chkLibraryAdjustRatings.UseVisualStyleBackColor = True
+        '
+        'chkValidationPlaylists
+        '
+        Me.chkValidationPlaylists.AutoSize = True
+        Me.chkValidationPlaylists.Checked = Global.iTSfv.My.MySettings.Default.CreateValidationPlaylists
+        Me.chkValidationPlaylists.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CreateValidationPlaylists", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkValidationPlaylists.Location = New System.Drawing.Point(10, 125)
+        Me.chkValidationPlaylists.Name = "chkValidationPlaylists"
+        Me.chkValidationPlaylists.Size = New System.Drawing.Size(224, 17)
+        Me.chkValidationPlaylists.TabIndex = 16
+        Me.chkValidationPlaylists.Text = "&Save Validation Results in iTunes Playlists"
+        Me.chkValidationPlaylists.UseVisualStyleBackColor = True
         '
         'tpFileSystem
         '
@@ -991,6 +1244,42 @@ Partial Class frmMain
         Me.chkWinMakeReadOnly.TabIndex = 11
         Me.chkWinMakeReadOnly.Text = "&Set Read-Only attribute to tag complete tracks"
         Me.chkWinMakeReadOnly.UseVisualStyleBackColor = True
+        '
+        'chkExportLyrics
+        '
+        Me.chkExportLyrics.AutoSize = True
+        Me.chkExportLyrics.Checked = Global.iTSfv.My.MySettings.Default.ExportLyrics
+        Me.chkExportLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkExportLyrics.Location = New System.Drawing.Point(10, 79)
+        Me.chkExportLyrics.Name = "chkExportLyrics"
+        Me.chkExportLyrics.Size = New System.Drawing.Size(159, 17)
+        Me.chkExportLyrics.TabIndex = 15
+        Me.chkExportLyrics.Text = "Export &Lyrics to Album folder"
+        Me.chkExportLyrics.UseVisualStyleBackColor = True
+        '
+        'chkExportIndex
+        '
+        Me.chkExportIndex.AutoSize = True
+        Me.chkExportIndex.Checked = Global.iTSfv.My.MySettings.Default.ExportIndex
+        Me.chkExportIndex.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportIndex", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkExportIndex.Location = New System.Drawing.Point(10, 56)
+        Me.chkExportIndex.Name = "chkExportIndex"
+        Me.chkExportIndex.Size = New System.Drawing.Size(222, 17)
+        Me.chkExportIndex.TabIndex = 14
+        Me.chkExportIndex.Text = "Export Index to Album folder as index.html"
+        Me.chkExportIndex.UseVisualStyleBackColor = True
+        '
+        'chkVistaThumbnailFix
+        '
+        Me.chkVistaThumbnailFix.AutoSize = True
+        Me.chkVistaThumbnailFix.Checked = Global.iTSfv.My.MySettings.Default.FixFolderThumbnail
+        Me.chkVistaThumbnailFix.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "FixFolderThumbnail", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkVistaThumbnailFix.Location = New System.Drawing.Point(10, 125)
+        Me.chkVistaThumbnailFix.Name = "chkVistaThumbnailFix"
+        Me.chkVistaThumbnailFix.Size = New System.Drawing.Size(192, 17)
+        Me.chkVistaThumbnailFix.TabIndex = 12
+        Me.chkVistaThumbnailFix.Text = "Fix Folder Thumbnail in Artist Folder"
+        Me.chkVistaThumbnailFix.UseVisualStyleBackColor = True
         '
         'ilTabs
         '
@@ -1074,6 +1363,30 @@ Partial Class frmMain
         Me.tpEditor.Text = "Editor"
         Me.tpEditor.UseVisualStyleBackColor = True
         '
+        'chkRemoveComments
+        '
+        Me.chkRemoveComments.AutoSize = True
+        Me.chkRemoveComments.Checked = Global.iTSfv.My.MySettings.Default.RemoveComments
+        Me.chkRemoveComments.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveComments", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkRemoveComments.Location = New System.Drawing.Point(96, 120)
+        Me.chkRemoveComments.Name = "chkRemoveComments"
+        Me.chkRemoveComments.Size = New System.Drawing.Size(75, 17)
+        Me.chkRemoveComments.TabIndex = 33
+        Me.chkRemoveComments.Text = "Comments"
+        Me.chkRemoveComments.UseVisualStyleBackColor = True
+        '
+        'chkRemoveLyrics
+        '
+        Me.chkRemoveLyrics.AutoSize = True
+        Me.chkRemoveLyrics.Checked = Global.iTSfv.My.MySettings.Default.RemoveLyrics
+        Me.chkRemoveLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkRemoveLyrics.Location = New System.Drawing.Point(40, 120)
+        Me.chkRemoveLyrics.Name = "chkRemoveLyrics"
+        Me.chkRemoveLyrics.Size = New System.Drawing.Size(53, 17)
+        Me.chkRemoveLyrics.TabIndex = 32
+        Me.chkRemoveLyrics.Text = "Lyrics"
+        Me.chkRemoveLyrics.UseVisualStyleBackColor = True
+        '
         'txtAppend
         '
         Me.txtAppend.Location = New System.Drawing.Point(173, 176)
@@ -1142,6 +1455,19 @@ Partial Class frmMain
         Me.Label2.TabIndex = 24
         Me.Label2.Text = "characters from"
         '
+        'nudTrimChar
+        '
+        Me.nudTrimChar.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.iTSfv.My.MySettings.Default, "TrimChar", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.nudTrimChar.Enabled = False
+        Me.nudTrimChar.ForeColor = System.Drawing.Color.Red
+        Me.nudTrimChar.Location = New System.Drawing.Point(69, 149)
+        Me.nudTrimChar.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudTrimChar.Name = "nudTrimChar"
+        Me.nudTrimChar.ReadOnly = True
+        Me.nudTrimChar.Size = New System.Drawing.Size(59, 20)
+        Me.nudTrimChar.TabIndex = 23
+        Me.nudTrimChar.Value = Global.iTSfv.My.MySettings.Default.TrimChar
+        '
         'chkTrimChar
         '
         Me.chkTrimChar.AutoSize = True
@@ -1152,6 +1478,67 @@ Partial Class frmMain
         Me.chkTrimChar.TabIndex = 22
         Me.chkTrimChar.Text = "&Trim"
         Me.chkTrimChar.UseVisualStyleBackColor = True
+        '
+        'chkTagRemove
+        '
+        Me.chkTagRemove.AutoSize = True
+        Me.chkTagRemove.Checked = Global.iTSfv.My.MySettings.Default.EditRemoveLyrics
+        Me.chkTagRemove.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditRemoveLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkTagRemove.Location = New System.Drawing.Point(17, 94)
+        Me.chkTagRemove.Name = "chkTagRemove"
+        Me.chkTagRemove.Size = New System.Drawing.Size(203, 17)
+        Me.chkTagRemove.TabIndex = 21
+        Me.chkTagRemove.Text = "Remove the following tag from Track:"
+        Me.chkTagRemove.UseVisualStyleBackColor = True
+        '
+        'chkDecompile
+        '
+        Me.chkDecompile.AutoSize = True
+        Me.chkDecompile.Checked = Global.iTSfv.My.MySettings.Default.EditDecompileTracks
+        Me.chkDecompile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditDecompileTracks", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkDecompile.Location = New System.Drawing.Point(17, 67)
+        Me.chkDecompile.Name = "chkDecompile"
+        Me.chkDecompile.Size = New System.Drawing.Size(120, 17)
+        Me.chkDecompile.TabIndex = 20
+        Me.chkDecompile.Text = "&Decompile tracks to"
+        Me.chkDecompile.UseVisualStyleBackColor = True
+        '
+        'chkReplaceTextInTags
+        '
+        Me.chkReplaceTextInTags.AutoSize = True
+        Me.chkReplaceTextInTags.Checked = Global.iTSfv.My.MySettings.Default.EditReplaceText
+        Me.chkReplaceTextInTags.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditReplaceText", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkReplaceTextInTags.Location = New System.Drawing.Point(17, 40)
+        Me.chkReplaceTextInTags.Name = "chkReplaceTextInTags"
+        Me.chkReplaceTextInTags.Size = New System.Drawing.Size(66, 17)
+        Me.chkReplaceTextInTags.TabIndex = 19
+        Me.chkReplaceTextInTags.Text = "&Replace"
+        Me.chkReplaceTextInTags.UseVisualStyleBackColor = True
+        '
+        'chkCapitalizeFirstLetter
+        '
+        Me.chkCapitalizeFirstLetter.AutoSize = True
+        Me.chkCapitalizeFirstLetter.Checked = Global.iTSfv.My.MySettings.Default.EditCapitalizeWords
+        Me.chkCapitalizeFirstLetter.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCapitalizeFirstLetter.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditCapitalizeWords", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkCapitalizeFirstLetter.Location = New System.Drawing.Point(17, 13)
+        Me.chkCapitalizeFirstLetter.Name = "chkCapitalizeFirstLetter"
+        Me.chkCapitalizeFirstLetter.Size = New System.Drawing.Size(181, 17)
+        Me.chkCapitalizeFirstLetter.TabIndex = 18
+        Me.chkCapitalizeFirstLetter.Text = "Capitalize first letter of each word"
+        Me.chkCapitalizeFirstLetter.UseVisualStyleBackColor = True
+        '
+        'chkStrict
+        '
+        Me.chkStrict.AutoSize = True
+        Me.chkStrict.Checked = Global.iTSfv.My.MySettings.Default.EditCapitalizeStrict
+        Me.chkStrict.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditCapitalizeStrict", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkStrict.Location = New System.Drawing.Point(417, 13)
+        Me.chkStrict.Name = "chkStrict"
+        Me.chkStrict.Size = New System.Drawing.Size(80, 17)
+        Me.chkStrict.TabIndex = 16
+        Me.chkStrict.Text = "&Strict Mode"
+        Me.chkStrict.UseVisualStyleBackColor = True
         '
         'gbWriteTags
         '
@@ -1166,6 +1553,67 @@ Partial Class frmMain
         Me.gbWriteTags.TabIndex = 4
         Me.gbWriteTags.TabStop = False
         Me.gbWriteTags.Text = "Write tags to"
+        '
+        'chkGenre
+        '
+        Me.chkGenre.AutoSize = True
+        Me.chkGenre.Checked = Global.iTSfv.My.MySettings.Default.EditGenre
+        Me.chkGenre.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditGenre", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkGenre.Location = New System.Drawing.Point(12, 111)
+        Me.chkGenre.Name = "chkGenre"
+        Me.chkGenre.Size = New System.Drawing.Size(55, 17)
+        Me.chkGenre.TabIndex = 5
+        Me.chkGenre.Text = "Genre"
+        Me.chkGenre.UseVisualStyleBackColor = True
+        '
+        'chkAlbumArtist
+        '
+        Me.chkAlbumArtist.AutoSize = True
+        Me.chkAlbumArtist.Checked = Global.iTSfv.My.MySettings.Default.EditAlbumArtist
+        Me.chkAlbumArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditAlbumArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkAlbumArtist.Location = New System.Drawing.Point(12, 88)
+        Me.chkAlbumArtist.Name = "chkAlbumArtist"
+        Me.chkAlbumArtist.Size = New System.Drawing.Size(81, 17)
+        Me.chkAlbumArtist.TabIndex = 4
+        Me.chkAlbumArtist.Text = "Album Artist"
+        Me.chkAlbumArtist.UseVisualStyleBackColor = True
+        '
+        'chkArtist
+        '
+        Me.chkArtist.AutoSize = True
+        Me.chkArtist.Checked = Global.iTSfv.My.MySettings.Default.EditArtist
+        Me.chkArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkArtist.Location = New System.Drawing.Point(12, 19)
+        Me.chkArtist.Name = "chkArtist"
+        Me.chkArtist.Size = New System.Drawing.Size(49, 17)
+        Me.chkArtist.TabIndex = 1
+        Me.chkArtist.Text = "Artist"
+        Me.chkArtist.UseVisualStyleBackColor = True
+        '
+        'chkName
+        '
+        Me.chkName.AutoSize = True
+        Me.chkName.Checked = Global.iTSfv.My.MySettings.Default.EditName
+        Me.chkName.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkName.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkName.Location = New System.Drawing.Point(12, 65)
+        Me.chkName.Name = "chkName"
+        Me.chkName.Size = New System.Drawing.Size(54, 17)
+        Me.chkName.TabIndex = 3
+        Me.chkName.Text = "Name"
+        Me.chkName.UseVisualStyleBackColor = True
+        '
+        'chkAlbum
+        '
+        Me.chkAlbum.AutoSize = True
+        Me.chkAlbum.Checked = Global.iTSfv.My.MySettings.Default.EditAlbum
+        Me.chkAlbum.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditAlbum", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkAlbum.Location = New System.Drawing.Point(12, 42)
+        Me.chkAlbum.Name = "chkAlbum"
+        Me.chkAlbum.Size = New System.Drawing.Size(55, 17)
+        Me.chkAlbum.TabIndex = 2
+        Me.chkAlbum.Text = "Album"
+        Me.chkAlbum.UseVisualStyleBackColor = True
         '
         'cboArtistsDecompiled
         '
@@ -1465,6 +1913,18 @@ Partial Class frmMain
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Export Tracks with the following File Pattern"
         '
+        'chkExportArtwork
+        '
+        Me.chkExportArtwork.AutoSize = True
+        Me.chkExportArtwork.Checked = Global.iTSfv.My.MySettings.Default.ExportTracksArtwork
+        Me.chkExportArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportTracksArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkExportArtwork.Location = New System.Drawing.Point(292, 53)
+        Me.chkExportArtwork.Name = "chkExportArtwork"
+        Me.chkExportArtwork.Size = New System.Drawing.Size(84, 17)
+        Me.chkExportArtwork.TabIndex = 2
+        Me.chkExportArtwork.Text = "with Artwork"
+        Me.chkExportArtwork.UseVisualStyleBackColor = True
+        '
         'cboExportFilePattern
         '
         Me.cboExportFilePattern.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1537,6 +1997,20 @@ Partial Class frmMain
         Me.chkReplaceWithNewKind.Text = "Replace track with identical but different kind file"
         Me.chkReplaceWithNewKind.UseVisualStyleBackColor = True
         '
+        'chkValidate
+        '
+        Me.chkValidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkValidate.AutoSize = True
+        Me.chkValidate.Checked = Global.iTSfv.My.MySettings.Default.ValidateAfterAdding
+        Me.chkValidate.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkValidate.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ValidateAfterAdding", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkValidate.Location = New System.Drawing.Point(472, 52)
+        Me.chkValidate.Name = "chkValidate"
+        Me.chkValidate.Size = New System.Drawing.Size(236, 17)
+        Me.chkValidate.TabIndex = 5
+        Me.chkValidate.Text = "&Validate tracks after adding to iTunes Library"
+        Me.chkValidate.UseVisualStyleBackColor = True
+        '
         'lbFiles
         '
         Me.lbFiles.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1571,6 +2045,21 @@ Partial Class frmMain
         Me.RemoveFromListToolStripMenuItem.Name = "RemoveFromListToolStripMenuItem"
         Me.RemoveFromListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.RemoveFromListToolStripMenuItem.Text = "&Remove from List"
+        '
+        'chkAddFile
+        '
+        Me.chkAddFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkAddFile.AutoSize = True
+        Me.chkAddFile.Checked = Global.iTSfv.My.MySettings.Default.AddNewFilesAfterScan
+        Me.chkAddFile.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkAddFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "AddNewFilesAfterScan", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkAddFile.Location = New System.Drawing.Point(472, 29)
+        Me.chkAddFile.Name = "chkAddFile"
+        Me.chkAddFile.Size = New System.Drawing.Size(253, 17)
+        Me.chkAddFile.TabIndex = 3
+        Me.chkAddFile.Text = "&Add new tracks to iTunes after scan is complete"
+        Me.ttApp.SetToolTip(Me.chkAddFile, "Add new tracks to iTunes after scan is complete")
+        Me.chkAddFile.UseVisualStyleBackColor = True
         '
         'btnFindNewFiles
         '
@@ -2155,6 +2644,18 @@ Partial Class frmMain
         Me.chkSheduleAdjustRating.TabIndex = 0
         Me.chkSheduleAdjustRating.Text = "Adjust Rating"
         Me.chkSheduleAdjustRating.UseVisualStyleBackColor = True
+        '
+        'chkSchValidateLibrary
+        '
+        Me.chkSchValidateLibrary.AutoSize = True
+        Me.chkSchValidateLibrary.Checked = Global.iTSfv.My.MySettings.Default.SchValidateLibrary
+        Me.chkSchValidateLibrary.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "SchValidateLibrary", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkSchValidateLibrary.Location = New System.Drawing.Point(15, 61)
+        Me.chkSchValidateLibrary.Name = "chkSchValidateLibrary"
+        Me.chkSchValidateLibrary.Size = New System.Drawing.Size(164, 17)
+        Me.chkSchValidateLibrary.TabIndex = 2
+        Me.chkSchValidateLibrary.Text = "&Validate iTunes Music Library"
+        Me.chkSchValidateLibrary.UseVisualStyleBackColor = True
         '
         'btnValidateSelected
         '
@@ -3144,507 +3645,6 @@ Partial Class frmMain
         Me.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStop.UseVisualStyleBackColor = True
         '
-        'chkCheckMetatag
-        '
-        Me.chkCheckMetatag.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkCheckMetatag.AutoSize = True
-        Me.chkCheckMetatag.Checked = Global.iTSfv.My.MySettings.Default.CheckMetatag
-        Me.chkCheckMetatag.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckMetatag", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckMetatag.Location = New System.Drawing.Point(450, 33)
-        Me.chkCheckMetatag.Name = "chkCheckMetatag"
-        Me.chkCheckMetatag.Size = New System.Drawing.Size(156, 17)
-        Me.chkCheckMetatag.TabIndex = 17
-        Me.chkCheckMetatag.Text = "Check for Metatag versions"
-        Me.chkCheckMetatag.UseVisualStyleBackColor = True
-        '
-        'chkCheckBPM
-        '
-        Me.chkCheckBPM.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkCheckBPM.AutoSize = True
-        Me.chkCheckBPM.Checked = Global.iTSfv.My.MySettings.Default.CheckBPM
-        Me.chkCheckBPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckBPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckBPM.Location = New System.Drawing.Point(450, 10)
-        Me.chkCheckBPM.Name = "chkCheckBPM"
-        Me.chkCheckBPM.Size = New System.Drawing.Size(167, 17)
-        Me.chkCheckBPM.TabIndex = 16
-        Me.chkCheckBPM.Text = "Check for tracks without BPM"
-        Me.chkCheckBPM.UseVisualStyleBackColor = True
-        '
-        'chkCheckFoldersWithoutArtwork
-        '
-        Me.chkCheckFoldersWithoutArtwork.AutoSize = True
-        Me.chkCheckFoldersWithoutArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckFoldersWithoutArtwork
-        Me.chkCheckFoldersWithoutArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckFoldersWithoutArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckFoldersWithoutArtwork.Location = New System.Drawing.Point(10, 148)
-        Me.chkCheckFoldersWithoutArtwork.Name = "chkCheckFoldersWithoutArtwork"
-        Me.chkCheckFoldersWithoutArtwork.Size = New System.Drawing.Size(223, 17)
-        Me.chkCheckFoldersWithoutArtwork.TabIndex = 15
-        Me.chkCheckFoldersWithoutArtwork.Text = "Check for album folders without Folder.jpg"
-        Me.chkCheckFoldersWithoutArtwork.UseVisualStyleBackColor = True
-        '
-        'chkCheckEmbeddedArtwork
-        '
-        Me.chkCheckEmbeddedArtwork.AutoSize = True
-        Me.chkCheckEmbeddedArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckDownloadedArtwork
-        Me.chkCheckEmbeddedArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckDownloadedArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckEmbeddedArtwork.Location = New System.Drawing.Point(10, 56)
-        Me.chkCheckEmbeddedArtwork.Name = "chkCheckEmbeddedArtwork"
-        Me.chkCheckEmbeddedArtwork.Size = New System.Drawing.Size(261, 17)
-        Me.chkCheckEmbeddedArtwork.TabIndex = 14
-        Me.chkCheckEmbeddedArtwork.Text = "Check for tracks with iTunes downloaded Artwork"
-        Me.chkCheckEmbeddedArtwork.UseVisualStyleBackColor = True
-        '
-        'chkCheckArtworkLowRes
-        '
-        Me.chkCheckArtworkLowRes.AutoSize = True
-        Me.chkCheckArtworkLowRes.Checked = Global.iTSfv.My.MySettings.Default.CheckArtworkLowRes
-        Me.chkCheckArtworkLowRes.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckArtworkLowRes", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckArtworkLowRes.Location = New System.Drawing.Point(10, 102)
-        Me.chkCheckArtworkLowRes.Name = "chkCheckArtworkLowRes"
-        Me.chkCheckArtworkLowRes.Size = New System.Drawing.Size(178, 17)
-        Me.chkCheckArtworkLowRes.TabIndex = 13
-        Me.chkCheckArtworkLowRes.Text = "Check for low resolution Artwork"
-        Me.ttApp.SetToolTip(Me.chkCheckArtworkLowRes, "To specifiy low resolution dimensions, press F2")
-        Me.chkCheckArtworkLowRes.UseVisualStyleBackColor = True
-        '
-        'chkCheckLyrics
-        '
-        Me.chkCheckLyrics.AutoSize = True
-        Me.chkCheckLyrics.Checked = Global.iTSfv.My.MySettings.Default.CheckLyrics
-        Me.chkCheckLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckLyrics.Location = New System.Drawing.Point(10, 125)
-        Me.chkCheckLyrics.Name = "chkCheckLyrics"
-        Me.chkCheckLyrics.Size = New System.Drawing.Size(171, 17)
-        Me.chkCheckLyrics.TabIndex = 12
-        Me.chkCheckLyrics.Text = "Check for tracks without Lyrics"
-        Me.chkCheckLyrics.UseVisualStyleBackColor = True
-        '
-        'chkItunesStoreStandard
-        '
-        Me.chkItunesStoreStandard.AutoSize = True
-        Me.chkItunesStoreStandard.Checked = Global.iTSfv.My.MySettings.Default.CheckStandard
-        Me.chkItunesStoreStandard.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckStandard", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkItunesStoreStandard.Location = New System.Drawing.Point(10, 10)
-        Me.chkItunesStoreStandard.Name = "chkItunesStoreStandard"
-        Me.chkItunesStoreStandard.Size = New System.Drawing.Size(179, 17)
-        Me.chkItunesStoreStandard.TabIndex = 10
-        Me.chkItunesStoreStandard.Text = "Check for iTunes Store standard"
-        Me.chkItunesStoreStandard.UseVisualStyleBackColor = True
-        '
-        'chkCheckTrackNum
-        '
-        Me.chkCheckTrackNum.AutoSize = True
-        Me.chkCheckTrackNum.Checked = Global.iTSfv.My.MySettings.Default.CheckTrackCount
-        Me.chkCheckTrackNum.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCheckTrackNum.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckTrackCount", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckTrackNum.Location = New System.Drawing.Point(10, 79)
-        Me.chkCheckTrackNum.Name = "chkCheckTrackNum"
-        Me.chkCheckTrackNum.Size = New System.Drawing.Size(212, 17)
-        Me.chkCheckTrackNum.TabIndex = 9
-        Me.chkCheckTrackNum.Text = "Check for tracks without Track Number"
-        Me.chkCheckTrackNum.UseVisualStyleBackColor = True
-        '
-        'chkCheckArtwork
-        '
-        Me.chkCheckArtwork.AutoSize = True
-        Me.chkCheckArtwork.Checked = Global.iTSfv.My.MySettings.Default.CheckArtwork
-        Me.chkCheckArtwork.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCheckArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CheckArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCheckArtwork.Location = New System.Drawing.Point(10, 33)
-        Me.chkCheckArtwork.Name = "chkCheckArtwork"
-        Me.chkCheckArtwork.Size = New System.Drawing.Size(180, 17)
-        Me.chkCheckArtwork.TabIndex = 3
-        Me.chkCheckArtwork.Text = "Check for tracks without Artwork"
-        Me.chkCheckArtwork.UseVisualStyleBackColor = True
-        '
-        'chkEditCopyAlbumArtistToSortArtist
-        '
-        Me.chkEditCopyAlbumArtistToSortArtist.AutoSize = True
-        Me.chkEditCopyAlbumArtistToSortArtist.Checked = Global.iTSfv.My.MySettings.Default.CopyAlbumArtistToSortArtist
-        Me.chkEditCopyAlbumArtistToSortArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CopyAlbumArtistToSortArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkEditCopyAlbumArtistToSortArtist.Location = New System.Drawing.Point(8, 32)
-        Me.chkEditCopyAlbumArtistToSortArtist.Name = "chkEditCopyAlbumArtistToSortArtist"
-        Me.chkEditCopyAlbumArtistToSortArtist.Size = New System.Drawing.Size(246, 17)
-        Me.chkEditCopyAlbumArtistToSortArtist.TabIndex = 23
-        Me.chkEditCopyAlbumArtistToSortArtist.Text = "Ensure Sort Artist and Album Artist are identical"
-        Me.chkEditCopyAlbumArtistToSortArtist.UseVisualStyleBackColor = True
-        '
-        'chkConvertArtworkJPG
-        '
-        Me.chkConvertArtworkJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkConvertArtworkJPG.AutoSize = True
-        Me.chkConvertArtworkJPG.Checked = Global.iTSfv.My.MySettings.Default.ConvertArtworkJPG
-        Me.chkConvertArtworkJPG.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ConvertArtworkJPG", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkConvertArtworkJPG.Location = New System.Drawing.Point(448, 80)
-        Me.chkConvertArtworkJPG.Name = "chkConvertArtworkJPG"
-        Me.chkConvertArtworkJPG.Size = New System.Drawing.Size(176, 17)
-        Me.chkConvertArtworkJPG.TabIndex = 22
-        Me.chkConvertArtworkJPG.Text = "Convert Artwork to JPEG format"
-        Me.chkConvertArtworkJPG.UseVisualStyleBackColor = True
-        '
-        'chkWriteGenre
-        '
-        Me.chkWriteGenre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkWriteGenre.AutoSize = True
-        Me.chkWriteGenre.Checked = Global.iTSfv.My.MySettings.Default.WriteGenre
-        Me.chkWriteGenre.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "WriteGenre", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkWriteGenre.Location = New System.Drawing.Point(448, 8)
-        Me.chkWriteGenre.Name = "chkWriteGenre"
-        Me.chkWriteGenre.Size = New System.Drawing.Size(190, 17)
-        Me.chkWriteGenre.TabIndex = 20
-        Me.chkWriteGenre.Text = "Fill missing Genre tag using Last.fm"
-        Me.chkWriteGenre.UseVisualStyleBackColor = True
-        '
-        'chkRemoveLowResArtwork
-        '
-        Me.chkRemoveLowResArtwork.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkRemoveLowResArtwork.AutoSize = True
-        Me.chkRemoveLowResArtwork.Checked = Global.iTSfv.My.MySettings.Default.RemoveLowResArtwork
-        Me.chkRemoveLowResArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveLowResArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkRemoveLowResArtwork.ForeColor = System.Drawing.Color.Red
-        Me.chkRemoveLowResArtwork.Location = New System.Drawing.Point(448, 56)
-        Me.chkRemoveLowResArtwork.Name = "chkRemoveLowResArtwork"
-        Me.chkRemoveLowResArtwork.Size = New System.Drawing.Size(171, 17)
-        Me.chkRemoveLowResArtwork.TabIndex = 15
-        Me.chkRemoveLowResArtwork.Text = "&Remove low resolution artwork"
-        Me.chkRemoveLowResArtwork.UseVisualStyleBackColor = True
-        '
-        'chkUpdateInfoFromFile
-        '
-        Me.chkUpdateInfoFromFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkUpdateInfoFromFile.AutoSize = True
-        Me.chkUpdateInfoFromFile.Checked = Global.iTSfv.My.MySettings.Default.UpdateInfoFromFile
-        Me.chkUpdateInfoFromFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "UpdateInfoFromFile", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkUpdateInfoFromFile.Location = New System.Drawing.Point(448, 32)
-        Me.chkUpdateInfoFromFile.Name = "chkUpdateInfoFromFile"
-        Me.chkUpdateInfoFromFile.Size = New System.Drawing.Size(210, 17)
-        Me.chkUpdateInfoFromFile.TabIndex = 19
-        Me.chkUpdateInfoFromFile.Text = "Update Database refreshingTags in file"
-        Me.ttApp.SetToolTip(Me.chkUpdateInfoFromFile, "Validating iTunes Music Library with this setting checked will be extremely slow")
-        Me.chkUpdateInfoFromFile.UseVisualStyleBackColor = True
-        '
-        'chkImportLyrics
-        '
-        Me.chkImportLyrics.AutoSize = True
-        Me.chkImportLyrics.Checked = Global.iTSfv.My.MySettings.Default.LyricsImport
-        Me.chkImportLyrics.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkImportLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "LyricsImport", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkImportLyrics.Location = New System.Drawing.Point(8, 80)
-        Me.chkImportLyrics.Name = "chkImportLyrics"
-        Me.chkImportLyrics.Size = New System.Drawing.Size(211, 17)
-        Me.chkImportLyrics.TabIndex = 19
-        Me.chkImportLyrics.Text = "Import &Lyrics  to track from Album folder"
-        Me.chkImportLyrics.UseVisualStyleBackColor = True
-        '
-        'chkRemoveNull
-        '
-        Me.chkRemoveNull.AutoSize = True
-        Me.chkRemoveNull.Checked = Global.iTSfv.My.MySettings.Default.RemoveNullChar
-        Me.chkRemoveNull.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveNullChar", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkRemoveNull.Location = New System.Drawing.Point(8, 176)
-        Me.chkRemoveNull.Name = "chkRemoveNull"
-        Me.chkRemoveNull.Size = New System.Drawing.Size(230, 17)
-        Me.chkRemoveNull.TabIndex = 18
-        Me.chkRemoveNull.Text = "&Remove Null characters at the end of Tags"
-        Me.ttApp.SetToolTip(Me.chkRemoveNull, "Validating iTunes Music Library with this setting checked will be slow")
-        Me.chkRemoveNull.UseVisualStyleBackColor = True
-        '
-        'chkPlayedCountImportPCNT
-        '
-        Me.chkPlayedCountImportPCNT.AutoSize = True
-        Me.chkPlayedCountImportPCNT.Checked = Global.iTSfv.My.MySettings.Default.PlayedCountImportPCNT
-        Me.chkPlayedCountImportPCNT.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "PlayedCountImportPCNT", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkPlayedCountImportPCNT.Location = New System.Drawing.Point(10, 102)
-        Me.chkPlayedCountImportPCNT.Name = "chkPlayedCountImportPCNT"
-        Me.chkPlayedCountImportPCNT.Size = New System.Drawing.Size(251, 17)
-        Me.chkPlayedCountImportPCNT.TabIndex = 19
-        Me.chkPlayedCountImportPCNT.Text = "Import PlayedCount from POPM or PCNT Frame"
-        Me.chkPlayedCountImportPCNT.UseVisualStyleBackColor = True
-        '
-        'chkRatingsImportPOPM
-        '
-        Me.chkRatingsImportPOPM.AutoSize = True
-        Me.chkRatingsImportPOPM.Checked = Global.iTSfv.My.MySettings.Default.RatingImportPOPM
-        Me.chkRatingsImportPOPM.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RatingImportPOPM", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkRatingsImportPOPM.Location = New System.Drawing.Point(10, 79)
-        Me.chkRatingsImportPOPM.Name = "chkRatingsImportPOPM"
-        Me.chkRatingsImportPOPM.Size = New System.Drawing.Size(178, 17)
-        Me.chkRatingsImportPOPM.TabIndex = 18
-        Me.chkRatingsImportPOPM.Text = "Import &Rating from POPM Frame"
-        Me.chkRatingsImportPOPM.UseVisualStyleBackColor = True
-        '
-        'chkLibraryAdjustRatings
-        '
-        Me.chkLibraryAdjustRatings.AutoSize = True
-        Me.chkLibraryAdjustRatings.Checked = Global.iTSfv.My.MySettings.Default.LibraryAdjustRatings
-        Me.chkLibraryAdjustRatings.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "LibraryAdjustRatings", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkLibraryAdjustRatings.Location = New System.Drawing.Point(10, 56)
-        Me.chkLibraryAdjustRatings.Name = "chkLibraryAdjustRatings"
-        Me.chkLibraryAdjustRatings.Size = New System.Drawing.Size(227, 17)
-        Me.chkLibraryAdjustRatings.TabIndex = 15
-        Me.chkLibraryAdjustRatings.Text = "Adjust the Rating according to play pattern"
-        Me.chkLibraryAdjustRatings.UseVisualStyleBackColor = True
-        '
-        'chkValidationPlaylists
-        '
-        Me.chkValidationPlaylists.AutoSize = True
-        Me.chkValidationPlaylists.Checked = Global.iTSfv.My.MySettings.Default.CreateValidationPlaylists
-        Me.chkValidationPlaylists.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "CreateValidationPlaylists", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkValidationPlaylists.Location = New System.Drawing.Point(10, 125)
-        Me.chkValidationPlaylists.Name = "chkValidationPlaylists"
-        Me.chkValidationPlaylists.Size = New System.Drawing.Size(224, 17)
-        Me.chkValidationPlaylists.TabIndex = 16
-        Me.chkValidationPlaylists.Text = "&Save Validation Results in iTunes Playlists"
-        Me.chkValidationPlaylists.UseVisualStyleBackColor = True
-        '
-        'chkExportLyrics
-        '
-        Me.chkExportLyrics.AutoSize = True
-        Me.chkExportLyrics.Checked = Global.iTSfv.My.MySettings.Default.ExportLyrics
-        Me.chkExportLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkExportLyrics.Location = New System.Drawing.Point(10, 79)
-        Me.chkExportLyrics.Name = "chkExportLyrics"
-        Me.chkExportLyrics.Size = New System.Drawing.Size(159, 17)
-        Me.chkExportLyrics.TabIndex = 15
-        Me.chkExportLyrics.Text = "Export &Lyrics to Album folder"
-        Me.chkExportLyrics.UseVisualStyleBackColor = True
-        '
-        'chkExportIndex
-        '
-        Me.chkExportIndex.AutoSize = True
-        Me.chkExportIndex.Checked = Global.iTSfv.My.MySettings.Default.ExportIndex
-        Me.chkExportIndex.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportIndex", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkExportIndex.Location = New System.Drawing.Point(10, 56)
-        Me.chkExportIndex.Name = "chkExportIndex"
-        Me.chkExportIndex.Size = New System.Drawing.Size(222, 17)
-        Me.chkExportIndex.TabIndex = 14
-        Me.chkExportIndex.Text = "Export Index to Album folder as index.html"
-        Me.chkExportIndex.UseVisualStyleBackColor = True
-        '
-        'chkVistaThumbnailFix
-        '
-        Me.chkVistaThumbnailFix.AutoSize = True
-        Me.chkVistaThumbnailFix.Checked = Global.iTSfv.My.MySettings.Default.FixFolderThumbnail
-        Me.chkVistaThumbnailFix.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "FixFolderThumbnail", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkVistaThumbnailFix.Location = New System.Drawing.Point(10, 125)
-        Me.chkVistaThumbnailFix.Name = "chkVistaThumbnailFix"
-        Me.chkVistaThumbnailFix.Size = New System.Drawing.Size(192, 17)
-        Me.chkVistaThumbnailFix.TabIndex = 12
-        Me.chkVistaThumbnailFix.Text = "Fix Folder Thumbnail in Artist Folder"
-        Me.chkVistaThumbnailFix.UseVisualStyleBackColor = True
-        '
-        'chkRemoveComments
-        '
-        Me.chkRemoveComments.AutoSize = True
-        Me.chkRemoveComments.Checked = Global.iTSfv.My.MySettings.Default.RemoveComments
-        Me.chkRemoveComments.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveComments", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkRemoveComments.Location = New System.Drawing.Point(96, 120)
-        Me.chkRemoveComments.Name = "chkRemoveComments"
-        Me.chkRemoveComments.Size = New System.Drawing.Size(75, 17)
-        Me.chkRemoveComments.TabIndex = 33
-        Me.chkRemoveComments.Text = "Comments"
-        Me.chkRemoveComments.UseVisualStyleBackColor = True
-        '
-        'chkRemoveLyrics
-        '
-        Me.chkRemoveLyrics.AutoSize = True
-        Me.chkRemoveLyrics.Checked = Global.iTSfv.My.MySettings.Default.RemoveLyrics
-        Me.chkRemoveLyrics.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "RemoveLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkRemoveLyrics.Location = New System.Drawing.Point(40, 120)
-        Me.chkRemoveLyrics.Name = "chkRemoveLyrics"
-        Me.chkRemoveLyrics.Size = New System.Drawing.Size(53, 17)
-        Me.chkRemoveLyrics.TabIndex = 32
-        Me.chkRemoveLyrics.Text = "Lyrics"
-        Me.chkRemoveLyrics.UseVisualStyleBackColor = True
-        '
-        'nudTrimChar
-        '
-        Me.nudTrimChar.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.iTSfv.My.MySettings.Default, "TrimChar", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.nudTrimChar.Enabled = False
-        Me.nudTrimChar.ForeColor = System.Drawing.Color.Red
-        Me.nudTrimChar.Location = New System.Drawing.Point(69, 149)
-        Me.nudTrimChar.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.nudTrimChar.Name = "nudTrimChar"
-        Me.nudTrimChar.ReadOnly = True
-        Me.nudTrimChar.Size = New System.Drawing.Size(59, 20)
-        Me.nudTrimChar.TabIndex = 23
-        Me.nudTrimChar.Value = Global.iTSfv.My.MySettings.Default.TrimChar
-        '
-        'chkTagRemove
-        '
-        Me.chkTagRemove.AutoSize = True
-        Me.chkTagRemove.Checked = Global.iTSfv.My.MySettings.Default.EditRemoveLyrics
-        Me.chkTagRemove.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditRemoveLyrics", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkTagRemove.Location = New System.Drawing.Point(17, 94)
-        Me.chkTagRemove.Name = "chkTagRemove"
-        Me.chkTagRemove.Size = New System.Drawing.Size(203, 17)
-        Me.chkTagRemove.TabIndex = 21
-        Me.chkTagRemove.Text = "Remove the following tag from Track:"
-        Me.chkTagRemove.UseVisualStyleBackColor = True
-        '
-        'chkDecompile
-        '
-        Me.chkDecompile.AutoSize = True
-        Me.chkDecompile.Checked = Global.iTSfv.My.MySettings.Default.EditDecompileTracks
-        Me.chkDecompile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditDecompileTracks", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkDecompile.Location = New System.Drawing.Point(17, 67)
-        Me.chkDecompile.Name = "chkDecompile"
-        Me.chkDecompile.Size = New System.Drawing.Size(120, 17)
-        Me.chkDecompile.TabIndex = 20
-        Me.chkDecompile.Text = "&Decompile tracks to"
-        Me.chkDecompile.UseVisualStyleBackColor = True
-        '
-        'chkReplaceTextInTags
-        '
-        Me.chkReplaceTextInTags.AutoSize = True
-        Me.chkReplaceTextInTags.Checked = Global.iTSfv.My.MySettings.Default.EditReplaceText
-        Me.chkReplaceTextInTags.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditReplaceText", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkReplaceTextInTags.Location = New System.Drawing.Point(17, 40)
-        Me.chkReplaceTextInTags.Name = "chkReplaceTextInTags"
-        Me.chkReplaceTextInTags.Size = New System.Drawing.Size(66, 17)
-        Me.chkReplaceTextInTags.TabIndex = 19
-        Me.chkReplaceTextInTags.Text = "&Replace"
-        Me.chkReplaceTextInTags.UseVisualStyleBackColor = True
-        '
-        'chkCapitalizeFirstLetter
-        '
-        Me.chkCapitalizeFirstLetter.AutoSize = True
-        Me.chkCapitalizeFirstLetter.Checked = Global.iTSfv.My.MySettings.Default.EditCapitalizeWords
-        Me.chkCapitalizeFirstLetter.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCapitalizeFirstLetter.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditCapitalizeWords", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkCapitalizeFirstLetter.Location = New System.Drawing.Point(17, 13)
-        Me.chkCapitalizeFirstLetter.Name = "chkCapitalizeFirstLetter"
-        Me.chkCapitalizeFirstLetter.Size = New System.Drawing.Size(181, 17)
-        Me.chkCapitalizeFirstLetter.TabIndex = 18
-        Me.chkCapitalizeFirstLetter.Text = "Capitalize first letter of each word"
-        Me.chkCapitalizeFirstLetter.UseVisualStyleBackColor = True
-        '
-        'chkStrict
-        '
-        Me.chkStrict.AutoSize = True
-        Me.chkStrict.Checked = Global.iTSfv.My.MySettings.Default.EditCapitalizeStrict
-        Me.chkStrict.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditCapitalizeStrict", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkStrict.Location = New System.Drawing.Point(417, 13)
-        Me.chkStrict.Name = "chkStrict"
-        Me.chkStrict.Size = New System.Drawing.Size(80, 17)
-        Me.chkStrict.TabIndex = 16
-        Me.chkStrict.Text = "&Strict Mode"
-        Me.chkStrict.UseVisualStyleBackColor = True
-        '
-        'chkGenre
-        '
-        Me.chkGenre.AutoSize = True
-        Me.chkGenre.Checked = Global.iTSfv.My.MySettings.Default.EditGenre
-        Me.chkGenre.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditGenre", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkGenre.Location = New System.Drawing.Point(12, 111)
-        Me.chkGenre.Name = "chkGenre"
-        Me.chkGenre.Size = New System.Drawing.Size(55, 17)
-        Me.chkGenre.TabIndex = 5
-        Me.chkGenre.Text = "Genre"
-        Me.chkGenre.UseVisualStyleBackColor = True
-        '
-        'chkAlbumArtist
-        '
-        Me.chkAlbumArtist.AutoSize = True
-        Me.chkAlbumArtist.Checked = Global.iTSfv.My.MySettings.Default.EditAlbumArtist
-        Me.chkAlbumArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditAlbumArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkAlbumArtist.Location = New System.Drawing.Point(12, 88)
-        Me.chkAlbumArtist.Name = "chkAlbumArtist"
-        Me.chkAlbumArtist.Size = New System.Drawing.Size(81, 17)
-        Me.chkAlbumArtist.TabIndex = 4
-        Me.chkAlbumArtist.Text = "Album Artist"
-        Me.chkAlbumArtist.UseVisualStyleBackColor = True
-        '
-        'chkArtist
-        '
-        Me.chkArtist.AutoSize = True
-        Me.chkArtist.Checked = Global.iTSfv.My.MySettings.Default.EditArtist
-        Me.chkArtist.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditArtist", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkArtist.Location = New System.Drawing.Point(12, 19)
-        Me.chkArtist.Name = "chkArtist"
-        Me.chkArtist.Size = New System.Drawing.Size(49, 17)
-        Me.chkArtist.TabIndex = 1
-        Me.chkArtist.Text = "Artist"
-        Me.chkArtist.UseVisualStyleBackColor = True
-        '
-        'chkName
-        '
-        Me.chkName.AutoSize = True
-        Me.chkName.Checked = Global.iTSfv.My.MySettings.Default.EditName
-        Me.chkName.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkName.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkName.Location = New System.Drawing.Point(12, 65)
-        Me.chkName.Name = "chkName"
-        Me.chkName.Size = New System.Drawing.Size(54, 17)
-        Me.chkName.TabIndex = 3
-        Me.chkName.Text = "Name"
-        Me.chkName.UseVisualStyleBackColor = True
-        '
-        'chkAlbum
-        '
-        Me.chkAlbum.AutoSize = True
-        Me.chkAlbum.Checked = Global.iTSfv.My.MySettings.Default.EditAlbum
-        Me.chkAlbum.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "EditAlbum", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkAlbum.Location = New System.Drawing.Point(12, 42)
-        Me.chkAlbum.Name = "chkAlbum"
-        Me.chkAlbum.Size = New System.Drawing.Size(55, 17)
-        Me.chkAlbum.TabIndex = 2
-        Me.chkAlbum.Text = "Album"
-        Me.chkAlbum.UseVisualStyleBackColor = True
-        '
-        'chkExportArtwork
-        '
-        Me.chkExportArtwork.AutoSize = True
-        Me.chkExportArtwork.Checked = Global.iTSfv.My.MySettings.Default.ExportTracksArtwork
-        Me.chkExportArtwork.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ExportTracksArtwork", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkExportArtwork.Location = New System.Drawing.Point(292, 53)
-        Me.chkExportArtwork.Name = "chkExportArtwork"
-        Me.chkExportArtwork.Size = New System.Drawing.Size(84, 17)
-        Me.chkExportArtwork.TabIndex = 2
-        Me.chkExportArtwork.Text = "with Artwork"
-        Me.chkExportArtwork.UseVisualStyleBackColor = True
-        '
-        'chkValidate
-        '
-        Me.chkValidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkValidate.AutoSize = True
-        Me.chkValidate.Checked = Global.iTSfv.My.MySettings.Default.ValidateAfterAdding
-        Me.chkValidate.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkValidate.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "ValidateAfterAdding", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkValidate.Location = New System.Drawing.Point(472, 52)
-        Me.chkValidate.Name = "chkValidate"
-        Me.chkValidate.Size = New System.Drawing.Size(236, 17)
-        Me.chkValidate.TabIndex = 5
-        Me.chkValidate.Text = "&Validate tracks after adding to iTunes Library"
-        Me.chkValidate.UseVisualStyleBackColor = True
-        '
-        'chkAddFile
-        '
-        Me.chkAddFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkAddFile.AutoSize = True
-        Me.chkAddFile.Checked = Global.iTSfv.My.MySettings.Default.AddNewFilesAfterScan
-        Me.chkAddFile.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAddFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "AddNewFilesAfterScan", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkAddFile.Location = New System.Drawing.Point(472, 29)
-        Me.chkAddFile.Name = "chkAddFile"
-        Me.chkAddFile.Size = New System.Drawing.Size(253, 17)
-        Me.chkAddFile.TabIndex = 3
-        Me.chkAddFile.Text = "&Add new tracks to iTunes after scan is complete"
-        Me.ttApp.SetToolTip(Me.chkAddFile, "Add new tracks to iTunes after scan is complete")
-        Me.chkAddFile.UseVisualStyleBackColor = True
-        '
-        'chkSchValidateLibrary
-        '
-        Me.chkSchValidateLibrary.AutoSize = True
-        Me.chkSchValidateLibrary.Checked = Global.iTSfv.My.MySettings.Default.SchValidateLibrary
-        Me.chkSchValidateLibrary.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.iTSfv.My.MySettings.Default, "SchValidateLibrary", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkSchValidateLibrary.Location = New System.Drawing.Point(15, 61)
-        Me.chkSchValidateLibrary.Name = "chkSchValidateLibrary"
-        Me.chkSchValidateLibrary.Size = New System.Drawing.Size(164, 17)
-        Me.chkSchValidateLibrary.TabIndex = 2
-        Me.chkSchValidateLibrary.Text = "&Validate iTunes Music Library"
-        Me.chkSchValidateLibrary.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AcceptButton = Me.btnValidateSelected
@@ -3680,6 +3680,7 @@ Partial Class frmMain
         Me.tcSelectedTracks.ResumeLayout(False)
         Me.tpEditor.ResumeLayout(False)
         Me.tpEditor.PerformLayout()
+        CType(Me.nudTrimChar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbWriteTags.ResumeLayout(False)
         Me.gbWriteTags.PerformLayout()
         Me.tpSTClipboard.ResumeLayout(False)
@@ -3737,7 +3738,6 @@ Partial Class frmMain
         Me.tlpMain.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
-        CType(Me.nudTrimChar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
