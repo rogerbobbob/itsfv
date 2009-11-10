@@ -46,6 +46,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -106,16 +107,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\McoreIndexer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -136,6 +132,7 @@
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +162,6 @@
     <Compile Include="Forms\frmSetInfo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\LyricsflyHelper.vb" />
     <Compile Include="iTunesLib\cIITFileOrCDTrackComparer.vb" />
     <Compile Include="My Project\Settings1.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -530,6 +526,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ZScreen\trunk\ZSS.UploadersLib\ZSS.UploadersLib.csproj">
+      <Project>{E1C94415-3424-4517-A2A1-B2FDD1F59C67}</Project>
+      <Name>ZSS.UploadersLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\lib\CommandLineParser\CommandLineParser.vbproj">
       <Project>{0750FD5C-105A-474E-AB36-CA98DC1FA2E4}</Project>
       <Name>CommandLineParser</Name>
@@ -569,9 +569,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Docs\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1120,7 +1120,7 @@ Partial Class frmOptions
         Me.chkImportLyricsLyricWiki.Name = "chkImportLyricsLyricWiki"
         Me.chkImportLyricsLyricWiki.Size = New System.Drawing.Size(305, 17)
         Me.chkImportLyricsLyricWiki.TabIndex = 27
-        Me.chkImportLyricsLyricWiki.Text = "Import Lyrics from LyricWiki if the character count is at least"
+        Me.chkImportLyricsLyricWiki.Text = "Import Lyrics from Lyricsfly if the character count is at least"
         Me.chkImportLyricsLyricWiki.UseVisualStyleBackColor = True
         '
         'GroupBox25

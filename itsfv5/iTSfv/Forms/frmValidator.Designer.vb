@@ -220,7 +220,7 @@ Partial Class frmValidator
         Me.chkLyricsImport.Name = "chkLyricsImport"
         Me.chkLyricsImport.Size = New System.Drawing.Size(192, 17)
         Me.chkLyricsImport.TabIndex = 0
-        Me.chkLyricsImport.Text = "Import Missing &Lyrics from LyricWiki"
+        Me.chkLyricsImport.Text = "Import Missing &Lyrics from Lyricsfly"
         Me.chkLyricsImport.UseVisualStyleBackColor = True
         '
         'tpFileSystem

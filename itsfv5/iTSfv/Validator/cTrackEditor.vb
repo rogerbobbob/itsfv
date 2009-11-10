@@ -62,7 +62,7 @@ Public Class cTrackEditor
                 popm.PlayCount = CULng(playedCount)
 
                 'msAppendDebug(String.Format("Setting PlayedCount|Rating for track as {0}|{1}", playedCount, rating))                
-                succ = True
+                succ = True                
             End If
         Catch ex As Exception
             msAppendWarnings(ex.Message + " while writing POPM frame")
