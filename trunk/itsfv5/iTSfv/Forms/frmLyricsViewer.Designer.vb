@@ -29,6 +29,7 @@ Partial Class frmLyricsViewer
         Me.tlpDesc = New System.Windows.Forms.TableLayoutPanel
         Me.pbArtwork = New System.Windows.Forms.PictureBox
         Me.pDesc = New System.Windows.Forms.Panel
+        Me.btnEditLyrics = New System.Windows.Forms.Button
         Me.txtGenre = New System.Windows.Forms.Label
         Me.txtYear = New System.Windows.Forms.Label
         Me.txtAlbumArtist = New System.Windows.Forms.Label
@@ -43,7 +44,6 @@ Partial Class frmLyricsViewer
         Me.Label1 = New System.Windows.Forms.Label
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel
         Me.panelLyics = New System.Windows.Forms.Panel
-        Me.btnEditLyrics = New System.Windows.Forms.Button
         Me.txtLyrics = New System.Windows.Forms.RichTextBox
         Me.cmsOptions.SuspendLayout()
         Me.tlpDesc.SuspendLayout()
@@ -119,6 +119,18 @@ Partial Class frmLyricsViewer
         Me.pDesc.Name = "pDesc"
         Me.pDesc.Size = New System.Drawing.Size(366, 200)
         Me.pDesc.TabIndex = 4
+        '
+        'btnEditLyrics
+        '
+        Me.btnEditLyrics.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEditLyrics.Enabled = False
+        Me.btnEditLyrics.Location = New System.Drawing.Point(248, 168)
+        Me.btnEditLyrics.Name = "btnEditLyrics"
+        Me.btnEditLyrics.Size = New System.Drawing.Size(107, 23)
+        Me.btnEditLyrics.TabIndex = 12
+        Me.btnEditLyrics.Text = "&Submit Correction..."
+        Me.btnEditLyrics.UseVisualStyleBackColor = True
+        Me.btnEditLyrics.Visible = False
         '
         'txtGenre
         '
@@ -259,23 +271,12 @@ Partial Class frmLyricsViewer
         Me.panelLyics.Size = New System.Drawing.Size(578, 350)
         Me.panelLyics.TabIndex = 1
         '
-        'btnEditLyrics
-        '
-        Me.btnEditLyrics.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEditLyrics.Enabled = False
-        Me.btnEditLyrics.Location = New System.Drawing.Point(248, 168)
-        Me.btnEditLyrics.Name = "btnEditLyrics"
-        Me.btnEditLyrics.Size = New System.Drawing.Size(107, 23)
-        Me.btnEditLyrics.TabIndex = 12
-        Me.btnEditLyrics.Text = "&Submit Correction..."
-        Me.btnEditLyrics.UseVisualStyleBackColor = True
-        '
         'txtLyrics
         '
         Me.txtLyrics.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtLyrics.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLyrics.Location = New System.Drawing.Point(0, 0)
         Me.txtLyrics.Name = "txtLyrics"
-        Me.txtLyrics.ReadOnly = True
         Me.txtLyrics.Size = New System.Drawing.Size(578, 350)
         Me.txtLyrics.TabIndex = 0
         Me.txtLyrics.Text = ""
@@ -321,6 +322,6 @@ Partial Class frmLyricsViewer
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents tlpMain As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents panelLyics As System.Windows.Forms.Panel
-    Friend WithEvents txtLyrics As System.Windows.Forms.RichTextBox
     Friend WithEvents btnEditLyrics As System.Windows.Forms.Button
+    Friend WithEvents txtLyrics As System.Windows.Forms.RichTextBox
 End Class
