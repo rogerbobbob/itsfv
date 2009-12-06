@@ -135,114 +135,120 @@ Partial Class frmLyricsViewer
         'txtGenre
         '
         Me.txtGenre.AutoSize = True
-        Me.txtGenre.Location = New System.Drawing.Point(102, 155)
+        Me.txtGenre.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtGenre.Location = New System.Drawing.Point(112, 155)
         Me.txtGenre.Name = "txtGenre"
-        Me.txtGenre.Size = New System.Drawing.Size(55, 13)
+        Me.txtGenre.Size = New System.Drawing.Size(71, 18)
         Me.txtGenre.TabIndex = 11
         Me.txtGenre.Text = "Pending..."
         '
         'txtYear
         '
         Me.txtYear.AutoSize = True
-        Me.txtYear.Location = New System.Drawing.Point(102, 127)
+        Me.txtYear.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtYear.Location = New System.Drawing.Point(112, 127)
         Me.txtYear.Name = "txtYear"
-        Me.txtYear.Size = New System.Drawing.Size(55, 13)
+        Me.txtYear.Size = New System.Drawing.Size(71, 18)
         Me.txtYear.TabIndex = 10
         Me.txtYear.Text = "Pending..."
         '
         'txtAlbumArtist
         '
         Me.txtAlbumArtist.AutoSize = True
-        Me.txtAlbumArtist.Location = New System.Drawing.Point(102, 99)
+        Me.txtAlbumArtist.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAlbumArtist.Location = New System.Drawing.Point(112, 99)
         Me.txtAlbumArtist.Name = "txtAlbumArtist"
-        Me.txtAlbumArtist.Size = New System.Drawing.Size(55, 13)
+        Me.txtAlbumArtist.Size = New System.Drawing.Size(71, 18)
         Me.txtAlbumArtist.TabIndex = 9
         Me.txtAlbumArtist.Text = "Pending..."
         '
         'txtAlbum
         '
         Me.txtAlbum.AutoSize = True
-        Me.txtAlbum.Location = New System.Drawing.Point(102, 71)
+        Me.txtAlbum.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAlbum.Location = New System.Drawing.Point(112, 71)
         Me.txtAlbum.Name = "txtAlbum"
-        Me.txtAlbum.Size = New System.Drawing.Size(55, 13)
+        Me.txtAlbum.Size = New System.Drawing.Size(71, 18)
         Me.txtAlbum.TabIndex = 8
         Me.txtAlbum.Text = "Pending..."
         '
         'txtArtist
         '
         Me.txtArtist.AutoSize = True
-        Me.txtArtist.Location = New System.Drawing.Point(102, 43)
+        Me.txtArtist.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtArtist.Location = New System.Drawing.Point(112, 43)
         Me.txtArtist.Name = "txtArtist"
-        Me.txtArtist.Size = New System.Drawing.Size(55, 13)
+        Me.txtArtist.Size = New System.Drawing.Size(71, 18)
         Me.txtArtist.TabIndex = 7
         Me.txtArtist.Text = "Pending..."
         '
         'txtName
         '
         Me.txtName.AutoSize = True
-        Me.txtName.Location = New System.Drawing.Point(102, 15)
+        Me.txtName.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtName.Location = New System.Drawing.Point(112, 15)
         Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(55, 13)
+        Me.txtName.Size = New System.Drawing.Size(71, 18)
         Me.txtName.TabIndex = 6
         Me.txtName.Text = "Pending..."
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(16, 155)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(45, 13)
+        Me.Label6.Size = New System.Drawing.Size(51, 18)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Genre:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(16, 127)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(37, 13)
+        Me.Label5.Size = New System.Drawing.Size(39, 18)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Year:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(16, 99)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(78, 13)
+        Me.Label4.Size = New System.Drawing.Size(90, 18)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Album Artist:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(16, 71)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 13)
+        Me.Label3.Size = New System.Drawing.Size(53, 18)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Album:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(16, 43)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 13)
+        Me.Label2.Size = New System.Drawing.Size(46, 18)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Artist:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(16, 15)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.Size = New System.Drawing.Size(45, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Name"
         '

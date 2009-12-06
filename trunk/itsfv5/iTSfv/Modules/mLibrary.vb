@@ -81,47 +81,45 @@ Public Module mLibrary
         Dim lws As New Lyrics
 
         Try
+            artist = track.Artist
+            song = track.Name
+            mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+            msAppendDebug(String.Format("Looking up for Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
             lws = checkSongExists(track.Artist, track.Name)
-            If Not String.IsNullOrEmpty(lws.Text) Then
 
-                artist = track.Artist
-                song = track.Name
-
+            If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
                 mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-
             Else
-
+                artist = track.AlbumArtist
+                song = track.Name
+                mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                msAppendDebug(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song))
                 lws = checkSongExists(track.AlbumArtist, track.Name)
-                If Not String.IsNullOrEmpty(lws.Text) Then
 
-                    artist = track.AlbumArtist
-                    song = track.Name
-
+                If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
                     mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                     msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-
                 Else
-
+                    artist = track.Artist
+                    song = mfGetNameToSearch(track)
+                    mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                    msAppendDebug(String.Format("Looking up for Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
                     lws = checkSongExists(track.Artist, mfGetNameToSearch(track))
-                    If Not String.IsNullOrEmpty(lws.Text) Then
-                        artist = track.Artist
-                        song = mfGetNameToSearch(track)
 
+                    If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
                         mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                         msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-
                     Else
-
+                        artist = track.AlbumArtist
+                        song = mfGetNameToSearch(track)
+                        mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song), True)
+                        msAppendDebug(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song))
                         lws = checkSongExists(track.AlbumArtist, mfGetNameToSearch(track))
-                        If Not String.IsNullOrEmpty(lws.Text) Then
 
-                            artist = track.AlbumArtist
-                            song = mfGetNameToSearch(track)
-
+                        If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
                             mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                             msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-
                         End If
 
                     End If
@@ -136,7 +134,7 @@ Public Module mLibrary
 
         Dim iso8859 As Encoding = Encoding.GetEncoding("ISO-8859-1")
 
-        If Not String.IsNullOrEmpty(lws.Text) Then
+        If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
             lws.Text = Encoding.UTF8.GetString(iso8859.GetBytes(lws.Text))
         End If
 

@@ -1,3 +1,5 @@
+Version 5.62 - 20091210
+
 5.62.01.0 Replaced LyricWiki by Lyricsfly
 5.62.00.0 Fill missing "Sort Artist" tab using "Album Artist"
 5.61.02.1 None of the Selected Tracks related tasks worked with iTunes 9
