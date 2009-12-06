@@ -88,9 +88,12 @@ Public Module mLibrary
             lws = checkSongExists(track.Artist, track.Name)
 
             If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
+
                 mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                 msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-            Else
+
+            ElseIf (artist <> track.AlbumArtist) Then
+
                 artist = track.AlbumArtist
                 song = track.Name
                 mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song), True)
@@ -98,9 +101,12 @@ Public Module mLibrary
                 lws = checkSongExists(track.AlbumArtist, track.Name)
 
                 If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
+
                     mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                     msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                Else
+
+                ElseIf (song <> mfGetNameToSearch(track)) Then
+
                     artist = track.Artist
                     song = mfGetNameToSearch(track)
                     mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
@@ -110,7 +116,9 @@ Public Module mLibrary
                     If lws IsNot Nothing AndAlso Not String.IsNullOrEmpty(lws.Text) Then
                         mfUpdateStatusBarText(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song), True)
                         msAppendDebug(String.Format("Found Lyrics for Artist: ""{0}"", Song: ""{1}""", artist, song))
-                    Else
+
+                    ElseIf (artist <> track.AlbumArtist And song <> track.Name) Then
+
                         artist = track.AlbumArtist
                         song = mfGetNameToSearch(track)
                         mfUpdateStatusBarText(String.Format("Looking up for Lyrics for Album Artist: ""{0}"", Song: ""{1}""", artist, song), True)
