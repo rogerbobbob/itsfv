@@ -1420,14 +1420,10 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
                         '******************
                         '* Download Lyrics
                         '******************
-                        Dim retry As Integer = 0
-                        While retry < 3 And lyrics = String.Empty
-                            Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
-                            If lws IsNot Nothing Then
-                                lyrics = lws.Text
-                            End If
-                            retry += 1
-                        End While
+                        Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
+                        If lws IsNot Nothing Then
+                            lyrics = lws.Text
+                        End If
 
                         If lyrics.Length < My.Settings.MinCharLyricsWeb Then
                             lyrics = String.Empty
