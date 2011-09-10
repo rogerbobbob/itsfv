@@ -122,24 +122,26 @@ Public Module mFileSystem
         Else
 
             Dim fName As String = Path.GetFileName(fileOrDirPath)
-            fName = fName.Replace(Now.ToString("MM"), String.Empty)
-            fName = fName.Replace(Now.ToString("dd"), String.Empty)
-            fName = fName.Replace(Now.ToString("yyyy"), Now.ToString("yyyy") + "*")
 
-            ' we look at most recent html file in logs folder
-            Dim f As String() = Directory.GetFiles(My.Settings.LogsDir, fName, SearchOption.TopDirectoryOnly)
-            If f.Length > 0 Then
-                Array.Sort(f)
-                Array.Reverse(f)
-                If File.Exists(f(0)) Then
-                    Process.Start(f(0))
-                    mfUpdateStatusBarText(mfGetTruncatedText("Opened " & f(0), ttApp, sBar), True)
-                    Return True
+            If fName IsNot Nothing Then
+                fName = fName.Replace(Now.ToString("MM"), String.Empty)
+                fName = fName.Replace(Now.ToString("dd"), String.Empty)
+                fName = fName.Replace(Now.ToString("yyyy"), Now.ToString("yyyy") + "*")
+
+                ' we look at most recent html file in logs folder
+                Dim f As String() = Directory.GetFiles(My.Settings.LogsDir, fName, SearchOption.TopDirectoryOnly)
+                If f.Length > 0 Then
+                    Array.Sort(f)
+                    Array.Reverse(f)
+                    If File.Exists(f(0)) Then
+                        Process.Start(f(0))
+                        mfUpdateStatusBarText(mfGetTruncatedText("Opened " & f(0), ttApp, sBar), True)
+                        Return True
+                    End If
                 End If
-            Else
-                mfUpdateStatusBarText(mfGetTruncatedText("Failed to open " & fileOrDirPath, ttApp, sBar), True)
             End If
 
+            mfUpdateStatusBarText(mfGetTruncatedText("Failed to open " & fileOrDirPath, ttApp, sBar), True)
             Return False
 
         End If

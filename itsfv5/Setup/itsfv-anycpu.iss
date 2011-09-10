@@ -18,9 +18,9 @@
 #include "scripts\products\dotnetfx20sp1.iss"
 //#include "scripts\products\dotnetfx20sp1lp.iss"
 
-//#include "scripts\products\dotnetfx35.iss"
+#include "scripts\products\dotnetfx35.iss"
 //#include "scripts\products\dotnetfx35lp.iss"
-//#include "scripts\products\dotnetfx35sp1.iss"
+#include "scripts\products\dotnetfx35sp1.iss"
 //#include "scripts\products\dotnetfx35sp1lp.iss"
 
 //#include "scripts\products\mdac28.iss"
