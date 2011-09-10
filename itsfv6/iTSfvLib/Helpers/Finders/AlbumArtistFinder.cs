@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace iTSfvLib.Helpers.Finders
+namespace iTSfvLib
 {
     public class AlbumArtistFinderOptions
     {
@@ -12,11 +12,15 @@ namespace iTSfvLib.Helpers.Finders
         public double MostCommonArtistPerc { get; set; }
         public bool MostCommonAlbumArtist { get; set; }
     }
+
+    /// <summary>
+    /// Class to determine the most appropriate Album Artist of a track in a Disc
+    /// </summary>
     public class AlbumArtistFinder
     {
-
         private Dictionary<string, int> mDiscArtists = new Dictionary<string, int>();
-        private string mDiscArtist = "VARIOUS_ARTISTS";
+        private const string VARIOUS_ARTISTS = "VARIOUS ARTISTS";
+        private string mDiscArtist = VARIOUS_ARTISTS;
         private XmlDisc mDisc = null;
         private double mConfidence = 0.0;
         private AlbumArtistFinderOptions Options { get; set; }
@@ -35,7 +39,7 @@ namespace iTSfvLib.Helpers.Finders
             {
                 for (int i = 0; i <= lDisc.Tracks.Count - 1; i++)
                 {
-                    string oAlbumArtist = "VARIOUS_ARTISTS";
+                    string oAlbumArtist = VARIOUS_ARTISTS;
 
                     if (string.Empty != lDisc.Tracks[i].Artist)
                     {
@@ -47,19 +51,16 @@ namespace iTSfvLib.Helpers.Finders
             }
             else
             {
-
                 bool bArtistIsSame = true;
                 string oAlbumArtist = lDisc.FirstTrack.Artist;
 
                 for (int i = 0; i <= lDisc.Tracks.Count - 2; i++)
                 {
-
                     string artist1 = lDisc.Tracks[i].Artist;
                     string artist2 = lDisc.Tracks[i + 1].Artist;
                     if (string.Empty != artist1 && string.Empty != artist2)
                     {
                         bArtistIsSame = bArtistIsSame & artist1.Equals(artist2);
-
                     }
                 }
 
@@ -70,8 +71,7 @@ namespace iTSfvLib.Helpers.Finders
                 }
                 else
                 {
-                    mDiscArtist = "VARIOUS_ARTISTS";
-
+                    mDiscArtist = VARIOUS_ARTISTS;
                 }
             }
 
@@ -80,16 +80,13 @@ namespace iTSfvLib.Helpers.Finders
 
         private string fGetTopArtist()
         {
-
             int topHit = 0;
-            string topArtist = "VARIOUS_ARTISTS";
+            string topArtist = VARIOUS_ARTISTS;
 
             if (mDisc.Tracks.Count > 0 & mDiscArtists.Count > 0)
             {
-
                 IEnumerator et = mDiscArtists.GetEnumerator();
-
-                System.Collections.Generic.KeyValuePair<string, int> de = default(System.Collections.Generic.KeyValuePair<string, int>);
+                KeyValuePair<string, int> de = default(KeyValuePair<string, int>);
 
                 while (et.MoveNext())
                 {
@@ -108,21 +105,16 @@ namespace iTSfvLib.Helpers.Finders
                     // work out if top Artist has lost the election 
                     if (mConfidence < Options.MostCommonArtistPerc)
                     {
-                        topArtist = "VARIOUS_ARTISTS";
-
+                        topArtist = VARIOUS_ARTISTS;
                     }
-
                 }
             }
-
-
 
             return topArtist;
         }
 
         private void sAddArtist(string artist)
         {
-
             if (mDiscArtists.ContainsKey(artist))
             {
                 mDiscArtists[artist] += 1;
@@ -130,7 +122,6 @@ namespace iTSfvLib.Helpers.Finders
             else
             {
                 mDiscArtists.Add(artist, 1);
-
             }
         }
     }

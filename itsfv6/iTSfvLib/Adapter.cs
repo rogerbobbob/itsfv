@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using iTunesLib;
 using System.Threading;
 
 namespace iTSfvLib
 {
     public class Adapter
     {
-        private iTunesApp mApp = null;
-
         /// <summary>
         /// Method to load iTunes if not already loaded. This method can be called multipl times
         /// without any impact on the performance
@@ -18,29 +15,17 @@ namespace iTSfvLib
         /// <returns></returns>
         public bool LoadApplication()
         {
-            return (null != this.LoadApp);
+            return true;
         }
 
-        internal iTunesApp LoadApp
+        /// <summary>
+        /// Function to add files to the iTunes library. All the files need to be properly tagged prior to using this method. 
+        /// </summary>
+        /// <param name="filesList">Files list after necessary tagging is performed</param>
+        public void AddFiles(List<string> filesList)
         {
-            get
-            {
-                try
-                {
-                    if (null == mApp)
-                    {
-                        mApp = new iTunesApp();
-                        Console.WriteLine("Loading " + mApp.Version);
-                    }
-                    return mApp;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Thread.Sleep(5000);
-                    return LoadApp;
-                }
-            }
+            filesList.Sort();
+            object objFiles = filesList.ToArray();
         }
 
         #region Selected Tracks
@@ -48,20 +33,8 @@ namespace iTSfvLib
         public List<XmlTrack> GetSelectedTracks()
         {
             List<XmlTrack> temp = new List<XmlTrack>();
-            if (null != LoadApp.BrowserWindow.SelectedTracks)
-            {
-                foreach (IITTrack track in LoadApp.BrowserWindow.SelectedTracks)
-                {
-                    temp.Add(new XmlTrack(track));
-                }
-            }
-            else if (null != LoadApp.SelectedTracks)
-            {
-                foreach (IITTrack track in LoadApp.SelectedTracks)
-                {
-                    temp.Add(new XmlTrack(track));
-                }
-            }
+
+
             return temp;
         }
 

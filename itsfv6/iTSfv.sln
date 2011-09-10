@@ -1,16 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{2E014C90-8985-4DC9-97C9-8E6DF8190DF7}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Microsoft.WindowsAPICodePack.dll = Lib\Microsoft.WindowsAPICodePack.dll
+		Lib\Microsoft.WindowsAPICodePack.Shell.dll = Lib\Microsoft.WindowsAPICodePack.Shell.dll
+		Lib\UploadersLib.dll = Lib\UploadersLib.dll
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvGUI", "iTSfvGUI\iTSfvGUI.csproj", "{FCF3E10D-5724-4F70-ABEF-90D119B035C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvLib", "iTSfvLib\iTSfvLib.csproj", "{C1D1A1ED-B33E-471F-91FA-4A65C4ADAA75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvCLI", "iTSfvCLI\iTSfvCLI.csproj", "{2ACC1072-25A0-4AF9-8F0B-3ED54DECB168}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{2E014C90-8985-4DC9-97C9-8E6DF8190DF7}"
-	ProjectSection(SolutionItems) = preProject
-		Lib\UploadersLib.dll = Lib\UploadersLib.dll
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

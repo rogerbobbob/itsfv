@@ -5,8 +5,8 @@ using System.Text;
 
 namespace iTSfvLib
 {
-    public class DiscNumberFinder
+    public class AddFilesHelper
     {
-
+        
     }
 }

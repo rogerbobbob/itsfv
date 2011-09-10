@@ -176,15 +176,8 @@ namespace iTSfvLib
 
             foreach (string p in filePaths)
             {
-
-                try
-                {
-                    XmlTrack xt = new XmlTrack(p, false);
-                    this.Tracks.Add(xt);
-                }
-                catch (Exception ex)
-                {
-                }
+                XmlTrack xt = new XmlTrack(p);
+                this.Tracks.Add(xt);
 
                 // we will see 
             }

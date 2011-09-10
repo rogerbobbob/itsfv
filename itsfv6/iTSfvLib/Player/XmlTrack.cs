@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using iTunesLib;
 
 namespace iTSfvLib
 {
     public class XmlTrack
     {
-        private IITTrack mTrack = null; 
 
         #region "Read/Write Properties"
 
@@ -53,7 +51,6 @@ namespace iTSfvLib
         public string SortName { get; set; }
         public string SortShow { get; set; }
         public bool Unplayed { get; set; }
-        public ITVideoKind VideoKind { get; set; }
         public string AlbumArtist { get; set; }
         public int AlbumRating { get; set; }
         public string URL { get; set; }
@@ -65,20 +62,15 @@ namespace iTSfvLib
 
         #region "Read Only Properties"
 
-        public ITRatingKind ratingKind { get; private set; }
-        public ITRatingKind AlbumRatingKind { get; private set; }
-        public IITPlaylistCollection Playlists { get; private set; }
         public bool Podcast { get; private set; }
         public DateTime ReleaseDate { get; private set; }
-        public IITArtworkCollection Artwork { get; private set; }
+        public List<XmlArtwork> Artwork { get; private set; }
         public int BitRate { get; private set; }
         public DateTime DateAdded { get; private set; }
         public int Duration { get; private set; }
         public int Index { get; private set; }
-        public ITTrackKind Kind { get; private set; }
         public string KindAsString { get; private set; }
         public DateTime ModificationDate { get; private set; }
-        public IITPlaylist Playlist { get; private set; }
         public int PlayOrderIndex { get; private set; }
         public int SampleRate { get; private set; }
         public int Size { get; private set; }
@@ -94,61 +86,16 @@ namespace iTSfvLib
 
         public XmlTrack(string fp)
         {
-
-        }
-
-        public XmlTrack(string fp, bool artwork)
-        {
-
-        }
-
-        public XmlTrack(IITTrack track)
-        {
-
-        }
-
-        public XmlTrack(IITURLTrack track)
-        {
-
-        }
-
-        public XmlTrack(IITFileOrCDTrack track)
-        {
-
+            Artwork = new List<XmlArtwork>();
         }
 
         #region "Methods"
 
-        public IITArtwork AddArtworkFromFile(string filePath)
+         public void Play()
         {
             try
             {
-                return mTrack.AddArtworkFromFile(filePath);
-            }
-            catch (Exception ex)
-            {
-                FileSystem.AppendDebug("Error adding artwork", ex);
-                return null;
-            }
-        }
 
-        public void Delete()
-        {
-            try
-            {
-                this.mTrack.Delete();
-            }
-            catch (Exception ex)
-            {
-                FileSystem.AppendDebug("Error deleting track", ex);
-            }
-        }
-
-        public void Play()
-        {
-            try
-            {
-                mTrack.Play();
             }
             catch (Exception ex)
             {
@@ -162,40 +109,12 @@ namespace iTSfvLib
         {
             try
             {
-                GetFileOrCDTrack().UpdateInfoFromFile();
+             
             }
             catch (Exception ex)
             {
                 FileSystem.AppendDebug("Error updating info from file", ex);
             }
         }
-
-        public IITFileOrCDTrack GetFileOrCDTrack()
-        {
-            try
-            {
-                if (mTrack.Kind == ITTrackKind.ITTrackKindFile)
-                {
-                    return mTrack as IITFileOrCDTrack;
-                }
-            }
-            catch (Exception ex)
-            {
-                FileSystem.AppendDebug("Error returning FileOrCDTrack", ex);
-            }
-            return null;
-        }
-
-        public void UpdatePodcastFeed()
-        {
-            try
-            {
-                GetFileOrCDTrack().UpdatePodcastFeed();
-            }
-            catch (Exception ex)
-            {
-                FileSystem.AppendDebug("Error updating podcast field", ex);
-            }
-        }      
     }
 }
