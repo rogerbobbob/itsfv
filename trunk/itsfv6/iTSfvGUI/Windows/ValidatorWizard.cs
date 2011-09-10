@@ -34,5 +34,11 @@ namespace iTSfvGUI
                 Program.gLogViewer.Location = new Point(this.Location.X, this.Location.Y + this.Height);
             }
         }
+
+        private void miTasksAddFiles_Click(object sender, EventArgs e)
+        {
+            Program.gAddFilesWizard.Show();
+            Program.gAddFilesWizard.Focus();
+        }
     }
 }
