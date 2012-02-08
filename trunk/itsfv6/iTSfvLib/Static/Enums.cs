@@ -7,6 +7,11 @@ namespace iTSfvLib
 {
     public enum StartupWizardType
     {
+    }
 
+    public enum ETaskType
+    {
+        ChecksGenreMissing,
+        TracksGenreMissingFill
     }
 }

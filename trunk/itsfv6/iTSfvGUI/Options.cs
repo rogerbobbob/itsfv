@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace iTSfvGUI
 {
-    public partial class MainWindow : Form
+    public partial class Options : Form
     {
-        public MainWindow()
+        public Options()
         {
             InitializeComponent();
-        }
-
-        private void btnAddFiles_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

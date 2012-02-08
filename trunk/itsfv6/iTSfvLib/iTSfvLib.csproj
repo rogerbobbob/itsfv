@@ -73,10 +73,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="taglib-sharp, Version=2.0.3.7, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\taglib-sharp\src\taglib-sharp.dll</HintPath>
+      <HintPath>..\Lib\taglib-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstantStrings.cs" />
     <Compile Include="Helpers\AddFilesHelper.cs" />
     <Compile Include="Player\XmlPlayer.cs" />
     <Compile Include="Tasks\ArtworkEmbedTask.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Helpers\Validators\LibraryValidator.cs" />
     <Compile Include="Helpers\Validators\StandardsChecker.cs" />
     <Compile Include="Static\FileSystem.cs" />
-    <Compile Include="Player\XmlAlbumArtist.cs" />
+    <Compile Include="Player\XmlBand.cs" />
     <Compile Include="Helpers\Finders\DiscNumberFinder.cs" />
     <Compile Include="Player\XmlAlbum.cs" />
     <Compile Include="Player\XmlDisc.cs" />

@@ -9,17 +9,7 @@ namespace iTSfvLib
     public class Adapter
     {
         /// <summary>
-        /// Method to load iTunes if not already loaded. This method can be called multipl times
-        /// without any impact on the performance
-        /// </summary>
-        /// <returns></returns>
-        public bool LoadApplication()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// Function to add files to the iTunes library. All the files need to be properly tagged prior to using this method. 
+        /// Function to add files to the iTunes library. All the files need to be properly tagged prior to using this method.
         /// </summary>
         /// <param name="filesList">Files list after necessary tagging is performed</param>
         public void AddFiles(List<string> filesList)
@@ -34,12 +24,11 @@ namespace iTSfvLib
         {
             List<XmlTrack> temp = new List<XmlTrack>();
 
-
             return temp;
         }
 
         /// <summary>
-        /// Method to get the track count of Selected tracks 
+        /// Method to get the track count of Selected tracks
         /// If no tracks are selected then returns 0
         /// </summary>
         public int SelectedTracksCount
@@ -51,7 +40,6 @@ namespace iTSfvLib
             }
         }
 
-        #endregion
-
+        #endregion Selected Tracks
     }
 }

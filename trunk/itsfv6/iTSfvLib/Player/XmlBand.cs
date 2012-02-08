@@ -8,7 +8,7 @@ namespace iTSfvLib
     /// <summary>
     /// Holds one or more albums by an AlbumArtist
     /// </summary>
-    public class XmlAlbumArtist
+    public class XmlBand
     {
         /// <summary>
         /// Unique ID usually the Name of the Band
@@ -17,17 +17,17 @@ namespace iTSfvLib
 
         private List<XmlAlbum> Albums = new List<XmlAlbum>();
 
-        public void AddAlbum(XmlAlbum item)
+        public void AddAlbum(XmlAlbum o)
         {
-            if (Albums.All(x => x.ID != item.ID))
-                Albums.Add(item);
+            if (Albums.All(x => x.AlbumID != o.AlbumID))
+                Albums.Add(o);
         }
 
-        public void RemoveAlbum(XmlAlbum band)
+        public void RemoveAlbum(XmlAlbum o)
         {
-            XmlAlbum fItem = Albums.FirstOrDefault(x => x.ID == band.ID);
-            if (fItem != null)
-                Albums.Remove(fItem);
+            XmlAlbum item = Albums.FirstOrDefault(x => x.AlbumID == o.AlbumID);
+            if (item != null)
+                Albums.Remove(item);
         }
     }
 }
