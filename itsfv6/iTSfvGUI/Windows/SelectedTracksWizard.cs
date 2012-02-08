@@ -17,11 +17,6 @@ namespace iTSfvGUI
             InitializeComponent();
         }
 
-        private void SelectedTracksWizard_Shown(object sender, EventArgs e)
-        {
-            Program.Linker.LoadApplication();
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             foreach (XmlTrack track in Program.Linker.GetSelectedTracks())

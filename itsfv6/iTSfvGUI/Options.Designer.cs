@@ -1,6 +1,6 @@
 ﻿namespace iTSfvGUI
 {
-    partial class SelectedTracksWizard
+    partial class Options
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.pgOptions = new System.Windows.Forms.PropertyGrid();
             this.SuspendLayout();
             // 
-            // btnEdit
+            // pgOptions
             // 
-            this.btnEdit.AutoSize = true;
-            this.btnEdit.Location = new System.Drawing.Point(312, 240);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(116, 23);
-            this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "&Edit Selected Tracks";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.pgOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgOptions.Location = new System.Drawing.Point(0, 0);
+            this.pgOptions.Name = "pgOptions";
+            this.pgOptions.Size = new System.Drawing.Size(555, 423);
+            this.pgOptions.TabIndex = 0;
             // 
-            // SelectedTracksWizard
+            // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 273);
-            this.Controls.Add(this.btnEdit);
-            this.Name = "SelectedTracksWizard";
-            this.Text = "SelectedTracksWizard";
+            this.ClientSize = new System.Drawing.Size(555, 423);
+            this.Controls.Add(this.pgOptions);
+            this.Name = "Options";
+            this.Text = "Options";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.PropertyGrid pgOptions;
     }
 }

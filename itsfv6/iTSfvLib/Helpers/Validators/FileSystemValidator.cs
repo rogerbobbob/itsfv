@@ -5,7 +5,16 @@ using System.Text;
 
 namespace iTSfvLib
 {
-    class FileSystemValidator
+    public class FileSystemValidatorOptions
+    {
+        public bool CopyFolderJpg { get; set; }
+
+        public bool CopyArtworkJpg { get; set; }
+
+        public bool CopyCustomFileNameJpg { get; set; }
+    }
+
+    public class FileSystemValidator
     {
     }
 }

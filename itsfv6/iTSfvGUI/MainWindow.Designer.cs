@@ -29,25 +29,49 @@
         private void InitializeComponent()
         {
             this.btnAddFiles = new System.Windows.Forms.Button();
+            this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.flpMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddFiles
             // 
-            this.btnAddFiles.Location = new System.Drawing.Point(10, 8);
+            this.btnAddFiles.Location = new System.Drawing.Point(3, 3);
             this.btnAddFiles.Name = "btnAddFiles";
             this.btnAddFiles.Size = new System.Drawing.Size(272, 23);
             this.btnAddFiles.TabIndex = 0;
             this.btnAddFiles.Text = "Add Files or Folders";
             this.btnAddFiles.UseVisualStyleBackColor = true;
+            this.btnAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // flpMain
+            // 
+            this.flpMain.Controls.Add(this.btnAddFiles);
+            this.flpMain.Controls.Add(this.button1);
+            this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpMain.Location = new System.Drawing.Point(0, 0);
+            this.flpMain.Name = "flpMain";
+            this.flpMain.Size = new System.Drawing.Size(292, 466);
+            this.flpMain.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(272, 22);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 466);
-            this.Controls.Add(this.btnAddFiles);
+            this.Controls.Add(this.flpMain);
             this.Name = "MainWindow";
             this.Text = "iTSfv 6";
+            this.flpMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -55,5 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnAddFiles;
+        private System.Windows.Forms.FlowLayoutPanel flpMain;
+        private System.Windows.Forms.Button button1;
     }
 }
