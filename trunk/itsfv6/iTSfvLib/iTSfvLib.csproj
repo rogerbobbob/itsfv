@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AddFilesHelper.cs" />
+    <Compile Include="Player\XmlPlayer.cs" />
     <Compile Include="Tasks\ArtworkEmbedTask.cs" />
     <Compile Include="Helpers\Finders\AlbumArtistFinder.cs" />
     <Compile Include="Helpers\Validators\FileSystemValidator.cs" />
