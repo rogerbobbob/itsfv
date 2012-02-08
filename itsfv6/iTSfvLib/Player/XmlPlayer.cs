@@ -14,26 +14,13 @@ namespace iTSfvLib.Player
 
         public void AddBand(XmlAlbumArtist band)
         {
-            bool found = false;
-            foreach (XmlAlbumArtist oBand in Bands)
-            {
-                if (oBand.ID == band.ID)
-                    found = true;
-                break;
-            }
-            if (!found)
+            if (Bands.All(x => x.ID != band.ID))
                 Bands.Add(band);
         }
 
         public void RemoveBand(XmlAlbumArtist band)
         {
-            XmlAlbumArtist fBand = null;
-            foreach (XmlAlbumArtist oBand in Bands)
-            {
-                if (oBand.ID == band.ID)
-                    fBand = oBand;
-                break;
-            }
+            XmlAlbumArtist fBand = Bands.FirstOrDefault(x => x.ID == band.ID);
             if (fBand != null)
                 Bands.Remove(fBand);
         }
