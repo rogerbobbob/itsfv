@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using iTSfvLib;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace iTSfvGUI
 {
@@ -37,12 +38,12 @@ namespace iTSfvGUI
 
         private void miTasksAddFiles_Click(object sender, EventArgs e)
         {
-            if (Program.gAddFilesWizard == null || Program.gAddFilesWizard.IsDisposed)
+            CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...");
+            dlg.IsFolderPicker = true;
+            if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                Program.gAddFilesWizard = new AddFilesWizard();
+                ShowAddFilesWizard(new string[] { dlg.FileName });
             }
-            Program.gAddFilesWizard.Show();
-            Program.gAddFilesWizard.Focus();
         }
 
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
@@ -51,7 +52,6 @@ namespace iTSfvGUI
 
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
             player.AddFilesOrFolders(pathsFilesFolders);
-
             foreach (XmlDisc disc in player.Discs)
             {
                 lbDiscs.Items.Add(disc);
@@ -78,5 +78,15 @@ namespace iTSfvGUI
                 ttApp.SetToolTip(lbDiscs, tempDisc.ToTracklistString());
             }
         }
+
+        #region Helpers
+
+        public void ShowAddFilesWizard(string[] filesDirs)
+        {
+            AddFilesWizard afw = new AddFilesWizard(filesDirs);
+            afw.ShowDialog();
+        }
+
+        #endregion Helpers
     }
 }
