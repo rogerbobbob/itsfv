@@ -27,7 +27,7 @@ namespace iTSfvGUI
 
             gLogViewer = new LogViewer();
             gValidator = new ValidatorWizard();
-            gAddFilesWizard = new AddFilesWizard();
+            gAddFilesWizard = new AddFilesWizard(new string[0]);
             gMainWindow = new MainWindow();
             Application.Run(gValidator);
         }

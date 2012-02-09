@@ -35,7 +35,7 @@ namespace iTSfvLib
                 if (Directory.Exists(pfd))
                 {
                     // todo: respect windows explorer folder structure
-                    foreach (string fp in Directory.GetFiles(pfd, "*.*", SearchOption.AllDirectories))
+                    foreach (string fp in Directory.GetFiles(pfd, "*.mp3", SearchOption.AllDirectories))
                     {
                         tracks.Add(new XmlTrack(fp));
                     }
