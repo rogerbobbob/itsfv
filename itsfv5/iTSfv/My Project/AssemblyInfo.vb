@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("iTunes Store file validator")> 
 <Assembly: AssemblyDescription("iTunes Store file validator")> 
-<Assembly: AssemblyCompany("SourceForge, Inc")> 
+<Assembly: AssemblyCompany("ZScreen Developers")> 
 <Assembly: AssemblyProduct("iTSfv")> 
-<Assembly: AssemblyCopyright("Copyright © McoreD 2006-2009")> 
+<Assembly: AssemblyCopyright("Copyright © McoreD 2006-2012")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(True)> 

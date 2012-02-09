@@ -1,5 +1,5 @@
 ﻿Imports iTunesLib
-Imports UploadersLib.TextServices
+Imports UploadersLib.OtherServices
 
 Public Class frmLyricsViewer
 
@@ -124,7 +124,7 @@ Public Class frmLyricsViewer
     Private Sub btnEditLyrics_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditLyrics.Click
 
         If Not mLyrics Is Nothing Then
-            Dim lf As New Lyricsfly
+            Dim lf As New Lyricsfly(Application.ProductName, Application.ProductName)
             lf.EditLyrics(mLyrics)
         End If
 

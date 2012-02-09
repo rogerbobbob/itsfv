@@ -25,7 +25,6 @@ Imports System.Text
 Imports CommandLineParserLib
 Imports System.Net
 Imports System.Collections.Specialized
-Imports UploadersLib.TextServices
 
 Public Class frmMain
 
@@ -1420,7 +1419,7 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
                         '******************
                         '* Download Lyrics
                         '******************
-                        Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
+                        Dim lws As UploadersLib.OtherServices.Lyrics = mfGetLyrics(New cXmlTrack(track, False))
                         If lws IsNot Nothing Then
                             lyrics = lws.Text
                         End If
@@ -1499,7 +1498,7 @@ mItunesApp.BrowserWindow.SelectedTracks.Count > 0 Then
                 If My.Settings.LyricsFromLyricWiki AndAlso lyrics = String.Empty Then
                     Dim artist As String = mGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    Dim lws As Lyrics = mfGetLyrics(New cXmlTrack(track, False))
+                    Dim lws As UploadersLib.OtherServices.Lyrics = mfGetLyrics(New cXmlTrack(track, False))
                     lyrics = lws.Text
                 End If
 
