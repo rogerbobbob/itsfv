@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using iTSfvLib;
 
 namespace iTSfvGUI
 {
@@ -46,8 +47,15 @@ namespace iTSfvGUI
 
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
+            XmlPlayer player = new XmlPlayer();
+
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            Program.Player.AddFilesOrFolders(pathsFilesFolders);
+            player.AddFilesOrFolders(pathsFilesFolders);
+
+            foreach (XmlDisc disc in player.Discs)
+            {
+                lbDiscs.Items.Add(disc);
+            }
         }
 
         private void lbDiscs_DragEnter(object sender, DragEventArgs e)
@@ -59,6 +67,15 @@ namespace iTSfvGUI
             else
             {
                 e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void lbDiscs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbDiscs.SelectedIndex > -1)
+            {
+                XmlDisc tempDisc = lbDiscs.SelectedItem as XmlDisc;
+                ttApp.SetToolTip(lbDiscs, tempDisc.ToTracklistString());
             }
         }
     }

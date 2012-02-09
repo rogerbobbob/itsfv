@@ -33,10 +33,6 @@ namespace iTSfvLib
 
         public int BookmarkTime { get; set; }
 
-        public uint DiscCount { get; set; }
-
-        public uint DiscNumber { get; set; }
-
         public int EpisodeNumber { get; set; }
 
         public int Finish { get; set; }
@@ -55,11 +51,27 @@ namespace iTSfvLib
 
         public int Year { get; set; }
 
-        public string Album { get; set; }
+        public string Band
+        {
+            get
+            {
+                if (Tags.AlbumArtists.Length > 0)
+                    return Tags.AlbumArtists[0];
 
-        public string Band { get; set; }
+                return Artist;
+            }
+        }
 
-        public string Artist { get; set; }
+        public string Artist
+        {
+            get
+            {
+                if (Tags.Performers.Length > 0)
+                    return Tags.Performers[0];
+
+                return null;
+            }
+        }
 
         public string Category { get; set; }
 
@@ -83,8 +95,6 @@ namespace iTSfvLib
 
         public string Lyrics { get; set; }
 
-        public string Name { get; set; }
-
         public string Show { get; set; }
 
         public string SortAlbum { get; set; }
@@ -101,15 +111,9 @@ namespace iTSfvLib
 
         public string URL { get; set; }
 
-        public uint TrackCount { get; set; }
-
-        public uint TrackNumber { get; set; }
-
         #endregion "Read/Write Properties"
 
         #region "Read Only Properties"
-
-        public string ID { get; private set; }
 
         public DateTime DateAdded { get; private set; }
 
@@ -157,19 +161,34 @@ namespace iTSfvLib
             }
         }
 
-        public string[] AlbumArtists { get; private set; }
-
-        public string[] Artists { get; private set; }
-
-        public string[] Genres { get; private set; }
-
         #endregion "Read Only Properties"
+
+        public TagLib.Tag Tags { get; private set; }
 
         public XmlTrack(string fp)
         {
             Artwork = new List<XmlArtwork>();
             Location = fp;
             UpdateInfoFromFile(fp);
+        }
+
+        public string GetAlbumKey()
+        {
+            if (!string.IsNullOrEmpty(this.Band) && !string.IsNullOrEmpty(this.Tags.Album))
+            {
+                return string.Format("{0} - {1}", this.Tags.Album, this.Band);
+            }
+            return ConstantStrings.UnknownAlbum;
+        }
+
+        public string GetDiscKey()
+        {
+            if (!string.IsNullOrEmpty(this.Band) && !string.IsNullOrEmpty(this.Tags.Album))
+            {
+                return string.Format("{0} Disc {1} - {2}", this.Tags.Album, Tags.Disc.ToString("000"), this.Band);
+            }
+
+            return string.Format("{0} Disc {1} - {2}", ConstantStrings.UnknownDisc, Tags.Disc.ToString("000"), ConstantStrings.UnknownArtist);
         }
 
         public void Play()
@@ -188,16 +207,10 @@ namespace iTSfvLib
         {
             try
             {
-                TagLib.File f = TagLib.File.Create(Location);
-                // Update Properties
-                this.TrackNumber = f.Tag.Track;
-                this.TrackCount = f.Tag.TrackCount;
-                this.Name = f.Tag.Title;
-                this.Album = f.Tag.Album;
-                this.AlbumArtists = f.Tag.AlbumArtists;
-                this.Artists = f.Tag.Performers;
-                this.Genres = f.Tag.Genres;
-                this.ID = this.Name + this.Album;
+                using (TagLib.File f = TagLib.File.Create(Location))
+                {
+                    this.Tags = f.Tag;
+                }
             }
             catch (Exception ex)
             {

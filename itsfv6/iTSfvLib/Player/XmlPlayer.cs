@@ -11,7 +11,20 @@ namespace iTSfvLib
     /// </summary>
     public class XmlPlayer
     {
-        private List<XmlBand> Bands = new List<XmlBand>();
+        public Dictionary<string, XmlBand> Library = new Dictionary<string, XmlBand>();
+
+        public List<XmlBand> Bands { get; private set; }
+
+        public List<XmlAlbum> Albums { get; private set; }
+
+        public List<XmlDisc> Discs { get; private set; }
+
+        public XmlPlayer()
+        {
+            Bands = new List<XmlBand>();
+            Albums = new List<XmlAlbum>();
+            Discs = new List<XmlDisc>();
+        }
 
         public void AddFilesOrFolders(string[] filesOrFolders)
         {
@@ -21,6 +34,7 @@ namespace iTSfvLib
             {
                 if (Directory.Exists(pfd))
                 {
+                    // todo: respect windows explorer folder structure
                     foreach (string fp in Directory.GetFiles(pfd, "*.*", SearchOption.AllDirectories))
                     {
                         tracks.Add(new XmlTrack(fp));
@@ -32,28 +46,64 @@ namespace iTSfvLib
                 }
             }
 
-            List<XmlAlbum> albums = new List<XmlAlbum>();
-            XmlAlbum album = new XmlAlbum();
-            List<XmlDisc> discs = new List<XmlDisc>();
-            XmlDisc disc = new XmlDisc();
-
             foreach (XmlTrack track in tracks)
             {
-                disc.AddTrack(track);
+                AddTrack(track);
             }
         }
 
-        public void AddBand(XmlBand band)
+        /// <summary>
+        /// Method to add a track to Player
+        /// If the track already exists
+        /// </summary>
+        /// <param name="track"></param>
+        public void AddTrack(XmlTrack track)
         {
-            if (Bands.All(x => x.ID != band.ID))
-                Bands.Add(band);
+            XmlBand tempBand = GetBand(track.Band);
+            if (tempBand == null)
+            {
+                tempBand = new XmlBand(track.Band);
+                Library.Add(tempBand.Key, tempBand);
+                Bands.Add(tempBand);
+            }
+
+            XmlAlbum tempAlbum = tempBand.GetAlbum(track.GetAlbumKey());
+            if (tempAlbum == null)
+            {
+                tempAlbum = new XmlAlbum(track.GetAlbumKey());
+                Library[track.Band].AddAlbum(tempAlbum);
+                Albums.Add(tempAlbum);
+            }
+
+            XmlDisc tempDisc = tempAlbum.GetDisc(track.GetDiscKey());
+            if (tempDisc == null)
+            {
+                tempDisc = new XmlDisc(track.GetDiscKey());
+                Library[track.Band].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
+                Discs.Add(tempDisc);
+            }
+
+            Library[track.Band].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
         }
 
-        public void RemoveBand(XmlBand band)
+        public void AddBand(XmlBand o)
         {
-            XmlBand fBand = Bands.FirstOrDefault(x => x.ID == band.ID);
-            if (fBand != null)
-                Bands.Remove(fBand);
+            if (!Library.ContainsKey(o.Key))
+                Library.Add(o.Key, o);
+        }
+
+        public XmlBand GetBand(string key)
+        {
+            if (Library.ContainsKey(key))
+                return Library[key];
+
+            return null;
+        }
+
+        public void RemoveBand(XmlBand o)
+        {
+            if (Library.ContainsKey(o.Key))
+                Library.Remove(o.Key);
         }
     }
 }

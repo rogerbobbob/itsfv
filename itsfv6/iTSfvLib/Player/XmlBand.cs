@@ -13,21 +13,33 @@ namespace iTSfvLib
         /// <summary>
         /// Unique ID usually the Name of the Band
         /// </summary>
-        public string ID { get; set; }
+        public string Key { get; private set; }
 
-        private List<XmlAlbum> Albums = new List<XmlAlbum>();
+        private Dictionary<string, XmlAlbum> Albums = new Dictionary<string, XmlAlbum>();
+
+        public XmlBand(string key)
+        {
+            this.Key = key;
+        }
 
         public void AddAlbum(XmlAlbum o)
         {
-            if (Albums.All(x => x.AlbumID != o.AlbumID))
-                Albums.Add(o);
+            if (!Albums.ContainsKey(o.Key))
+                Albums.Add(o.Key, o);
+        }
+
+        public XmlAlbum GetAlbum(string albumKey)
+        {
+            if (Albums.ContainsKey(albumKey))
+                return Albums[albumKey];
+
+            return null;
         }
 
         public void RemoveAlbum(XmlAlbum o)
         {
-            XmlAlbum item = Albums.FirstOrDefault(x => x.AlbumID == o.AlbumID);
-            if (item != null)
-                Albums.Remove(item);
+            if (Albums.ContainsKey(o.Key))
+                Albums.Remove(o.Key);
         }
     }
 }

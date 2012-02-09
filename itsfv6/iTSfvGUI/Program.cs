@@ -9,7 +9,6 @@ namespace iTSfvGUI
     public static class Program
     {
         public static Adapter Linker = new Adapter();
-        public static XmlPlayer Player = new XmlPlayer();
 
         // Windows
         public static ValidatorWizard gValidator = null;
