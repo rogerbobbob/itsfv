@@ -107,6 +107,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.ITDETECTORLib">
+      <HintPath>..\lib\Interop.ITDETECTORLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.iTunesLib">
+      <HintPath>..\lib\Interop.iTunesLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="McoreIndexer, Version=2.9.2907.39509, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\McoreIndexer.dll</HintPath>
@@ -127,6 +135,9 @@
     <Reference Include="taglib-sharp, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UploadersLib">
+      <HintPath>..\lib\UploadersLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -530,10 +541,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ZScreen\trunk\ZSS.UploadersLib\ZSS.UploadersLib.csproj">
-      <Project>{E1C94415-3424-4517-A2A1-B2FDD1F59C67}</Project>
-      <Name>ZSS.UploadersLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\lib\CommandLineParser\CommandLineParser.vbproj">
       <Project>{0750FD5C-105A-474E-AB36-CA98DC1FA2E4}</Project>
       <Name>CommandLineParser</Name>

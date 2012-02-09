@@ -53,7 +53,7 @@ AllowNoIcons=yes
 InfoBeforeFile=..\iTSfv\VersionHistory.txt
 ;InfoAfterFile=..\TorrentDescriptionMaker\ReleaseInfo.txt
 SolidCompression=yes
-;PrivilegesRequired=none
+PrivilegesRequired=none
 OutputDir=..\..\Output\
 OutputBaseFilename={#ExeName}-{#MyAppVersion}-setup
 ArchitecturesInstallIn64BitMode=x64 ia64
@@ -68,7 +68,7 @@ Compression=lzma
 
 ;required by products
 MinVersion=4.1,5.0
-PrivilegesRequired=admin
+;PrivilegesRequired=admin
 ;ArchitecturesAllowed=x86
 
 [Languages]

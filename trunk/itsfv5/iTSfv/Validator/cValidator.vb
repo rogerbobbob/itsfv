@@ -1,6 +1,7 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports iTSfv.cBwJob
+Imports UploadersLib.OtherServices
 
 Public Class cValidator
 
@@ -266,7 +267,7 @@ Public Class cValidator
 
             Dim lyrics As String = track.Tag.Lyrics
             If lyrics = String.Empty Then
-                Dim lws As UploadersLib.TextServices.Lyrics = mfGetLyrics(xt)
+                Dim lws As UploadersLib.OtherServices.Lyrics = mfGetLyrics(xt)
                 lyrics = lws.Text
                 If lyrics <> String.Empty Then
                     bwApp.ReportProgress(ProgressType.FOUND_LYRICS_FOR, Chr(34) + xt.Name + Chr(34))
@@ -370,7 +371,7 @@ Public Class cValidator
 
                     Dim artist As String = fGetAlbumArtist(track)
                     Dim song As String = mfGetNameToSearch(track)
-                    Dim lws As UploadersLib.TextServices.Lyrics = mfGetLyrics(xt)
+                    Dim lws As Lyrics = mfGetLyrics(xt)
                     Dim lyrics As String = lws.Text
 
                     If Not String.IsNullOrEmpty(lyrics) Then

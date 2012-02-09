@@ -2,7 +2,7 @@ Imports iTunesLib
 Imports System.Text
 Imports System.IO
 Imports System.Text.RegularExpressions
-Imports UploadersLib.TextServices
+Imports UploadersLib.OtherServices
 
 Public Module mLibrary
 
@@ -62,18 +62,18 @@ Public Module mLibrary
 
     End Function
 
-    Private Function checkSongExists(ByVal artist As String, ByVal song As String) As UploadersLib.TextServices.Lyrics
+    Private Function checkSongExists(ByVal artist As String, ByVal song As String) As Lyrics
 
-        Dim lyrics As UploadersLib.TextServices.Lyrics
+        Dim lyrics As UploadersLib.OtherServices.Lyrics
 
-        Dim lyricsWiki As New UploadersLib.TextServices.Lyricsfly()
+        Dim lyricsWiki As New Lyricsfly(Application.ProductName, Application.ProductName)
         lyrics = lyricsWiki.SearchLyrics(artist, song)
 
         Return lyrics
 
     End Function
 
-    Public Function mfGetLyrics(ByVal track As cXmlTrack) As UploadersLib.TextServices.Lyrics
+    Public Function mfGetLyrics(ByVal track As cXmlTrack) As Lyrics
 
         Dim artist As String = ""
         Dim song As String = ""
