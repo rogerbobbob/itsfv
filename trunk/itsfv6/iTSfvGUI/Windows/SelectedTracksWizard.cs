@@ -21,7 +21,7 @@ namespace iTSfvGUI
         {
             foreach (XmlTrack track in Program.Linker.GetSelectedTracks())
             {
-                Console.WriteLine(track.Name);
+                Console.WriteLine(track.Tags.Title);
             }
             MessageBox.Show(Program.Linker.SelectedTracksCount.ToString());
         }

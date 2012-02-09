@@ -10,26 +10,33 @@ namespace iTSfvLib
     /// </summary>
     public class XmlAlbum
     {
-        /// <summary>
-        /// Unique ID Artist_Album_NumberOfTracks
-        /// </summary>
-        public string AlbumID { get; set; }
+        public string Key { get; private set; }
 
-        public string AlbumName { get; set; }
+        public Dictionary<string, XmlDisc> Discs = new Dictionary<string, XmlDisc>();
 
-        public List<XmlDisc> Discs = new List<XmlDisc>();
+        public XmlAlbum(string key)
+        {
+            Key = key;
+        }
 
         public void AddDisc(XmlDisc o)
         {
-            if (Discs.All(x => x.DiscID != o.DiscID))
-                Discs.Add(o);
+            if (!Discs.ContainsKey(o.Key))
+                Discs.Add(o.Key, o);
+        }
+
+        public XmlDisc GetDisc(string key)
+        {
+            if (Discs.ContainsKey(key))
+                return Discs[key];
+
+            return null;
         }
 
         public void RemoveDisc(XmlDisc o)
         {
-            XmlDisc item = Discs.FirstOrDefault(x => x.DiscID == o.DiscID);
-            if (item != null)
-                Discs.Remove(item);
+            if (Discs.ContainsKey(o.Key))
+                Discs.Remove(o.Key);
         }
     }
 }

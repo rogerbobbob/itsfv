@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tcValidator = new System.Windows.Forms.TabControl();
+            this.tpDiscs = new System.Windows.Forms.TabPage();
+            this.lbDiscs = new System.Windows.Forms.ListBox();
             this.tpChecks = new System.Windows.Forms.TabPage();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.chkTracksGenreFill = new System.Windows.Forms.CheckBox();
@@ -36,12 +39,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.tpDiscs = new System.Windows.Forms.TabPage();
-            this.lbDiscs = new System.Windows.Forms.ListBox();
+            this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tcValidator.SuspendLayout();
+            this.tpDiscs.SuspendLayout();
             this.tpTracks.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tpDiscs.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcValidator
@@ -58,6 +60,30 @@
             this.tcValidator.SelectedIndex = 0;
             this.tcValidator.Size = new System.Drawing.Size(772, 323);
             this.tcValidator.TabIndex = 1;
+            // 
+            // tpDiscs
+            // 
+            this.tpDiscs.Controls.Add(this.lbDiscs);
+            this.tpDiscs.Location = new System.Drawing.Point(4, 22);
+            this.tpDiscs.Name = "tpDiscs";
+            this.tpDiscs.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDiscs.Size = new System.Drawing.Size(764, 297);
+            this.tpDiscs.TabIndex = 0;
+            this.tpDiscs.Text = "Discs";
+            this.tpDiscs.UseVisualStyleBackColor = true;
+            // 
+            // lbDiscs
+            // 
+            this.lbDiscs.AllowDrop = true;
+            this.lbDiscs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbDiscs.FormattingEnabled = true;
+            this.lbDiscs.Location = new System.Drawing.Point(3, 3);
+            this.lbDiscs.Name = "lbDiscs";
+            this.lbDiscs.Size = new System.Drawing.Size(758, 291);
+            this.lbDiscs.TabIndex = 0;
+            this.lbDiscs.SelectedIndexChanged += new System.EventHandler(this.lbDiscs_SelectedIndexChanged);
+            this.lbDiscs.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragDrop);
+            this.lbDiscs.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragEnter);
             // 
             // tpChecks
             // 
@@ -120,32 +146,9 @@
             // miTasksAddFiles
             // 
             this.miTasksAddFiles.Name = "miTasksAddFiles";
-            this.miTasksAddFiles.Size = new System.Drawing.Size(152, 22);
+            this.miTasksAddFiles.Size = new System.Drawing.Size(131, 22);
             this.miTasksAddFiles.Text = "&Add Files...";
             this.miTasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
-            // 
-            // tpDiscs
-            // 
-            this.tpDiscs.Controls.Add(this.lbDiscs);
-            this.tpDiscs.Location = new System.Drawing.Point(4, 22);
-            this.tpDiscs.Name = "tpDiscs";
-            this.tpDiscs.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDiscs.Size = new System.Drawing.Size(764, 297);
-            this.tpDiscs.TabIndex = 0;
-            this.tpDiscs.Text = "Discs";
-            this.tpDiscs.UseVisualStyleBackColor = true;
-            // 
-            // lbDiscs
-            // 
-            this.lbDiscs.AllowDrop = true;
-            this.lbDiscs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbDiscs.FormattingEnabled = true;
-            this.lbDiscs.Location = new System.Drawing.Point(3, 3);
-            this.lbDiscs.Name = "lbDiscs";
-            this.lbDiscs.Size = new System.Drawing.Size(758, 291);
-            this.lbDiscs.TabIndex = 0;
-            this.lbDiscs.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragDrop);
-            this.lbDiscs.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragEnter);
             // 
             // ValidatorWizard
             // 
@@ -160,11 +163,11 @@
             this.Shown += new System.EventHandler(this.ValidatorWizard_Shown);
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);
             this.tcValidator.ResumeLayout(false);
+            this.tpDiscs.ResumeLayout(false);
             this.tpTracks.ResumeLayout(false);
             this.tpTracks.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tpDiscs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +185,7 @@
         private System.Windows.Forms.CheckBox chkTracksGenreFill;
         private System.Windows.Forms.TabPage tpDiscs;
         private System.Windows.Forms.ListBox lbDiscs;
+        private System.Windows.Forms.ToolTip ttApp;
     }
 }
 

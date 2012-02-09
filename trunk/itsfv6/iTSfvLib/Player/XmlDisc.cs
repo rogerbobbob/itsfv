@@ -15,11 +15,10 @@ namespace iTSfvLib
     {
         #region 0 Constructor
 
-        public XmlDisc()
+        public XmlDisc(string key)
         {
+            Key = key;
             Band = ConstantStrings.VariousArtists;
-            AlbumName = ConstantStrings.UnknownAlbum;
-            DiscName = ConstantStrings.UnknownDisc;
             Tracks = new List<XmlTrack>();
             DiscNumber = 0;
         }
@@ -34,8 +33,7 @@ namespace iTSfvLib
 
             if (this.Tracks.Count > 0)
             {
-                this.DiscName = GetDiscName();
-                this.AlbumName = GetAlbumName();
+                this.Key = Tracks[0].GetDiscKey();
             }
         }
 
@@ -43,15 +41,11 @@ namespace iTSfvLib
 
         #region 1 Properties
 
-        public string AlbumName { get; set; }
-
         public string Band { get; set; }
 
         public string Genre { get; set; }
 
         public uint HighestTrackNumber { get; set; }
-
-        public string DiscName { get; set; }
 
         public List<XmlTrack> Tracks { get; set; }
 
@@ -61,7 +55,10 @@ namespace iTSfvLib
 
         #region 2 Properties Read-Only
 
-        public uint DiscID { get; private set; }
+        /// <summary>
+        /// Unique Key
+        /// </summary>
+        public string Key { get; private set; }
 
         public uint DiscNumber { get; private set; }
 
@@ -80,11 +77,11 @@ namespace iTSfvLib
 
                 if (track.Band != string.Empty)
                 {
-                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Album, track.Band);
+                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Tags.Album, track.Band);
                 }
                 else
                 {
-                    url = string.Format("http://www.google.com/search?q=%22{0}%22+%22{1}%22", track.Album, track.Artist);
+                    url = string.Format("http://www.google.com/search?q=%22{0}%22+%22{1}%22", track.Tags.Album, track.Artist);
                 }
                 return url;
             }
@@ -109,12 +106,12 @@ namespace iTSfvLib
 
                 if (DiscNumber == 0)
                 {
-                    DiscNumber = track.DiscNumber;
+                    this.DiscNumber = Math.Max(track.Tags.Disc, 1);
                 }
 
-                if (string.IsNullOrEmpty(DiscName))
+                if (string.IsNullOrEmpty(Key))
                 {
-                    DiscName = GetDiscName();
+                    this.Key = track.GetDiscKey();
                 }
 
                 success = true;
@@ -123,13 +120,13 @@ namespace iTSfvLib
             return success;
         }
 
-        public string GetAlbumName()
+        public string GetAlbumKey()
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Album))
+                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Tags.Album))
                 {
-                    return string.Format("{0} - {1}", track.Album, track.Band);
+                    return string.Format("{0} - {1}", track.Tags.Album, track.Band);
                 }
             }
             return ConstantStrings.UnknownAlbum;
@@ -155,9 +152,9 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Album))
+                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Tags.Album))
                 {
-                    return string.Format("{0} Disc {1} - {2}", track.Album, DiscNumber.ToString("000"), track.Band);
+                    return string.Format("{0} Disc {1} - {2}", track.Tags.Album, DiscNumber.ToString("000"), track.Band);
                 }
             }
 
@@ -177,7 +174,7 @@ namespace iTSfvLib
             return false;
         }
 
-        public string ToString(bool bBitRate, bool bSize)
+        public string ToTracklistString(bool bBitRate = false, bool bSize = false)
         {
             List<string> tracks = new List<string>();
 
@@ -185,7 +182,7 @@ namespace iTSfvLib
             {
                 System.Text.StringBuilder l = new System.Text.StringBuilder();
 
-                l.Append(track.TrackNumber.ToString("00") + " " + track.Name);
+                l.Append(track.Tags.Track.ToString("00") + " " + track.Tags.Title);
 
                 if (bBitRate == true)
                 {
@@ -214,7 +211,7 @@ namespace iTSfvLib
 
         public override string ToString()
         {
-            return ToString(false, false);
+            return Key;
         }
     }
 }
