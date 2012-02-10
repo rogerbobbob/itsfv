@@ -57,6 +57,7 @@ namespace iTSfvGUI
             {
                 lbDiscs.Items.Add(disc);
             }
+            player.Validate();
         }
 
         private void lbDiscs_DragEnter(object sender, DragEventArgs e)

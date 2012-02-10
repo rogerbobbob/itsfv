@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Collections;
 
 namespace iTSfvLib
 {
@@ -19,8 +19,7 @@ namespace iTSfvLib
     public class AlbumArtistFinder
     {
         private Dictionary<string, int> mDiscArtists = new Dictionary<string, int>();
-        private const string VARIOUS_ARTISTS = "VARIOUS ARTISTS";
-        private string mDiscArtist = VARIOUS_ARTISTS;
+        private string mDiscArtist = ConstantStrings.VariousArtists;
         private XmlDisc mDisc = null;
         private double mConfidence = 0.0;
         private AlbumArtistFinderOptions Options { get; set; }
@@ -39,15 +38,15 @@ namespace iTSfvLib
             {
                 for (int i = 0; i <= lDisc.Tracks.Count - 1; i++)
                 {
-                    string oAlbumArtist = VARIOUS_ARTISTS;
+                    string oAlbumArtist = ConstantStrings.VariousArtists;
 
                     if (string.Empty != lDisc.Tracks[i].Artist)
                     {
                         oAlbumArtist = lDisc.Tracks[i].Artist;
                     }
-                    sAddArtist(oAlbumArtist);
+                    AddArtist(oAlbumArtist);
                 }
-                mDiscArtist = fGetTopArtist();
+                mDiscArtist = GetTopArtist();
             }
             else
             {
@@ -71,17 +70,17 @@ namespace iTSfvLib
                 }
                 else
                 {
-                    mDiscArtist = VARIOUS_ARTISTS;
+                    mDiscArtist = ConstantStrings.VariousArtists;
                 }
             }
 
             FileSystem.AppendDebug(string.Format("Chosen Most Common Artist: \"{0}\" with {1}% confidence", mDiscArtist, mConfidence.ToString("0.00")));
         }
 
-        private string fGetTopArtist()
+        private string GetTopArtist()
         {
             int topHit = 0;
-            string topArtist = VARIOUS_ARTISTS;
+            string topArtist = ConstantStrings.VariousArtists;
 
             if (mDisc.Tracks.Count > 0 & mDiscArtists.Count > 0)
             {
@@ -102,10 +101,10 @@ namespace iTSfvLib
 
                 if (Options.MostCommonArtistRatioActive == true)
                 {
-                    // work out if top Artist has lost the election 
+                    // work out if top Artist has lost the election
                     if (mConfidence < Options.MostCommonArtistPerc)
                     {
-                        topArtist = VARIOUS_ARTISTS;
+                        topArtist = ConstantStrings.VariousArtists;
                     }
                 }
             }
@@ -113,7 +112,7 @@ namespace iTSfvLib
             return topArtist;
         }
 
-        private void sAddArtist(string artist)
+        private void AddArtist(string artist)
         {
             if (mDiscArtists.ContainsKey(artist))
             {

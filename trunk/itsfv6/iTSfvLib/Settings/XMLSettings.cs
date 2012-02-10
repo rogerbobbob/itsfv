@@ -12,7 +12,7 @@ namespace iTSfvLib
     [XmlRoot("Settings")]
     public class XMLSettings
     {
-        public string[] SupportedAudioTypes = new string[] { "mp3, m4a" };
+        public string[] SupportedAudioTypes = new string[] { "mp3", "m4a" };
 
         [Category(MyStrings.App), DefaultValue(true), Description("All the tracks in a folder are treated as having the same Album Artist")]
         public bool TreatAsOneBandPerFolder { get; set; }

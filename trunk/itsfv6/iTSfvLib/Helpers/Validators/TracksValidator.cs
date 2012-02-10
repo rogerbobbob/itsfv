@@ -7,9 +7,12 @@ namespace iTSfvLib
 {
     public class TracksValidator
     {
+        public TracksValidator(XmlDisc disc)
+        {
+        }
+
         public void FillAlbumArtist(bool overwrite)
         {
-
         }
     }
 }
