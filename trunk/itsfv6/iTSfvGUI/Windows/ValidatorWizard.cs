@@ -21,6 +21,7 @@ namespace iTSfvGUI
         private void ValidatorWizard_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("{0} {1}", Application.ProductName, Application.ProductVersion);
+            Program.Config = new XMLSettings(); // todo: background worker
         }
 
         private void ValidatorWizard_Shown(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace iTSfvGUI
 
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
-            XmlPlayer player = new XmlPlayer();
+            XmlPlayer player = new XmlPlayer(Program.Config);
 
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
             player.AddFilesOrFolders(pathsFilesFolders);
@@ -88,5 +89,21 @@ namespace iTSfvGUI
         }
 
         #endregion Helpers
+
+        private void tsmiOptions_Click(object sender, EventArgs e)
+        {
+            OptionsWindow dlg = new OptionsWindow(Program.Config);
+            dlg.ShowDialog();
+        }
+
+        private void lbDiscs_MouseDown(object sender, MouseEventArgs e)
+        {
+            lbDiscs.SelectedIndex = lbDiscs.IndexFromPoint(e.X, e.Y);
+
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                //now show your context menu...
+            }
+        }
     }
 }

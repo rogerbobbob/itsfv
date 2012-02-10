@@ -49,14 +49,12 @@ namespace iTSfvLib
 
         public int VolumeAdjustment { get; set; }
 
-        public int Year { get; set; }
-
         public string Band
         {
             get
             {
                 if (Tags.AlbumArtists.Length > 0)
-                    return Tags.AlbumArtists[0];
+                    return string.Join("/", Tags.AlbumArtists);
 
                 return Artist;
             }
@@ -67,10 +65,27 @@ namespace iTSfvLib
             get
             {
                 if (Tags.Performers.Length > 0)
-                    return Tags.Performers[0];
+                    return string.Join("/", Tags.Performers);
 
                 return null;
             }
+        }
+
+        private string CombineString(string[] array, string seperator = "/")
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string band in array)
+            {
+                if (!string.IsNullOrEmpty(band))
+                {
+                    sb.Append(band);
+                    sb.Append(seperator);
+                }
+            }
+            if (sb.Length > 1)
+                sb.Remove(sb.Length - 1, 1);
+
+            return sb.ToString();
         }
 
         public string Category { get; set; }
@@ -83,8 +98,6 @@ namespace iTSfvLib
 
         public string EQ { get; set; }
 
-        public string EpisodeID { get; set; }
-
         public string Genre { get; set; }
 
         public string Grouping { get; set; }
@@ -96,12 +109,6 @@ namespace iTSfvLib
         public string Lyrics { get; set; }
 
         public string Show { get; set; }
-
-        public string SortAlbum { get; set; }
-
-        public string SortAlbumArtist { get; set; }
-
-        public string SortArtist { get; set; }
 
         public string SortComposer { get; set; }
 
@@ -209,12 +216,38 @@ namespace iTSfvLib
             {
                 using (TagLib.File f = TagLib.File.Create(Location))
                 {
+                    f.RemoveTags(f.TagTypes & ~f.TagTypesOnDisk);
                     this.Tags = f.Tag;
                 }
             }
             catch (Exception ex)
             {
                 FileSystem.AppendDebug("Error updating info from file", ex);
+            }
+        }
+
+        public void WriteTagsToFile()
+        {
+            try
+            {
+                using (TagLib.File f = TagLib.File.Create(Location))
+                {
+                    f.Tag.Track = Tags.Track;
+                    f.Tag.TrackCount = Tags.TrackCount;
+                    f.Tag.Title = Tags.Title;
+                    f.Tag.AlbumArtists = Tags.AlbumArtists;
+                    f.Tag.Performers = Tags.Performers;
+                    f.Tag.Disc = Tags.Disc;
+                    f.Tag.DiscCount = Tags.DiscCount;
+                    f.Tag.Album = Tags.Album;
+                    f.Tag.Genres = Tags.Genres;
+                    f.Tag.Year = Tags.Year;
+                    f.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileSystem.AppendDebug("Error writing tags to file", ex);
             }
         }
     }
