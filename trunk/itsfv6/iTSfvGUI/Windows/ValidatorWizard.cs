@@ -43,16 +43,22 @@ namespace iTSfvGUI
             dlg.IsFolderPicker = true;
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
+                // AddFilesFolders(new string[] { dlg.FileName });
                 ShowAddFilesWizard(new string[] { dlg.FileName });
             }
         }
 
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
+            var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
+            AddFilesFolders(pathsFilesFolders);
+        }
+
+        private void AddFilesFolders(string[] filesDirs)
+        {
             XmlPlayer player = new XmlPlayer(Program.Config);
 
-            var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            player.AddFilesOrFolders(pathsFilesFolders);
+            player.AddFilesOrFolders(filesDirs);
             foreach (XmlDisc disc in player.Discs)
             {
                 lbDiscs.Items.Add(disc);
