@@ -15,15 +15,21 @@ namespace iTSfvLib
     {
         #region 0 Constructor
 
-        public XmlDisc(string key)
+        private XmlDisc()
         {
-            Key = key;
             Band = ConstantStrings.VariousArtists;
             Tracks = new List<XmlTrack>();
             DiscNumber = 0;
         }
 
+        public XmlDisc(string key)
+            : this()
+        {
+            Key = key;
+        }
+
         public XmlDisc(List<string> filePaths)
+            : this()
         {
             foreach (string p in filePaths)
             {

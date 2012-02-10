@@ -15,34 +15,47 @@ namespace iTSfvGUI
     {
         private string[] _FilesDirs;
 
+        public List<XmlTrack> Tracks { get; private set; }
+
         public AddFilesWizard(string[] filesDirs)
         {
             InitializeComponent();
             _FilesDirs = filesDirs;
+            Tracks = new List<XmlTrack>();
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
         {
-            List<XmlTrack> tracks = new List<XmlTrack>();
-
             foreach (string pfd in _FilesDirs.ToArray<string>())
             {
                 if (Directory.Exists(pfd))
                 {
-                    TreeNode tn = new TreeNode(Path.GetFileName(pfd));
-                    tvBands.Nodes.Add(tn);
-
-                    // todo: respect windows explorer folder structure
-                    foreach (string fp in Directory.GetFiles(pfd, "*.mp3", SearchOption.AllDirectories))
-                    {
-                        tracks.Add(new XmlTrack(fp));
-                    }
+                    AddDirToNode(pfd, tvBands.Nodes);
                 }
                 else if (File.Exists(pfd))
                 {
-                    tracks.Add(new XmlTrack(pfd));
+                    Tracks.Add(new XmlTrack(pfd));
                 }
             }
+        }
+
+        private void AddDirToNode(string dirPath, TreeNodeCollection tnc)
+        {
+            TreeNode tn = new TreeNode(Path.GetFileName(dirPath));
+            tnc.Add(tn);
+
+            foreach (string dp in Directory.GetDirectories(dirPath))
+            {
+                if (Directory.Exists(dp))
+                {
+                    AddDirToNode(dp, tn.Nodes);
+                }
+            }
+        }
+
+        private XmlDisc GetDiscFromFolder(string dirPath)
+        {
+            return new XmlDisc(Directory.GetFiles(dirPath, "*.mp3", SearchOption.TopDirectoryOnly).ToList<string>());
         }
     }
 }
