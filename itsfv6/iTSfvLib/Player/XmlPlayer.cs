@@ -19,7 +19,9 @@ namespace iTSfvLib
 
         public List<XmlDisc> Discs { get; private set; }
 
-        public XmlPlayer()
+        public XMLSettings Config = null;
+
+        public XmlPlayer(XMLSettings Config)
         {
             Bands = new List<XmlBand>();
             Albums = new List<XmlAlbum>();
@@ -35,9 +37,12 @@ namespace iTSfvLib
                 if (Directory.Exists(pfd))
                 {
                     // todo: respect windows explorer folder structure
-                    foreach (string fp in Directory.GetFiles(pfd, "*.mp3", SearchOption.AllDirectories))
+                    foreach (string ext in Config.SupportedAudioTypes)
                     {
-                        tracks.Add(new XmlTrack(fp));
+                        foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
+                        {
+                            tracks.Add(new XmlTrack(fp));
+                        }
                     }
                 }
                 else if (File.Exists(pfd))

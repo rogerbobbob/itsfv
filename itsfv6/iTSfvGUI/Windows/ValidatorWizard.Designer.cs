@@ -38,8 +38,10 @@
             this.tpFileSystem = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpDiscs.SuspendLayout();
             this.tpTracks.SuspendLayout();
@@ -48,9 +50,9 @@
             // 
             // tcValidator
             // 
-            this.tcValidator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcValidator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tcValidator.Controls.Add(this.tpDiscs);
             this.tcValidator.Controls.Add(this.tpChecks);
             this.tcValidator.Controls.Add(this.tpTracks);
@@ -84,6 +86,7 @@
             this.lbDiscs.SelectedIndexChanged += new System.EventHandler(this.lbDiscs_SelectedIndexChanged);
             this.lbDiscs.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragDrop);
             this.lbDiscs.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragEnter);
+            this.lbDiscs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbDiscs_MouseDown);
             // 
             // tpChecks
             // 
@@ -128,7 +131,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowsToolStripMenuItem});
+            this.windowsToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
@@ -138,17 +142,32 @@
             // windowsToolStripMenuItem
             // 
             this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miTasksAddFiles});
+            this.tsmiTasksAddFiles});
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.windowsToolStripMenuItem.Text = "&Tasks";
             // 
-            // miTasksAddFiles
+            // tsmiTasksAddFiles
             // 
-            this.miTasksAddFiles.Name = "miTasksAddFiles";
-            this.miTasksAddFiles.Size = new System.Drawing.Size(131, 22);
-            this.miTasksAddFiles.Text = "&Add Files...";
-            this.miTasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
+            this.tsmiTasksAddFiles.Name = "tsmiTasksAddFiles";
+            this.tsmiTasksAddFiles.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTasksAddFiles.Text = "&Add Files...";
+            this.tsmiTasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiOptions});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // tsmiOptions
+            // 
+            this.tsmiOptions.Name = "tsmiOptions";
+            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOptions.Text = "&Options...";
+            this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
             // ValidatorWizard
             // 
@@ -181,11 +200,13 @@
         private System.Windows.Forms.TabPage tpFileSystem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miTasksAddFiles;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTasksAddFiles;
         private System.Windows.Forms.CheckBox chkTracksGenreFill;
         private System.Windows.Forms.TabPage tpDiscs;
         private System.Windows.Forms.ListBox lbDiscs;
         private System.Windows.Forms.ToolTip ttApp;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
     }
 }
 

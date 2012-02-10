@@ -8,12 +8,12 @@ namespace iTSfvGUI
 {
     public static class Program
     {
+        public static XMLSettings Config = null;
         public static Adapter Linker = new Adapter();
 
         // Windows
         public static ValidatorWizard gValidator = null;
         public static LogViewer gLogViewer = null;
-        public static AddFilesWizard gAddFilesWizard = null;
         public static MainWindow gMainWindow = null;
 
         /// <summary>
@@ -27,7 +27,6 @@ namespace iTSfvGUI
 
             gLogViewer = new LogViewer();
             gValidator = new ValidatorWizard();
-            gAddFilesWizard = new AddFilesWizard(new string[0]);
             gMainWindow = new MainWindow();
             Application.Run(gValidator);
         }

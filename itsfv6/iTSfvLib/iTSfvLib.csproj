@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="ConstantStrings.cs" />
     <Compile Include="Helpers\AddFilesHelper.cs" />
+    <Compile Include="Static\MyStrings.cs" />
     <Compile Include="Player\XmlPlayer.cs" />
     <Compile Include="Static\IDGenerator.cs" />
     <Compile Include="Tasks\ArtworkEmbedTask.cs" />
@@ -123,6 +124,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\HelpersLib\HelpersLib.csproj">
+      <Project>{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}</Project>
+      <Name>HelpersLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
