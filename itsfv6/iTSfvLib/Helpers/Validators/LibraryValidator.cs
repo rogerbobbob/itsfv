@@ -5,7 +5,7 @@ using System.Text;
 
 namespace iTSfvLib
 {
-    class LibraryValidator
+    public class LibraryValidator
     {
     }
 }

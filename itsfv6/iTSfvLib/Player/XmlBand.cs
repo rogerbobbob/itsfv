@@ -15,7 +15,7 @@ namespace iTSfvLib
         /// </summary>
         public string Key { get; private set; }
 
-        private Dictionary<string, XmlAlbum> Albums = new Dictionary<string, XmlAlbum>();
+        public Dictionary<string, XmlAlbum> Albums = new Dictionary<string, XmlAlbum>();
 
         public XmlBand(string key)
         {
