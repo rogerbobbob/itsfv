@@ -51,7 +51,8 @@ namespace iTSfvGUI
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            AddFilesFolders(pathsFilesFolders);
+            ShowAddFilesWizard(pathsFilesFolders);
+            // AddFilesFolders(pathsFilesFolders);
         }
 
         private void AddFilesFolders(string[] filesDirs)

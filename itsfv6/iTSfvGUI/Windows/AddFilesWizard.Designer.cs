@@ -67,7 +67,6 @@
             this.gbAlbumTags.Controls.Add(this.nudDiscNumber);
             this.gbAlbumTags.Controls.Add(this.chkAlbum);
             this.gbAlbumTags.Controls.Add(this.txtAlbum);
-            this.gbAlbumTags.Enabled = false;
             this.gbAlbumTags.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAlbumTags.Location = new System.Drawing.Point(16, 296);
             this.gbAlbumTags.Name = "gbAlbumTags";
@@ -78,8 +77,8 @@
             // 
             // cboArtist
             // 
-            this.cboArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cboArtist.FormattingEnabled = true;
             this.cboArtist.ItemHeight = 13;
             this.cboArtist.Location = new System.Drawing.Point(105, 46);
@@ -100,8 +99,8 @@
             // 
             // cboGenre
             // 
-            this.cboGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cboGenre.FormattingEnabled = true;
             this.cboGenre.Location = new System.Drawing.Point(105, 125);
             this.cboGenre.Name = "cboGenre";
@@ -110,8 +109,8 @@
             // 
             // nudYear
             // 
-            this.nudYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.nudYear.Location = new System.Drawing.Point(105, 99);
             this.nudYear.Maximum = new decimal(new int[] {
             9999,
@@ -149,8 +148,8 @@
             // 
             // cboAlbumArtist
             // 
-            this.cboAlbumArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAlbumArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cboAlbumArtist.FormattingEnabled = true;
             this.cboAlbumArtist.ItemHeight = 13;
             this.cboAlbumArtist.Location = new System.Drawing.Point(105, 19);
@@ -226,8 +225,8 @@
             // 
             // txtAlbum
             // 
-            this.txtAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAlbum.Location = new System.Drawing.Point(105, 73);
             this.txtAlbum.Name = "txtAlbum";
             this.txtAlbum.Size = new System.Drawing.Size(335, 20);
@@ -247,6 +246,7 @@
             this.tvBands.Name = "tvBands";
             this.tvBands.Size = new System.Drawing.Size(464, 160);
             this.tvBands.TabIndex = 0;
+            this.tvBands.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBands_NodeMouseClick);
             // 
             // AddFilesWizard
             // 

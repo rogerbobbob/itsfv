@@ -17,7 +17,6 @@ namespace iTSfvLib
 
         private XmlDisc()
         {
-            Band = ConstantStrings.VariousArtists;
             Tracks = new List<XmlTrack>();
             DiscNumber = 0;
         }
@@ -26,6 +25,17 @@ namespace iTSfvLib
             : this()
         {
             Key = key;
+        }
+
+        public XmlDisc(List<XmlTrack> tracks)
+            : this()
+        {
+            this.Tracks = tracks;
+
+            if (tracks.Count > 0)
+            {
+                this.Key = tracks[0].GetDiscKey();
+            }
         }
 
         public XmlDisc(List<string> filePaths)
@@ -47,7 +57,18 @@ namespace iTSfvLib
 
         #region 1 Properties
 
-        public string Band { get; set; }
+        public string Band
+        {
+            get
+            {
+                if (Tracks.Count > 0)
+                {
+                    AlbumArtistFinder aaf = new AlbumArtistFinder(this, new AlbumArtistFinderOptions() { MostCommonAlbumArtist = true });
+                    return aaf.AlbumArtist;
+                }
+                return string.Empty;
+            }
+        }
 
         public string Genre { get; set; }
 
@@ -67,6 +88,17 @@ namespace iTSfvLib
         public string Key { get; private set; }
 
         public uint DiscNumber { get; private set; }
+
+        public string Album
+        {
+            get
+            {
+                if (Tracks.Count > 0)
+                    return FirstTrack.Tags.Album;
+
+                return string.Empty;
+            }
+        }
 
         public XmlTrack FirstTrack
         {
