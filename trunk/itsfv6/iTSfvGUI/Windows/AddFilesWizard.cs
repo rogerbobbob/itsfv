@@ -15,13 +15,13 @@ namespace iTSfvGUI
     {
         private string[] _FilesDirs;
 
-        public List<XmlTrack> Tracks { get; private set; }
+        public List<XmlTrack> TracksOrphaned { get; private set; }
 
         public AddFilesWizard(string[] filesDirs)
         {
             InitializeComponent();
             _FilesDirs = filesDirs;
-            Tracks = new List<XmlTrack>();
+            TracksOrphaned = new List<XmlTrack>();
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
@@ -34,8 +34,16 @@ namespace iTSfvGUI
                 }
                 else if (File.Exists(pfd))
                 {
-                    Tracks.Add(new XmlTrack(pfd));
+                    TracksOrphaned.Add(new XmlTrack(pfd));
                 }
+            }
+
+            XmlDisc discOrphaned = new XmlDisc(TracksOrphaned);
+            foreach (XmlTrack track in TracksOrphaned)
+            {
+                TreeNode tnOrphaned = new TreeNode("Orphaned Tracks");
+                tnOrphaned.Tag = discOrphaned;
+                tvBands.Nodes.Add(tnOrphaned);
             }
         }
 
@@ -43,6 +51,7 @@ namespace iTSfvGUI
         {
             TreeNode tn = new TreeNode(Path.GetFileName(dirPath));
             tnc.Add(tn);
+            tn.Tag = GetDiscFromFolder(dirPath);
 
             foreach (string dp in Directory.GetDirectories(dirPath))
             {
@@ -56,6 +65,22 @@ namespace iTSfvGUI
         private XmlDisc GetDiscFromFolder(string dirPath)
         {
             return new XmlDisc(Directory.GetFiles(dirPath, "*.mp3", SearchOption.TopDirectoryOnly).ToList<string>());
+        }
+
+        private void tvBands_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode tn = e.Node;
+            if (tn != null && tn.Tag != null)
+            {
+                XmlDisc disc = tn.Tag as XmlDisc;
+                lbPaths.Items.Clear();
+                foreach (XmlTrack track in disc.Tracks)
+                {
+                    lbPaths.Items.Add(track.Location);
+                }
+                cboAlbumArtist.Text = disc.Band;
+                txtAlbum.Text = disc.Album;
+            }
         }
     }
 }
