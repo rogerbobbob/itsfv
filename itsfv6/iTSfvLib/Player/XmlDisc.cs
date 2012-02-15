@@ -63,8 +63,12 @@ namespace iTSfvLib
             {
                 if (Tracks.Count > 0)
                 {
-                    AlbumArtistFinder aaf = new AlbumArtistFinder(this, new AlbumArtistFinderOptions() { MostCommonAlbumArtist = true });
-                    return aaf.AlbumArtist;
+                    return new MostCommonTagFinder(Tracks, ETagFinderType.Artist, new TagFinderOptions()
+                    {
+                        ConfidenceRequired = 50.0,
+                        MostCommonTagRatioActive = true,
+                        ChooseMostCommonTag = true
+                    }).MostCommonString;
                 }
                 return string.Empty;
             }
@@ -76,8 +80,10 @@ namespace iTSfvLib
             {
                 if (Tracks.Count > 0)
                 {
-                    GenreFinder gf = new GenreFinder(this, new GenreFinderOptions() { MostCommonGenre = true });
-                    return gf.Genre;
+                    return new MostCommonTagFinder(Tracks, ETagFinderType.Genre, new TagFinderOptions()
+                    {
+                        ChooseMostCommonTag = true
+                    }).MostCommonString;
                 }
                 return string.Empty;
             }
