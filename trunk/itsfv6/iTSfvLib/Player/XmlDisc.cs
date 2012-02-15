@@ -70,7 +70,18 @@ namespace iTSfvLib
             }
         }
 
-        public string Genre { get; set; }
+        public string Genre
+        {
+            get
+            {
+                if (Tracks.Count > 0)
+                {
+                    GenreFinder gf = new GenreFinder(this, new GenreFinderOptions() { MostCommonGenre = true });
+                    return gf.Genre;
+                }
+                return string.Empty;
+            }
+        }
 
         public uint HighestTrackNumber { get; set; }
 

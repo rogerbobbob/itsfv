@@ -11,5 +11,6 @@ namespace iTSfvLib
         public static readonly string UnknownDisc = "Unknown Disc";
         public static readonly string UnknownAlbum = "Unknown Album";
         public static readonly string UnknownArtist = "Unknown Artist";
+        public static readonly string UnknownGenre = "Unknown Genre";
     }
 }

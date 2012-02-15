@@ -67,7 +67,18 @@ namespace iTSfvLib
                 if (Tags.Performers.Length > 0)
                     return string.Join("/", Tags.Performers);
 
-                return null;
+                return string.Empty;
+            }
+        }
+
+        public string Genre
+        {
+            get
+            {
+                if (Tags.Genres.Length > 0)
+                    return string.Join("/", Tags.Genres);
+
+                return string.Empty;
             }
         }
 
@@ -97,8 +108,6 @@ namespace iTSfvLib
         public string Description { get; set; }
 
         public string EQ { get; set; }
-
-        public string Genre { get; set; }
 
         public string Grouping { get; set; }
 

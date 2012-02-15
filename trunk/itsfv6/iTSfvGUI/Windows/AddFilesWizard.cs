@@ -17,11 +17,14 @@ namespace iTSfvGUI
 
         public List<XmlTrack> TracksOrphaned { get; private set; }
 
+        public List<XmlDisc> Discs { get; private set; }
+
         public AddFilesWizard(string[] filesDirs)
         {
             InitializeComponent();
             _FilesDirs = filesDirs;
             TracksOrphaned = new List<XmlTrack>();
+            Discs = new List<XmlDisc>();
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
@@ -64,7 +67,9 @@ namespace iTSfvGUI
 
         private XmlDisc GetDiscFromFolder(string dirPath)
         {
-            return new XmlDisc(Directory.GetFiles(dirPath, "*.mp3", SearchOption.TopDirectoryOnly).ToList<string>());
+            XmlDisc tempDisc = new XmlDisc(Directory.GetFiles(dirPath, "*.mp3", SearchOption.TopDirectoryOnly).ToList<string>());
+            Discs.Add(tempDisc);
+            return tempDisc;
         }
 
         private void tvBands_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -79,6 +84,7 @@ namespace iTSfvGUI
                     lbPaths.Items.Add(track.Location);
                 }
                 cboAlbumArtist.Text = disc.Band;
+                cboGenre.Text = disc.Genre;
                 txtAlbum.Text = disc.Album;
             }
         }
