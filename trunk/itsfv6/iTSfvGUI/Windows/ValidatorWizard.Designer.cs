@@ -39,20 +39,25 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttApp = new System.Windows.Forms.ToolTip(this.components);
+            this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
+            this.chkChecksItunesStoreStandard = new System.Windows.Forms.CheckBox();
+            this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
             this.tcValidator.SuspendLayout();
             this.tpDiscs.SuspendLayout();
+            this.tpChecks.SuspendLayout();
             this.tpTracks.SuspendLayout();
+            this.tpFileSystem.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcValidator
             // 
-            this.tcValidator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcValidator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tcValidator.Controls.Add(this.tpDiscs);
             this.tcValidator.Controls.Add(this.tpChecks);
             this.tcValidator.Controls.Add(this.tpTracks);
@@ -90,6 +95,7 @@
             // 
             // tpChecks
             // 
+            this.tpChecks.Controls.Add(this.chkChecksItunesStoreStandard);
             this.tpChecks.Location = new System.Drawing.Point(4, 22);
             this.tpChecks.Name = "tpChecks";
             this.tpChecks.Padding = new System.Windows.Forms.Padding(3);
@@ -100,6 +106,7 @@
             // 
             // tpTracks
             // 
+            this.tpTracks.Controls.Add(this.chkTracksAlbumArtistFill);
             this.tpTracks.Controls.Add(this.chkTracksGenreFill);
             this.tpTracks.Location = new System.Drawing.Point(4, 22);
             this.tpTracks.Name = "tpTracks";
@@ -114,13 +121,14 @@
             this.chkTracksGenreFill.AutoSize = true;
             this.chkTracksGenreFill.Location = new System.Drawing.Point(8, 8);
             this.chkTracksGenreFill.Name = "chkTracksGenreFill";
-            this.chkTracksGenreFill.Size = new System.Drawing.Size(105, 17);
+            this.chkTracksGenreFill.Size = new System.Drawing.Size(187, 17);
             this.chkTracksGenreFill.TabIndex = 0;
-            this.chkTracksGenreFill.Text = "Fill missing genre";
+            this.chkTracksGenreFill.Text = "Fill missing genre using best guess";
             this.chkTracksGenreFill.UseVisualStyleBackColor = true;
             // 
             // tpFileSystem
             // 
+            this.tpFileSystem.Controls.Add(this.chkFileSystemExportArtworkFolderJpg);
             this.tpFileSystem.Location = new System.Drawing.Point(4, 22);
             this.tpFileSystem.Name = "tpFileSystem";
             this.tpFileSystem.Size = new System.Drawing.Size(764, 297);
@@ -144,13 +152,13 @@
             this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTasksAddFiles});
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.windowsToolStripMenuItem.Text = "&Tasks";
             // 
             // tsmiTasksAddFiles
             // 
             this.tsmiTasksAddFiles.Name = "tsmiTasksAddFiles";
-            this.tsmiTasksAddFiles.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTasksAddFiles.Size = new System.Drawing.Size(131, 22);
             this.tsmiTasksAddFiles.Text = "&Add Files...";
             this.tsmiTasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
             // 
@@ -159,15 +167,45 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiOptions});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
+            // 
+            // chkFileSystemExportArtworkFolderJpg
+            // 
+            this.chkFileSystemExportArtworkFolderJpg.AutoSize = true;
+            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(8, 8);
+            this.chkFileSystemExportArtworkFolderJpg.Name = "chkFileSystemExportArtworkFolderJpg";
+            this.chkFileSystemExportArtworkFolderJpg.Size = new System.Drawing.Size(231, 17);
+            this.chkFileSystemExportArtworkFolderJpg.TabIndex = 0;
+            this.chkFileSystemExportArtworkFolderJpg.Text = "Export Artwork to Album folder as Folder.jpg";
+            this.chkFileSystemExportArtworkFolderJpg.UseVisualStyleBackColor = true;
+            // 
+            // chkChecksItunesStoreStandard
+            // 
+            this.chkChecksItunesStoreStandard.AutoSize = true;
+            this.chkChecksItunesStoreStandard.Location = new System.Drawing.Point(8, 8);
+            this.chkChecksItunesStoreStandard.Name = "chkChecksItunesStoreStandard";
+            this.chkChecksItunesStoreStandard.Size = new System.Drawing.Size(179, 17);
+            this.chkChecksItunesStoreStandard.TabIndex = 0;
+            this.chkChecksItunesStoreStandard.Text = "Check for iTunes Store standard";
+            this.chkChecksItunesStoreStandard.UseVisualStyleBackColor = true;
+            // 
+            // chkTracksAlbumArtistFill
+            // 
+            this.chkTracksAlbumArtistFill.AutoSize = true;
+            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(8, 32);
+            this.chkTracksAlbumArtistFill.Name = "chkTracksAlbumArtistFill";
+            this.chkTracksAlbumArtistFill.Size = new System.Drawing.Size(215, 17);
+            this.chkTracksAlbumArtistFill.TabIndex = 1;
+            this.chkTracksAlbumArtistFill.Text = "Fill missing Album Artist using best guess";
+            this.chkTracksAlbumArtistFill.UseVisualStyleBackColor = true;
             // 
             // ValidatorWizard
             // 
@@ -183,8 +221,12 @@
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);
             this.tcValidator.ResumeLayout(false);
             this.tpDiscs.ResumeLayout(false);
+            this.tpChecks.ResumeLayout(false);
+            this.tpChecks.PerformLayout();
             this.tpTracks.ResumeLayout(false);
             this.tpTracks.PerformLayout();
+            this.tpFileSystem.ResumeLayout(false);
+            this.tpFileSystem.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -207,6 +249,9 @@
         private System.Windows.Forms.ToolTip ttApp;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
+        private System.Windows.Forms.CheckBox chkChecksItunesStoreStandard;
+        private System.Windows.Forms.CheckBox chkTracksAlbumArtistFill;
+        private System.Windows.Forms.CheckBox chkFileSystemExportArtworkFolderJpg;
     }
 }
 
