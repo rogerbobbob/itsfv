@@ -94,6 +94,10 @@ namespace iTSfvGUI
         {
             AddFilesWizard afw = new AddFilesWizard(filesDirs);
             afw.ShowDialog();
+            foreach (XmlDisc disc in afw.Discs)
+            {
+                lbDiscs.Items.Add(disc);
+            }
         }
 
         #endregion Helpers

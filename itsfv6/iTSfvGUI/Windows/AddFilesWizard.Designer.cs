@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.gbAlbumTags = new System.Windows.Forms.GroupBox();
-            this.cboArtist = new System.Windows.Forms.ComboBox();
-            this.chkArtist = new System.Windows.Forms.CheckBox();
             this.cboGenre = new System.Windows.Forms.ComboBox();
             this.nudYear = new System.Windows.Forms.NumericUpDown();
             this.chkYear = new System.Windows.Forms.CheckBox();
@@ -45,6 +43,7 @@
             this.txtAlbum = new System.Windows.Forms.TextBox();
             this.lbPaths = new System.Windows.Forms.ListBox();
             this.tvBands = new System.Windows.Forms.TreeView();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbAlbumTags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscCount)).BeginInit();
@@ -53,8 +52,7 @@
             // 
             // gbAlbumTags
             // 
-            this.gbAlbumTags.Controls.Add(this.cboArtist);
-            this.gbAlbumTags.Controls.Add(this.chkArtist);
+            this.gbAlbumTags.Controls.Add(this.button1);
             this.gbAlbumTags.Controls.Add(this.cboGenre);
             this.gbAlbumTags.Controls.Add(this.nudYear);
             this.gbAlbumTags.Controls.Add(this.chkYear);
@@ -75,43 +73,21 @@
             this.gbAlbumTags.TabStop = false;
             this.gbAlbumTags.Text = "Disc Tags";
             // 
-            // cboArtist
-            // 
-            this.cboArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboArtist.FormattingEnabled = true;
-            this.cboArtist.ItemHeight = 13;
-            this.cboArtist.Location = new System.Drawing.Point(105, 46);
-            this.cboArtist.Name = "cboArtist";
-            this.cboArtist.Size = new System.Drawing.Size(335, 21);
-            this.cboArtist.Sorted = true;
-            this.cboArtist.TabIndex = 3;
-            // 
-            // chkArtist
-            // 
-            this.chkArtist.AutoSize = true;
-            this.chkArtist.Location = new System.Drawing.Point(9, 48);
-            this.chkArtist.Name = "chkArtist";
-            this.chkArtist.Size = new System.Drawing.Size(49, 17);
-            this.chkArtist.TabIndex = 2;
-            this.chkArtist.Text = "Artist";
-            this.chkArtist.UseVisualStyleBackColor = true;
-            // 
             // cboGenre
             // 
-            this.cboGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboGenre.FormattingEnabled = true;
-            this.cboGenre.Location = new System.Drawing.Point(105, 125);
+            this.cboGenre.Location = new System.Drawing.Point(105, 96);
             this.cboGenre.Name = "cboGenre";
             this.cboGenre.Size = new System.Drawing.Size(337, 21);
-            this.cboGenre.TabIndex = 9;
+            this.cboGenre.TabIndex = 7;
             // 
             // nudYear
             // 
-            this.nudYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudYear.Location = new System.Drawing.Point(105, 99);
+            this.nudYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudYear.Location = new System.Drawing.Point(105, 70);
             this.nudYear.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -119,7 +95,7 @@
             0});
             this.nudYear.Name = "nudYear";
             this.nudYear.Size = new System.Drawing.Size(335, 20);
-            this.nudYear.TabIndex = 7;
+            this.nudYear.TabIndex = 5;
             this.nudYear.Value = new decimal(new int[] {
             2008,
             0,
@@ -129,27 +105,27 @@
             // chkYear
             // 
             this.chkYear.AutoSize = true;
-            this.chkYear.Location = new System.Drawing.Point(10, 100);
+            this.chkYear.Location = new System.Drawing.Point(10, 71);
             this.chkYear.Name = "chkYear";
             this.chkYear.Size = new System.Drawing.Size(48, 17);
-            this.chkYear.TabIndex = 6;
+            this.chkYear.TabIndex = 4;
             this.chkYear.Text = "Year";
             this.chkYear.UseVisualStyleBackColor = true;
             // 
             // chkGenre
             // 
             this.chkGenre.AutoSize = true;
-            this.chkGenre.Location = new System.Drawing.Point(10, 127);
+            this.chkGenre.Location = new System.Drawing.Point(10, 98);
             this.chkGenre.Name = "chkGenre";
             this.chkGenre.Size = new System.Drawing.Size(55, 17);
-            this.chkGenre.TabIndex = 8;
+            this.chkGenre.TabIndex = 6;
             this.chkGenre.Text = "Genre";
             this.chkGenre.UseVisualStyleBackColor = true;
             // 
             // cboAlbumArtist
             // 
-            this.cboAlbumArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAlbumArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboAlbumArtist.FormattingEnabled = true;
             this.cboAlbumArtist.ItemHeight = 13;
             this.cboAlbumArtist.Location = new System.Drawing.Point(105, 19);
@@ -171,29 +147,29 @@
             // lblOf
             // 
             this.lblOf.AutoSize = true;
-            this.lblOf.Location = new System.Drawing.Point(171, 155);
+            this.lblOf.Location = new System.Drawing.Point(171, 126);
             this.lblOf.Name = "lblOf";
             this.lblOf.Size = new System.Drawing.Size(16, 13);
-            this.lblOf.TabIndex = 12;
+            this.lblOf.TabIndex = 10;
             this.lblOf.Text = "of";
             // 
             // chkDisc
             // 
             this.chkDisc.AutoSize = true;
-            this.chkDisc.Location = new System.Drawing.Point(9, 153);
+            this.chkDisc.Location = new System.Drawing.Point(9, 124);
             this.chkDisc.Name = "chkDisc";
             this.chkDisc.Size = new System.Drawing.Size(47, 17);
-            this.chkDisc.TabIndex = 10;
+            this.chkDisc.TabIndex = 8;
             this.chkDisc.Text = "Disc";
             this.chkDisc.UseVisualStyleBackColor = true;
             // 
             // nudDiscCount
             // 
-            this.nudDiscCount.Location = new System.Drawing.Point(193, 152);
+            this.nudDiscCount.Location = new System.Drawing.Point(193, 123);
             this.nudDiscCount.Name = "nudDiscCount";
             this.nudDiscCount.ReadOnly = true;
             this.nudDiscCount.Size = new System.Drawing.Size(60, 20);
-            this.nudDiscCount.TabIndex = 13;
+            this.nudDiscCount.TabIndex = 11;
             this.nudDiscCount.Value = new decimal(new int[] {
             1,
             0,
@@ -202,11 +178,11 @@
             // 
             // nudDiscNumber
             // 
-            this.nudDiscNumber.Location = new System.Drawing.Point(105, 152);
+            this.nudDiscNumber.Location = new System.Drawing.Point(105, 123);
             this.nudDiscNumber.Name = "nudDiscNumber";
             this.nudDiscNumber.ReadOnly = true;
             this.nudDiscNumber.Size = new System.Drawing.Size(60, 20);
-            this.nudDiscNumber.TabIndex = 11;
+            this.nudDiscNumber.TabIndex = 9;
             this.nudDiscNumber.Value = new decimal(new int[] {
             1,
             0,
@@ -216,28 +192,28 @@
             // chkAlbum
             // 
             this.chkAlbum.AutoSize = true;
-            this.chkAlbum.Location = new System.Drawing.Point(9, 75);
+            this.chkAlbum.Location = new System.Drawing.Point(9, 46);
             this.chkAlbum.Name = "chkAlbum";
             this.chkAlbum.Size = new System.Drawing.Size(55, 17);
-            this.chkAlbum.TabIndex = 4;
+            this.chkAlbum.TabIndex = 2;
             this.chkAlbum.Text = "Album";
             this.chkAlbum.UseVisualStyleBackColor = true;
             // 
             // txtAlbum
             // 
-            this.txtAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAlbum.Location = new System.Drawing.Point(105, 73);
+            this.txtAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAlbum.Location = new System.Drawing.Point(105, 44);
             this.txtAlbum.Name = "txtAlbum";
             this.txtAlbum.Size = new System.Drawing.Size(335, 20);
-            this.txtAlbum.TabIndex = 5;
+            this.txtAlbum.TabIndex = 3;
             // 
             // lbPaths
             // 
             this.lbPaths.FormattingEnabled = true;
-            this.lbPaths.Location = new System.Drawing.Point(16, 184);
+            this.lbPaths.Location = new System.Drawing.Point(8, 176);
             this.lbPaths.Name = "lbPaths";
-            this.lbPaths.Size = new System.Drawing.Size(456, 95);
+            this.lbPaths.Size = new System.Drawing.Size(464, 108);
             this.lbPaths.TabIndex = 1;
             // 
             // tvBands
@@ -247,6 +223,15 @@
             this.tvBands.Size = new System.Drawing.Size(464, 160);
             this.tvBands.TabIndex = 0;
             this.tvBands.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBands_NodeMouseClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(368, 152);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 22);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "&Save";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // AddFilesWizard
             // 
@@ -271,8 +256,6 @@
         #endregion
 
         internal System.Windows.Forms.GroupBox gbAlbumTags;
-        internal System.Windows.Forms.ComboBox cboArtist;
-        internal System.Windows.Forms.CheckBox chkArtist;
         internal System.Windows.Forms.ComboBox cboGenre;
         internal System.Windows.Forms.NumericUpDown nudYear;
         internal System.Windows.Forms.CheckBox chkYear;
@@ -287,5 +270,6 @@
         internal System.Windows.Forms.TextBox txtAlbum;
         private System.Windows.Forms.ListBox lbPaths;
         private System.Windows.Forms.TreeView tvBands;
+        private System.Windows.Forms.Button button1;
     }
 }
