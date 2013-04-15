@@ -33,7 +33,7 @@ namespace iTSfvLib
             Report = new ReportWriter();
             AlbumArtists = new List<XmlAlbumArtist>();
             Albums = new List<XmlAlbum>();
-            Discs = new List<XmlDisc>(); 
+            Discs = new List<XmlDisc>();
 
             CoreConfig = coreConfig;
             UserConfig = userConfig;
@@ -214,11 +214,14 @@ namespace iTSfvLib
 
         public void ValidateTrack(XmlTrack track)
         {
-            if (UserConfig.CheckMissingTags)
+            if (UserConfig.Checks_MissingTags)
                 track.CheckMissingTags(this.Report);
 
-            if (UserConfig.FillTrackCount)
+            if (UserConfig.Tracks_FillMissingTrackCount)
                 track.FillTrackCount(Albums, Discs, this.Report);
+
+            if (track.IsModified)
+                track.WriteTagsToFile();
 
             TrackCurrent++;
             Worker.ReportProgress(this.Progress, track);

@@ -10,7 +10,7 @@ using HelpersLib;
 namespace iTSfvLib
 {
     [XmlRoot("Settings")]
-    public class XMLSettings
+    public class XMLSettings : SettingsBase<XMLSettings>
     {
         public string[] SupportedAudioTypes = new string[] { "mp3", "m4a" };
 
