@@ -86,7 +86,6 @@
     <Compile Include="Helpers\AddFilesHelper.cs" />
     <Compile Include="Helpers\Finders\MostCommonTagFinder.cs" />
     <Compile Include="Reporting\ReportWriter.cs" />
-    <Compile Include="Reporting\ReportWriterTracksNotCompliant.cs" />
     <Compile Include="Static\MyStrings.cs" />
     <Compile Include="Player\XmlLibrary.cs" />
     <Compile Include="Static\IDGenerator.cs" />

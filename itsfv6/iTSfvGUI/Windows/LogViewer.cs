@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTSfvLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,7 +44,19 @@ namespace iTSfvGUI
 
         public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            tsslApp.Text = "Ready.";
+            ReportWriter report = e.Result as ReportWriter;
+
+            if (Program.ConfigUser.CheckMissingTags)
+            {
+                tsslApp.Text = "Ready. Tracks with missing tags: " + report.TracksMissingTags.Count;
+            }
+            else
+            {
+                tsslApp.Text = "Ready.";
+            }
+
+            if (Program.ConfigCore.ProductReport)
+                report.Write(Program.LogsFolderPath);
         }
     }
 }
