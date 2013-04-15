@@ -9,6 +9,7 @@ namespace iTSfvLib
     public class UserConfig
     {
         public bool CheckMissingTags { get; set; }
+        public bool FillTrackCount { get; set; }
 
         public static bool IsConfigured(UserConfig self)
         {
