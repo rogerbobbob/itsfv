@@ -19,17 +19,11 @@ namespace iTSfvLib
         public ReportWriter Report { get; set; }
 
         public List<XmlAlbumArtist> AlbumArtists { get; private set; }
-        public List<XmlAlbum> Albums { get; private set; }
-        public List<XmlDisc> Discs { get; private set; }
-
         private XMLSettings _Config = null;
 
         public XmlLibrary(XMLSettings Config)
         {
             AlbumArtists = new List<XmlAlbumArtist>();
-            Albums = new List<XmlAlbum>();
-            Discs = new List<XmlDisc>();
-
             _Config = Config;
         }
 
@@ -81,7 +75,6 @@ namespace iTSfvLib
             {
                 tempAlbum = new XmlAlbum(track.GetAlbumKey());
                 Library[track.AlbumArtist].AddAlbum(tempAlbum);
-                Albums.Add(tempAlbum);
             }
 
             XmlDisc tempDisc = tempAlbum.GetDisc(track.GetDiscKey());
@@ -89,7 +82,6 @@ namespace iTSfvLib
             {
                 tempDisc = new XmlDisc(track.GetDiscKey());
                 Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
-                Discs.Add(tempDisc);
             }
 
             Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
@@ -114,6 +106,26 @@ namespace iTSfvLib
             if (Library.ContainsKey(o.Name))
                 Library.Remove(o.Name);
         }
+
+        public List<XmlTrack> GetTracksFromAlbum(XmlAlbum album)
+        {
+            List<XmlTrack> tracks = new List<XmlTrack>();
+            IEnumerator iDisc = album.Discs.GetEnumerator();
+            KeyValuePair<string, XmlDisc> kvpDisc = new KeyValuePair<string, XmlDisc>();
+
+            while (iDisc.MoveNext())
+            {
+                kvpDisc = (KeyValuePair<string, XmlDisc>)iDisc.Current;
+                XmlDisc disc = kvpDisc.Value;
+                foreach (XmlTrack track in disc.Tracks)
+                {
+                    tracks.Add(track);
+                }
+            }
+
+            return tracks;
+        }        
+
 
         /// <summary>
         /// This method validates the entire library or selected album artists

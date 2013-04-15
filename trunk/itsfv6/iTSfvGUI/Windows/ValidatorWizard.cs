@@ -82,13 +82,13 @@ namespace iTSfvGUI
             {
                 TreeNode tnAlbumArtist = new TreeNode(band.Name) { Tag = band };
 
-                IEnumerator iBand = band.Albums.GetEnumerator();
+                IEnumerator i = band.Albums.GetEnumerator();
                 KeyValuePair<string, XmlAlbum> kvpAlbum = new KeyValuePair<string, XmlAlbum>();
 
-                while (iBand.MoveNext())
+                while (i.MoveNext())
                 {
-                    kvpAlbum = (KeyValuePair<string, XmlAlbum>)iBand.Current;
-                    tnAlbumArtist.Nodes.Add(new TreeNode(kvpAlbum.Key) { Tag = kvpAlbum.Value });
+                    kvpAlbum = (KeyValuePair<string, XmlAlbum>)i.Current;
+                    tnAlbumArtist.Nodes.Add(new TreeNode(kvpAlbum.Value.GetAlbumName()) { Tag = kvpAlbum.Value });
                 }
 
                 tvLibrary.Nodes.Add(tnAlbumArtist);
@@ -178,37 +178,53 @@ namespace iTSfvGUI
 
         private void tsmiTasksValidate_Click(object sender, EventArgs e)
         {
-            Validate();
+            ValidateTracks();
         }
 
-        private void Validate()
+        private void ValidateTracks()
         {
-            if (tvLibrary.SelectedNode != null && tvLibrary.SelectedNode.Tag is XmlAlbum)
+            if (Program.ConfigUser.CheckMissingTags)
             {
                 XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore);
-                XmlAlbum album = tvLibrary.SelectedNode.Tag as XmlAlbum;
-                IEnumerator iDisc = album.Discs.GetEnumerator();
-                KeyValuePair<string, XmlDisc> kvpDisc = new KeyValuePair<string, XmlDisc>();
 
-                while (iDisc.MoveNext())
+                if (lbDiscs.SelectedItem != null)
                 {
-                    kvpDisc = (KeyValuePair<string, XmlDisc>)iDisc.Current;
-                    XmlDisc disc = kvpDisc.Value;
-                    foreach (XmlTrack track in disc.Tracks)
+                    if (lbDiscs.SelectedItem is XmlDisc)
                     {
-                        selectedLibrary.AddTrack(track);
+                        XmlDisc disc = lbDiscs.SelectedItem as XmlDisc;
+                        disc.Tracks.ToList().ForEach(x => selectedLibrary.AddTrack(x));
                     }
+                }
+                else if (tvLibrary.SelectedNode != null)
+                {
+                    if (tvLibrary.SelectedNode.Tag is XmlAlbumArtist)
+                    {
+                        XmlAlbumArtist band = tvLibrary.SelectedNode.Tag as XmlAlbumArtist;
+                        band.GetTracks().ToList().ForEach(x => selectedLibrary.AddTrack(x));
+                    }
+                    else if (tvLibrary.SelectedNode.Tag is XmlAlbum)
+                    {
+                        XmlAlbum album = tvLibrary.SelectedNode.Tag as XmlAlbum;
+                        album.GetTracks().ToList().ForEach(x => selectedLibrary.AddTrack(x));
+                    }
+
+                    selectedLibrary.Validate();
+                }
+                else
+                {
+                    selectedLibrary = Program.Library; // if nothing is selected then validate entire library
                 }
 
                 selectedLibrary.Validate();
-            }
-            else
-            {
-                Program.Library.Validate();
-            }
 
-            if (Program.ConfigCore.ProductReport)
-                new ReportWriterTracksNotCompliant().Write(Program.LogsFolderPath);
+                if (Program.ConfigCore.ProductReport)
+                    new ReportWriterTracksNotCompliant().Write(Program.LogsFolderPath);
+            }
+        }
+
+        private void chkChecksMissingTags_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.ConfigUser.CheckMissingTags = chkChecksMissingTags.Checked;
         }
     }
 }

@@ -24,6 +24,7 @@ namespace iTSfvGUI
         public static XmlLibrary Library = null;
 
         public static XMLSettings ConfigCore = null;
+        public static UserConfig ConfigUser = new UserConfig(); 
 
         private static readonly string DefaultPersonalPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ApplicationName);
         private static readonly string PortablePersonalPath = Path.Combine(Application.StartupPath, ApplicationName);
