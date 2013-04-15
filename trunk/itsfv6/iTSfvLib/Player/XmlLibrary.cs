@@ -1,6 +1,8 @@
-﻿using System;
+﻿using iTSfvLib.Helpers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,9 @@ namespace iTSfvLib
     /// </summary>
     public class XmlLibrary
     {
-        public Dictionary<string, XmlAlbumArtist> Player = new Dictionary<string, XmlAlbumArtist>();
+        private BackgroundWorker Worker = new BackgroundWorker() { WorkerReportsProgress = true, WorkerSupportsCancellation = true };
+        public Dictionary<string, XmlAlbumArtist> Library = new Dictionary<string, XmlAlbumArtist>();
+        public ReportWriter Report { get; set; }
 
         public List<XmlAlbumArtist> AlbumArtists { get; private set; }
         public List<XmlAlbum> Albums { get; private set; }
@@ -64,11 +68,11 @@ namespace iTSfvLib
         /// <param name="track"></param>
         public void AddTrack(XmlTrack track)
         {
-            XmlAlbumArtist tempBand = GetBand(track.Band);
+            XmlAlbumArtist tempBand = GetBand(track.AlbumArtist);
             if (tempBand == null)
             {
-                tempBand = new XmlAlbumArtist(track.Band);
-                Player.Add(tempBand.Name, tempBand);
+                tempBand = new XmlAlbumArtist(track.AlbumArtist);
+                Library.Add(tempBand.Name, tempBand);
                 AlbumArtists.Add(tempBand);
             }
 
@@ -76,7 +80,7 @@ namespace iTSfvLib
             if (tempAlbum == null)
             {
                 tempAlbum = new XmlAlbum(track.GetAlbumKey());
-                Player[track.Band].AddAlbum(tempAlbum);
+                Library[track.AlbumArtist].AddAlbum(tempAlbum);
                 Albums.Add(tempAlbum);
             }
 
@@ -84,40 +88,42 @@ namespace iTSfvLib
             if (tempDisc == null)
             {
                 tempDisc = new XmlDisc(track.GetDiscKey());
-                Player[track.Band].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
+                Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
                 Discs.Add(tempDisc);
             }
 
-            Player[track.Band].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
+            Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
         }
 
         public void AddBand(XmlAlbumArtist o)
         {
-            if (!Player.ContainsKey(o.Name))
-                Player.Add(o.Name, o);
+            if (!Library.ContainsKey(o.Name))
+                Library.Add(o.Name, o);
         }
 
         public XmlAlbumArtist GetBand(string key)
         {
-            if (Player.ContainsKey(key))
-                return Player[key];
+            if (Library.ContainsKey(key))
+                return Library[key];
 
             return null;
         }
 
         public void RemoveBand(XmlAlbumArtist o)
         {
-            if (Player.ContainsKey(o.Name))
-                Player.Remove(o.Name);
+            if (Library.ContainsKey(o.Name))
+                Library.Remove(o.Name);
         }
 
         /// <summary>
-        /// This method validates the entire Player
+        /// This method validates the entire library or selected album artists
         /// </summary>
         public void Validate()
         {
-            IEnumerator iPlayer = Player.GetEnumerator();
+            IEnumerator iPlayer = Library.GetEnumerator();
             KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
+
+            ReportWriter.Clear();
 
             while (iPlayer.MoveNext())
             {
@@ -160,13 +166,15 @@ namespace iTSfvLib
 
             foreach (XmlTrack track in disc.Tracks)
             {
-                Console.WriteLine("    Track ---> " + track.FileName);
                 ValidateTrack(track);
             }
+
+
         }
 
-        public void ValidateTrack(XmlTrack track)
+        public bool ValidateTrack(XmlTrack track)
         {
+            return track.Validate();
         }
     }
 }

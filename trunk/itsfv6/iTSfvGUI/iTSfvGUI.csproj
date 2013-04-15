@@ -173,6 +173,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ShareX\trunk\HelpersLib\HelpersLib.csproj">
+      <Project>{327750e1-9fb7-4cc3-8aea-9bc42180cad3}</Project>
+      <Name>HelpersLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iTSfvLib\iTSfvLib.csproj">
       <Project>{C1D1A1ED-B33E-471F-91FA-4A65C4ADAA75}</Project>
       <Name>iTSfvLib</Name>

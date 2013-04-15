@@ -11,9 +11,18 @@ namespace iTSfvGUI
 {
     public partial class LogViewer : Form
     {
+        public HelpersLib.Logger Logger = new HelpersLib.Logger();
+
         public LogViewer()
         {
             InitializeComponent();
+            Logger.MessageAdded += Logger_MessageAdded;
         }
+
+        void Logger_MessageAdded(string message)
+        {
+            lbLogs.Items.Add(message);
+        }
+
     }
 }

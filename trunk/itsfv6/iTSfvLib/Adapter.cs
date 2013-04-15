@@ -8,6 +8,8 @@ namespace iTSfvLib
 {
     public class Adapter
     {
+        public static HelpersLib.Logger Logger = new HelpersLib.Logger();
+
         /// <summary>
         /// Function to add files to the iTunes library. All the files need to be properly tagged prior to using this method.
         /// </summary>
