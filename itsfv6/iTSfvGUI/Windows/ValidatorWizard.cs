@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using iTSfvLib;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections;
+using System.Threading;
 
 namespace iTSfvGUI
 {
@@ -28,7 +29,7 @@ namespace iTSfvGUI
         private void ValidatorWizard_Shown(object sender, EventArgs e)
         {
             Program.LogViewer.Show();
-            Program.Library = new XmlLibrary(Program.Config);
+            Program.Library = new XmlLibrary(Program.Config, Program.ConfigUser);
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
@@ -178,14 +179,16 @@ namespace iTSfvGUI
 
         private void tsmiTasksValidate_Click(object sender, EventArgs e)
         {
-            ValidateTracks();
+            RunTasks();
         }
 
-        private void ValidateTracks()
+        private void RunTasks()
         {
-            if (Program.ConfigUser.CheckMissingTags)
+            Program.TreadUI = SynchronizationContext.Current;
+
+            if (UserConfig.IsConfigured(Program.ConfigUser))
             {
-                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore);
+                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore, Program.ConfigUser);
 
                 if (lbDiscs.SelectedItem != null)
                 {
@@ -207,15 +210,14 @@ namespace iTSfvGUI
                         XmlAlbum album = tvLibrary.SelectedNode.Tag as XmlAlbum;
                         album.GetTracks().ToList().ForEach(x => selectedLibrary.AddTrack(x));
                     }
-
-                    selectedLibrary.Validate();
                 }
                 else
                 {
                     selectedLibrary = Program.Library; // if nothing is selected then validate entire library
                 }
 
-                selectedLibrary.Validate();
+                Program.LogViewer.BindWorker(selectedLibrary.Worker);
+                selectedLibrary.RunTasks();
 
                 if (Program.ConfigCore.ProductReport)
                     new ReportWriterTracksNotCompliant().Write(Program.LogsFolderPath);

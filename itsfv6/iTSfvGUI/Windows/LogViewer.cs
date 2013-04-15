@@ -21,8 +21,29 @@ namespace iTSfvGUI
 
         void Logger_MessageAdded(string message)
         {
-            lbLogs.Items.Add(message);
+            if (Program.TreadUI != null)
+                Program.TreadUI.Post((x) => lbLogs.Items.Add(message), null);
         }
 
+        private void LogViewer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void BindWorker(BackgroundWorker worker)
+        {
+            worker.ProgressChanged += Program.LogViewer.Worker_ProgressChanged;
+            worker.RunWorkerCompleted += Program.LogViewer.Worker_RunWorkerCompleted;
+        }
+
+        public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            tspbApp.Value = e.ProgressPercentage;
+        }
+
+        public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            tsslApp.Text = "Ready.";
+        }
     }
 }

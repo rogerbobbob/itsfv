@@ -31,16 +31,16 @@
             this.lbLogs = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.tsslApp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspbApp = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbLogs
             // 
-            this.lbLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLogs.FormattingEnabled = true;
             this.lbLogs.Location = new System.Drawing.Point(8, 8);
             this.lbLogs.Name = "lbLogs";
@@ -51,8 +51,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripProgressBar1});
+            this.tsslApp,
+            this.tspbApp});
             this.statusStrip1.Location = new System.Drawing.Point(0, 340);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
@@ -65,18 +65,18 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(16, 17);
             // 
-            // toolStripStatusLabel2
+            // tsslApp
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(651, 17);
-            this.toolStripStatusLabel2.Spring = true;
-            this.toolStripStatusLabel2.Text = "Ready";
-            this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsslApp.Name = "tsslApp";
+            this.tsslApp.Size = new System.Drawing.Size(620, 17);
+            this.tsslApp.Spring = true;
+            this.tsslApp.Text = "Ready";
+            this.tsslApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripProgressBar1
+            // tspbApp
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.tspbApp.Name = "tspbApp";
+            this.tspbApp.Size = new System.Drawing.Size(100, 16);
             // 
             // LogViewer
             // 
@@ -88,6 +88,7 @@
             this.Name = "LogViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Log Viewer";
+            this.Load += new System.EventHandler(this.LogViewer_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -99,8 +100,8 @@
 
         private System.Windows.Forms.ListBox lbLogs;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar tspbApp;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel tsslApp;
     }
 }
