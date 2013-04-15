@@ -57,7 +57,7 @@ namespace iTSfvLib
 
         #region 1 Properties
 
-        public string Band
+        public string AlbumArtist
         {
             get
             {
@@ -187,7 +187,7 @@ namespace iTSfvLib
             return ConstantStrings.UnknownAlbum;
         }
 
-        public string GetBand()
+        public string GetAlbumArtist()
         {
             foreach (XmlTrack track in Tracks)
             {

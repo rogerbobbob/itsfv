@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using iTSfvLib;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Collections;
 
 namespace iTSfvGUI
 {
@@ -26,14 +27,15 @@ namespace iTSfvGUI
 
         private void ValidatorWizard_Shown(object sender, EventArgs e)
         {
-            Program.gLogViewer.Show();
+            Program.LogViewer.Show();
+            Program.Library = new XmlLibrary(Program.Config);
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
         {
-            if (null != Program.gLogViewer)
+            if (null != Program.LogViewer)
             {
-                Program.gLogViewer.Location = new Point(this.Location.X, this.Location.Y + this.Height);
+                Program.LogViewer.Location = new Point(this.Location.X, this.Location.Y + this.Height);
             }
         }
 
@@ -43,8 +45,8 @@ namespace iTSfvGUI
             dlg.IsFolderPicker = true;
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                // AddFilesFolders(new string[] { dlg.FileName });
-                ShowAddFilesWizard(new string[] { dlg.FileName });
+                AddFilesFolders(new string[] { dlg.FileName });
+                // ShowAddFilesWizard(new string[] { dlg.FileName });
             }
         }
 
@@ -57,14 +59,32 @@ namespace iTSfvGUI
 
         private void AddFilesFolders(string[] filesDirs)
         {
-            XmlPlayer player = new XmlPlayer(Program.Config);
+            Program.Library.AddFilesOrFolders(filesDirs);
 
-            player.AddFilesOrFolders(filesDirs);
-            foreach (XmlDisc disc in player.Discs)
+            //foreach (XmlDisc disc in Program.Library.Discs)
+            //{
+            //    lbDiscs.Items.Add(disc);
+            //}
+
+            tvLibrary.Nodes.Clear();
+
+            foreach (XmlAlbumArtist band in Program.Library.AlbumArtists)
             {
-                lbDiscs.Items.Add(disc);
+                TreeNode tnAlbumArtist = new TreeNode(band.Name) { Tag = band };
+
+                IEnumerator iBand = band.Albums.GetEnumerator();
+                KeyValuePair<string, XmlAlbum> kvpAlbum = new KeyValuePair<string, XmlAlbum>();
+
+                while (iBand.MoveNext())
+                {
+                    kvpAlbum = (KeyValuePair<string, XmlAlbum>)iBand.Current;
+                    tnAlbumArtist.Nodes.Add(new TreeNode(kvpAlbum.Key) { Tag = kvpAlbum.Value });
+                }
+
+                tvLibrary.Nodes.Add(tnAlbumArtist);
             }
-            player.Validate();
+
+            Program.Library.Validate();
         }
 
         private void lbDiscs_DragEnter(object sender, DragEventArgs e)
@@ -115,6 +135,30 @@ namespace iTSfvGUI
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 //now show your context menu...
+            }
+        }
+
+        private void tvLibrary_Click(object sender, EventArgs e)
+        {
+            // nothing
+        }
+
+        private void tvLibrary_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode tn = e.Node;
+            if (tn.Tag is XmlAlbum)
+            {
+                XmlAlbum album = tn.Tag as XmlAlbum;
+                lbDiscs.Items.Clear();
+
+                IEnumerator iDisc = album.Discs.GetEnumerator();
+                KeyValuePair<string, XmlDisc> kvpDisc = new KeyValuePair<string, XmlDisc>();
+
+                while (iDisc.MoveNext())
+                {
+                    kvpDisc = (KeyValuePair<string, XmlDisc>)iDisc.Current;
+                    lbDiscs.Items.Add(kvpDisc.Value);
+                }
             }
         }
     }

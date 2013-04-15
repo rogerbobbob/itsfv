@@ -8,18 +8,18 @@ namespace iTSfvLib
     /// <summary>
     /// Holds one or more albums by an AlbumArtist
     /// </summary>
-    public class XmlBand
+    public class XmlAlbumArtist
     {
         /// <summary>
         /// Unique ID usually the Name of the Band
         /// </summary>
-        public string Key { get; private set; }
+        public string Name { get; private set; }
 
         public Dictionary<string, XmlAlbum> Albums = new Dictionary<string, XmlAlbum>();
 
-        public XmlBand(string key)
+        public XmlAlbumArtist(string key)
         {
-            this.Key = key;
+            this.Name = key;
         }
 
         public void AddAlbum(XmlAlbum o)

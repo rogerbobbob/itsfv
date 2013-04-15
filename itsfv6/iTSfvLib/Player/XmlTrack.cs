@@ -223,7 +223,7 @@ namespace iTSfvLib
         {
             try
             {
-                using (TagLib.File f = TagLib.File.Create(Location))
+                using (TagLib.File f = TagLib.File.Create(Location, TagLib.ReadStyle.Average))
                 {
                     f.RemoveTags(f.TagTypes & ~f.TagTypesOnDisk);
                     this.Tags = f.Tag;

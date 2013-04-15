@@ -8,23 +8,21 @@ using System.Text;
 namespace iTSfvLib
 {
     /// <summary>
-    /// Class that holds a List of Band
+    /// Class that holds a List of AlbumArtist - highest in the hierachy
     /// </summary>
-    public class XmlPlayer
+    public class XmlLibrary
     {
-        public Dictionary<string, XmlBand> Player = new Dictionary<string, XmlBand>();
+        public Dictionary<string, XmlAlbumArtist> Player = new Dictionary<string, XmlAlbumArtist>();
 
-        public List<XmlBand> Bands { get; private set; }
-
+        public List<XmlAlbumArtist> AlbumArtists { get; private set; }
         public List<XmlAlbum> Albums { get; private set; }
-
         public List<XmlDisc> Discs { get; private set; }
 
         private XMLSettings _Config = null;
 
-        public XmlPlayer(XMLSettings Config)
+        public XmlLibrary(XMLSettings Config)
         {
-            Bands = new List<XmlBand>();
+            AlbumArtists = new List<XmlAlbumArtist>();
             Albums = new List<XmlAlbum>();
             Discs = new List<XmlDisc>();
 
@@ -66,12 +64,12 @@ namespace iTSfvLib
         /// <param name="track"></param>
         public void AddTrack(XmlTrack track)
         {
-            XmlBand tempBand = GetBand(track.Band);
+            XmlAlbumArtist tempBand = GetBand(track.Band);
             if (tempBand == null)
             {
-                tempBand = new XmlBand(track.Band);
-                Player.Add(tempBand.Key, tempBand);
-                Bands.Add(tempBand);
+                tempBand = new XmlAlbumArtist(track.Band);
+                Player.Add(tempBand.Name, tempBand);
+                AlbumArtists.Add(tempBand);
             }
 
             XmlAlbum tempAlbum = tempBand.GetAlbum(track.GetAlbumKey());
@@ -93,13 +91,13 @@ namespace iTSfvLib
             Player[track.Band].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
         }
 
-        public void AddBand(XmlBand o)
+        public void AddBand(XmlAlbumArtist o)
         {
-            if (!Player.ContainsKey(o.Key))
-                Player.Add(o.Key, o);
+            if (!Player.ContainsKey(o.Name))
+                Player.Add(o.Name, o);
         }
 
-        public XmlBand GetBand(string key)
+        public XmlAlbumArtist GetBand(string key)
         {
             if (Player.ContainsKey(key))
                 return Player[key];
@@ -107,10 +105,10 @@ namespace iTSfvLib
             return null;
         }
 
-        public void RemoveBand(XmlBand o)
+        public void RemoveBand(XmlAlbumArtist o)
         {
-            if (Player.ContainsKey(o.Key))
-                Player.Remove(o.Key);
+            if (Player.ContainsKey(o.Name))
+                Player.Remove(o.Name);
         }
 
         /// <summary>
@@ -119,18 +117,18 @@ namespace iTSfvLib
         public void Validate()
         {
             IEnumerator iPlayer = Player.GetEnumerator();
-            KeyValuePair<string, XmlBand> currBand = new KeyValuePair<string, XmlBand>();
+            KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
 
             while (iPlayer.MoveNext())
             {
-                currBand = (KeyValuePair<string, XmlBand>)iPlayer.Current;
+                currBand = (KeyValuePair<string, XmlAlbumArtist>)iPlayer.Current;
                 ValidateBand(currBand.Value);
             }
         }
 
-        public void ValidateBand(XmlBand band)
+        public void ValidateBand(XmlAlbumArtist band)
         {
-            Console.WriteLine("Band: " + band.Key);
+            Console.WriteLine("Band: " + band.Name);
 
             IEnumerator iBand = band.Albums.GetEnumerator();
             KeyValuePair<string, XmlAlbum> currAlbum = new KeyValuePair<string, XmlAlbum>();
