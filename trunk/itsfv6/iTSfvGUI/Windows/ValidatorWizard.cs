@@ -218,9 +218,6 @@ namespace iTSfvGUI
 
                 Program.LogViewer.BindWorker(selectedLibrary.Worker);
                 selectedLibrary.RunTasks();
-
-                if (Program.ConfigCore.ProductReport)
-                    new ReportWriterTracksNotCompliant().Write(Program.LogsFolderPath);
             }
         }
 

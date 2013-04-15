@@ -244,9 +244,9 @@ namespace iTSfvLib
             }
         }
 
-        public bool CheckMissingTags()
+        public bool CheckMissingTags(ReportWriter report)
         {
-            DebugHelper.WriteLine("Checking for missing tags in ---> " + this.FileName);
+            DebugHelper.WriteLine("Checking for missing tags in " + this.FileName);
 
             List<string> missingTags = new List<string>();
 
@@ -302,7 +302,7 @@ namespace iTSfvLib
 
             if (missingTags.Count > 0)
             {
-                ReportWriter.Add(this, missingTags);
+                report.AddTrackMissingTags(this, missingTags);
             }
 
             return missingTags.Count == 0;

@@ -27,6 +27,7 @@ namespace iTSfvLib
 
         public XmlLibrary(XMLSettings coreConfig, UserConfig userConfig)
         {
+            Report = new ReportWriter();
             AlbumArtists = new List<XmlAlbumArtist>();
             CoreConfig = coreConfig;
             UserConfig = userConfig;
@@ -153,6 +154,7 @@ namespace iTSfvLib
         void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             Validate();
+            e.Result = this.Report;
         }
 
         /// <summary>
@@ -162,8 +164,6 @@ namespace iTSfvLib
         {
             IEnumerator iPlayer = Library.GetEnumerator();
             KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
-
-            ReportWriter.Clear();
 
             while (iPlayer.MoveNext())
             {
@@ -209,7 +209,7 @@ namespace iTSfvLib
         {
             if (UserConfig.CheckMissingTags)
             {
-                track.CheckMissingTags();
+                track.CheckMissingTags(this.Report);
                 TrackCurrent++;
             }
 
