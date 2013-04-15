@@ -244,9 +244,9 @@ namespace iTSfvLib
             }
         }
 
-        public bool Validate()
+        public bool CheckMissingTags()
         {
-            DebugHelper.WriteLine("Validating track ---> " + this.FileName);
+            DebugHelper.WriteLine("Checking for missing tags in ---> " + this.FileName);
 
             List<string> missingTags = new List<string>();
 

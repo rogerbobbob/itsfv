@@ -14,17 +14,24 @@ namespace iTSfvLib
     /// </summary>
     public class XmlLibrary
     {
-        private BackgroundWorker Worker = new BackgroundWorker() { WorkerReportsProgress = true, WorkerSupportsCancellation = true };
+        public BackgroundWorker Worker = new BackgroundWorker() { WorkerReportsProgress = true, WorkerSupportsCancellation = true };
         public Dictionary<string, XmlAlbumArtist> Library = new Dictionary<string, XmlAlbumArtist>();
         public ReportWriter Report { get; set; }
 
         public List<XmlAlbumArtist> AlbumArtists { get; private set; }
-        private XMLSettings _Config = null;
+        private XMLSettings CoreConfig = null;
+        private UserConfig UserConfig = null;
 
-        public XmlLibrary(XMLSettings Config)
+        public double TracksCount = 0;
+        public double TrackCurrent = 0;
+
+        public XmlLibrary(XMLSettings coreConfig, UserConfig userConfig)
         {
             AlbumArtists = new List<XmlAlbumArtist>();
-            _Config = Config;
+            CoreConfig = coreConfig;
+            UserConfig = userConfig;
+
+            Worker.DoWork += Worker_DoWork;
         }
 
         public void AddFilesOrFolders(string[] filesOrFolders)
@@ -36,7 +43,7 @@ namespace iTSfvLib
                 if (Directory.Exists(pfd))
                 {
                     // todo: respect windows explorer folder structure
-                    foreach (string ext in _Config.SupportedAudioTypes)
+                    foreach (string ext in CoreConfig.SupportedAudioTypes)
                     {
                         foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
                         {
@@ -84,7 +91,8 @@ namespace iTSfvLib
                 Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
             }
 
-            Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track);
+            if (Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track))
+                TracksCount++;
         }
 
         public void AddBand(XmlAlbumArtist o)
@@ -124,13 +132,33 @@ namespace iTSfvLib
             }
 
             return tracks;
-        }        
+        }
 
+        public int Progress
+        {
+            get
+            {
+                if (TracksCount > 0)
+                    return (int)(TrackCurrent / TracksCount * 100);
+
+                return 0;
+            }
+        }
+
+        public void RunTasks()
+        {
+            Worker.RunWorkerAsync();
+        }
+
+        void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Validate();
+        }
 
         /// <summary>
         /// This method validates the entire library or selected album artists
         /// </summary>
-        public void Validate()
+        private void Validate()
         {
             IEnumerator iPlayer = Library.GetEnumerator();
             KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
@@ -146,8 +174,6 @@ namespace iTSfvLib
 
         public void ValidateBand(XmlAlbumArtist band)
         {
-            Console.WriteLine("Band: " + band.Name);
-
             IEnumerator iBand = band.Albums.GetEnumerator();
             KeyValuePair<string, XmlAlbum> currAlbum = new KeyValuePair<string, XmlAlbum>();
 
@@ -160,8 +186,6 @@ namespace iTSfvLib
 
         public void ValidateAlbum(XmlAlbum album)
         {
-            Console.WriteLine(" Album -> " + album.Key);
-
             IEnumerator iDisc = album.Discs.GetEnumerator();
             KeyValuePair<string, XmlDisc> currDisc = new KeyValuePair<string, XmlDisc>();
 
@@ -174,19 +198,22 @@ namespace iTSfvLib
 
         public void ValidateDisc(XmlDisc disc)
         {
-            Console.WriteLine("   Disc --> " + disc.Key);
-
             foreach (XmlTrack track in disc.Tracks)
             {
                 ValidateTrack(track);
             }
 
-
         }
 
-        public bool ValidateTrack(XmlTrack track)
+        public void ValidateTrack(XmlTrack track)
         {
-            return track.Validate();
+            if (UserConfig.CheckMissingTags)
+            {
+                track.CheckMissingTags();
+                TrackCurrent++;
+            }
+
+            Worker.ReportProgress(this.Progress, track);
         }
     }
 }

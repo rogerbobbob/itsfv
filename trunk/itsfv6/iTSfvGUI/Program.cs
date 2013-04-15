@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using iTSfvLib;
 using HelpersLib;
 using System.IO;
+using System.Threading;
 
 namespace iTSfvGUI
 {
@@ -29,6 +30,8 @@ namespace iTSfvGUI
         private static readonly string DefaultPersonalPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ApplicationName);
         private static readonly string PortablePersonalPath = Path.Combine(Application.StartupPath, ApplicationName);
         internal static readonly string ConfigCoreFileName = ApplicationName + "Settings.json";
+
+        public static SynchronizationContext TreadUI = null;
 
         public static string PersonalPath
         {
