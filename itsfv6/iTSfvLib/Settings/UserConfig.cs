@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using HelpersLib;
+using System.ComponentModel;
 
 namespace iTSfvLib
 {
-    public class UserConfig
+    public class UserConfig :SettingsBase<UserConfig>
     {
-        public bool CheckMissingTags { get; set; }
-        public bool FillTrackCount { get; set; }
+        public bool Checks_MissingTags { get; set; }
+        public bool Tracks_FillMissingTrackCount { get; set; }
+
+        public static void ApplyDefaultValues(object self)
+        {
+            foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(self))
+            {
+                DefaultValueAttribute attr = prop.Attributes[typeof(DefaultValueAttribute)] as DefaultValueAttribute;
+                if (attr == null) continue;
+                prop.SetValue(self, attr.Value);
+            }
+        }
 
         public static bool IsConfigured(UserConfig self)
         {

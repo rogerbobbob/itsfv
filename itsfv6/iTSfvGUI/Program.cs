@@ -25,11 +25,12 @@ namespace iTSfvGUI
         public static XmlLibrary Library = null;
 
         public static XMLSettings ConfigCore = null;
-        public static UserConfig ConfigUser = new UserConfig(); 
+        public static UserConfig ConfigUser = new UserConfig();
 
         private static readonly string DefaultPersonalPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ApplicationName);
         private static readonly string PortablePersonalPath = Path.Combine(Application.StartupPath, ApplicationName);
         internal static readonly string ConfigCoreFileName = ApplicationName + "Settings.json";
+        internal static readonly string ConfigUserFileName = ApplicationName + "UserConfig.json";
 
         public static SynchronizationContext TreadUI = null;
 
@@ -51,6 +52,14 @@ namespace iTSfvGUI
             get
             {
                 return Path.Combine(PersonalPath, ConfigCoreFileName);
+            }
+        }
+
+        private static string ConfigUserFilePath
+        {
+            get
+            {
+                return Path.Combine(PersonalPath, ConfigUserFileName);
             }
         }
 
@@ -82,9 +91,13 @@ namespace iTSfvGUI
                 gValidator = new ValidatorWizard();
                 gMainWindow = new MainWindow();
 
+                Program.ConfigUser = UserConfig.Load(ConfigUserFilePath);
                 Program.ConfigCore = XMLSettings.Read(ConfigCoreFilePath);
+
                 Application.Run(gValidator);
+
                 Program.ConfigCore.Write(ConfigCoreFilePath);
+                Program.ConfigUser.Save(ConfigUserFilePath);
             }
             finally
             {

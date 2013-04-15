@@ -32,12 +32,12 @@
             this.tcValidator = new System.Windows.Forms.TabControl();
             this.tpChecks = new System.Windows.Forms.TabPage();
             this.flpChecks = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkChecksMissingTags = new System.Windows.Forms.CheckBox();
+            this.chkChecks_MissingTags = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.flpTracks = new System.Windows.Forms.FlowLayoutPanel();
             this.chkTracksGenreFill = new System.Windows.Forms.CheckBox();
             this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
-            this.chkFillMissingTrackCount = new System.Windows.Forms.CheckBox();
+            this.chkTracks_FillMissingTrackCount = new System.Windows.Forms.CheckBox();
             this.tpFileSystem = new System.Windows.Forms.TabPage();
             this.flpFileSystem = new System.Windows.Forms.FlowLayoutPanel();
             this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
@@ -90,23 +90,22 @@
             // 
             // flpChecks
             // 
-            this.flpChecks.Controls.Add(this.chkChecksMissingTags);
+            this.flpChecks.Controls.Add(this.chkChecks_MissingTags);
             this.flpChecks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpChecks.Location = new System.Drawing.Point(3, 3);
             this.flpChecks.Name = "flpChecks";
             this.flpChecks.Size = new System.Drawing.Size(294, 379);
             this.flpChecks.TabIndex = 1;
             // 
-            // chkChecksMissingTags
+            // chkChecks_MissingTags
             // 
-            this.chkChecksMissingTags.AutoSize = true;
-            this.chkChecksMissingTags.Location = new System.Drawing.Point(3, 3);
-            this.chkChecksMissingTags.Name = "chkChecksMissingTags";
-            this.chkChecksMissingTags.Size = new System.Drawing.Size(132, 17);
-            this.chkChecksMissingTags.TabIndex = 0;
-            this.chkChecksMissingTags.Text = "Check for missing tags";
-            this.chkChecksMissingTags.UseVisualStyleBackColor = true;
-            this.chkChecksMissingTags.CheckedChanged += new System.EventHandler(this.chkChecksMissingTags_CheckedChanged);
+            this.chkChecks_MissingTags.AutoSize = true;
+            this.chkChecks_MissingTags.Location = new System.Drawing.Point(3, 3);
+            this.chkChecks_MissingTags.Name = "chkChecks_MissingTags";
+            this.chkChecks_MissingTags.Size = new System.Drawing.Size(132, 17);
+            this.chkChecks_MissingTags.TabIndex = 0;
+            this.chkChecks_MissingTags.Text = "Check for missing tags";
+            this.chkChecks_MissingTags.UseVisualStyleBackColor = true;
             // 
             // tpTracks
             // 
@@ -123,7 +122,7 @@
             // 
             this.flpTracks.Controls.Add(this.chkTracksGenreFill);
             this.flpTracks.Controls.Add(this.chkTracksAlbumArtistFill);
-            this.flpTracks.Controls.Add(this.chkFillMissingTrackCount);
+            this.flpTracks.Controls.Add(this.chkTracks_FillMissingTrackCount);
             this.flpTracks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTracks.Location = new System.Drawing.Point(3, 3);
             this.flpTracks.Name = "flpTracks";
@@ -150,16 +149,15 @@
             this.chkTracksAlbumArtistFill.Text = "Fill missing Album Artist using best guess";
             this.chkTracksAlbumArtistFill.UseVisualStyleBackColor = true;
             // 
-            // chkFillMissingTrackCount
+            // chkTracks_FillMissingTrackCount
             // 
-            this.chkFillMissingTrackCount.AutoSize = true;
-            this.chkFillMissingTrackCount.Location = new System.Drawing.Point(3, 49);
-            this.chkFillMissingTrackCount.Name = "chkFillMissingTrackCount";
-            this.chkFillMissingTrackCount.Size = new System.Drawing.Size(280, 17);
-            this.chkFillMissingTrackCount.TabIndex = 2;
-            this.chkFillMissingTrackCount.Text = "Fill missing Track Count, Disc Number and Disc Count";
-            this.chkFillMissingTrackCount.UseVisualStyleBackColor = true;
-            this.chkFillMissingTrackCount.CheckedChanged += new System.EventHandler(this.chkFillMissingTrackCount_CheckedChanged);
+            this.chkTracks_FillMissingTrackCount.AutoSize = true;
+            this.chkTracks_FillMissingTrackCount.Location = new System.Drawing.Point(3, 49);
+            this.chkTracks_FillMissingTrackCount.Name = "chkTracks_FillMissingTrackCount";
+            this.chkTracks_FillMissingTrackCount.Size = new System.Drawing.Size(280, 17);
+            this.chkTracks_FillMissingTrackCount.TabIndex = 2;
+            this.chkTracks_FillMissingTrackCount.Text = "Fill missing Track Count, Disc Number and Disc Count";
+            this.chkTracks_FillMissingTrackCount.UseVisualStyleBackColor = true;
             // 
             // tpFileSystem
             // 
@@ -315,6 +313,7 @@
             this.MinimumSize = new System.Drawing.Size(960, 480);
             this.Name = "ValidatorWizard";
             this.Text = "iTSfv";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ValidatorWizard_FormClosing);
             this.Load += new System.EventHandler(this.ValidatorWizard_Load);
             this.Shown += new System.EventHandler(this.ValidatorWizard_Shown);
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);
@@ -351,7 +350,7 @@
         private System.Windows.Forms.ToolTip ttApp;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
-        private System.Windows.Forms.CheckBox chkChecksMissingTags;
+        private System.Windows.Forms.CheckBox chkChecks_MissingTags;
         private System.Windows.Forms.CheckBox chkTracksAlbumArtistFill;
         private System.Windows.Forms.CheckBox chkFileSystemExportArtworkFolderJpg;
         private System.Windows.Forms.TreeView tvLibrary;
@@ -360,7 +359,7 @@
         private System.Windows.Forms.FlowLayoutPanel flpChecks;
         private System.Windows.Forms.FlowLayoutPanel flpTracks;
         private System.Windows.Forms.FlowLayoutPanel flpFileSystem;
-        private System.Windows.Forms.CheckBox chkFillMissingTrackCount;
+        private System.Windows.Forms.CheckBox chkTracks_FillMissingTrackCount;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importConfigToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportConfigToolStripMenuItem;

@@ -134,6 +134,7 @@ namespace iTSfvLib
         #endregion "Read Only Properties"
 
         public TagLib.Tag Tags { get; private set; }
+        public bool IsModified { get; private set; }
 
         public XmlTrack(string fp)
         {
@@ -315,6 +316,7 @@ namespace iTSfvLib
             {
                 if (this.Tags.TrackCount == 0)
                 {
+                    IsModified = true;
                     this.Tags.TrackCount = (uint)disc.Tracks.Count;
                 }
             }
@@ -324,16 +326,16 @@ namespace iTSfvLib
             {
                 if (this.Tags.DiscCount == 0)
                 {
+                    IsModified = true;
                     this.Tags.DiscCount = (uint)album.Discs.Count;
                 }
 
                 if (this.Tags.Disc == 0 && album.Discs.Count == 1)
                 {
+                    IsModified = true;
                     this.Tags.Disc = 1; // for single disc albums you can specify DiscNumber
                 }
             }
-
-            this.WriteTagsToFile();
         }
     }
 }

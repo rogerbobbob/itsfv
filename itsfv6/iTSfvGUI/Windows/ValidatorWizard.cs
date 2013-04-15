@@ -10,14 +10,66 @@ using iTSfvLib;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections;
 using System.Threading;
+using System.Reflection;
 
 namespace iTSfvGUI
 {
     public partial class ValidatorWizard : Form
     {
+        Dictionary<string, CheckBox> dicCheckBoxes = new Dictionary<string, CheckBox>();
+
         public ValidatorWizard()
         {
             InitializeComponent();
+        }
+
+        private void LoadDictionaryCheckBoxes(FlowLayoutPanel flp)
+        {
+            foreach (Control ctl in flp.Controls)
+            {
+                if (ctl is CheckBox)
+                    dicCheckBoxes.Add(ctl.Name, ctl as CheckBox);
+            }
+        }
+
+        private void LoadSettings()
+        {
+            LoadDictionaryCheckBoxes(flpChecks);
+            LoadDictionaryCheckBoxes(flpTracks);
+            LoadDictionaryCheckBoxes(flpFileSystem);
+
+            PropertyInfo[] properties = typeof(UserConfig).GetProperties();
+            foreach (PropertyInfo pi in properties)
+            {
+                string checkBoxName = "chk" + pi.Name;
+                if (pi.PropertyType == typeof(Boolean) && dicCheckBoxes.ContainsKey(checkBoxName))
+                {
+                    CheckBox chk = dicCheckBoxes[checkBoxName];
+                    chk.Checked = (bool)pi.GetValue(Program.ConfigUser, null);
+                }
+            }
+        }
+
+        private void SaveSettings()
+        {
+            IEnumerator e = dicCheckBoxes.GetEnumerator();
+            KeyValuePair<string, CheckBox> kvp = new KeyValuePair<string, CheckBox>();
+
+            while (e.MoveNext())
+            {
+                kvp = (KeyValuePair<string, CheckBox>)e.Current;
+                CheckBox chk = kvp.Value as CheckBox;
+                PropertyInfo[] properties = typeof(UserConfig).GetProperties();
+                foreach (PropertyInfo pi in properties)
+                {
+                    string propName = chk.Name.Remove(0, 3);
+                    if (pi.PropertyType == typeof(Boolean) && pi.Name.Equals(propName))
+                    {
+                        pi.SetValue(Program.ConfigUser, chk.Checked, null);
+                        break;
+                    }
+                }
+            }
         }
 
         private void ValidatorWizard_Load(object sender, EventArgs e)
@@ -30,6 +82,8 @@ namespace iTSfvGUI
         {
             Program.LogViewer.Show();
             Program.Library = new XmlLibrary(Program.Config, Program.ConfigUser);
+
+            LoadSettings();
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
@@ -221,14 +275,9 @@ namespace iTSfvGUI
             }
         }
 
-        private void chkChecksMissingTags_CheckedChanged(object sender, EventArgs e)
+        private void ValidatorWizard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.ConfigUser.CheckMissingTags = chkChecksMissingTags.Checked;
-        }
-
-        private void chkFillMissingTrackCount_CheckedChanged(object sender, EventArgs e)
-        {
-            Program.ConfigUser.FillTrackCount = chkFillMissingTrackCount.Checked;
+            SaveSettings();
         }
     }
 }
