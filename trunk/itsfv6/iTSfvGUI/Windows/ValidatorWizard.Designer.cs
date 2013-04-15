@@ -33,18 +33,19 @@
             this.tpDiscs = new System.Windows.Forms.TabPage();
             this.lbDiscs = new System.Windows.Forms.ListBox();
             this.tpChecks = new System.Windows.Forms.TabPage();
+            this.chkChecksItunesStoreStandard = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
+            this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
             this.chkTracksGenreFill = new System.Windows.Forms.CheckBox();
             this.tpFileSystem = new System.Windows.Forms.TabPage();
+            this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
-            this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
-            this.chkChecksItunesStoreStandard = new System.Windows.Forms.CheckBox();
-            this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
+            this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tcValidator.SuspendLayout();
             this.tpDiscs.SuspendLayout();
             this.tpChecks.SuspendLayout();
@@ -62,10 +63,10 @@
             this.tcValidator.Controls.Add(this.tpChecks);
             this.tcValidator.Controls.Add(this.tpTracks);
             this.tcValidator.Controls.Add(this.tpFileSystem);
-            this.tcValidator.Location = new System.Drawing.Point(8, 32);
+            this.tcValidator.Location = new System.Drawing.Point(343, 24);
             this.tcValidator.Name = "tcValidator";
             this.tcValidator.SelectedIndex = 0;
-            this.tcValidator.Size = new System.Drawing.Size(772, 323);
+            this.tcValidator.Size = new System.Drawing.Size(601, 417);
             this.tcValidator.TabIndex = 1;
             // 
             // tpDiscs
@@ -74,7 +75,7 @@
             this.tpDiscs.Location = new System.Drawing.Point(4, 22);
             this.tpDiscs.Name = "tpDiscs";
             this.tpDiscs.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDiscs.Size = new System.Drawing.Size(764, 297);
+            this.tpDiscs.Size = new System.Drawing.Size(593, 391);
             this.tpDiscs.TabIndex = 0;
             this.tpDiscs.Text = "Discs";
             this.tpDiscs.UseVisualStyleBackColor = true;
@@ -86,7 +87,8 @@
             this.lbDiscs.FormattingEnabled = true;
             this.lbDiscs.Location = new System.Drawing.Point(3, 3);
             this.lbDiscs.Name = "lbDiscs";
-            this.lbDiscs.Size = new System.Drawing.Size(758, 291);
+            this.lbDiscs.Size = new System.Drawing.Size(587, 385);
+            this.lbDiscs.Sorted = true;
             this.lbDiscs.TabIndex = 0;
             this.lbDiscs.SelectedIndexChanged += new System.EventHandler(this.lbDiscs_SelectedIndexChanged);
             this.lbDiscs.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbDiscs_DragDrop);
@@ -99,10 +101,20 @@
             this.tpChecks.Location = new System.Drawing.Point(4, 22);
             this.tpChecks.Name = "tpChecks";
             this.tpChecks.Padding = new System.Windows.Forms.Padding(3);
-            this.tpChecks.Size = new System.Drawing.Size(764, 297);
+            this.tpChecks.Size = new System.Drawing.Size(593, 391);
             this.tpChecks.TabIndex = 1;
             this.tpChecks.Text = "Checks";
             this.tpChecks.UseVisualStyleBackColor = true;
+            // 
+            // chkChecksItunesStoreStandard
+            // 
+            this.chkChecksItunesStoreStandard.AutoSize = true;
+            this.chkChecksItunesStoreStandard.Location = new System.Drawing.Point(8, 8);
+            this.chkChecksItunesStoreStandard.Name = "chkChecksItunesStoreStandard";
+            this.chkChecksItunesStoreStandard.Size = new System.Drawing.Size(179, 17);
+            this.chkChecksItunesStoreStandard.TabIndex = 0;
+            this.chkChecksItunesStoreStandard.Text = "Check for iTunes Store standard";
+            this.chkChecksItunesStoreStandard.UseVisualStyleBackColor = true;
             // 
             // tpTracks
             // 
@@ -111,10 +123,20 @@
             this.tpTracks.Location = new System.Drawing.Point(4, 22);
             this.tpTracks.Name = "tpTracks";
             this.tpTracks.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTracks.Size = new System.Drawing.Size(764, 297);
+            this.tpTracks.Size = new System.Drawing.Size(593, 391);
             this.tpTracks.TabIndex = 2;
             this.tpTracks.Text = "Tracks";
             this.tpTracks.UseVisualStyleBackColor = true;
+            // 
+            // chkTracksAlbumArtistFill
+            // 
+            this.chkTracksAlbumArtistFill.AutoSize = true;
+            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(8, 32);
+            this.chkTracksAlbumArtistFill.Name = "chkTracksAlbumArtistFill";
+            this.chkTracksAlbumArtistFill.Size = new System.Drawing.Size(215, 17);
+            this.chkTracksAlbumArtistFill.TabIndex = 1;
+            this.chkTracksAlbumArtistFill.Text = "Fill missing Album Artist using best guess";
+            this.chkTracksAlbumArtistFill.UseVisualStyleBackColor = true;
             // 
             // chkTracksGenreFill
             // 
@@ -131,10 +153,20 @@
             this.tpFileSystem.Controls.Add(this.chkFileSystemExportArtworkFolderJpg);
             this.tpFileSystem.Location = new System.Drawing.Point(4, 22);
             this.tpFileSystem.Name = "tpFileSystem";
-            this.tpFileSystem.Size = new System.Drawing.Size(764, 297);
+            this.tpFileSystem.Size = new System.Drawing.Size(593, 391);
             this.tpFileSystem.TabIndex = 3;
             this.tpFileSystem.Text = "FileSystem";
             this.tpFileSystem.UseVisualStyleBackColor = true;
+            // 
+            // chkFileSystemExportArtworkFolderJpg
+            // 
+            this.chkFileSystemExportArtworkFolderJpg.AutoSize = true;
+            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(8, 8);
+            this.chkFileSystemExportArtworkFolderJpg.Name = "chkFileSystemExportArtworkFolderJpg";
+            this.chkFileSystemExportArtworkFolderJpg.Size = new System.Drawing.Size(231, 17);
+            this.chkFileSystemExportArtworkFolderJpg.TabIndex = 0;
+            this.chkFileSystemExportArtworkFolderJpg.Text = "Export Artwork to Album folder as Folder.jpg";
+            this.chkFileSystemExportArtworkFolderJpg.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -143,7 +175,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(944, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -177,43 +209,25 @@
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
-            // chkFileSystemExportArtworkFolderJpg
+            // tvLibrary
             // 
-            this.chkFileSystemExportArtworkFolderJpg.AutoSize = true;
-            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(8, 8);
-            this.chkFileSystemExportArtworkFolderJpg.Name = "chkFileSystemExportArtworkFolderJpg";
-            this.chkFileSystemExportArtworkFolderJpg.Size = new System.Drawing.Size(231, 17);
-            this.chkFileSystemExportArtworkFolderJpg.TabIndex = 0;
-            this.chkFileSystemExportArtworkFolderJpg.Text = "Export Artwork to Album folder as Folder.jpg";
-            this.chkFileSystemExportArtworkFolderJpg.UseVisualStyleBackColor = true;
-            // 
-            // chkChecksItunesStoreStandard
-            // 
-            this.chkChecksItunesStoreStandard.AutoSize = true;
-            this.chkChecksItunesStoreStandard.Location = new System.Drawing.Point(8, 8);
-            this.chkChecksItunesStoreStandard.Name = "chkChecksItunesStoreStandard";
-            this.chkChecksItunesStoreStandard.Size = new System.Drawing.Size(179, 17);
-            this.chkChecksItunesStoreStandard.TabIndex = 0;
-            this.chkChecksItunesStoreStandard.Text = "Check for iTunes Store standard";
-            this.chkChecksItunesStoreStandard.UseVisualStyleBackColor = true;
-            // 
-            // chkTracksAlbumArtistFill
-            // 
-            this.chkTracksAlbumArtistFill.AutoSize = true;
-            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(8, 32);
-            this.chkTracksAlbumArtistFill.Name = "chkTracksAlbumArtistFill";
-            this.chkTracksAlbumArtistFill.Size = new System.Drawing.Size(215, 17);
-            this.chkTracksAlbumArtistFill.TabIndex = 1;
-            this.chkTracksAlbumArtistFill.Text = "Fill missing Album Artist using best guess";
-            this.chkTracksAlbumArtistFill.UseVisualStyleBackColor = true;
+            this.tvLibrary.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tvLibrary.Location = new System.Drawing.Point(0, 24);
+            this.tvLibrary.Name = "tvLibrary";
+            this.tvLibrary.Size = new System.Drawing.Size(337, 417);
+            this.tvLibrary.TabIndex = 2;
+            this.tvLibrary.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLibrary_NodeMouseClick);
+            this.tvLibrary.Click += new System.EventHandler(this.tvLibrary_Click);
             // 
             // ValidatorWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 362);
+            this.ClientSize = new System.Drawing.Size(944, 441);
+            this.Controls.Add(this.tvLibrary);
             this.Controls.Add(this.tcValidator);
             this.Controls.Add(this.menuStrip1);
+            this.MinimumSize = new System.Drawing.Size(960, 480);
             this.Name = "ValidatorWizard";
             this.Text = "iTSfv";
             this.Load += new System.EventHandler(this.ValidatorWizard_Load);
@@ -252,6 +266,7 @@
         private System.Windows.Forms.CheckBox chkChecksItunesStoreStandard;
         private System.Windows.Forms.CheckBox chkTracksAlbumArtistFill;
         private System.Windows.Forms.CheckBox chkFileSystemExportArtworkFolderJpg;
+        private System.Windows.Forms.TreeView tvLibrary;
     }
 }
 

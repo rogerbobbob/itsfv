@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{2E014C90-8985-4DC9-97C9-8E6DF8190DF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvGUI", "iTSfvGUI\iTSfvGUI.csproj", "{FCF3E10D-5724-4F70-ABEF-90D119B035C7}"
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvLib", "iTSfvLib\iTSfvL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvCLI", "iTSfvCLI\iTSfvCLI.csproj", "{2ACC1072-25A0-4AF9-8F0B-3ED54DECB168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersLib", "Lib\HelpersLib\HelpersLib.csproj", "{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersLib", "..\..\..\ShareX\trunk\HelpersLib\HelpersLib.csproj", "{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,12 +45,10 @@ Global
 		{2ACC1072-25A0-4AF9-8F0B-3ED54DECB168}.Release|x86.Build.0 = Release|x86
 		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Debug|x86.ActiveCfg = Debug|x86
-		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Debug|x86.Build.0 = Debug|x86
+		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Release|x86.ActiveCfg = Release|x86
-		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Release|x86.Build.0 = Release|x86
+		{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

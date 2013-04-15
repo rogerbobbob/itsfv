@@ -83,7 +83,7 @@ namespace iTSfvGUI
                 {
                     lbPaths.Items.Add(track.Location);
                 }
-                cboAlbumArtist.Text = disc.Band;
+                cboAlbumArtist.Text = disc.AlbumArtist;
                 cboGenre.Text = disc.Genre;
                 txtAlbum.Text = disc.Album;
             }

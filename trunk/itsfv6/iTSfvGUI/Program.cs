@@ -13,8 +13,9 @@ namespace iTSfvGUI
 
         // Windows
         public static ValidatorWizard gValidator = null;
-        public static LogViewer gLogViewer = null;
+        public static LogViewer LogViewer = null;
         public static MainWindow gMainWindow = null;
+        public static XmlLibrary Library = null;
 
         /// <summary>
         /// The main entry point for the application.
@@ -25,7 +26,7 @@ namespace iTSfvGUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            gLogViewer = new LogViewer();
+            LogViewer = new LogViewer();
             gValidator = new ValidatorWizard();
             gMainWindow = new MainWindow();
             Application.Run(gValidator);
