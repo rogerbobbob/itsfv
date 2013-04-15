@@ -307,5 +307,33 @@ namespace iTSfvLib
 
             return missingTags.Count == 0;
         }
+
+        internal void FillTrackCount(List<XmlAlbum> Albums, List<XmlDisc> Discs, ReportWriter reportWriter)
+        {
+            XmlDisc disc = Discs.FirstOrDefault(x => x.Key == this.GetDiscKey());
+            if (disc != null)
+            {
+                if (this.Tags.TrackCount == 0)
+                {
+                    this.Tags.TrackCount = (uint)disc.Tracks.Count;
+                }
+            }
+
+            XmlAlbum album = Albums.FirstOrDefault(x => x.Key == this.GetAlbumKey());
+            if (album != null)
+            {
+                if (this.Tags.DiscCount == 0)
+                {
+                    this.Tags.DiscCount = (uint)album.Discs.Count;
+                }
+
+                if (this.Tags.Disc == 0 && album.Discs.Count == 1)
+                {
+                    this.Tags.Disc = 1; // for single disc albums you can specify DiscNumber
+                }
+            }
+
+            this.WriteTagsToFile();
+        }
     }
 }

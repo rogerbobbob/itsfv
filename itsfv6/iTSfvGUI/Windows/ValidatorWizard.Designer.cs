@@ -43,6 +43,9 @@
             this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
             this.lbDiscs = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTasksValidate = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +54,6 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -159,6 +159,7 @@
             this.chkFillMissingTrackCount.TabIndex = 2;
             this.chkFillMissingTrackCount.Text = "Fill missing Track Count, Disc Number and Disc Count";
             this.chkFillMissingTrackCount.UseVisualStyleBackColor = true;
+            this.chkFillMissingTrackCount.CheckedChanged += new System.EventHandler(this.chkFillMissingTrackCount_CheckedChanged);
             // 
             // tpFileSystem
             // 
@@ -215,6 +216,27 @@
             this.menuStrip1.Size = new System.Drawing.Size(944, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importConfigToolStripMenuItem,
+            this.exportConfigToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // importConfigToolStripMenuItem
+            // 
+            this.importConfigToolStripMenuItem.Name = "importConfigToolStripMenuItem";
+            this.importConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.importConfigToolStripMenuItem.Text = "Import config...";
+            // 
+            // exportConfigToolStripMenuItem
+            // 
+            this.exportConfigToolStripMenuItem.Name = "exportConfigToolStripMenuItem";
+            this.exportConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.exportConfigToolStripMenuItem.Text = "Export config...";
             // 
             // windowsToolStripMenuItem
             // 
@@ -282,27 +304,6 @@
             this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importConfigToolStripMenuItem,
-            this.exportConfigToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // importConfigToolStripMenuItem
-            // 
-            this.importConfigToolStripMenuItem.Name = "importConfigToolStripMenuItem";
-            this.importConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.importConfigToolStripMenuItem.Text = "Import config...";
-            // 
-            // exportConfigToolStripMenuItem
-            // 
-            this.exportConfigToolStripMenuItem.Name = "exportConfigToolStripMenuItem";
-            this.exportConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.exportConfigToolStripMenuItem.Text = "Export config...";
             // 
             // ValidatorWizard
             // 

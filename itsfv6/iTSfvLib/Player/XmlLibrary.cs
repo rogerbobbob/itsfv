@@ -19,6 +19,9 @@ namespace iTSfvLib
         public ReportWriter Report { get; set; }
 
         public List<XmlAlbumArtist> AlbumArtists { get; private set; }
+        public List<XmlAlbum> Albums { get; private set; }  // provides a faster way to iterate through albums
+        public List<XmlDisc> Discs { get; private set; }    // provides a faster way to iterate through discs
+
         private XMLSettings CoreConfig = null;
         private UserConfig UserConfig = null;
 
@@ -29,6 +32,9 @@ namespace iTSfvLib
         {
             Report = new ReportWriter();
             AlbumArtists = new List<XmlAlbumArtist>();
+            Albums = new List<XmlAlbum>();
+            Discs = new List<XmlDisc>(); 
+
             CoreConfig = coreConfig;
             UserConfig = userConfig;
 
@@ -83,6 +89,7 @@ namespace iTSfvLib
             {
                 tempAlbum = new XmlAlbum(track.GetAlbumKey());
                 Library[track.AlbumArtist].AddAlbum(tempAlbum);
+                Albums.Add(tempAlbum);
             }
 
             XmlDisc tempDisc = tempAlbum.GetDisc(track.GetDiscKey());
@@ -90,6 +97,7 @@ namespace iTSfvLib
             {
                 tempDisc = new XmlDisc(track.GetDiscKey());
                 Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
+                Discs.Add(tempDisc);
             }
 
             if (Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track))
@@ -202,17 +210,17 @@ namespace iTSfvLib
             {
                 ValidateTrack(track);
             }
-
         }
 
         public void ValidateTrack(XmlTrack track)
         {
             if (UserConfig.CheckMissingTags)
-            {
                 track.CheckMissingTags(this.Report);
-                TrackCurrent++;
-            }
 
+            if (UserConfig.FillTrackCount)
+                track.FillTrackCount(Albums, Discs, this.Report);
+
+            TrackCurrent++;
             Worker.ReportProgress(this.Progress, track);
         }
     }

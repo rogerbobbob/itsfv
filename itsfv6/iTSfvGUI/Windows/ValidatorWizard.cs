@@ -225,5 +225,10 @@ namespace iTSfvGUI
         {
             Program.ConfigUser.CheckMissingTags = chkChecksMissingTags.Checked;
         }
+
+        private void chkFillMissingTrackCount_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.ConfigUser.FillTrackCount = chkFillMissingTrackCount.Checked;
+        }
     }
 }
