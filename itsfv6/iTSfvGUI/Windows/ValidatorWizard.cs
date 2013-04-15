@@ -33,19 +33,29 @@ namespace iTSfvGUI
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
         {
+            UpdateLogViewPos();
+        }
+
+        private void UpdateLogViewPos()
+        {
             if (null != Program.LogViewer)
             {
+                Program.LogViewer.Width = this.Width;
                 Program.LogViewer.Location = new Point(this.Location.X, this.Location.Y + this.Height);
             }
         }
 
         private void miTasksAddFiles_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...");
-            dlg.IsFolderPicker = true;
+            CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...")
+            {
+                Multiselect = true,
+                IsFolderPicker = true
+            };
+
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                AddFilesFolders(new string[] { dlg.FileName });
+                AddFilesFolders(dlg.FileNames.ToArray());
                 // ShowAddFilesWizard(new string[] { dlg.FileName });
             }
         }
@@ -84,7 +94,6 @@ namespace iTSfvGUI
                 tvLibrary.Nodes.Add(tnAlbumArtist);
             }
 
-            Program.Library.Validate();
         }
 
         private void lbDiscs_DragEnter(object sender, DragEventArgs e)
@@ -160,6 +169,46 @@ namespace iTSfvGUI
                     lbDiscs.Items.Add(kvpDisc.Value);
                 }
             }
+        }
+
+        private void ValidatorWizard_Resize(object sender, EventArgs e)
+        {
+            UpdateLogViewPos();
+        }
+
+        private void tsmiTasksValidate_Click(object sender, EventArgs e)
+        {
+            Validate();
+        }
+
+        private void Validate()
+        {
+            if (tvLibrary.SelectedNode != null && tvLibrary.SelectedNode.Tag is XmlAlbum)
+            {
+                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore);
+                XmlAlbum album = tvLibrary.SelectedNode.Tag as XmlAlbum;
+                IEnumerator iDisc = album.Discs.GetEnumerator();
+                KeyValuePair<string, XmlDisc> kvpDisc = new KeyValuePair<string, XmlDisc>();
+
+                while (iDisc.MoveNext())
+                {
+                    kvpDisc = (KeyValuePair<string, XmlDisc>)iDisc.Current;
+                    XmlDisc disc = kvpDisc.Value;
+                    foreach (XmlTrack track in disc.Tracks)
+                    {
+                        selectedLibrary.AddTrack(track);
+                    }
+                }
+
+                selectedLibrary.Validate();
+            }
+            else
+            {
+                Program.Library.Validate();
+            }
+
+            if (Program.ConfigCore.ProductReport)
+                new ReportWriterTracksNotCompliant().Write(Program.LogsFolderPath);
         }
     }
 }

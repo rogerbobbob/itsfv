@@ -17,6 +17,9 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue(true), Description("All the tracks in a folder are treated as having the same Album Artist")]
         public bool TreatAsOneBandPerFolder { get; set; }
 
+        [Category(MyStrings.App), DefaultValue(true), Description("Product a report after validating")]
+        public bool ProductReport { get; set; }
+
         public XMLSettings()
         {
             ApplyDefaultValues(this);

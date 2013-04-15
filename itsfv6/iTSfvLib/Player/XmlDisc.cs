@@ -130,9 +130,9 @@ namespace iTSfvLib
                 string url = "";
                 XmlTrack track = Tracks[0];
 
-                if (track.Band != string.Empty)
+                if (track.AlbumArtist != string.Empty)
                 {
-                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Tags.Album, track.Band);
+                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Tags.Album, track.AlbumArtist);
                 }
                 else
                 {
@@ -179,9 +179,9 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Tags.Album))
+                if (!string.IsNullOrEmpty(track.AlbumArtist) && !string.IsNullOrEmpty(track.Tags.Album))
                 {
-                    return string.Format("{0} - {1}", track.Tags.Album, track.Band);
+                    return string.Format("{0} - {1}", track.Tags.Album, track.AlbumArtist);
                 }
             }
             return ConstantStrings.UnknownAlbum;
@@ -195,9 +195,9 @@ namespace iTSfvLib
                 {
                     return ConstantStrings.VariousArtists;
                 }
-                else if (!string.IsNullOrEmpty(track.Band))
+                else if (!string.IsNullOrEmpty(track.AlbumArtist))
                 {
-                    return track.Band;
+                    return track.AlbumArtist;
                 }
             }
             return ConstantStrings.UnknownArtist;
@@ -207,9 +207,9 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.Band) && !string.IsNullOrEmpty(track.Tags.Album))
+                if (!string.IsNullOrEmpty(track.AlbumArtist) && !string.IsNullOrEmpty(track.Tags.Album))
                 {
-                    return string.Format("{0} Disc {1} - {2}", track.Tags.Album, DiscNumber.ToString("000"), track.Band);
+                    return string.Format("{0} Disc {1} - {2}", track.Tags.Album, DiscNumber.ToString("000"), track.AlbumArtist);
                 }
             }
 

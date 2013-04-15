@@ -66,6 +66,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -83,8 +85,10 @@
     <Compile Include="ConstantStrings.cs" />
     <Compile Include="Helpers\AddFilesHelper.cs" />
     <Compile Include="Helpers\Finders\MostCommonTagFinder.cs" />
+    <Compile Include="Reporting\ReportWriter.cs" />
+    <Compile Include="Reporting\ReportWriterTracksNotCompliant.cs" />
     <Compile Include="Static\MyStrings.cs" />
-    <Compile Include="Player\XmlPlayer.cs" />
+    <Compile Include="Player\XmlLibrary.cs" />
     <Compile Include="Static\IDGenerator.cs" />
     <Compile Include="Tasks\ArtworkEmbedTask.cs" />
     <Compile Include="Helpers\Validators\FileSystemValidator.cs" />
@@ -137,6 +141,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
