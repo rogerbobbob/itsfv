@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,20 @@ namespace iTSfvLib
         {
             if (Albums.ContainsKey(o.Key))
                 Albums.Remove(o.Key);
+        }
+
+        public List<XmlTrack> GetTracks()
+        {
+            List<XmlTrack> tracks = new List<XmlTrack>();
+
+            IEnumerator i = this.Albums.GetEnumerator();
+
+            while (i.MoveNext())
+            {
+                tracks.AddRange(((KeyValuePair<string, XmlAlbum>)i.Current).Value.GetTracks());
+            }
+
+            return tracks;
         }
     }
 }

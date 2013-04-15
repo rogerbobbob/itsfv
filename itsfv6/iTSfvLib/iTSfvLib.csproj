@@ -95,7 +95,7 @@
     <Compile Include="Helpers\Validators\LibraryValidator.cs" />
     <Compile Include="Helpers\Validators\StandardsChecker.cs" />
     <Compile Include="Static\FileSystem.cs" />
-    <Compile Include="Player\XmlBand.cs" />
+    <Compile Include="Player\XmlAlbumArtist.cs" />
     <Compile Include="Helpers\Finders\DiscNumberFinder.cs" />
     <Compile Include="Player\XmlAlbum.cs" />
     <Compile Include="Player\XmlDisc.cs" />
@@ -111,6 +111,7 @@
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskManager.cs" />
     <Compile Include="Player\XmlArtwork.cs" />
+    <Compile Include="Settings\UserConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\ToDo.txt" />

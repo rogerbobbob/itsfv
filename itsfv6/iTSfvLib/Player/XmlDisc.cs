@@ -175,18 +175,6 @@ namespace iTSfvLib
             return success;
         }
 
-        public string GetAlbumKey()
-        {
-            foreach (XmlTrack track in Tracks)
-            {
-                if (!string.IsNullOrEmpty(track.AlbumArtist) && !string.IsNullOrEmpty(track.Tags.Album))
-                {
-                    return string.Format("{0} - {1}", track.Tags.Album, track.AlbumArtist);
-                }
-            }
-            return ConstantStrings.UnknownAlbum;
-        }
-
         public string GetAlbumArtist()
         {
             foreach (XmlTrack track in Tracks)
@@ -207,13 +195,13 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.AlbumArtist) && !string.IsNullOrEmpty(track.Tags.Album))
+                if (!string.IsNullOrEmpty(track.Tags.Album))
                 {
-                    return string.Format("{0} Disc {1} - {2}", track.Tags.Album, DiscNumber.ToString("000"), track.AlbumArtist);
+                    return string.Format("{0} Disc {1}", track.Tags.Album, DiscNumber.ToString("000"));
                 }
             }
 
-            return string.Format("{0} Disc {1} - {2}", ConstantStrings.UnknownDisc, DiscNumber.ToString("000"), ConstantStrings.UnknownArtist);
+            return string.Format("{0} Disc {1}", ConstantStrings.UnknownDisc, DiscNumber.ToString("000"));
         }
 
         public bool HasTrack(XmlTrack track)
@@ -266,7 +254,7 @@ namespace iTSfvLib
 
         public override string ToString()
         {
-            return Key;
+            return GetDiscName();
         }
     }
 }

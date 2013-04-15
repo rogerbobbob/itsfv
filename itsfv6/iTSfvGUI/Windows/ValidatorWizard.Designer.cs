@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tcValidator = new System.Windows.Forms.TabControl();
             this.tpChecks = new System.Windows.Forms.TabPage();
-            this.chkChecksItunesStoreStandard = new System.Windows.Forms.CheckBox();
+            this.chkChecksMissingTags = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
             this.chkTracksGenreFill = new System.Windows.Forms.CheckBox();
@@ -47,12 +47,19 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
+            this.flpChecks = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpTracks = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpFileSystem = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkFillMissingTrackCount = new System.Windows.Forms.CheckBox();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.tpTracks.SuspendLayout();
             this.tpFileSystem.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tlpApp.SuspendLayout();
+            this.flpChecks.SuspendLayout();
+            this.flpTracks.SuspendLayout();
+            this.flpFileSystem.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcValidator
@@ -69,7 +76,7 @@
             // 
             // tpChecks
             // 
-            this.tpChecks.Controls.Add(this.chkChecksItunesStoreStandard);
+            this.tpChecks.Controls.Add(this.flpChecks);
             this.tpChecks.Location = new System.Drawing.Point(4, 22);
             this.tpChecks.Name = "tpChecks";
             this.tpChecks.Padding = new System.Windows.Forms.Padding(3);
@@ -78,20 +85,20 @@
             this.tpChecks.Text = "Checks";
             this.tpChecks.UseVisualStyleBackColor = true;
             // 
-            // chkChecksItunesStoreStandard
+            // chkChecksMissingTags
             // 
-            this.chkChecksItunesStoreStandard.AutoSize = true;
-            this.chkChecksItunesStoreStandard.Location = new System.Drawing.Point(8, 8);
-            this.chkChecksItunesStoreStandard.Name = "chkChecksItunesStoreStandard";
-            this.chkChecksItunesStoreStandard.Size = new System.Drawing.Size(132, 17);
-            this.chkChecksItunesStoreStandard.TabIndex = 0;
-            this.chkChecksItunesStoreStandard.Text = "Check for missing tags";
-            this.chkChecksItunesStoreStandard.UseVisualStyleBackColor = true;
+            this.chkChecksMissingTags.AutoSize = true;
+            this.chkChecksMissingTags.Location = new System.Drawing.Point(3, 3);
+            this.chkChecksMissingTags.Name = "chkChecksMissingTags";
+            this.chkChecksMissingTags.Size = new System.Drawing.Size(132, 17);
+            this.chkChecksMissingTags.TabIndex = 0;
+            this.chkChecksMissingTags.Text = "Check for missing tags";
+            this.chkChecksMissingTags.UseVisualStyleBackColor = true;
+            this.chkChecksMissingTags.CheckedChanged += new System.EventHandler(this.chkChecksMissingTags_CheckedChanged);
             // 
             // tpTracks
             // 
-            this.tpTracks.Controls.Add(this.chkTracksAlbumArtistFill);
-            this.tpTracks.Controls.Add(this.chkTracksGenreFill);
+            this.tpTracks.Controls.Add(this.flpTracks);
             this.tpTracks.Location = new System.Drawing.Point(4, 22);
             this.tpTracks.Name = "tpTracks";
             this.tpTracks.Padding = new System.Windows.Forms.Padding(3);
@@ -103,7 +110,7 @@
             // chkTracksAlbumArtistFill
             // 
             this.chkTracksAlbumArtistFill.AutoSize = true;
-            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(8, 32);
+            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(3, 26);
             this.chkTracksAlbumArtistFill.Name = "chkTracksAlbumArtistFill";
             this.chkTracksAlbumArtistFill.Size = new System.Drawing.Size(215, 17);
             this.chkTracksAlbumArtistFill.TabIndex = 1;
@@ -113,7 +120,7 @@
             // chkTracksGenreFill
             // 
             this.chkTracksGenreFill.AutoSize = true;
-            this.chkTracksGenreFill.Location = new System.Drawing.Point(8, 8);
+            this.chkTracksGenreFill.Location = new System.Drawing.Point(3, 3);
             this.chkTracksGenreFill.Name = "chkTracksGenreFill";
             this.chkTracksGenreFill.Size = new System.Drawing.Size(187, 17);
             this.chkTracksGenreFill.TabIndex = 0;
@@ -122,7 +129,7 @@
             // 
             // tpFileSystem
             // 
-            this.tpFileSystem.Controls.Add(this.chkFileSystemExportArtworkFolderJpg);
+            this.tpFileSystem.Controls.Add(this.flpFileSystem);
             this.tpFileSystem.Location = new System.Drawing.Point(4, 22);
             this.tpFileSystem.Name = "tpFileSystem";
             this.tpFileSystem.Size = new System.Drawing.Size(300, 385);
@@ -133,7 +140,7 @@
             // chkFileSystemExportArtworkFolderJpg
             // 
             this.chkFileSystemExportArtworkFolderJpg.AutoSize = true;
-            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(8, 8);
+            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(3, 3);
             this.chkFileSystemExportArtworkFolderJpg.Name = "chkFileSystemExportArtworkFolderJpg";
             this.chkFileSystemExportArtworkFolderJpg.Size = new System.Drawing.Size(231, 17);
             this.chkFileSystemExportArtworkFolderJpg.TabIndex = 0;
@@ -233,6 +240,45 @@
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
             // 
+            // flpChecks
+            // 
+            this.flpChecks.Controls.Add(this.chkChecksMissingTags);
+            this.flpChecks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpChecks.Location = new System.Drawing.Point(3, 3);
+            this.flpChecks.Name = "flpChecks";
+            this.flpChecks.Size = new System.Drawing.Size(294, 379);
+            this.flpChecks.TabIndex = 1;
+            // 
+            // flpTracks
+            // 
+            this.flpTracks.Controls.Add(this.chkTracksGenreFill);
+            this.flpTracks.Controls.Add(this.chkTracksAlbumArtistFill);
+            this.flpTracks.Controls.Add(this.chkFillMissingTrackCount);
+            this.flpTracks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpTracks.Location = new System.Drawing.Point(3, 3);
+            this.flpTracks.Name = "flpTracks";
+            this.flpTracks.Size = new System.Drawing.Size(294, 379);
+            this.flpTracks.TabIndex = 2;
+            // 
+            // flpFileSystem
+            // 
+            this.flpFileSystem.Controls.Add(this.chkFileSystemExportArtworkFolderJpg);
+            this.flpFileSystem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpFileSystem.Location = new System.Drawing.Point(0, 0);
+            this.flpFileSystem.Name = "flpFileSystem";
+            this.flpFileSystem.Size = new System.Drawing.Size(300, 385);
+            this.flpFileSystem.TabIndex = 1;
+            // 
+            // chkFillMissingTrackCount
+            // 
+            this.chkFillMissingTrackCount.AutoSize = true;
+            this.chkFillMissingTrackCount.Location = new System.Drawing.Point(3, 49);
+            this.chkFillMissingTrackCount.Name = "chkFillMissingTrackCount";
+            this.chkFillMissingTrackCount.Size = new System.Drawing.Size(280, 17);
+            this.chkFillMissingTrackCount.TabIndex = 2;
+            this.chkFillMissingTrackCount.Text = "Fill missing Track Count, Disc Number and Disc Count";
+            this.chkFillMissingTrackCount.UseVisualStyleBackColor = true;
+            // 
             // ValidatorWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,14 +295,17 @@
             this.Resize += new System.EventHandler(this.ValidatorWizard_Resize);
             this.tcValidator.ResumeLayout(false);
             this.tpChecks.ResumeLayout(false);
-            this.tpChecks.PerformLayout();
             this.tpTracks.ResumeLayout(false);
-            this.tpTracks.PerformLayout();
             this.tpFileSystem.ResumeLayout(false);
-            this.tpFileSystem.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tlpApp.ResumeLayout(false);
+            this.flpChecks.ResumeLayout(false);
+            this.flpChecks.PerformLayout();
+            this.flpTracks.ResumeLayout(false);
+            this.flpTracks.PerformLayout();
+            this.flpFileSystem.ResumeLayout(false);
+            this.flpFileSystem.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,12 +325,16 @@
         private System.Windows.Forms.ToolTip ttApp;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
-        private System.Windows.Forms.CheckBox chkChecksItunesStoreStandard;
+        private System.Windows.Forms.CheckBox chkChecksMissingTags;
         private System.Windows.Forms.CheckBox chkTracksAlbumArtistFill;
         private System.Windows.Forms.CheckBox chkFileSystemExportArtworkFolderJpg;
         private System.Windows.Forms.TreeView tvLibrary;
         private System.Windows.Forms.ToolStripMenuItem tsmiTasksValidate;
         private System.Windows.Forms.TableLayoutPanel tlpApp;
+        private System.Windows.Forms.FlowLayoutPanel flpChecks;
+        private System.Windows.Forms.FlowLayoutPanel flpTracks;
+        private System.Windows.Forms.FlowLayoutPanel flpFileSystem;
+        private System.Windows.Forms.CheckBox chkFillMissingTrackCount;
     }
 }
 
