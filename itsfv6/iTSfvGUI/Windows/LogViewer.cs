@@ -46,7 +46,7 @@ namespace iTSfvGUI
         {
             ReportWriter report = e.Result as ReportWriter;
 
-            if (Program.ConfigUser.Checks_MissingTags)
+            if (Program.Config.UI.Checks_MissingTags)
             {
                 tsslApp.Text = "Ready. Tracks with missing tags: " + report.TracksMissingTags.Count;
             }
@@ -55,7 +55,7 @@ namespace iTSfvGUI
                 tsslApp.Text = "Ready.";
             }
 
-            if (Program.ConfigCore.ProductReport)
+            if (Program.Config.ProduceReport)
                 report.Write(Program.LogsFolderPath);
         }
     }

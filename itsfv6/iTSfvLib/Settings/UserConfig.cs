@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace iTSfvLib
 {
-    public class UserConfig :SettingsBase<UserConfig>
+    public class UserConfig
     {
         public bool Checks_MissingTags { get; set; }
         public bool Tracks_TrackCountFill { get; set; }
