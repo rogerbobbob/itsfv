@@ -210,6 +210,8 @@ namespace iTSfvLib
             {
                 ValidateTrack(track);
             }
+
+
         }
 
         public void ValidateTrack(XmlTrack track)
@@ -217,7 +219,13 @@ namespace iTSfvLib
             if (UserConfig.Checks_MissingTags)
                 track.CheckMissingTags(this.Report);
 
-            if (UserConfig.Tracks_FillMissingTrackCount)
+            if (UserConfig.Tracks_AlbumArtistFill)
+                track.FillAlbumArtist(Albums, this.Report);
+
+            if (UserConfig.Tracks_GenreFill)
+                track.FillGenre(Discs, this.Report);
+
+            if (UserConfig.Tracks_TrackCountFill)
                 track.FillTrackCount(Albums, Discs, this.Report);
 
             if (track.IsModified)

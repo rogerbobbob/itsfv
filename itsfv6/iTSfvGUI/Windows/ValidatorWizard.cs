@@ -50,8 +50,17 @@ namespace iTSfvGUI
             }
         }
 
-        private void SaveSettings()
+
+        /// <summary>
+        /// Returns a UserConfig object based on the checkbox configuration
+        /// </summary>
+        /// <param name="userConfig"></param>
+        /// <returns></returns>
+        private UserConfig SaveUserConfig(UserConfig userConfig = null)
         {
+            if (userConfig == null)
+                userConfig = new UserConfig(); 
+
             IEnumerator e = dicCheckBoxes.GetEnumerator();
             KeyValuePair<string, CheckBox> kvp = new KeyValuePair<string, CheckBox>();
 
@@ -65,11 +74,13 @@ namespace iTSfvGUI
                     string propName = chk.Name.Remove(0, 3);
                     if (pi.PropertyType == typeof(Boolean) && pi.Name.Equals(propName))
                     {
-                        pi.SetValue(Program.ConfigUser, chk.Checked, null);
+                        pi.SetValue(userConfig, chk.Checked, null);
                         break;
                     }
                 }
             }
+
+            return userConfig;
         }
 
         private void ValidatorWizard_Load(object sender, EventArgs e)
@@ -102,6 +113,11 @@ namespace iTSfvGUI
 
         private void miTasksAddFiles_Click(object sender, EventArgs e)
         {
+            AddFiles();
+        }
+
+        private void AddFiles(bool respectFolderStructure = false)
+        {
             CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...")
             {
                 Multiselect = true,
@@ -110,26 +126,22 @@ namespace iTSfvGUI
 
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                AddFilesFolders(dlg.FileNames.ToArray());
-                // ShowAddFilesWizard(new string[] { dlg.FileName });
+                if (respectFolderStructure)
+                    ShowAddFilesWizard(dlg.FileNames.ToArray());
+                else
+                    AddFilesFolders(dlg.FileNames.ToArray());
             }
         }
 
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            ShowAddFilesWizard(pathsFilesFolders);
-            // AddFilesFolders(pathsFilesFolders);
+            AddFilesFolders(pathsFilesFolders);
         }
 
         private void AddFilesFolders(string[] filesDirs)
         {
             Program.Library.AddFilesOrFolders(filesDirs);
-
-            //foreach (XmlDisc disc in Program.Library.Discs)
-            //{
-            //    lbDiscs.Items.Add(disc);
-            //}
 
             tvLibrary.Nodes.Clear();
 
@@ -178,10 +190,8 @@ namespace iTSfvGUI
         {
             AddFilesWizard afw = new AddFilesWizard(filesDirs);
             afw.ShowDialog();
-            foreach (XmlDisc disc in afw.Discs)
-            {
-                lbDiscs.Items.Add(disc);
-            }
+
+            AddFilesFolders(filesDirs);
         }
 
         #endregion Helpers
@@ -240,9 +250,11 @@ namespace iTSfvGUI
         {
             Program.TreadUI = SynchronizationContext.Current;
 
-            if (UserConfig.IsConfigured(Program.ConfigUser))
+            UserConfig userConfig = SaveUserConfig();
+
+            if (UserConfig.IsConfigured(userConfig))
             {
-                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore, Program.ConfigUser);
+                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore, userConfig);
 
                 if (lbDiscs.SelectedItem != null)
                 {
@@ -277,7 +289,12 @@ namespace iTSfvGUI
 
         private void ValidatorWizard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveSettings();
+            SaveUserConfig(Program.ConfigUser);
+        }
+
+        private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
+        {
+            AddFiles(respectFolderStructure: true);
         }
     }
 }

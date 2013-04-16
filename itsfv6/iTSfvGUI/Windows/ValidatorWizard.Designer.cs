@@ -35,19 +35,18 @@
             this.chkChecks_MissingTags = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.flpTracks = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkTracksGenreFill = new System.Windows.Forms.CheckBox();
-            this.chkTracksAlbumArtistFill = new System.Windows.Forms.CheckBox();
-            this.chkTracks_FillMissingTrackCount = new System.Windows.Forms.CheckBox();
+            this.chkTracks_GenreFill = new System.Windows.Forms.CheckBox();
+            this.chkTracks_AlbumArtistFill = new System.Windows.Forms.CheckBox();
+            this.chkTracks_TrackCountFill = new System.Windows.Forms.CheckBox();
             this.tpFileSystem = new System.Windows.Forms.TabPage();
             this.flpFileSystem = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkFileSystemExportArtworkFolderJpg = new System.Windows.Forms.CheckBox();
+            this.chkFileSystem_ArtworkJpgExport = new System.Windows.Forms.CheckBox();
             this.lbDiscs = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFile_TasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFile_AddFilesWithStructure = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTasksAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTasksValidate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,44 +119,44 @@
             // 
             // flpTracks
             // 
-            this.flpTracks.Controls.Add(this.chkTracksGenreFill);
-            this.flpTracks.Controls.Add(this.chkTracksAlbumArtistFill);
-            this.flpTracks.Controls.Add(this.chkTracks_FillMissingTrackCount);
+            this.flpTracks.Controls.Add(this.chkTracks_GenreFill);
+            this.flpTracks.Controls.Add(this.chkTracks_AlbumArtistFill);
+            this.flpTracks.Controls.Add(this.chkTracks_TrackCountFill);
             this.flpTracks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTracks.Location = new System.Drawing.Point(3, 3);
             this.flpTracks.Name = "flpTracks";
             this.flpTracks.Size = new System.Drawing.Size(294, 379);
             this.flpTracks.TabIndex = 2;
             // 
-            // chkTracksGenreFill
+            // chkTracks_GenreFill
             // 
-            this.chkTracksGenreFill.AutoSize = true;
-            this.chkTracksGenreFill.Location = new System.Drawing.Point(3, 3);
-            this.chkTracksGenreFill.Name = "chkTracksGenreFill";
-            this.chkTracksGenreFill.Size = new System.Drawing.Size(187, 17);
-            this.chkTracksGenreFill.TabIndex = 0;
-            this.chkTracksGenreFill.Text = "Fill missing genre using best guess";
-            this.chkTracksGenreFill.UseVisualStyleBackColor = true;
+            this.chkTracks_GenreFill.AutoSize = true;
+            this.chkTracks_GenreFill.Location = new System.Drawing.Point(3, 3);
+            this.chkTracks_GenreFill.Name = "chkTracks_GenreFill";
+            this.chkTracks_GenreFill.Size = new System.Drawing.Size(187, 17);
+            this.chkTracks_GenreFill.TabIndex = 0;
+            this.chkTracks_GenreFill.Text = "Fill missing genre using best guess";
+            this.chkTracks_GenreFill.UseVisualStyleBackColor = true;
             // 
-            // chkTracksAlbumArtistFill
+            // chkTracks_AlbumArtistFill
             // 
-            this.chkTracksAlbumArtistFill.AutoSize = true;
-            this.chkTracksAlbumArtistFill.Location = new System.Drawing.Point(3, 26);
-            this.chkTracksAlbumArtistFill.Name = "chkTracksAlbumArtistFill";
-            this.chkTracksAlbumArtistFill.Size = new System.Drawing.Size(215, 17);
-            this.chkTracksAlbumArtistFill.TabIndex = 1;
-            this.chkTracksAlbumArtistFill.Text = "Fill missing Album Artist using best guess";
-            this.chkTracksAlbumArtistFill.UseVisualStyleBackColor = true;
+            this.chkTracks_AlbumArtistFill.AutoSize = true;
+            this.chkTracks_AlbumArtistFill.Location = new System.Drawing.Point(3, 26);
+            this.chkTracks_AlbumArtistFill.Name = "chkTracks_AlbumArtistFill";
+            this.chkTracks_AlbumArtistFill.Size = new System.Drawing.Size(215, 17);
+            this.chkTracks_AlbumArtistFill.TabIndex = 1;
+            this.chkTracks_AlbumArtistFill.Text = "Fill missing Album Artist using best guess";
+            this.chkTracks_AlbumArtistFill.UseVisualStyleBackColor = true;
             // 
-            // chkTracks_FillMissingTrackCount
+            // chkTracks_TrackCountFill
             // 
-            this.chkTracks_FillMissingTrackCount.AutoSize = true;
-            this.chkTracks_FillMissingTrackCount.Location = new System.Drawing.Point(3, 49);
-            this.chkTracks_FillMissingTrackCount.Name = "chkTracks_FillMissingTrackCount";
-            this.chkTracks_FillMissingTrackCount.Size = new System.Drawing.Size(280, 17);
-            this.chkTracks_FillMissingTrackCount.TabIndex = 2;
-            this.chkTracks_FillMissingTrackCount.Text = "Fill missing Track Count, Disc Number and Disc Count";
-            this.chkTracks_FillMissingTrackCount.UseVisualStyleBackColor = true;
+            this.chkTracks_TrackCountFill.AutoSize = true;
+            this.chkTracks_TrackCountFill.Location = new System.Drawing.Point(3, 49);
+            this.chkTracks_TrackCountFill.Name = "chkTracks_TrackCountFill";
+            this.chkTracks_TrackCountFill.Size = new System.Drawing.Size(280, 17);
+            this.chkTracks_TrackCountFill.TabIndex = 2;
+            this.chkTracks_TrackCountFill.Text = "Fill missing Track Count, Disc Number and Disc Count";
+            this.chkTracks_TrackCountFill.UseVisualStyleBackColor = true;
             // 
             // tpFileSystem
             // 
@@ -171,22 +170,22 @@
             // 
             // flpFileSystem
             // 
-            this.flpFileSystem.Controls.Add(this.chkFileSystemExportArtworkFolderJpg);
+            this.flpFileSystem.Controls.Add(this.chkFileSystem_ArtworkJpgExport);
             this.flpFileSystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpFileSystem.Location = new System.Drawing.Point(0, 0);
             this.flpFileSystem.Name = "flpFileSystem";
             this.flpFileSystem.Size = new System.Drawing.Size(300, 385);
             this.flpFileSystem.TabIndex = 1;
             // 
-            // chkFileSystemExportArtworkFolderJpg
+            // chkFileSystem_ArtworkJpgExport
             // 
-            this.chkFileSystemExportArtworkFolderJpg.AutoSize = true;
-            this.chkFileSystemExportArtworkFolderJpg.Location = new System.Drawing.Point(3, 3);
-            this.chkFileSystemExportArtworkFolderJpg.Name = "chkFileSystemExportArtworkFolderJpg";
-            this.chkFileSystemExportArtworkFolderJpg.Size = new System.Drawing.Size(231, 17);
-            this.chkFileSystemExportArtworkFolderJpg.TabIndex = 0;
-            this.chkFileSystemExportArtworkFolderJpg.Text = "Export Artwork to Album folder as Folder.jpg";
-            this.chkFileSystemExportArtworkFolderJpg.UseVisualStyleBackColor = true;
+            this.chkFileSystem_ArtworkJpgExport.AutoSize = true;
+            this.chkFileSystem_ArtworkJpgExport.Location = new System.Drawing.Point(3, 3);
+            this.chkFileSystem_ArtworkJpgExport.Name = "chkFileSystem_ArtworkJpgExport";
+            this.chkFileSystem_ArtworkJpgExport.Size = new System.Drawing.Size(231, 17);
+            this.chkFileSystem_ArtworkJpgExport.TabIndex = 0;
+            this.chkFileSystem_ArtworkJpgExport.Text = "Export Artwork to Album folder as Folder.jpg";
+            this.chkFileSystem_ArtworkJpgExport.UseVisualStyleBackColor = true;
             // 
             // lbDiscs
             // 
@@ -218,46 +217,40 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importConfigToolStripMenuItem,
-            this.exportConfigToolStripMenuItem});
+            this.tsmiFile_TasksAddFiles,
+            this.tsmiFile_AddFilesWithStructure});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // importConfigToolStripMenuItem
+            // tsmiFile_TasksAddFiles
             // 
-            this.importConfigToolStripMenuItem.Name = "importConfigToolStripMenuItem";
-            this.importConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.importConfigToolStripMenuItem.Text = "Import config...";
+            this.tsmiFile_TasksAddFiles.Name = "tsmiFile_TasksAddFiles";
+            this.tsmiFile_TasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(262, 22);
+            this.tsmiFile_TasksAddFiles.Text = "&Add Files...";
+            this.tsmiFile_TasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
             // 
-            // exportConfigToolStripMenuItem
+            // tsmiFile_AddFilesWithStructure
             // 
-            this.exportConfigToolStripMenuItem.Name = "exportConfigToolStripMenuItem";
-            this.exportConfigToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.exportConfigToolStripMenuItem.Text = "Export config...";
+            this.tsmiFile_AddFilesWithStructure.Name = "tsmiFile_AddFilesWithStructure";
+            this.tsmiFile_AddFilesWithStructure.Size = new System.Drawing.Size(262, 22);
+            this.tsmiFile_AddFilesWithStructure.Text = "Add files (respect folder structure)...";
+            this.tsmiFile_AddFilesWithStructure.Click += new System.EventHandler(this.tsmiFile_AddFilesWithStructure_Click);
             // 
             // windowsToolStripMenuItem
             // 
             this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiTasksAddFiles,
             this.tsmiTasksValidate});
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
             this.windowsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.windowsToolStripMenuItem.Text = "&Tasks";
             // 
-            // tsmiTasksAddFiles
-            // 
-            this.tsmiTasksAddFiles.Name = "tsmiTasksAddFiles";
-            this.tsmiTasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.tsmiTasksAddFiles.Size = new System.Drawing.Size(173, 22);
-            this.tsmiTasksAddFiles.Text = "&Add Files...";
-            this.tsmiTasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
-            // 
             // tsmiTasksValidate
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(173, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -272,7 +265,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -344,25 +337,24 @@
         private System.Windows.Forms.TabPage tpFileSystem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiTasksAddFiles;
-        private System.Windows.Forms.CheckBox chkTracksGenreFill;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFile_TasksAddFiles;
+        private System.Windows.Forms.CheckBox chkTracks_GenreFill;
         private System.Windows.Forms.ListBox lbDiscs;
         private System.Windows.Forms.ToolTip ttApp;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
         private System.Windows.Forms.CheckBox chkChecks_MissingTags;
-        private System.Windows.Forms.CheckBox chkTracksAlbumArtistFill;
-        private System.Windows.Forms.CheckBox chkFileSystemExportArtworkFolderJpg;
+        private System.Windows.Forms.CheckBox chkTracks_AlbumArtistFill;
+        private System.Windows.Forms.CheckBox chkFileSystem_ArtworkJpgExport;
         private System.Windows.Forms.TreeView tvLibrary;
         private System.Windows.Forms.ToolStripMenuItem tsmiTasksValidate;
         private System.Windows.Forms.TableLayoutPanel tlpApp;
         private System.Windows.Forms.FlowLayoutPanel flpChecks;
         private System.Windows.Forms.FlowLayoutPanel flpTracks;
         private System.Windows.Forms.FlowLayoutPanel flpFileSystem;
-        private System.Windows.Forms.CheckBox chkTracks_FillMissingTrackCount;
+        private System.Windows.Forms.CheckBox chkTracks_TrackCountFill;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importConfigToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFile_AddFilesWithStructure;
     }
 }
 

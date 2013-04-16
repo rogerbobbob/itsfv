@@ -326,14 +326,40 @@ namespace iTSfvLib
             {
                 if (this.Tags.DiscCount == 0)
                 {
-                    IsModified = true;
                     this.Tags.DiscCount = (uint)album.Discs.Count;
+                    IsModified = true;
                 }
 
                 if (this.Tags.Disc == 0 && album.Discs.Count == 1)
                 {
-                    IsModified = true;
                     this.Tags.Disc = 1; // for single disc albums you can specify DiscNumber
+                    IsModified = true;
+                }
+            }
+        }
+
+        internal void FillAlbumArtist(List<XmlAlbum> Albums, ReportWriter reportWriter)
+        {
+            XmlAlbum album = Albums.FirstOrDefault(x => x.Key == this.GetAlbumKey());
+            if (album != null)
+            {
+                if (this.Tags.AlbumArtists.Length == 0)
+                {
+                    this.Tags.AlbumArtists = new string[] { album.AlbumArtist };
+                    IsModified = true;
+                }
+            }
+        }
+
+        internal void FillGenre(List<XmlDisc> Discs, ReportWriter reportWriter)
+        {
+            XmlDisc disc = Discs.FirstOrDefault(x => x.Key == this.GetDiscKey());
+            if (disc != null)
+            {
+                if (this.Tags.Genres.Length == 0)
+                {
+                    this.Tags.Genres = new string[] { disc.Genre };
+                    IsModified = true;
                 }
             }
         }
