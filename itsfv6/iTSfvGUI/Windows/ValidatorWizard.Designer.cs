@@ -57,6 +57,7 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
+            this.chkChecks_ArtworkLowRes = new System.Windows.Forms.CheckBox();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -94,7 +95,9 @@
             // flpChecks
             // 
             this.flpChecks.Controls.Add(this.chkChecks_MissingTags);
+            this.flpChecks.Controls.Add(this.chkChecks_ArtworkLowRes);
             this.flpChecks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpChecks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpChecks.Location = new System.Drawing.Point(3, 3);
             this.flpChecks.Name = "flpChecks";
             this.flpChecks.Size = new System.Drawing.Size(294, 379);
@@ -148,9 +151,9 @@
             this.chkTracks_GenreFill.AutoSize = true;
             this.chkTracks_GenreFill.Location = new System.Drawing.Point(3, 26);
             this.chkTracks_GenreFill.Name = "chkTracks_GenreFill";
-            this.chkTracks_GenreFill.Size = new System.Drawing.Size(187, 17);
+            this.chkTracks_GenreFill.Size = new System.Drawing.Size(189, 17);
             this.chkTracks_GenreFill.TabIndex = 0;
-            this.chkTracks_GenreFill.Text = "Fill missing genre using best guess";
+            this.chkTracks_GenreFill.Text = "Fill missing Genre using best guess";
             this.chkTracks_GenreFill.UseVisualStyleBackColor = true;
             // 
             // chkTracks_AlbumArtistFill
@@ -244,7 +247,7 @@
             this.tsmiFile_TasksAddFiles.Name = "tsmiFile_TasksAddFiles";
             this.tsmiFile_TasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(262, 22);
-            this.tsmiFile_TasksAddFiles.Text = "&Add Files...";
+            this.tsmiFile_TasksAddFiles.Text = "&Add files...";
             this.tsmiFile_TasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
             // 
             // tsmiFile_AddFilesWithStructure
@@ -266,7 +269,7 @@
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(135, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -281,7 +284,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -326,6 +329,16 @@
             this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
+            // 
+            // chkChecks_ArtworkLowRes
+            // 
+            this.chkChecks_ArtworkLowRes.AutoSize = true;
+            this.chkChecks_ArtworkLowRes.Location = new System.Drawing.Point(3, 26);
+            this.chkChecks_ArtworkLowRes.Name = "chkChecks_ArtworkLowRes";
+            this.chkChecks_ArtworkLowRes.Size = new System.Drawing.Size(177, 17);
+            this.chkChecks_ArtworkLowRes.TabIndex = 1;
+            this.chkChecks_ArtworkLowRes.Text = "Check for low resolution artwork";
+            this.chkChecks_ArtworkLowRes.UseVisualStyleBackColor = true;
             // 
             // ValidatorWizard
             // 
@@ -389,6 +402,7 @@
         private System.Windows.Forms.ToolStripMenuItem foldersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiFoldersLogs;
         private System.Windows.Forms.CheckBox chkTracks_ArtworkFill;
+        private System.Windows.Forms.CheckBox chkChecks_ArtworkLowRes;
     }
 }
 

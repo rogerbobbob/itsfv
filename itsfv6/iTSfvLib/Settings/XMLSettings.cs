@@ -25,6 +25,9 @@ namespace iTSfvLib
 
         public string[] ArtworkLookupFileNames = new string[] { "Folder.jpg", "Cover.jpg", "Artwork.jpg" };
 
+        [Category(MyStrings.App), DefaultValue(300), Description("Minimum width and height size in pixels for an artwork")]
+        public int LowResArtworkSize { get; set; }
+
         public UserConfig UI = new UserConfig();
 
         public XMLSettings()

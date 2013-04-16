@@ -225,9 +225,6 @@ namespace iTSfvLib
             if (this.Config.UI.Tracks_ArtworkFill)
                 track.EmbedArtwork(this.Config, this.Report);
 
-            if (this.Config.UI.Checks_MissingTags)
-                track.CheckMissingTags(this.Report);
-
             if (this.Config.UI.Tracks_AlbumArtistFill)
                 track.FillAlbumArtist(Albums, this.Report);
 
@@ -236,6 +233,16 @@ namespace iTSfvLib
 
             if (this.Config.UI.Tracks_TrackCountFill)
                 track.FillTrackCount(Albums, Discs, this.Report);
+
+            // do checks after updating tracks
+
+            if (this.Config.UI.Checks_MissingTags) 
+                track.CheckMissingTags(this.Report);
+
+            if (this.Config.UI.Checks_ArtworkLowRes)
+                track.CheckLowResArtwork(this.Config, this.Report);
+
+            // write tags if modified
 
             if (track.IsModified)
                 track.WriteTagsToFile();

@@ -91,7 +91,6 @@
     <Compile Include="Helpers\Validators\TracksValidator.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskManager.cs" />
-    <Compile Include="Player\XmlArtwork.cs" />
     <Compile Include="Settings\UserConfig.cs" />
     <Compile Include="XmlTrackComparer.cs" />
   </ItemGroup>

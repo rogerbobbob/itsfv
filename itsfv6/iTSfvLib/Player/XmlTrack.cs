@@ -88,26 +88,10 @@ namespace iTSfvLib
             }
         }
 
+        public XmlArtwork Artwork { get; private set; }
         public DateTime DateAdded { get; private set; }
         public DateTime ModificationDate { get; private set; }
         public DateTime ReleaseDate { get; private set; }
-        public List<XmlArtwork> Artwork
-        {
-            get
-            {
-                if (Tags.Pictures.Length > 0)
-                {
-                    List<XmlArtwork> artworks = new List<XmlArtwork>();
-                    foreach (Picture pic in Tags.Pictures)
-                    {
-                        artworks.Add(new XmlArtwork(pic));
-                    }
-
-                    return artworks;
-                }
-                return null;
-            }
-        }
         public bool Podcast { get; private set; }
         public int BitRate { get; private set; }
         public int Duration { get; private set; }
@@ -141,6 +125,7 @@ namespace iTSfvLib
         {
             Location = fp;
             UpdateInfoFromFile(fp);
+            Artwork = new XmlArtwork(this.Tags);
         }
 
         public string GetAlbumKey()
@@ -430,6 +415,40 @@ namespace iTSfvLib
                     if (AddArtwork(fp))
                         break;
                 }
+            }
+        }
+
+        internal void CheckLowResArtwork(XMLSettings xMLSettings, ReportWriter reportWriter)
+        {
+            List<string> artwork_low = new List<string>();
+
+            if (this.Artwork.Width > 0 && this.Artwork.Width < xMLSettings.LowResArtworkSize)
+            {
+                artwork_low.Add(this.Artwork.Width.ToString());
+            }
+
+            if (this.Artwork.Height > 0 && this.Artwork.Height < xMLSettings.LowResArtworkSize)
+            {
+                artwork_low.Add(this.Artwork.Height.ToString());
+            }
+
+            if (artwork_low.Count > 0)
+                reportWriter.AddTrackLowResArtwork(this, artwork_low);
+        }
+    }
+
+    public class XmlArtwork
+    {
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
+        public XmlArtwork(Tag tag)
+        {
+            if (tag.Pictures.Length > 0)
+            {
+                Image img = Image.FromStream(new MemoryStream(tag.Pictures[0].Data.Data));
+                this.Width = img.Width;
+                this.Height = img.Height;
             }
         }
     }

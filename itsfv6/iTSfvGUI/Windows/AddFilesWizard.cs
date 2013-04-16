@@ -13,23 +13,21 @@ namespace iTSfvGUI
 {
     public partial class AddFilesWizard : Form
     {
-        private string[] _FilesDirs;
-
+        private string[] FilesDirs;
         public List<XmlTrack> TracksOrphaned { get; private set; }
-
         public List<XmlDisc> Discs { get; private set; }
 
         public AddFilesWizard(string[] filesDirs)
         {
             InitializeComponent();
-            _FilesDirs = filesDirs;
+            FilesDirs = filesDirs;
             TracksOrphaned = new List<XmlTrack>();
             Discs = new List<XmlDisc>();
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
         {
-            foreach (string pfd in _FilesDirs.ToArray<string>())
+            foreach (string pfd in FilesDirs.ToArray<string>())
             {
                 if (Directory.Exists(pfd))
                 {
@@ -67,7 +65,14 @@ namespace iTSfvGUI
 
         private XmlDisc GetDiscFromFolder(string dirPath)
         {
-            XmlDisc tempDisc = new XmlDisc(Directory.GetFiles(dirPath, "*.mp3", SearchOption.TopDirectoryOnly).ToList<string>());
+            List<XmlTrack> tracks = new List<XmlTrack>();
+            foreach (string ext in Program.Config.SupportedAudioTypes)
+            {
+                Directory.GetFiles(dirPath, string.Format("*.{0}", ext), 
+                    SearchOption.AllDirectories).ToList().ForEach(fp => tracks.Add(new XmlTrack(fp)));
+            }
+
+            XmlDisc tempDisc = new XmlDisc(tracks);
             Discs.Add(tempDisc);
             return tempDisc;
         }
@@ -87,6 +92,11 @@ namespace iTSfvGUI
                 cboGenre.Text = disc.Genre;
                 txtAlbum.Text = disc.Album;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

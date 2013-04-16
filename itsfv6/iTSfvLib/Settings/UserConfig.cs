@@ -13,6 +13,9 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue(true), Description("Check for missing tags")]
         public bool Checks_MissingTags { get; set; }
 
+       [Category(MyStrings.App), DefaultValue(true), Description("Check for tracks with low resolution artwork")]
+        public bool Checks_ArtworkLowRes { get; set; }
+
         [Category(MyStrings.App), DefaultValue(false), Description("Check for missing tags")]
         public bool Tracks_ArtworkFill { get; set; }
 
