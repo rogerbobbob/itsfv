@@ -17,6 +17,7 @@ namespace iTSfvGUI
     public partial class ValidatorWizard : Form
     {
         Dictionary<string, CheckBox> dicCheckBoxes = new Dictionary<string, CheckBox>();
+        BackgroundWorker AddFilesWorker = new BackgroundWorker() { WorkerReportsProgress = true };
 
         public ValidatorWizard()
         {
@@ -34,11 +35,6 @@ namespace iTSfvGUI
 
         public void SettingsReader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            LoadSettings();
-        }
-
-        private void LoadSettings()
-        {
             LoadDictionaryCheckBoxes(flpChecks);
             LoadDictionaryCheckBoxes(flpTracks);
             LoadDictionaryCheckBoxes(flpFileSystem);
@@ -53,8 +49,10 @@ namespace iTSfvGUI
                     chk.Checked = (bool)pi.GetValue(Program.Config.UI, null);
                 }
             }
-        }
 
+            Program.Library = new XmlLibrary(Program.Config);
+            Program.LogViewer.Show();
+        }
 
         /// <summary>
         /// Returns a UserConfig object based on the checkbox configuration
@@ -91,12 +89,6 @@ namespace iTSfvGUI
         private void ValidatorWizard_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("{0} {1}", Application.ProductName, Application.ProductVersion);
-        }
-
-        private void ValidatorWizard_Shown(object sender, EventArgs e)
-        {
-            Program.LogViewer.Show();
-            Program.Library = new XmlLibrary(Program.Config);
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
@@ -143,8 +135,15 @@ namespace iTSfvGUI
 
         private void AddFilesFolders(string[] filesDirs)
         {
-            Program.Library.AddFilesOrFolders(filesDirs);
+            AddFilesWorker.DoWork += AddFilesWorker_DoWork;
+            AddFilesWorker.ProgressChanged += Program.LogViewer.AddFilesWorker_ProgressChanged;
+            AddFilesWorker.RunWorkerCompleted += AddFilesWorker_RunWorkerCompleted;
 
+            AddFilesWorker.RunWorkerAsync(filesDirs);
+        }
+
+        void AddFilesWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             tvLibrary.Nodes.Clear();
 
             foreach (XmlAlbumArtist band in Program.Library.AlbumArtists)
@@ -163,6 +162,13 @@ namespace iTSfvGUI
                 tvLibrary.Nodes.Add(tnAlbumArtist);
             }
 
+            Program.LogViewer.AddFilesWorker_RunWorkerCompleted();
+        }
+
+        void AddFilesWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            AddFilesWorker.ReportProgress(0);
+            Program.Library.AddFilesOrFolders(e.Argument as string[]);
         }
 
         private void lbDiscs_DragEnter(object sender, DragEventArgs e)
@@ -297,6 +303,11 @@ namespace iTSfvGUI
         private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
         {
             AddFiles(respectFolderStructure: true);
+        }
+
+        private void tsmiFoldersLogs_Click(object sender, EventArgs e)
+        {
+            HelpersLib.Helpers.OpenFolder(Program.LogsFolderPath);
         }
     }
 }

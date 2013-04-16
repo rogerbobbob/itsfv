@@ -58,5 +58,17 @@ namespace iTSfvGUI
             if (Program.Config.ProduceReport)
                 report.Write(Program.LogsFolderPath);
         }
+
+        internal void AddFilesWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            tsslApp.Text = "Reading files/folders...";
+            tspbApp.ProgressBar.Style = ProgressBarStyle.Marquee;
+        }
+
+        internal void AddFilesWorker_RunWorkerCompleted()
+        {
+            tsslApp.Text = "Ready.";
+            tspbApp.ProgressBar.Style = ProgressBarStyle.Continuous;
+        }
     }
 }

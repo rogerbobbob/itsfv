@@ -53,6 +53,8 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
+            this.foldersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFoldersLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -207,7 +209,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.windowsToolStripMenuItem,
-            this.toolsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.foldersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(944, 24);
@@ -250,7 +253,7 @@
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(135, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -265,7 +268,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -296,6 +299,21 @@
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
             // 
+            // foldersToolStripMenuItem
+            // 
+            this.foldersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFoldersLogs});
+            this.foldersToolStripMenuItem.Name = "foldersToolStripMenuItem";
+            this.foldersToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.foldersToolStripMenuItem.Text = "&Folders";
+            // 
+            // tsmiFoldersLogs
+            // 
+            this.tsmiFoldersLogs.Name = "tsmiFoldersLogs";
+            this.tsmiFoldersLogs.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFoldersLogs.Text = "&Logs...";
+            this.tsmiFoldersLogs.Click += new System.EventHandler(this.tsmiFoldersLogs_Click);
+            // 
             // ValidatorWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,7 +326,6 @@
             this.Text = "iTSfv";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ValidatorWizard_FormClosing);
             this.Load += new System.EventHandler(this.ValidatorWizard_Load);
-            this.Shown += new System.EventHandler(this.ValidatorWizard_Shown);
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);
             this.Resize += new System.EventHandler(this.ValidatorWizard_Resize);
             this.tcValidator.ResumeLayout(false);
@@ -355,6 +372,8 @@
         private System.Windows.Forms.CheckBox chkTracks_TrackCountFill;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile_AddFilesWithStructure;
+        private System.Windows.Forms.ToolStripMenuItem foldersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFoldersLogs;
     }
 }
 
