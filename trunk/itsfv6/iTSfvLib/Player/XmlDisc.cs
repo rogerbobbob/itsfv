@@ -104,7 +104,8 @@ namespace iTSfvLib
         /// </summary>
         public string Key { get; private set; }
 
-        public uint DiscNumber { get; private set; }
+        public uint DiscNumber { get; set; }
+        public uint DiscCount { get; set; }
 
         public string Album
         {

@@ -43,7 +43,7 @@
             this.nudDiscNumber = new System.Windows.Forms.NumericUpDown();
             this.chkAlbum = new System.Windows.Forms.CheckBox();
             this.txtAlbum = new System.Windows.Forms.TextBox();
-            this.lbPaths = new System.Windows.Forms.ListBox();
+            this.lbTracks = new System.Windows.Forms.ListBox();
             this.tvBands = new System.Windows.Forms.TreeView();
             this.gbAlbumTags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
@@ -221,11 +221,11 @@
             // 
             // lbPaths
             // 
-            this.lbPaths.FormattingEnabled = true;
-            this.lbPaths.Location = new System.Drawing.Point(8, 176);
-            this.lbPaths.Name = "lbPaths";
-            this.lbPaths.Size = new System.Drawing.Size(464, 108);
-            this.lbPaths.TabIndex = 1;
+            this.lbTracks.FormattingEnabled = true;
+            this.lbTracks.Location = new System.Drawing.Point(8, 176);
+            this.lbTracks.Name = "lbPaths";
+            this.lbTracks.Size = new System.Drawing.Size(464, 108);
+            this.lbTracks.TabIndex = 1;
             // 
             // tvBands
             // 
@@ -241,7 +241,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 497);
             this.Controls.Add(this.tvBands);
-            this.Controls.Add(this.lbPaths);
+            this.Controls.Add(this.lbTracks);
             this.Controls.Add(this.gbAlbumTags);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddFilesWizard";
@@ -271,7 +271,7 @@
         internal System.Windows.Forms.NumericUpDown nudDiscNumber;
         internal System.Windows.Forms.CheckBox chkAlbum;
         internal System.Windows.Forms.TextBox txtAlbum;
-        private System.Windows.Forms.ListBox lbPaths;
+        private System.Windows.Forms.ListBox lbTracks;
         private System.Windows.Forms.TreeView tvBands;
         private System.Windows.Forms.Button btnSave;
     }

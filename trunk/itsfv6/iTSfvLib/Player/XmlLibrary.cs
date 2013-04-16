@@ -62,10 +62,12 @@ namespace iTSfvLib
                 }
             }
 
-            foreach (XmlTrack track in tracks)
-            {
-                AddTrack(track);
-            }
+            tracks.ForEach(x => AddTrack(x));
+        }
+
+        public void AddTracks(List<XmlTrack> tracks)
+        {
+            tracks.ForEach(x => AddTrack(x));
         }
 
         /// <summary>
@@ -122,25 +124,6 @@ namespace iTSfvLib
                 Library.Remove(o.Name);
         }
 
-        public List<XmlTrack> GetTracksFromAlbum(XmlAlbum album)
-        {
-            List<XmlTrack> tracks = new List<XmlTrack>();
-            IEnumerator iDisc = album.Discs.GetEnumerator();
-            KeyValuePair<string, XmlDisc> kvpDisc = new KeyValuePair<string, XmlDisc>();
-
-            while (iDisc.MoveNext())
-            {
-                kvpDisc = (KeyValuePair<string, XmlDisc>)iDisc.Current;
-                XmlDisc disc = kvpDisc.Value;
-                foreach (XmlTrack track in disc.Tracks)
-                {
-                    tracks.Add(track);
-                }
-            }
-
-            return tracks;
-        }
-
         public int Progress
         {
             get
@@ -168,24 +151,24 @@ namespace iTSfvLib
         /// </summary>
         private void Validate()
         {
-            IEnumerator iPlayer = Library.GetEnumerator();
+            IEnumerator e = Library.GetEnumerator();
             KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
 
-            while (iPlayer.MoveNext())
+            while (e.MoveNext())
             {
-                currBand = (KeyValuePair<string, XmlAlbumArtist>)iPlayer.Current;
+                currBand = (KeyValuePair<string, XmlAlbumArtist>)e.Current;
                 ValidateBand(currBand.Value);
             }
         }
 
         public void ValidateBand(XmlAlbumArtist band)
         {
-            IEnumerator iBand = band.Albums.GetEnumerator();
+            IEnumerator e = band.Albums.GetEnumerator();
             KeyValuePair<string, XmlAlbum> currAlbum = new KeyValuePair<string, XmlAlbum>();
 
-            while (iBand.MoveNext())
+            while (e.MoveNext())
             {
-                currAlbum = (KeyValuePair<string, XmlAlbum>)iBand.Current;
+                currAlbum = (KeyValuePair<string, XmlAlbum>)e.Current;
                 ValidateAlbum(currAlbum.Value);
             }
         }
@@ -216,8 +199,6 @@ namespace iTSfvLib
             {
                 ValidateTrack(track);
             }
-
-
         }
 
         public void ValidateTrack(XmlTrack track)

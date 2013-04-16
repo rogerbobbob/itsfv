@@ -55,7 +55,7 @@ namespace iTSfvGUI
                 tsslApp.Text = "Ready.";
             }
 
-            if (Program.Config.ProduceReport)
+            if (Program.Config.ProduceReports)
                 report.Write(Program.LogsFolderPath);
         }
 
