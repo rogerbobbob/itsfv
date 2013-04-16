@@ -57,6 +57,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Release\</OutputPath>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="policy.2.0.taglib-sharp">
@@ -111,6 +112,7 @@
     <Compile Include="Tasks\TaskManager.cs" />
     <Compile Include="Player\XmlArtwork.cs" />
     <Compile Include="Settings\UserConfig.cs" />
+    <Compile Include="XmlTrackComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\ToDo.txt" />

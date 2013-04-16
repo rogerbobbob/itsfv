@@ -17,8 +17,13 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue(true), Description("All the tracks in a folder are treated as having the same Album Artist")]
         public bool TreatAsOneBandPerFolder { get; set; }
 
-        [Category(MyStrings.App), DefaultValue(true), Description("Product a report after validating")]
-        public bool ProductReport { get; set; }
+        [Category(MyStrings.App), DefaultValue(true), Description("Produce a report after validating")]
+        public bool ProduceReport { get; set; }
+
+        [Category(MyStrings.App), DefaultValue("Folder"), Description("Artwork file name without extension e.g. Folder")]
+        public string ArtworkFileNameWithoutExtension { get; set; }
+
+        public UserConfig UI = new UserConfig();
 
         public XMLSettings()
         {

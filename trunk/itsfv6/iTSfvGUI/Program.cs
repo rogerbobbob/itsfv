@@ -6,6 +6,7 @@ using iTSfvLib;
 using HelpersLib;
 using System.IO;
 using System.Threading;
+using System.ComponentModel;
 
 namespace iTSfvGUI
 {
@@ -15,22 +16,18 @@ namespace iTSfvGUI
         private static readonly string LogFileName = ApplicationName + "Log-{0}.log";
         public static bool IsPortable { get; private set; }
 
+        public static BackgroundWorker SettingsReader = new BackgroundWorker();
         public static XMLSettings Config = null;
         public static Adapter Linker = new Adapter();
 
         // Windows
-        public static ValidatorWizard gValidator = null;
+        public static ValidatorWizard MainForm = null;
         public static LogViewer LogViewer = null;
-        public static MainWindow gMainWindow = null;
         public static XmlLibrary Library = null;
-
-        public static XMLSettings ConfigCore = null;
-        public static UserConfig ConfigUser = new UserConfig();
 
         private static readonly string DefaultPersonalPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ApplicationName);
         private static readonly string PortablePersonalPath = Path.Combine(Application.StartupPath, ApplicationName);
         internal static readonly string ConfigCoreFileName = ApplicationName + "Settings.json";
-        internal static readonly string ConfigUserFileName = ApplicationName + "UserConfig.json";
 
         public static SynchronizationContext TreadUI = null;
 
@@ -52,14 +49,6 @@ namespace iTSfvGUI
             get
             {
                 return Path.Combine(PersonalPath, ConfigCoreFileName);
-            }
-        }
-
-        private static string ConfigUserFilePath
-        {
-            get
-            {
-                return Path.Combine(PersonalPath, ConfigUserFileName);
             }
         }
 
@@ -88,21 +77,23 @@ namespace iTSfvGUI
                 LogViewer = new LogViewer();
                 DebugHelper.MyLogger = LogViewer.Logger;
 
-                gValidator = new ValidatorWizard();
-                gMainWindow = new MainWindow();
+                MainForm = new ValidatorWizard();
+                SettingsReader.DoWork += SettingsReader_DoWork;
+                SettingsReader.RunWorkerCompleted += MainForm.SettingsReader_RunWorkerCompleted;
+                SettingsReader.RunWorkerAsync();
 
-                Program.ConfigUser = UserConfig.Load(ConfigUserFilePath);
-                Program.ConfigCore = XMLSettings.Read(ConfigCoreFilePath);
-
-                Application.Run(gValidator);
-
-                Program.ConfigCore.Write(ConfigCoreFilePath);
-                Program.ConfigUser.Save(ConfigUserFilePath);
+                Application.Run(MainForm);
+                Program.Config.Write(ConfigCoreFilePath);
             }
             finally
             {
 
             }
+        }
+
+        static void SettingsReader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Program.Config = XMLSettings.Read(ConfigCoreFilePath);
         }
     }
 }

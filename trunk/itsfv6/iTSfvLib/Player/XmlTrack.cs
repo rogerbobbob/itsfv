@@ -363,5 +363,31 @@ namespace iTSfvLib
                 }
             }
         }
+
+        internal bool ExportArtwork(XMLSettings CoreConfig)
+        {
+            if (this.Tags.Pictures.Length > 0)
+            {
+                try
+                {
+                    string ext = this.Tags.Pictures[0].MimeType.ToString().Substring(this.Tags.Pictures[0].ToString().IndexOf("/") - 1).Replace("jpeg", "jpg");
+
+                    string fp = Path.Combine(Path.GetDirectoryName(this.Location), CoreConfig.ArtworkFileNameWithoutExtension + "." + ext);
+
+                    using (FileStream fs = new FileStream(fp, FileMode.Create))
+                    {
+                        fs.Write(this.Tags.Pictures[0].Data.Data, 0, this.Tags.Pictures[0].Data.Data.Length);
+                    }
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteException(ex, "while exporting artwork");
+                }
+            }
+
+            return false;
+        }
     }
 }

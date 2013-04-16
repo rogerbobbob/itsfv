@@ -32,6 +32,11 @@ namespace iTSfvGUI
             }
         }
 
+        public void SettingsReader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LoadSettings();
+        }
+
         private void LoadSettings()
         {
             LoadDictionaryCheckBoxes(flpChecks);
@@ -45,7 +50,7 @@ namespace iTSfvGUI
                 if (pi.PropertyType == typeof(Boolean) && dicCheckBoxes.ContainsKey(checkBoxName))
                 {
                     CheckBox chk = dicCheckBoxes[checkBoxName];
-                    chk.Checked = (bool)pi.GetValue(Program.ConfigUser, null);
+                    chk.Checked = (bool)pi.GetValue(Program.Config.UI, null);
                 }
             }
         }
@@ -86,15 +91,12 @@ namespace iTSfvGUI
         private void ValidatorWizard_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("{0} {1}", Application.ProductName, Application.ProductVersion);
-            Program.Config = new XMLSettings(); // todo: background worker
         }
 
         private void ValidatorWizard_Shown(object sender, EventArgs e)
         {
             Program.LogViewer.Show();
-            Program.Library = new XmlLibrary(Program.Config, Program.ConfigUser);
-
-            LoadSettings();
+            Program.Library = new XmlLibrary(Program.Config);
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)
@@ -254,7 +256,7 @@ namespace iTSfvGUI
 
             if (UserConfig.IsConfigured(userConfig))
             {
-                XmlLibrary selectedLibrary = new XmlLibrary(Program.ConfigCore, userConfig);
+                XmlLibrary selectedLibrary = new XmlLibrary(Program.Config);
 
                 if (lbDiscs.SelectedItem != null)
                 {
@@ -289,7 +291,7 @@ namespace iTSfvGUI
 
         private void ValidatorWizard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveUserConfig(Program.ConfigUser);
+            SaveUserConfig(Program.Config.UI);
         }
 
         private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
