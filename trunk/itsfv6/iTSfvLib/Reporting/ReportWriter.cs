@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace iTSfvLib
@@ -21,6 +22,11 @@ namespace iTSfvLib
             TracksLowResArtwork = new Dictionary<XmlTrack, List<string>>();
         }
 
+        public void AddTrackLowResArtwork(XmlTrack track, List<string> artwork_dimensions)
+        {
+            TracksLowResArtwork.Add(track, artwork_dimensions);
+        }
+
         public void AddTrackMissingTags(XmlTrack track, List<string> missingTags)
         {
             TracksMissingTags.Add(track, missingTags);
@@ -35,7 +41,8 @@ namespace iTSfvLib
         public void Write(string workingDir)
         {
             this.WorkingDir = workingDir;
-            Write(GetReportPath("TracksMissingTags"), TracksMissingTags);
+            new Thread(() => Write(GetReportPath("TracksMissingTags"), TracksMissingTags)).Start();
+            new Thread(() => Write(GetReportPath("TracksLowResArtwork"), TracksLowResArtwork)).Start();
         }
 
         private string GetReportPath(string reportName)

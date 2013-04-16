@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFilesWizard));
             this.gbAlbumTags = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.cboGenre = new System.Windows.Forms.ComboBox();
             this.nudYear = new System.Windows.Forms.NumericUpDown();
             this.chkYear = new System.Windows.Forms.CheckBox();
@@ -43,7 +45,6 @@
             this.txtAlbum = new System.Windows.Forms.TextBox();
             this.lbPaths = new System.Windows.Forms.ListBox();
             this.tvBands = new System.Windows.Forms.TreeView();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbAlbumTags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscCount)).BeginInit();
@@ -52,7 +53,7 @@
             // 
             // gbAlbumTags
             // 
-            this.gbAlbumTags.Controls.Add(this.button1);
+            this.gbAlbumTags.Controls.Add(this.btnSave);
             this.gbAlbumTags.Controls.Add(this.cboGenre);
             this.gbAlbumTags.Controls.Add(this.nudYear);
             this.gbAlbumTags.Controls.Add(this.chkYear);
@@ -72,6 +73,16 @@
             this.gbAlbumTags.TabIndex = 2;
             this.gbAlbumTags.TabStop = false;
             this.gbAlbumTags.Text = "Disc Tags";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(368, 152);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(74, 22);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cboGenre
             // 
@@ -224,15 +235,6 @@
             this.tvBands.TabIndex = 0;
             this.tvBands.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBands_NodeMouseClick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(368, 152);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 22);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "&Save";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // AddFilesWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +243,7 @@
             this.Controls.Add(this.tvBands);
             this.Controls.Add(this.lbPaths);
             this.Controls.Add(this.gbAlbumTags);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddFilesWizard";
             this.Text = "AddFilesWizard";
             this.Load += new System.EventHandler(this.AddFilesWizard_Load);
@@ -270,6 +273,6 @@
         internal System.Windows.Forms.TextBox txtAlbum;
         private System.Windows.Forms.ListBox lbPaths;
         private System.Windows.Forms.TreeView tvBands;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
     }
 }
