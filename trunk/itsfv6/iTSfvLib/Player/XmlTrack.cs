@@ -188,7 +188,7 @@ namespace iTSfvLib
             }
             catch (Exception ex)
             {
-                FileSystem.AppendDebug("Error playing track", ex);
+                DebugHelper.WriteException(ex, "Error playing track");
             }
         }
 
@@ -204,7 +204,7 @@ namespace iTSfvLib
             }
             catch (Exception ex)
             {
-                FileSystem.AppendDebug("Error updating info from file", ex);
+                DebugHelper.WriteException(ex, "Error updating info from file");
             }
         }
 
@@ -212,6 +212,10 @@ namespace iTSfvLib
         {
             try
             {
+                FileInfo fileInfo = new FileInfo(Location);
+                fileInfo.IsReadOnly = false;
+                fileInfo.Refresh();
+
                 using (TagLib.File f = TagLib.File.Create(Location))
                 {
                     f.Tag.Track = Tags.Track;
@@ -230,7 +234,7 @@ namespace iTSfvLib
             }
             catch (Exception ex)
             {
-                FileSystem.AppendDebug("Error writing tags to file", ex);
+                DebugHelper.WriteException(ex, "Error writing tags to file");
             }
         }
 
@@ -238,10 +242,6 @@ namespace iTSfvLib
         {
             if (System.IO.File.Exists(fp))
             {
-                FileInfo fileInfo = new FileInfo(fp);
-                fileInfo.IsReadOnly = false;
-                fileInfo.Refresh();
-
                 TagLib.Picture picture = new Picture(fp);
                 TagLib.Id3v2.AttachedPictureFrame albumCoverPictFrame = new TagLib.Id3v2.AttachedPictureFrame(picture);
                 albumCoverPictFrame.MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg;

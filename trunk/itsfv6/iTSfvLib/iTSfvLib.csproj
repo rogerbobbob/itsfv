@@ -95,7 +95,6 @@
     <Compile Include="Helpers\Validators\FileSystemValidator.cs" />
     <Compile Include="Helpers\Validators\LibraryValidator.cs" />
     <Compile Include="Helpers\Validators\StandardsChecker.cs" />
-    <Compile Include="Static\FileSystem.cs" />
     <Compile Include="Player\XmlAlbumArtist.cs" />
     <Compile Include="Helpers\Finders\DiscNumberFinder.cs" />
     <Compile Include="Player\XmlAlbum.cs" />
