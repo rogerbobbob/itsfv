@@ -95,7 +95,7 @@ namespace iTSfvGUI
 
         private void ValidatorWizard_Load(object sender, EventArgs e)
         {
-            this.Text = string.Format("{0} {1}", Application.ProductName, Application.ProductVersion);
+            this.Text = Program.Title;
         }
 
         private void ValidatorWizard_Move(object sender, EventArgs e)

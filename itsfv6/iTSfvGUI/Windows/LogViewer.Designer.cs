@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogViewer));
             this.lbLogs = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -44,7 +45,7 @@
             this.lbLogs.FormattingEnabled = true;
             this.lbLogs.Location = new System.Drawing.Point(8, 8);
             this.lbLogs.Name = "lbLogs";
-            this.lbLogs.Size = new System.Drawing.Size(768, 316);
+            this.lbLogs.Size = new System.Drawing.Size(768, 303);
             this.lbLogs.TabIndex = 0;
             // 
             // statusStrip1
@@ -53,7 +54,7 @@
             this.toolStripStatusLabel1,
             this.tsslApp,
             this.tspbApp});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 340);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 1;
@@ -68,7 +69,7 @@
             // tsslApp
             // 
             this.tsslApp.Name = "tsslApp";
-            this.tsslApp.Size = new System.Drawing.Size(620, 17);
+            this.tsslApp.Size = new System.Drawing.Size(651, 17);
             this.tsslApp.Spring = true;
             this.tsslApp.Text = "Ready";
             this.tsslApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -82,9 +83,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 362);
+            this.ClientSize = new System.Drawing.Size(784, 361);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lbLogs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "LogViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Log Viewer";

@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidatorWizard));
             this.tcValidator = new System.Windows.Forms.TabControl();
             this.tpChecks = new System.Windows.Forms.TabPage();
             this.flpChecks = new System.Windows.Forms.FlowLayoutPanel();
             this.chkChecks_MissingTags = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.flpTracks = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkTracks_ArtworkFill = new System.Windows.Forms.CheckBox();
             this.chkTracks_GenreFill = new System.Windows.Forms.CheckBox();
             this.chkTracks_AlbumArtistFill = new System.Windows.Forms.CheckBox();
             this.chkTracks_TrackCountFill = new System.Windows.Forms.CheckBox();
@@ -55,7 +57,6 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
-            this.chkTracks_ArtworkFill = new System.Windows.Forms.CheckBox();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -131,6 +132,16 @@
             this.flpTracks.Name = "flpTracks";
             this.flpTracks.Size = new System.Drawing.Size(294, 379);
             this.flpTracks.TabIndex = 2;
+            // 
+            // chkTracks_ArtworkFill
+            // 
+            this.chkTracks_ArtworkFill.AutoSize = true;
+            this.chkTracks_ArtworkFill.Location = new System.Drawing.Point(3, 3);
+            this.chkTracks_ArtworkFill.Name = "chkTracks_ArtworkFill";
+            this.chkTracks_ArtworkFill.Size = new System.Drawing.Size(149, 17);
+            this.chkTracks_ArtworkFill.TabIndex = 3;
+            this.chkTracks_ArtworkFill.Text = "Embed artwork from folder";
+            this.chkTracks_ArtworkFill.UseVisualStyleBackColor = true;
             // 
             // chkTracks_GenreFill
             // 
@@ -316,16 +327,6 @@
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
             // 
-            // chkTracks_ArtworkFill
-            // 
-            this.chkTracks_ArtworkFill.AutoSize = true;
-            this.chkTracks_ArtworkFill.Location = new System.Drawing.Point(3, 3);
-            this.chkTracks_ArtworkFill.Name = "chkTracks_ArtworkFill";
-            this.chkTracks_ArtworkFill.Size = new System.Drawing.Size(149, 17);
-            this.chkTracks_ArtworkFill.TabIndex = 3;
-            this.chkTracks_ArtworkFill.Text = "Embed artwork from folder";
-            this.chkTracks_ArtworkFill.UseVisualStyleBackColor = true;
-            // 
             // ValidatorWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,6 +334,7 @@
             this.ClientSize = new System.Drawing.Size(944, 441);
             this.Controls.Add(this.tlpApp);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(960, 480);
             this.Name = "ValidatorWizard";
             this.Text = "iTSfv";
