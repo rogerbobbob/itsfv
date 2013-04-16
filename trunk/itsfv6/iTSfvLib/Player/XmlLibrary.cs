@@ -22,19 +22,19 @@ namespace iTSfvLib
         public List<XmlAlbum> Albums { get; private set; }  // provides a faster way to iterate through albums
         public List<XmlDisc> Discs { get; private set; }    // provides a faster way to iterate through discs
 
-        private XMLSettings CoreConfig = null;
+        private XMLSettings Config = null;
 
         public double TracksCount = 0;
         public double TrackCurrent = 0;
 
-        public XmlLibrary(XMLSettings coreConfig)
+        public XmlLibrary(XMLSettings config)
         {
             Report = new ReportWriter();
             AlbumArtists = new List<XmlAlbumArtist>();
             Albums = new List<XmlAlbum>();
             Discs = new List<XmlDisc>();
 
-            CoreConfig = coreConfig;
+            Config = config;
 
             Worker.DoWork += Worker_DoWork;
         }
@@ -48,7 +48,7 @@ namespace iTSfvLib
                 if (Directory.Exists(pfd))
                 {
                     // todo: respect windows explorer folder structure
-                    foreach (string ext in CoreConfig.SupportedAudioTypes)
+                    foreach (string ext in Config.SupportedAudioTypes)
                     {
                         foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
                         {
@@ -198,11 +198,11 @@ namespace iTSfvLib
                 ValidateDisc(((KeyValuePair<string, XmlDisc>)e.Current).Value);
             }
 
-            if (this.CoreConfig.UI.FileSystem_ArtworkJpgExport)
+            if (this.Config.UI.FileSystem_ArtworkJpgExport)
             {
                 foreach (XmlTrack track in album.GetTracks())
                 {
-                    if (track.ExportArtwork(CoreConfig))
+                    if (track.ExportArtwork(Config))
                     {
                         break;
                     }
@@ -222,16 +222,16 @@ namespace iTSfvLib
 
         public void ValidateTrack(XmlTrack track)
         {
-            if (this.CoreConfig.UI.Checks_MissingTags)
+            if (this.Config.UI.Checks_MissingTags)
                 track.CheckMissingTags(this.Report);
 
-            if (this.CoreConfig.UI.Tracks_AlbumArtistFill)
+            if (this.Config.UI.Tracks_AlbumArtistFill)
                 track.FillAlbumArtist(Albums, this.Report);
 
-            if (this.CoreConfig.UI.Tracks_GenreFill)
+            if (this.Config.UI.Tracks_GenreFill)
                 track.FillGenre(Discs, this.Report);
 
-            if (this.CoreConfig.UI.Tracks_TrackCountFill)
+            if (this.Config.UI.Tracks_TrackCountFill)
                 track.FillTrackCount(Albums, Discs, this.Report);
 
             if (track.IsModified)
