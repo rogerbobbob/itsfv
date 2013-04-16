@@ -23,6 +23,8 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue("Folder"), Description("Artwork file name without extension e.g. Folder")]
         public string ArtworkFileNameWithoutExtension { get; set; }
 
+        public string[] ArtworkLookupFileNames = new string[] { "Folder.jpg", "Cover.jpg", "Artwork.jpg" };
+
         public UserConfig UI = new UserConfig();
 
         public XMLSettings()
