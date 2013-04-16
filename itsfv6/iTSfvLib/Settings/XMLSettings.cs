@@ -17,15 +17,15 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue(true), Description("All the tracks in a folder are treated as having the same Album Artist")]
         public bool TreatAsOneBandPerFolder { get; set; }
 
-        [Category(MyStrings.App), DefaultValue(true), Description("Produce a report after validating")]
-        public bool ProduceReport { get; set; }
+        [Category(MyStrings.App), DefaultValue(true), Description("Produce reports after validating")]
+        public bool ProduceReports { get; set; }
 
         [Category(MyStrings.App), DefaultValue("Folder"), Description("Artwork file name without extension e.g. Folder")]
         public string ArtworkFileNameWithoutExtension { get; set; }
 
         public string[] ArtworkLookupFileNames = new string[] { "Folder.jpg", "Cover.jpg", "Artwork.jpg" };
 
-        [Category(MyStrings.App), DefaultValue(300), Description("Minimum width and height size in pixels for an artwork")]
+        [Category(MyStrings.App), DefaultValue(300), Description("Minimum width and height size in pixels for artwork")]
         public int LowResArtworkSize { get; set; }
 
         public UserConfig UI = new UserConfig();

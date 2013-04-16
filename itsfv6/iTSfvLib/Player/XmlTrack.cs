@@ -128,6 +128,11 @@ namespace iTSfvLib
             Artwork = new XmlArtwork(this.Tags);
         }
 
+        public override string ToString()
+        {
+            return this.Location;
+        }
+
         public string GetAlbumKey()
         {
             if (!string.IsNullOrEmpty(this.AlbumArtist) && !string.IsNullOrEmpty(this.Tags.Album))
@@ -235,6 +240,7 @@ namespace iTSfvLib
                 pictFrames[0] = (IPicture)albumCoverPictFrame;
                 this.Tags.Pictures = pictFrames;
 
+                DebugHelper.WriteLine(this.FileName + " --> embedded artwork");
                 return IsModified = true;
             }
 
@@ -253,13 +259,12 @@ namespace iTSfvLib
             albumCoverPictFrame.Type = TagLib.PictureType.FrontCover;
             this.Tags.Pictures = new IPicture[1] { (IPicture)albumCoverPictFrame };
 
+            DebugHelper.WriteLine(this.FileName + " --> embedded artwork");
             IsModified = true;
         }
 
         public bool CheckMissingTags(ReportWriter report)
         {
-            DebugHelper.WriteLine("Checking for missing tags in " + this.FileName);
-
             List<string> missingTags = new List<string>();
 
             if (string.IsNullOrEmpty(this.Tags.Title))
@@ -327,8 +332,9 @@ namespace iTSfvLib
             {
                 if (this.Tags.TrackCount == 0)
                 {
-                    IsModified = true;
                     this.Tags.TrackCount = (uint)disc.Tracks.Count;
+                    IsModified = true;
+                    DebugHelper.WriteLine(this.FileName + " --> filled TrackCount");
                 }
             }
 
@@ -339,12 +345,14 @@ namespace iTSfvLib
                 {
                     this.Tags.DiscCount = (uint)album.Discs.Count;
                     IsModified = true;
+                    DebugHelper.WriteLine(this.FileName + " --> filled DiscCount");
                 }
 
                 if (this.Tags.Disc == 0 && album.Discs.Count == 1)
                 {
                     this.Tags.Disc = 1; // for single disc albums you can specify DiscNumber
                     IsModified = true;
+                    DebugHelper.WriteLine(this.FileName + " --> filled DiscNumber");
                 }
             }
         }
@@ -358,6 +366,7 @@ namespace iTSfvLib
                 {
                     this.Tags.AlbumArtists = new string[] { album.AlbumArtist };
                     IsModified = true;
+                    DebugHelper.WriteLine(this.FileName + " --> filled AlbumArtist");
                 }
             }
         }
@@ -371,6 +380,7 @@ namespace iTSfvLib
                 {
                     this.Tags.Genres = new string[] { disc.Genre };
                     IsModified = true;
+                    DebugHelper.WriteLine(this.FileName + " --> filled Genre");
                 }
             }
         }
@@ -391,6 +401,7 @@ namespace iTSfvLib
                     using (FileStream fs = new FileStream(fp, FileMode.Create))
                     {
                         fs.Write(this.Tags.Pictures[0].Data.Data, 0, this.Tags.Pictures[0].Data.Data.Length);
+                        DebugHelper.WriteLine(this.FileName + " --> exported artwork");
                     }
 
                     return true;

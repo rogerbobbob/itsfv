@@ -14,6 +14,7 @@ namespace iTSfvGUI
     public partial class AddFilesWizard : Form
     {
         private string[] FilesDirs;
+        public List<XmlTrack> Tracks { get; private set; }
         public List<XmlTrack> TracksOrphaned { get; private set; }
         public List<XmlDisc> Discs { get; private set; }
 
@@ -23,6 +24,7 @@ namespace iTSfvGUI
             FilesDirs = filesDirs;
             TracksOrphaned = new List<XmlTrack>();
             Discs = new List<XmlDisc>();
+            Tracks = new List<XmlTrack>();
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
@@ -35,7 +37,9 @@ namespace iTSfvGUI
                 }
                 else if (File.Exists(pfd))
                 {
-                    TracksOrphaned.Add(new XmlTrack(pfd));
+                    XmlTrack track = new XmlTrack(pfd);
+                    Tracks.Add(track);
+                    TracksOrphaned.Add(track);
                 }
             }
 
@@ -68,12 +72,16 @@ namespace iTSfvGUI
             List<XmlTrack> tracks = new List<XmlTrack>();
             foreach (string ext in Program.Config.SupportedAudioTypes)
             {
-                Directory.GetFiles(dirPath, string.Format("*.{0}", ext), 
-                    SearchOption.AllDirectories).ToList().ForEach(fp => tracks.Add(new XmlTrack(fp)));
+                Directory.GetFiles(dirPath, string.Format("*.{0}", ext),
+                    SearchOption.TopDirectoryOnly).ToList().ForEach(delegate(string fp)
+                {
+                    tracks.Add(new XmlTrack(fp));
+                });
             }
 
             XmlDisc tempDisc = new XmlDisc(tracks);
             Discs.Add(tempDisc);
+            this.Tracks.AddRange(tempDisc.Tracks.ToArray());
             return tempDisc;
         }
 
@@ -83,20 +91,44 @@ namespace iTSfvGUI
             if (tn != null && tn.Tag != null)
             {
                 XmlDisc disc = tn.Tag as XmlDisc;
-                lbPaths.Items.Clear();
-                foreach (XmlTrack track in disc.Tracks)
-                {
-                    lbPaths.Items.Add(track.Location);
-                }
+                lbTracks.Items.Clear();
+                lbTracks.Items.AddRange(disc.Tracks.ToArray());
+
                 cboAlbumArtist.Text = disc.AlbumArtist;
                 cboGenre.Text = disc.Genre;
                 txtAlbum.Text = disc.Album;
+
+                nudDiscNumber.Value = disc.DiscNumber;
+                nudDiscCount.Value = disc.DiscCount;
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (lbTracks.Items.Count > 0)
+            {
+                if (!string.IsNullOrEmpty(cboAlbumArtist.Text))
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.AlbumArtists = new string[] { cboAlbumArtist.Text });
 
+                if (!string.IsNullOrEmpty(cboGenre.Text))
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Genres = new string[] { cboGenre.Text });
+
+                if (!string.IsNullOrEmpty(txtAlbum.Text))
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Album = txtAlbum.Text);
+
+                if (chkDisc.Checked)
+                {
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
+
+                    if (tvBands.SelectedNode.Tag is XmlDisc)
+                    {
+                        XmlDisc disc = tvBands.SelectedNode.Tag as XmlDisc;
+                        disc.DiscNumber = (uint)nudDiscNumber.Value;
+                        disc.DiscCount = (uint)nudDiscCount.Value;
+                    }
+                }
+            }
         }
     }
 }

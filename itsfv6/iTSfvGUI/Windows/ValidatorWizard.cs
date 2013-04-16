@@ -140,6 +140,8 @@ namespace iTSfvGUI
             AddFilesFolders(pathsFilesFolders);
         }
 
+
+
         private void AddFilesFolders(string[] filesDirs)
         {
             AddFilesWorker.DoWork += AddFilesWorker_DoWork;
@@ -149,7 +151,18 @@ namespace iTSfvGUI
             AddFilesWorker.RunWorkerAsync(filesDirs);
         }
 
+        private void AddTracks(List<XmlTrack> tracks)
+        {
+            Program.Library.AddTracks(tracks);
+            UpdateAlbumArtistTree();
+        }
+
         void AddFilesWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            UpdateAlbumArtistTree();
+        }
+
+        void UpdateAlbumArtistTree()
         {
             tvLibrary.Nodes.Clear();
 
@@ -206,7 +219,7 @@ namespace iTSfvGUI
             AddFilesWizard afw = new AddFilesWizard(filesDirs);
             afw.ShowDialog();
 
-            AddFilesFolders(filesDirs);
+            AddTracks(afw.Tracks);
         }
 
         #endregion Helpers
