@@ -16,7 +16,7 @@ namespace iTSfvGUI
 {
     public partial class ValidatorWizard : Form
     {
-        Dictionary<string, CheckBox> dicCheckBoxes = new Dictionary<string, CheckBox>();
+
         BackgroundWorker AddFilesWorker = new BackgroundWorker() { WorkerReportsProgress = true };
 
         public ValidatorWizard()
@@ -24,7 +24,7 @@ namespace iTSfvGUI
             InitializeComponent();
         }
 
-        private void LoadDictionaryCheckBoxes(FlowLayoutPanel flp)
+        private void LoadDictionaryCheckBoxes(Dictionary<string, CheckBox> dicCheckBoxes, FlowLayoutPanel flp)
         {
             foreach (Control ctl in flp.Controls)
             {
@@ -35,9 +35,7 @@ namespace iTSfvGUI
 
         public void SettingsReader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            LoadDictionaryCheckBoxes(flpChecks);
-            LoadDictionaryCheckBoxes(flpTracks);
-            LoadDictionaryCheckBoxes(flpFileSystem);
+            Dictionary<string, CheckBox> dicCheckBoxes = GetDictionaryCheckBoxes();
 
             PropertyInfo[] properties = typeof(UserConfig).GetProperties();
             foreach (PropertyInfo pi in properties)
@@ -54,6 +52,15 @@ namespace iTSfvGUI
             Program.LogViewer.Show();
         }
 
+        private Dictionary<string, CheckBox> GetDictionaryCheckBoxes()
+        {
+            Dictionary<string, CheckBox> dicCheckBoxes = new Dictionary<string, CheckBox>();
+            LoadDictionaryCheckBoxes(dicCheckBoxes, flpChecks);
+            LoadDictionaryCheckBoxes(dicCheckBoxes, flpTracks);
+            LoadDictionaryCheckBoxes(dicCheckBoxes, flpFileSystem);
+            return dicCheckBoxes;
+        }
+
         /// <summary>
         /// Returns a UserConfig object based on the checkbox configuration
         /// </summary>
@@ -62,9 +69,9 @@ namespace iTSfvGUI
         private UserConfig SaveUserConfig(UserConfig userConfig = null)
         {
             if (userConfig == null)
-                userConfig = new UserConfig(); 
+                userConfig = new UserConfig();
 
-            IEnumerator e = dicCheckBoxes.GetEnumerator();
+            IEnumerator e = GetDictionaryCheckBoxes().GetEnumerator();
             KeyValuePair<string, CheckBox> kvp = new KeyValuePair<string, CheckBox>();
 
             while (e.MoveNext())

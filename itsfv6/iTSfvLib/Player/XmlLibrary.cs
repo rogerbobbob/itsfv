@@ -222,6 +222,9 @@ namespace iTSfvLib
 
         public void ValidateTrack(XmlTrack track)
         {
+            if (this.Config.UI.Tracks_ArtworkFill)
+                track.EmbedArtwork(this.Config, this.Report);
+
             if (this.Config.UI.Checks_MissingTags)
                 track.CheckMissingTags(this.Report);
 

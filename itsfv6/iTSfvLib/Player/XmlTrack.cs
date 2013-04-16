@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using TagLib;
 
 namespace iTSfvLib
@@ -223,6 +224,7 @@ namespace iTSfvLib
                     f.Tag.Album = Tags.Album;
                     f.Tag.Genres = Tags.Genres;
                     f.Tag.Year = Tags.Year;
+                    f.Tag.Pictures = Tags.Pictures;
                     f.Save();
                 }
             }
@@ -232,17 +234,41 @@ namespace iTSfvLib
             }
         }
 
-        public void AddArtwork(string fp)
+        public bool AddArtwork(string fp)
         {
-            using (Image img = Image.FromFile(fp))
+            if (System.IO.File.Exists(fp))
             {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    img.Save(ms, ImageFormat.Jpeg);
-                    TagLib.IPicture[] pictFrames = { new Picture(ms.GetBuffer()) };
-                    this.Tags.Pictures = pictFrames;
-                }
+                FileInfo fileInfo = new FileInfo(fp);
+                fileInfo.IsReadOnly = false;
+                fileInfo.Refresh();
+
+                TagLib.Picture picture = new Picture(fp);
+                TagLib.Id3v2.AttachedPictureFrame albumCoverPictFrame = new TagLib.Id3v2.AttachedPictureFrame(picture);
+                albumCoverPictFrame.MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg;
+                albumCoverPictFrame.Type = TagLib.PictureType.FrontCover;
+                TagLib.IPicture[] pictFrames = new IPicture[1];
+                pictFrames[0] = (IPicture)albumCoverPictFrame;
+                this.Tags.Pictures = pictFrames;
+
+                return IsModified = true;
             }
+
+            return false;
+        }
+
+        public void AddArtwork(Image img)
+        {
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] myBytes = ms.ToArray();
+            ByteVector byteVector = new ByteVector(myBytes, myBytes.Length);
+            TagLib.Picture picture = new Picture(byteVector);
+            TagLib.Id3v2.AttachedPictureFrame albumCoverPictFrame = new TagLib.Id3v2.AttachedPictureFrame(picture);
+            albumCoverPictFrame.MimeType = System.Net.Mime.MediaTypeNames.Image.Jpeg;
+            albumCoverPictFrame.Type = TagLib.PictureType.FrontCover;
+            this.Tags.Pictures = new IPicture[1] { (IPicture)albumCoverPictFrame };
+
+            IsModified = true;
         }
 
         public bool CheckMissingTags(ReportWriter report)
@@ -364,15 +390,18 @@ namespace iTSfvLib
             }
         }
 
-        internal bool ExportArtwork(XMLSettings CoreConfig)
+        internal bool ExportArtwork(XMLSettings config)
         {
             if (this.Tags.Pictures.Length > 0)
             {
                 try
                 {
-                    string ext = this.Tags.Pictures[0].MimeType.ToString().Substring(this.Tags.Pictures[0].ToString().IndexOf("/") - 1).Replace("jpeg", "jpg");
+                    string ext = "jpg";
+                    string[] mime = this.Tags.Pictures[0].MimeType.ToString().Trim().Split('/');
+                    if (mime.Length > 1)
+                        ext = mime[1].Replace("jpeg", "jpg");
 
-                    string fp = Path.Combine(Path.GetDirectoryName(this.Location), CoreConfig.ArtworkFileNameWithoutExtension + "." + ext);
+                    string fp = Path.Combine(Path.GetDirectoryName(this.Location), config.ArtworkFileNameWithoutExtension + "." + ext);
 
                     using (FileStream fs = new FileStream(fp, FileMode.Create))
                     {
@@ -388,6 +417,20 @@ namespace iTSfvLib
             }
 
             return false;
+        }
+
+
+        internal void EmbedArtwork(XMLSettings xMLSettings, ReportWriter reportWriter)
+        {
+            if (this.Tags.Pictures.Length == 0)
+            {
+                foreach (string fileName in xMLSettings.ArtworkLookupFileNames)
+                {
+                    string fp = Path.Combine(Path.GetDirectoryName(this.Location), fileName);
+                    if (AddArtwork(fp))
+                        break;
+                }
+            }
         }
     }
 }
