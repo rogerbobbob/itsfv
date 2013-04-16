@@ -7,6 +7,7 @@ using HelpersLib;
 using System.IO;
 using System.Threading;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace iTSfvGUI
 {
@@ -60,6 +61,31 @@ namespace iTSfvGUI
             }
         }
 
+        public static string Title
+        {
+            get
+            {
+                string title = string.Format("{0} {1} r{2}", ApplicationName, Application.ProductVersion, AppRevision);
+                if (IsPortable) title += " Portable";
+                return title;
+            }
+        }
+
+        public static string AppRevision
+        {
+            get
+            {
+                return AssemblyVersion.Split('.')[3];
+            }
+        }
+
+        public static string AssemblyVersion
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
 
         /// <summary>
         /// The main entry point for the application.

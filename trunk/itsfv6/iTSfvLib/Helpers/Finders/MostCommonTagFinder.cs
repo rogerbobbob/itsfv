@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpersLib;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,7 +119,7 @@ namespace iTSfvLib
                 }
             }
 
-            FileSystem.AppendDebug(string.Format("Chosen Most Common {0}: \"{1}\" with {2}% confidence",
+            DebugHelper.WriteLine(string.Format("Chosen Most Common {0}: \"{1}\" with {2}% confidence",
                 Tag.ToString(), _DiscTag, _Confidence.ToString("0.00")));
         }
 
