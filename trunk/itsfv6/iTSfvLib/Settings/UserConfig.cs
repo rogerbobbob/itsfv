@@ -11,7 +11,10 @@ namespace iTSfvLib
     public class UserConfig :SettingsBase<UserConfig>
     {
         public bool Checks_MissingTags { get; set; }
-        public bool Tracks_FillMissingTrackCount { get; set; }
+        public bool Tracks_TrackCountFill { get; set; }
+        public bool Tracks_AlbumArtistFill { get; set; }
+        public bool Tracks_GenreFill { get; set; }
+        public bool FileSystem_ArtworkJpgExport { get; set; }
 
         public static void ApplyDefaultValues(object self)
         {

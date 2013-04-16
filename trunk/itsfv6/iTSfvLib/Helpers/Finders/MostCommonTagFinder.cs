@@ -16,9 +16,7 @@ namespace iTSfvLib
     public class TagFinderOptions
     {
         public bool MostCommonTagRatioActive { get; set; }
-
         public double ConfidenceRequired { get; set; }
-
         public bool ChooseMostCommonTag { get; set; }
     }
 

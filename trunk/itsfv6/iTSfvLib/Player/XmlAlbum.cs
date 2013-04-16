@@ -64,5 +64,24 @@ namespace iTSfvLib
 
             return tracks;
         }
+
+        public string AlbumArtist
+        {
+            get
+            {
+                List<string> albumArtists = new List<string>();
+                IEnumerator e = this.Discs.GetEnumerator();
+                while (e.MoveNext())
+                {
+                    string albumartist = ((KeyValuePair<string, XmlDisc>)e.Current).Value.AlbumArtist;
+                    if (!albumArtists.Contains(albumartist))
+                        albumArtists.Add((albumartist));
+                }
+                if (albumArtists.Count > 0)
+                    return string.Join(" / ", albumArtists.ToArray());
+
+                return ConstantStrings.UnknownArtist;
+            }
+        }
     }
 }
