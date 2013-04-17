@@ -39,7 +39,7 @@ namespace iTSfvGUI
 
         public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (tspbApp != null)
+            if (tspbApp != null && !tspbApp.IsDisposed)
                 tspbApp.Value = e.ProgressPercentage;
         }
 

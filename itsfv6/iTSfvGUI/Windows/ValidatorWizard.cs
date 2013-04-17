@@ -324,6 +324,7 @@ namespace iTSfvGUI
         private void ValidatorWizard_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveUserConfig(Program.Config.UI);
+            Program.LogViewer.Close();
         }
 
         private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
