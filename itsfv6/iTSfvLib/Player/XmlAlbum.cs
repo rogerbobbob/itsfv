@@ -44,9 +44,9 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in GetTracks())
             {
-                if (!string.IsNullOrEmpty(track.Tags.Album))
+                if (!string.IsNullOrEmpty(track.Album))
                 {
-                    return track.Tags.Album;
+                    return track.Album;
                 }
             }
             return ConstantStrings.UnknownAlbum;

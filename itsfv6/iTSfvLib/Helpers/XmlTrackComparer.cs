@@ -22,13 +22,13 @@ namespace iTSfvLib
 
             public static int CompareByTrackNumber(XmlTrack x, XmlTrack y)
             {
-                return string.Compare(x.Tags.Track.ToString("000"), y.Tags.Track.ToString("000"));
+                return string.Compare(x.TrackNumber.ToString("000"), y.TrackNumber.ToString("000"));
             }
 
-            //public static int CompareByArtworkSize(XmlTrack x, XmlTrack y)
-            //{
-            //    return string.Compare(x.Artwork.Width.ToString("0000"), y.Artwork.Width.ToString("0000"));
-            //}
+            public static int CompareByArtworkSize(XmlTrack x, XmlTrack y)
+            {
+                return string.Compare(x.Artwork.Width.ToString("0000"), y.Artwork.Width.ToString("0000"));
+            }
 
         }
     }

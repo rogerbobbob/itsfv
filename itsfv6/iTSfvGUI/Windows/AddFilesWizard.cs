@@ -118,21 +118,22 @@ namespace iTSfvGUI
             if (lbTracks.Items.Count > 0)
             {
                 if (!string.IsNullOrEmpty(cboAlbumArtist.Text))
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.AlbumArtists = new string[] { cboAlbumArtist.Text });
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.AlbumArtist = cboAlbumArtist.Text);
 
                 if (!string.IsNullOrEmpty(txtAlbum.Text))
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Album = txtAlbum.Text);
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Album = txtAlbum.Text);
 
                 if (!string.IsNullOrEmpty(cboGenre.Text))
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Genres = new string[] { cboGenre.Text });
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Genre = cboGenre.Text);
 
                 if (nudYear.Value > 0)
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Year = (uint)nudYear.Value);
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Year = (uint)nudYear.Value);
 
                 if (nudDiscNumber.Value > 0)
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.DiscNumber = (uint)nudDiscNumber.Value);
+
                 if (nudDiscCount.Value > 0)
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.DiscCount = (uint)nudDiscCount.Value);
 
                 if (tvBands.SelectedNode.Tag is XmlDisc)
                 {
