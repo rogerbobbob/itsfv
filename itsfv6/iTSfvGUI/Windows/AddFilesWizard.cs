@@ -79,7 +79,7 @@ namespace iTSfvGUI
         private XmlDisc GetDiscFromFolder(string dirPath)
         {
             List<XmlTrack> tracks = new List<XmlTrack>();
-            foreach (string ext in Program.Config.SupportedAudioTypes)
+            foreach (string ext in Program.Config.SupportedAudioFileTypes)
             {
                 Directory.GetFiles(dirPath, string.Format("*.{0}", ext),
                     SearchOption.TopDirectoryOnly).ToList().ForEach(delegate(string fp)
