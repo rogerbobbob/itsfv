@@ -19,7 +19,6 @@ namespace iTSfvGUI
 
         public static BackgroundWorker SettingsReader = new BackgroundWorker();
         public static XMLSettings Config = null;
-        public static Adapter Linker = new Adapter();
 
         // Windows
         public static ValidatorWizard MainForm = null;
