@@ -57,20 +57,34 @@ namespace iTSfvLib
 
         #region 1 Properties
 
+        private string _albumArtist = string.Empty;
         public string AlbumArtist
         {
             get
             {
+                if (!string.IsNullOrEmpty(_albumArtist))
+                    return _albumArtist;
+
                 if (Tracks.Count > 0)
                 {
-                    return new MostCommonTagFinder(Tracks, ETagFinderType.Artist, new TagFinderOptions()
+                    return _albumArtist = new MostCommonTagFinder(Tracks, ETagFinderType.Artist, new TagFinderOptions()
                     {
                         ConfidenceRequired = 50.0,
                         MostCommonTagRatioActive = true,
                         ChooseMostCommonTag = true
                     }).MostCommonString;
                 }
+
                 return string.Empty;
+            }
+        }
+
+        public string AlbumArtistPathFriendly
+        {
+            get
+            {
+                return Path.GetInvalidFileNameChars().Aggregate(AlbumArtist,
+                    (current, c) => current.Replace(c.ToString(), "_"));
             }
         }
 
@@ -174,22 +188,6 @@ namespace iTSfvLib
             }
 
             return success;
-        }
-
-        public string GetAlbumArtist()
-        {
-            foreach (XmlTrack track in Tracks)
-            {
-                if (track.Compilation == true)
-                {
-                    return ConstantStrings.VariousArtists;
-                }
-                else if (!string.IsNullOrEmpty(track.AlbumArtist))
-                {
-                    return track.AlbumArtist;
-                }
-            }
-            return ConstantStrings.UnknownArtist;
         }
 
         public string GetDiscName()

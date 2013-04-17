@@ -49,7 +49,6 @@ namespace iTSfvLib
             {
                 if (Directory.Exists(pfd))
                 {
-                    // todo: respect windows explorer folder structure
                     foreach (string ext in Config.SupportedAudioTypes)
                     {
                         foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
@@ -64,7 +63,7 @@ namespace iTSfvLib
                 }
             }
 
-            tracks.ForEach(x => AddTrack(x));
+            AddTracks(tracks);
         }
 
         public void AddTracks(List<XmlTrack> tracks)
@@ -76,12 +75,16 @@ namespace iTSfvLib
         /// Method to add a track to Player
         /// </summary>
         /// <param name="track"></param>
-        public void AddTrack(XmlTrack track)
+        private void AddTrack(XmlTrack track)
         {
-            XmlAlbumArtist tempBand = GetBand(track.AlbumArtist);
+            string albumName = track.AlbumArtist;
+            if (string.IsNullOrEmpty(albumName))
+                albumName = Path.GetFileName(Path.GetDirectoryName(track.Location));
+
+            XmlAlbumArtist tempBand = GetBand(albumName);
             if (tempBand == null)
             {
-                tempBand = new XmlAlbumArtist(track.AlbumArtist);
+                tempBand = new XmlAlbumArtist(albumName);
                 Library.Add(tempBand.Name, tempBand);
                 AlbumArtists.Add(tempBand);
             }
@@ -90,7 +93,7 @@ namespace iTSfvLib
             if (tempAlbum == null)
             {
                 tempAlbum = new XmlAlbum(track.GetAlbumKey());
-                Library[track.AlbumArtist].AddAlbum(tempAlbum);
+                Library[albumName].AddAlbum(tempAlbum);
                 Albums.Add(tempAlbum);
             }
 
@@ -98,11 +101,11 @@ namespace iTSfvLib
             if (tempDisc == null)
             {
                 tempDisc = new XmlDisc(track.GetDiscKey());
-                Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
+                Library[albumName].GetAlbum(track.GetAlbumKey()).AddDisc(tempDisc);
                 Discs.Add(tempDisc);
             }
 
-            if (Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track))
+            if (Library[albumName].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track))
             {
                 Tracks.Add(track);
             }
@@ -157,20 +160,24 @@ namespace iTSfvLib
         {
             if (Config.CopyMusicToLibrary && Directory.Exists(Config.MusicLibraryFolder))
             {
-                foreach (XmlTrack track in this.Tracks)
+                foreach (XmlDisc disc in this.Discs)
                 {
-                    if (File.Exists(track.Location) && !track.Location.Contains(Config.MusicLibraryFolder))
+                    foreach (XmlTrack track in disc.Tracks)
                     {
-                        string dp = Path.Combine(Config.MusicLibraryFolder, track.AlbumArtistPathFriendly, track.Tags.Album);
-                        if (!Directory.Exists(dp))
-                            Directory.CreateDirectory(dp);
-                        string fp = Path.Combine(dp, Path.GetFileName(track.Location));
-                        DebugHelper.WriteLine(string.Format("Copying {0} to {1}", track.Location, fp));
-                        File.Copy(track.Location, fp);
-                        track.Location = fp;
-                        Worker.ReportProgress(this.Progress, track);
+                        if (File.Exists(track.Location) && !track.Location.Contains(Config.MusicLibraryFolder))
+                        {
+                            string dp = Path.Combine(Config.MusicLibraryFolder, disc.AlbumArtistPathFriendly, track.AlbumPathFriendly);
+                            if (!Directory.Exists(dp))
+                                Directory.CreateDirectory(dp);
+                            string fp = Path.Combine(dp, Path.GetFileName(track.Location));
+                            DebugHelper.WriteLine(string.Format("Copying {0} to {1}", track.Location, fp));
+                            File.Copy(track.Location, fp, true);
+                            track.Location = fp;
+                            Worker.ReportProgress(this.Progress, track);
+                        }
                     }
                 }
+
                 TrackProgress = 0;
             }
 
@@ -240,7 +247,7 @@ namespace iTSfvLib
 
             // do checks after updating tracks
 
-            if (this.Config.UI.Checks_MissingTags) 
+            if (this.Config.UI.Checks_MissingTags)
                 track.CheckMissingTags(this.Report);
 
             if (this.Config.UI.Checks_ArtworkLowRes)

@@ -62,7 +62,7 @@ namespace iTSfvLib
                 if (Tags.AlbumArtists.Length > 0)
                     return string.Join(" / ", Tags.AlbumArtists);
 
-                return Artist;
+                return string.Empty;
             }
         }
 
@@ -389,7 +389,7 @@ namespace iTSfvLib
                 {
                     this.Tags.AlbumArtists = new string[] { album.AlbumArtist };
                     IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled AlbumArtist");
+                    DebugHelper.WriteLine(this.FileName + " --> filled AlbumArtist with " + album.AlbumArtist);
                 }
             }
         }
@@ -403,7 +403,7 @@ namespace iTSfvLib
                 {
                     this.Tags.Genres = new string[] { disc.Genre };
                     IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled Genre");
+                    DebugHelper.WriteLine(this.FileName + " --> filled Genre with " + disc.Genre );
                 }
             }
         }

@@ -181,6 +181,8 @@ namespace iTSfvGUI
             }
 
             Program.LogViewer.AddFilesWorker_RunWorkerCompleted();
+            if (Program.Config.ValidateAfterAddingTracks)
+                RunTasks();
         }
 
         void AddFilesWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -290,7 +292,7 @@ namespace iTSfvGUI
                     if (lbDiscs.SelectedItem is XmlDisc)
                     {
                         XmlDisc disc = lbDiscs.SelectedItem as XmlDisc;
-                        disc.Tracks.ToList().ForEach(x => selectedLibrary.AddTrack(x));
+                        selectedLibrary.AddTracks(disc.Tracks);
                     }
                 }
                 else if (tvLibrary.SelectedNode != null)
@@ -298,12 +300,12 @@ namespace iTSfvGUI
                     if (tvLibrary.SelectedNode.Tag is XmlAlbumArtist)
                     {
                         XmlAlbumArtist band = tvLibrary.SelectedNode.Tag as XmlAlbumArtist;
-                        band.GetTracks().ToList().ForEach(x => selectedLibrary.AddTrack(x));
+                        selectedLibrary.AddTracks(band.GetTracks());
                     }
                     else if (tvLibrary.SelectedNode.Tag is XmlAlbum)
                     {
                         XmlAlbum album = tvLibrary.SelectedNode.Tag as XmlAlbum;
-                        album.GetTracks().ToList().ForEach(x => selectedLibrary.AddTrack(x));
+                        selectedLibrary.AddTracks(album.GetTracks());
                     }
                 }
                 else
