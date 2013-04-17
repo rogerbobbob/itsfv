@@ -16,7 +16,6 @@ namespace iTSfvGUI
 {
     public partial class ValidatorWizard : Form
     {
-
         BackgroundWorker AddFilesWorker = new BackgroundWorker() { WorkerReportsProgress = true };
 
         public ValidatorWizard()
@@ -114,10 +113,10 @@ namespace iTSfvGUI
 
         private void miTasksAddFiles_Click(object sender, EventArgs e)
         {
-            AddFiles();
+            AddFilesByFolderBrowser(Program.Config.ShowAddFilesWizard);
         }
 
-        private void AddFiles(bool showWizard = false)
+        private void AddFilesByFolderBrowser(bool showWizard = false)
         {
             CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...")
             {
@@ -137,7 +136,11 @@ namespace iTSfvGUI
         private void lbDiscs_DragDrop(object sender, DragEventArgs e)
         {
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            AddFilesFolders(pathsFilesFolders);
+
+            if (Program.Config.ShowAddFilesWizard)
+                ShowAddFilesWizard(pathsFilesFolders);
+            else
+                AddFilesFolders(pathsFilesFolders);
         }
 
         private void AddFilesFolders(string[] filesDirs)
@@ -325,7 +328,7 @@ namespace iTSfvGUI
 
         private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
         {
-            AddFiles(showWizard: true);
+            AddFilesByFolderBrowser(showWizard: true);
         }
 
         private void tsmiFoldersLogs_Click(object sender, EventArgs e)

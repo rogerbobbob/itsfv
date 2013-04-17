@@ -53,6 +53,12 @@ namespace iTSfvGUI
                 tnOrphaned.Tag = discOrphaned;
                 tvBands.Nodes.Add(tnOrphaned);
             }
+
+            if (tvBands.Nodes.Count > 0 && tvBands.Nodes[0].Nodes.Count > 0)
+                tvBands.SelectedNode = tvBands.Nodes[0].Nodes[0];
+            else if (tvBands.Nodes.Count > 0)
+                tvBands.SelectedNode = tvBands.Nodes[0];
+
         }
 
         private void AddDirToNode(string dirPath, TreeNodeCollection tnc)
@@ -98,8 +104,9 @@ namespace iTSfvGUI
                 lbTracks.Items.AddRange(disc.Tracks.ToArray());
 
                 cboAlbumArtist.Text = disc.AlbumArtist;
-                cboGenre.Text = disc.Genre;
                 txtAlbum.Text = disc.Album;
+                cboGenre.Text = disc.Genre;
+                nudYear.Value = disc.Year;
 
                 nudDiscNumber.Value = disc.DiscNumber;
                 nudDiscCount.Value = disc.DiscCount;
@@ -113,25 +120,26 @@ namespace iTSfvGUI
                 if (!string.IsNullOrEmpty(cboAlbumArtist.Text))
                     lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.AlbumArtists = new string[] { cboAlbumArtist.Text });
 
-                if (!string.IsNullOrEmpty(cboGenre.Text))
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Genres = new string[] { cboGenre.Text });
-
                 if (!string.IsNullOrEmpty(txtAlbum.Text))
                     lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Album = txtAlbum.Text);
 
-                if (chkDisc.Checked)
-                {
-                    if (nudDiscNumber.Value > 0)
-                        lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
-                    if (nudDiscCount.Value > 0)
-                        lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
+                if (!string.IsNullOrEmpty(cboGenre.Text))
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Genres = new string[] { cboGenre.Text });
 
-                    if (tvBands.SelectedNode.Tag is XmlDisc)
-                    {
-                        XmlDisc disc = tvBands.SelectedNode.Tag as XmlDisc;
-                        disc.DiscNumber = (uint)nudDiscNumber.Value;
-                        disc.DiscCount = (uint)nudDiscCount.Value;
-                    }
+                if (nudYear.Value > 0)
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Year = (uint)nudYear.Value);
+
+                if (nudDiscNumber.Value > 0)
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
+                if (nudDiscCount.Value > 0)
+                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
+
+                if (tvBands.SelectedNode.Tag is XmlDisc)
+                {
+                    XmlDisc disc = tvBands.SelectedNode.Tag as XmlDisc;
+                    disc.DiscNumber = (uint)nudDiscNumber.Value;
+                    disc.DiscCount = (uint)nudDiscCount.Value;
+                    disc.Year = (uint)nudYear.Value;
                 }
             }
         }
