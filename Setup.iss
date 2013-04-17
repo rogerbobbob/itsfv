@@ -8,8 +8,8 @@
 [Setup]
 AllowNoIcons=true
 AppCopyright=Copyright (C) 2013 {#MyAppPublisher}
-AppId=82E6AC09-0FEF-4390-AD9F-0DD3F5561EFC
-AppMutex=Global\82E6AC09-0FEF-4390-AD9F-0DD3F5561EFC
+AppId=BFCDFCFA-9A23-41E3-9022-10D289373C7A
+AppMutex=Global\BFCDFCFA-9A23-41E3-9022-10D289373C7A
 AppName={#MyAppName}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
