@@ -58,6 +58,8 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
+            this.cmsDisc = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiSearchInGoogle = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -67,6 +69,7 @@
             this.flpFileSystem.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tlpApp.SuspendLayout();
+            this.cmsDisc.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcValidator
@@ -283,7 +286,7 @@
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(135, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -298,7 +301,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -313,7 +316,7 @@
             // tsmiFoldersLogs
             // 
             this.tsmiFoldersLogs.Name = "tsmiFoldersLogs";
-            this.tsmiFoldersLogs.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFoldersLogs.Size = new System.Drawing.Size(108, 22);
             this.tsmiFoldersLogs.Text = "&Logs...";
             this.tsmiFoldersLogs.Click += new System.EventHandler(this.tsmiFoldersLogs_Click);
             // 
@@ -347,6 +350,20 @@
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
             // 
+            // cmsDisc
+            // 
+            this.cmsDisc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSearchInGoogle});
+            this.cmsDisc.Name = "cmsDisc";
+            this.cmsDisc.Size = new System.Drawing.Size(173, 26);
+            // 
+            // tsmiSearchInGoogle
+            // 
+            this.tsmiSearchInGoogle.Name = "tsmiSearchInGoogle";
+            this.tsmiSearchInGoogle.Size = new System.Drawing.Size(172, 22);
+            this.tsmiSearchInGoogle.Text = "Search in Google...";
+            this.tsmiSearchInGoogle.Click += new System.EventHandler(this.tsmiSearchInGoogle_Click);
+            // 
             // ValidatorWizard
             // 
             this.AllowDrop = true;
@@ -378,6 +395,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tlpApp.ResumeLayout(false);
+            this.cmsDisc.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,6 +431,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiFoldersLogs;
         private System.Windows.Forms.CheckBox chkTracks_ArtworkFill;
         private System.Windows.Forms.CheckBox chkChecks_ArtworkLowRes;
+        private System.Windows.Forms.ContextMenuStrip cmsDisc;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSearchInGoogle;
     }
 }
 
