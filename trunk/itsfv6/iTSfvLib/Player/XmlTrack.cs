@@ -205,6 +205,7 @@ namespace iTSfvLib
             {
                 using (TagLib.File f = TagLib.File.Create(Location, ReadStyle.None))
                 {
+                    f.RemoveTags(f.TagTypes & ~f.TagTypesOnDisk); // read tags and their versions as is from file
                     this.Tags = f.Tag;
                 }
             }
