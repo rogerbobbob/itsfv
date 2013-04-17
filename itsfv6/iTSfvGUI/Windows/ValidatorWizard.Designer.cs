@@ -60,6 +60,7 @@
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
             this.cmsDisc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSearchInGoogle = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiShowInExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -353,16 +354,24 @@
             // cmsDisc
             // 
             this.cmsDisc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSearchInGoogle});
+            this.tsmiSearchInGoogle,
+            this.tsmiShowInExplorer});
             this.cmsDisc.Name = "cmsDisc";
-            this.cmsDisc.Size = new System.Drawing.Size(173, 26);
+            this.cmsDisc.Size = new System.Drawing.Size(207, 70);
             // 
             // tsmiSearchInGoogle
             // 
             this.tsmiSearchInGoogle.Name = "tsmiSearchInGoogle";
-            this.tsmiSearchInGoogle.Size = new System.Drawing.Size(172, 22);
+            this.tsmiSearchInGoogle.Size = new System.Drawing.Size(206, 22);
             this.tsmiSearchInGoogle.Text = "Search in Google...";
             this.tsmiSearchInGoogle.Click += new System.EventHandler(this.tsmiSearchInGoogle_Click);
+            // 
+            // tsmiShowInExplorer
+            // 
+            this.tsmiShowInExplorer.Name = "tsmiShowInExplorer";
+            this.tsmiShowInExplorer.Size = new System.Drawing.Size(206, 22);
+            this.tsmiShowInExplorer.Text = "Open containing folder...";
+            this.tsmiShowInExplorer.Click += new System.EventHandler(this.tsmiShowInExplorer_Click);
             // 
             // ValidatorWizard
             // 
@@ -433,6 +442,7 @@
         private System.Windows.Forms.CheckBox chkChecks_ArtworkLowRes;
         private System.Windows.Forms.ContextMenuStrip cmsDisc;
         private System.Windows.Forms.ToolStripMenuItem tsmiSearchInGoogle;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowInExplorer;
     }
 }
 

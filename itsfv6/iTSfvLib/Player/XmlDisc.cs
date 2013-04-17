@@ -174,7 +174,7 @@ namespace iTSfvLib
 
         public string Location
         {
-            get { return Path.GetDirectoryName(Tracks[0].Location); }
+            get { return Path.GetDirectoryName(this.FirstTrack.Location); }
         }
 
         #endregion 2 Properties Read-Only

@@ -369,5 +369,14 @@ namespace iTSfvGUI
                 Helpers.LoadBrowserAsync(disc.GoogleSearchURL);
             }
         }
+
+        private void tsmiShowInExplorer_Click(object sender, EventArgs e)
+        {
+            if (lbDiscs.SelectedIndex > -1)
+            {
+                XmlDisc disc = lbDiscs.SelectedItem as XmlDisc;
+                Helpers.OpenFolder(disc.Location);
+            }
+        }
     }
 }
