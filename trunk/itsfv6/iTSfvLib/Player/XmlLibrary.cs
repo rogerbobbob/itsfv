@@ -224,6 +224,8 @@ namespace iTSfvLib
 
         public void ValidateDisc(XmlDisc disc)
         {
+            disc.Tracks.Sort(XmlTrackComparer.XmlTrackComparerMethods.CompareByTrackNumber);
+
             foreach (XmlTrack track in disc.Tracks)
             {
                 ValidateTrack(track);

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstantStrings.cs" />
+    <Compile Include="Helpers\CsvConverter.cs" />
     <Compile Include="Helpers\FolderNameEditor.cs" />
     <Compile Include="Helpers\Finders\MostCommonTagFinder.cs" />
     <Compile Include="Reporting\ReportWriter.cs" />
