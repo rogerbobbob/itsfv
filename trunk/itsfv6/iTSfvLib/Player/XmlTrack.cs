@@ -60,9 +60,17 @@ namespace iTSfvLib
             get
             {
                 if (Tags.AlbumArtists.Length > 0)
-                    return string.Join("/", Tags.AlbumArtists);
+                    return string.Join(" / ", Tags.AlbumArtists);
 
                 return Artist;
+            }
+        }
+
+        public string AlbumArtistPathFriendly
+        {
+            get
+            {
+                return AlbumArtist.Replace("/", "_");
             }
         }
 
@@ -398,12 +406,14 @@ namespace iTSfvLib
 
                     string fp = Path.Combine(Path.GetDirectoryName(this.Location), config.ArtworkFileNameWithoutExtension + "." + ext);
 
-                    using (FileStream fs = new FileStream(fp, FileMode.Create))
+                    if (!System.IO.File.Exists(fp))
                     {
-                        fs.Write(this.Tags.Pictures[0].Data.Data, 0, this.Tags.Pictures[0].Data.Data.Length);
-                        DebugHelper.WriteLine(this.FileName + " --> exported artwork");
+                        using (FileStream fs = new FileStream(fp, FileMode.Create))
+                        {
+                            fs.Write(this.Tags.Pictures[0].Data.Data, 0, this.Tags.Pictures[0].Data.Data.Length);
+                            DebugHelper.WriteLine(this.FileName + " --> exported artwork");
+                        }
                     }
-
                     return true;
                 }
                 catch (Exception ex)

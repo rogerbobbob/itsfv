@@ -55,7 +55,11 @@ namespace iTSfvLib
                     {
                         case ETagFinderType.Artist:
                             oTag = ConstantStrings.VariousArtists;
-                            if (string.Empty != _Tracks[i].Artist)
+                            if (string.Empty != _Tracks[i].AlbumArtist)
+                            {
+                                oTag = _Tracks[i].AlbumArtist;
+                            }
+                            else if (!string.IsNullOrEmpty(_Tracks[i].Artist))
                             {
                                 oTag = _Tracks[i].Artist;
                             }
