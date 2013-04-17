@@ -378,5 +378,11 @@ namespace iTSfvGUI
                 Helpers.OpenFolder(disc.Location);
             }
         }
+
+        private void tsmiAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm frm = new AboutForm() { Icon = this.Icon };
+            frm.Show();
+        }
     }
 }
