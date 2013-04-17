@@ -184,6 +184,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="itsfv2.ico" />
+    <None Include="Resources\au.png" />
+    <None Include="Resources\application-browser.png" />
     <None Include="Resources\itsfv2_7_256x256x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
