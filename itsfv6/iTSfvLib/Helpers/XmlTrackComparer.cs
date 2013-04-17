@@ -7,7 +7,6 @@ namespace iTSfvLib
 {
     public class XmlTrackComparer : IComparer<XmlTrack>
     {
-
         public int Compare(XmlTrack x, XmlTrack y)
         {
             return string.Compare(x.Location, y.Location);
