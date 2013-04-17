@@ -107,8 +107,6 @@ namespace iTSfvLib
 
         public List<XmlTrack> Tracks { get; set; }
 
-        public uint Year { get; set; }
-
         #endregion 1 Properties
 
         #region 2 Properties Read-Only
@@ -129,6 +127,21 @@ namespace iTSfvLib
                     return FirstTrack.Tags.Album;
 
                 return string.Empty;
+            }
+        }
+
+        public uint Year
+        {
+            get
+            {
+                if (Tracks.Count > 0)
+                    return FirstTrack.Tags.Year;
+
+                return (uint)DateTime.Now.Year;
+            }
+            set
+            {
+
             }
         }
 
