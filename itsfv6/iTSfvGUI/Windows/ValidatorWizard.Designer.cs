@@ -61,6 +61,8 @@
             this.cmsDisc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSearchInGoogle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiShowInExplorer = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -242,7 +244,8 @@
             this.fileToolStripMenuItem,
             this.windowsToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.foldersToolStripMenuItem});
+            this.foldersToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(944, 24);
@@ -317,7 +320,7 @@
             // tsmiFoldersLogs
             // 
             this.tsmiFoldersLogs.Name = "tsmiFoldersLogs";
-            this.tsmiFoldersLogs.Size = new System.Drawing.Size(108, 22);
+            this.tsmiFoldersLogs.Size = new System.Drawing.Size(152, 22);
             this.tsmiFoldersLogs.Text = "&Logs...";
             this.tsmiFoldersLogs.Click += new System.EventHandler(this.tsmiFoldersLogs_Click);
             // 
@@ -357,7 +360,7 @@
             this.tsmiSearchInGoogle,
             this.tsmiShowInExplorer});
             this.cmsDisc.Name = "cmsDisc";
-            this.cmsDisc.Size = new System.Drawing.Size(207, 70);
+            this.cmsDisc.Size = new System.Drawing.Size(207, 48);
             // 
             // tsmiSearchInGoogle
             // 
@@ -372,6 +375,21 @@
             this.tsmiShowInExplorer.Size = new System.Drawing.Size(206, 22);
             this.tsmiShowInExplorer.Text = "Open containing folder...";
             this.tsmiShowInExplorer.Click += new System.EventHandler(this.tsmiShowInExplorer_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // tsmiAbout
+            // 
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Text = "&About...";
+            this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
             // ValidatorWizard
             // 
@@ -443,6 +461,8 @@
         private System.Windows.Forms.ContextMenuStrip cmsDisc;
         private System.Windows.Forms.ToolStripMenuItem tsmiSearchInGoogle;
         private System.Windows.Forms.ToolStripMenuItem tsmiShowInExplorer;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
     }
 }
 

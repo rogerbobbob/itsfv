@@ -79,6 +79,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Windows\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\AboutForm.designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Windows\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\OptionsWindow.resx">
       <DependentUpon>OptionsWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +153,10 @@
       <Project>{327750e1-9fb7-4cc3-8aea-9bc42180cad3}</Project>
       <Name>HelpersLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\ShareX\trunk\UploadersLib\UploadersLib.csproj">
+      <Project>{e1c94415-3424-4517-a2a1-b2fdd1f59c67}</Project>
+      <Name>UploadersLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iTSfvLib\iTSfvLib.csproj">
       <Project>{C1D1A1ED-B33E-471F-91FA-4A65C4ADAA75}</Project>
       <Name>iTSfvLib</Name>
@@ -171,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="itsfv2.ico" />
+    <None Include="Resources\itsfv2_7_256x256x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

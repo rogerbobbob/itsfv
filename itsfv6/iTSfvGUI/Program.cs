@@ -29,6 +29,12 @@ namespace iTSfvGUI
         private static readonly string PortablePersonalPath = Path.Combine(Application.StartupPath, ApplicationName);
         internal static readonly string ConfigCoreFileName = ApplicationName + "Settings.json";
 
+        public const string URL_WEBSITE = "http://code.google.com/p/itsfv";
+        public const string URL_ISSUES = "http://code.google.com/p/itsfv/issues/entry";
+        public const string URL_UPDATE = "http://itsfv.googlecode.com/svn/trunk/Update.xml";
+
+        public static List<string> LibNames = new List<string>();
+
         public static SynchronizationContext TreadUI = null;
 
         public static string PersonalPath
@@ -94,6 +100,7 @@ namespace iTSfvGUI
         {
             try
             {
+                AppDomain.CurrentDomain.AssemblyLoad += new AssemblyLoadEventHandler(CurrentDomain_AssemblyLoad);
                 IsPortable = CLIHelper.CheckArgs(args, "p", "portable");
 
                 Application.EnableVisualStyles();
@@ -120,5 +127,11 @@ namespace iTSfvGUI
         {
             Program.Config = XMLSettings.Read(ConfigCoreFilePath);
         }
+
+        private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
+        {
+            LibNames.Add(string.Format("{0} - {1}", args.LoadedAssembly.FullName, args.LoadedAssembly.Location));
+        }
+
     }
 }
