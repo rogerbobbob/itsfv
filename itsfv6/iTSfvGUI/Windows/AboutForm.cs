@@ -44,23 +44,9 @@ namespace iTSfvGUI
             lblProductName.Text = Application.ProductName + " " + Program.AssemblyVersion;
             lblCopyright.Text = AssemblyCopyright;
 
-            /*
-            AppendBoldLine("Committers:");
-            AppendLine("Josh Lovins (thedeathly)");
-            AppendLine();
-            */
-
             AppendBoldLine("Thanks to:");
-            AppendLine("Members at HydrogenAudio for valuable feedback");
+            AppendLine("Berk (Jaex) for major contributions in HelpersLib and UploadersLib");
             AppendLine();
-
-            /*
-            AppendBoldLine("Acknowledgements:");
-            AppendLine("FTP Library: http://www.starksoft.com");
-            AppendLine("Json.NET: http://json.codeplex.com");
-            AppendLine("SSH.NET: http://sshnet.codeplex.com");
-            AppendLine();
-            */
 
             if (Program.LibNames != null)
             {

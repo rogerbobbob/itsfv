@@ -34,9 +34,14 @@ namespace iTSfvGUI
             this.btnClose = new System.Windows.Forms.Button();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblBugs = new System.Windows.Forms.Label();
+            this.pbMikeURL = new System.Windows.Forms.PictureBox();
+            this.pbAU = new System.Windows.Forms.PictureBox();
+            this.lblMike = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.txtDetails = new System.Windows.Forms.RichTextBox();
             this.uclUpdate = new UpdateCheckerLib.UpdateCheckerLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMikeURL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +111,41 @@ namespace iTSfvGUI
             this.lblBugs.Text = "Bugs / Suggestions";
             this.lblBugs.Click += new System.EventHandler(this.lblBugs_Click);
             // 
+            // pbMikeURL
+            // 
+            this.pbMikeURL.BackColor = System.Drawing.Color.Transparent;
+            this.pbMikeURL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMikeURL.Image = global::iTSfvGUI.Properties.Resources.application_browser;
+            this.pbMikeURL.Location = new System.Drawing.Point(304, 91);
+            this.pbMikeURL.Name = "pbMikeURL";
+            this.pbMikeURL.Size = new System.Drawing.Size(16, 16);
+            this.pbMikeURL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbMikeURL.TabIndex = 14;
+            this.pbMikeURL.TabStop = false;
+            this.pbMikeURL.Click += new System.EventHandler(this.pbMikeURL_Click);
+            // 
+            // pbAU
+            // 
+            this.pbAU.BackColor = System.Drawing.Color.Transparent;
+            this.pbAU.Image = global::iTSfvGUI.Properties.Resources.au;
+            this.pbAU.Location = new System.Drawing.Point(280, 91);
+            this.pbAU.Name = "pbAU";
+            this.pbAU.Size = new System.Drawing.Size(16, 16);
+            this.pbAU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAU.TabIndex = 12;
+            this.pbAU.TabStop = false;
+            // 
+            // lblMike
+            // 
+            this.lblMike.AutoSize = true;
+            this.lblMike.BackColor = System.Drawing.Color.Transparent;
+            this.lblMike.ForeColor = System.Drawing.Color.Black;
+            this.lblMike.Location = new System.Drawing.Point(328, 93);
+            this.lblMike.Name = "lblMike";
+            this.lblMike.Size = new System.Drawing.Size(87, 13);
+            this.lblMike.TabIndex = 5;
+            this.lblMike.Text = "Michael Delpach";
+            // 
             // pbLogo
             // 
             this.pbLogo.Image = global::iTSfvGUI.Properties.Resources.itsfv_logo;
@@ -147,6 +187,9 @@ namespace iTSfvGUI
             this.Controls.Add(this.txtDetails);
             this.Controls.Add(this.uclUpdate);
             this.Controls.Add(this.pbLogo);
+            this.Controls.Add(this.pbMikeURL);
+            this.Controls.Add(this.pbAU);
+            this.Controls.Add(this.lblMike);
             this.Controls.Add(this.lblBugs);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.btnClose);
@@ -157,6 +200,8 @@ namespace iTSfvGUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShareX - About";
             this.Shown += new System.EventHandler(this.AboutForm_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.pbMikeURL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,6 +215,9 @@ namespace iTSfvGUI
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblCopyright;
         private System.Windows.Forms.Label lblBugs;
+        private System.Windows.Forms.PictureBox pbMikeURL;
+        private System.Windows.Forms.PictureBox pbAU;
+        private System.Windows.Forms.Label lblMike;
         private System.Windows.Forms.PictureBox pbLogo;
         private UpdateCheckerLib.UpdateCheckerLabel uclUpdate;
         private System.Windows.Forms.RichTextBox txtDetails;
