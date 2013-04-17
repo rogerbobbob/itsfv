@@ -11,6 +11,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections;
 using System.Threading;
 using System.Reflection;
+using HelpersLib;
 
 namespace iTSfvGUI
 {
@@ -240,9 +241,12 @@ namespace iTSfvGUI
         {
             lbDiscs.SelectedIndex = lbDiscs.IndexFromPoint(e.X, e.Y);
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            if (lbDiscs.SelectedIndex > -1)
             {
-                //now show your context menu...
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    cmsDisc.Show(lbDiscs, e.X, e.Y);
+                }
             }
         }
 
@@ -355,6 +359,15 @@ namespace iTSfvGUI
         private void ValidatorWizard_DragDrop(object sender, DragEventArgs e)
         {
             lbDiscs_DragDrop(sender, e);
+        }
+
+        private void tsmiSearchInGoogle_Click(object sender, EventArgs e)
+        {
+            if (lbDiscs.SelectedIndex > -1)
+            {
+                XmlDisc disc = lbDiscs.SelectedItem as XmlDisc;
+                Helpers.LoadBrowserAsync(disc.GoogleSearchURL);
+            }
         }
     }
 }
