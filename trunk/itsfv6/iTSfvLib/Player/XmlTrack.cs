@@ -16,6 +16,117 @@ namespace iTSfvLib
     {
         #region "Read/Write Properties"
 
+
+        public string AlbumArtist
+        {
+            get
+            {
+                if (Tags.AlbumArtists.Length > 0)
+                    return string.Join(" / ", Tags.AlbumArtists);
+
+                return string.Empty;
+            }
+            set
+            {
+                this.Tags.AlbumArtists = new string[] { value };
+                IsModified = true;
+            }
+        }
+
+        public string Album
+        {
+            get
+            {
+                return this.Tags.Album;
+            }
+            set
+            {
+                this.Tags.Album = value;
+                IsModified = true;
+            }
+        }
+
+        public uint TrackNumber
+        {
+            get
+            {
+                return this.Tags.Track;
+            }
+            set
+            {
+                this.Tags.Track = value;
+                IsModified = true;
+            }
+        }
+
+        public uint TrackCount
+        {
+            get
+            {
+                return this.Tags.TrackCount;
+            }
+            set
+            {
+                this.Tags.TrackCount = value;
+                IsModified = true;
+            }
+        }
+
+        public uint DiscNumber
+        {
+            get
+            {
+                return this.Tags.Disc;
+            }
+            set
+            {
+                this.Tags.Disc = value;
+                IsModified = true;
+            }
+        }
+
+        public uint DiscCount
+        {
+            get
+            {
+                return this.Tags.DiscCount;
+            }
+            set
+            {
+                this.Tags.DiscCount = value;
+                IsModified = true;
+            }
+        }
+
+        public string Genre
+        {
+            get
+            {
+                if (Tags.Genres.Length > 0)
+                    return string.Join("/", Tags.Genres);
+
+                return string.Empty;
+            }
+            set
+            {
+                Tags.Genres = new string[] { value };
+                IsModified = true;
+            }
+        }
+
+        public uint Year
+        {
+            get
+            {
+                return this.Tags.Year;
+            }
+            set
+            {
+                this.Tags.Year = value;
+                IsModified = true;
+            }
+        }
+
         public DateTime PlayedDate { get; set; }
         public DateTime SkippedDate { get; set; }
         public bool Compilation { get; set; }
@@ -54,17 +165,6 @@ namespace iTSfvLib
 
         #region "Read Only Properties"
 
-        public string AlbumArtist
-        {
-            get
-            {
-                if (Tags.AlbumArtists.Length > 0)
-                    return string.Join(" / ", Tags.AlbumArtists);
-
-                return string.Empty;
-            }
-        }
-
         public string AlbumArtistPathFriendly
         {
             get
@@ -83,6 +183,14 @@ namespace iTSfvLib
             }
         }
 
+        public string Title
+        {
+            get
+            {
+                return this.Tags.Title;
+            }
+        }
+
         public string Artist
         {
             get
@@ -94,37 +202,6 @@ namespace iTSfvLib
             }
         }
 
-        public string Genre
-        {
-            get
-            {
-                if (Tags.Genres.Length > 0)
-                    return string.Join("/", Tags.Genres);
-
-                return string.Empty;
-            }
-        }
-
-        public XmlArtwork Artwork { get; private set; }
-        public DateTime DateAdded { get; private set; }
-        public DateTime ModificationDate { get; private set; }
-        public DateTime ReleaseDate { get; private set; }
-        public bool Podcast { get; private set; }
-        public int BitRate { get; private set; }
-        public int Duration { get; private set; }
-        public int Index { get; private set; }
-        public int PlayOrderIndex { get; private set; }
-        public int SampleRate { get; private set; }
-        public int Size { get; private set; }
-        public int Size64High { get; private set; }
-        public int Size64Low { get; private set; }
-        public int TrackDatabaseID { get; private set; }
-        public int playlistID { get; private set; }
-        public int sourceID { get; private set; }
-        public int trackID { get; private set; }
-        public string KindAsString { get; private set; }
-        public string Time { get; private set; }
-
         public string FileName
         {
             get
@@ -133,10 +210,27 @@ namespace iTSfvLib
             }
         }
 
+        public uint BitRate
+        {
+            get
+            {
+                if (this.Properties != null)
+                    return (uint)this.Properties.AudioBitrate;
+
+                return 0;
+            }
+        }
+
+        public decimal Size { get; private set; }
+
+        public XmlArtwork Artwork { get; private set; }
+
+        public bool IsModified { get; private set; }
+
         #endregion "Read Only Properties"
 
-        public TagLib.Tag Tags { get; private set; }
-        public bool IsModified { get; private set; }
+        private TagLib.Tag Tags { get; set; }
+        private TagLib.Properties Properties { get; set; }
 
         public XmlTrack(string fp)
         {
@@ -203,15 +297,17 @@ namespace iTSfvLib
         {
             try
             {
-                using (TagLib.File f = TagLib.File.Create(Location, ReadStyle.None))
+                using (TagLib.File f = TagLib.File.Create(Location))
                 {
-                    f.RemoveTags(f.TagTypes & ~f.TagTypesOnDisk); // read tags and their versions as is from file
+                    f.RemoveTags(f.TagTypes & ~f.TagTypesOnDisk); // read tags and their versions as is from file   
+                    this.Size = (decimal)f.InvariantEndPosition;
                     this.Tags = f.Tag;
+                    this.Properties = f.Properties;
                 }
             }
             catch (Exception ex)
             {
-                DebugHelper.WriteException(ex, "Error updating info from file");
+                DebugHelper.WriteException(ex, "Error reading info from file");
             }
         }
 
@@ -393,6 +489,8 @@ namespace iTSfvLib
             }
         }
 
+
+
         internal void FillGenre(List<XmlDisc> Discs, ReportWriter reportWriter)
         {
             XmlDisc disc = Discs.FirstOrDefault(x => x.Key == this.GetDiscKey());
@@ -402,7 +500,7 @@ namespace iTSfvLib
                 {
                     this.Tags.Genres = new string[] { disc.Genre };
                     IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled Genre with " + disc.Genre );
+                    DebugHelper.WriteLine(this.FileName + " --> filled Genre with " + disc.Genre);
                 }
             }
         }

@@ -124,7 +124,7 @@ namespace iTSfvLib
             get
             {
                 if (Tracks.Count > 0)
-                    return FirstTrack.Tags.Album;
+                    return FirstTrack.Album;
 
                 return string.Empty;
             }
@@ -135,7 +135,7 @@ namespace iTSfvLib
             get
             {
                 if (Tracks.Count > 0)
-                    return FirstTrack.Tags.Year;
+                    return FirstTrack.Year;
 
                 return (uint)DateTime.Now.Year;
             }
@@ -160,11 +160,11 @@ namespace iTSfvLib
 
                 if (track.AlbumArtist != string.Empty)
                 {
-                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Tags.Album, track.AlbumArtist);
+                    url = string.Format("http://www.google.com/search?q={0}+%22{1}%22", track.Album, track.AlbumArtist);
                 }
                 else
                 {
-                    url = string.Format("http://www.google.com/search?q=%22{0}%22+%22{1}%22", track.Tags.Album, track.Artist);
+                    url = string.Format("http://www.google.com/search?q=%22{0}%22+%22{1}%22", track.Album, track.Artist);
                 }
                 return url;
             }
@@ -189,7 +189,7 @@ namespace iTSfvLib
 
                 if (DiscNumber == 0)
                 {
-                    this.DiscNumber = Math.Max(track.Tags.Disc, 1);
+                    this.DiscNumber = Math.Max(track.DiscNumber, 1);
                 }
 
                 if (string.IsNullOrEmpty(Key))
@@ -207,9 +207,9 @@ namespace iTSfvLib
         {
             foreach (XmlTrack track in Tracks)
             {
-                if (!string.IsNullOrEmpty(track.Tags.Album))
+                if (!string.IsNullOrEmpty(track.Album))
                 {
-                    return string.Format("{0} Disc {1}", track.Tags.Album, DiscNumber.ToString("000"));
+                    return string.Format("{0} Disc {1}", track.Album, DiscNumber.ToString("000"));
                 }
             }
 
@@ -237,7 +237,7 @@ namespace iTSfvLib
             {
                 System.Text.StringBuilder l = new System.Text.StringBuilder();
 
-                l.Append(track.Tags.Track.ToString("00") + " " + track.Tags.Title);
+                l.Append(track.TrackNumber.ToString("00") + " " + track.Title);
 
                 if (bBitRate == true)
                 {

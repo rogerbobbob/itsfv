@@ -73,9 +73,9 @@ namespace iTSfvLib
                             break;
                         case ETagFinderType.Year:
                             oTag = "0000";
-                            if (_Tracks[i].Tags.Year > 0)
+                            if (_Tracks[i].Year > 0)
                             {
-                                oTag = _Tracks[i].Tags.Year.ToString();
+                                oTag = _Tracks[i].Year.ToString();
                             }
                             break;
                     }
@@ -104,8 +104,8 @@ namespace iTSfvLib
                             _DiscTag = ConstantStrings.UnknownGenre;
                             break;
                         case ETagFinderType.Year:
-                            tag1 = _Tracks[i].Tags.Year.ToString();
-                            tag2 = _Tracks[i + 1].Tags.Year.ToString();
+                            tag1 = _Tracks[i].Year.ToString();
+                            tag2 = _Tracks[i + 1].Year.ToString();
                             _DiscTag = tag1;
                             break;
                     }
