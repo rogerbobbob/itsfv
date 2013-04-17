@@ -1,4 +1,5 @@
-﻿using iTSfvLib.Helpers;
+﻿using HelpersLib;
+using iTSfvLib.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace iTSfvLib
         public List<XmlAlbumArtist> AlbumArtists { get; private set; }
         public List<XmlAlbum> Albums { get; private set; }  // provides a faster way to iterate through albums
         public List<XmlDisc> Discs { get; private set; }    // provides a faster way to iterate through discs
+        public List<XmlTrack> Tracks { get; private set; }    // provides a faster way to iterate through tracks
 
         private XMLSettings Config = null;
 
-        public double TracksCount = 0;
-        public double TrackCurrent = 0;
+        public double TrackProgress = 0;
 
         public XmlLibrary(XMLSettings config)
         {
@@ -33,6 +34,7 @@ namespace iTSfvLib
             AlbumArtists = new List<XmlAlbumArtist>();
             Albums = new List<XmlAlbum>();
             Discs = new List<XmlDisc>();
+            Tracks = new List<XmlTrack>();
 
             Config = config;
 
@@ -101,7 +103,9 @@ namespace iTSfvLib
             }
 
             if (Library[track.AlbumArtist].GetAlbum(track.GetAlbumKey()).GetDisc(track.GetDiscKey()).AddTrack(track))
-                TracksCount++;
+            {
+                Tracks.Add(track);
+            }
         }
 
         public void AddBand(XmlAlbumArtist o)
@@ -124,12 +128,12 @@ namespace iTSfvLib
                 Library.Remove(o.Name);
         }
 
-        public int Progress
+        private int Progress
         {
             get
             {
-                if (TracksCount > 0)
-                    return (int)(TrackCurrent / TracksCount * 100);
+                if (this.Tracks.Count > 0)
+                    return (int)(++TrackProgress / this.Tracks.Count * 100);
 
                 return 0;
             }
@@ -151,6 +155,25 @@ namespace iTSfvLib
         /// </summary>
         private void Validate()
         {
+            if (Config.CopyMusicToLibrary && Directory.Exists(Config.MusicLibraryFolder))
+            {
+                foreach (XmlTrack track in this.Tracks)
+                {
+                    if (File.Exists(track.Location) && !track.Location.Contains(Config.MusicLibraryFolder))
+                    {
+                        string dp = Path.Combine(Config.MusicLibraryFolder, track.AlbumArtistPathFriendly, track.Tags.Album);
+                        if (!Directory.Exists(dp))
+                            Directory.CreateDirectory(dp);
+                        string fp = Path.Combine(dp, Path.GetFileName(track.Location));
+                        DebugHelper.WriteLine(string.Format("Copying {0} to {1}", track.Location, fp));
+                        File.Copy(track.Location, fp);
+                        track.Location = fp;
+                        Worker.ReportProgress(this.Progress, track);
+                    }
+                }
+                TrackProgress = 0;
+            }
+
             IEnumerator e = Library.GetEnumerator();
             KeyValuePair<string, XmlAlbumArtist> currBand = new KeyValuePair<string, XmlAlbumArtist>();
 
@@ -228,7 +251,6 @@ namespace iTSfvLib
             if (track.IsModified)
                 track.WriteTagsToFile();
 
-            TrackCurrent++;
             Worker.ReportProgress(this.Progress, track);
         }
     }

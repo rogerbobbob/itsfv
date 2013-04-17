@@ -45,10 +45,18 @@
             this.txtAlbum = new System.Windows.Forms.TextBox();
             this.lbTracks = new System.Windows.Forms.ListBox();
             this.tvBands = new System.Windows.Forms.TreeView();
+            this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
+            this.panelButtons = new System.Windows.Forms.Panel();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.panelOptions = new System.Windows.Forms.Panel();
+            this.chkCopyMusicToLibrary = new System.Windows.Forms.CheckBox();
             this.gbAlbumTags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscNumber)).BeginInit();
+            this.tlpApp.SuspendLayout();
+            this.panelButtons.SuspendLayout();
+            this.panelOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbAlbumTags
@@ -66,17 +74,18 @@
             this.gbAlbumTags.Controls.Add(this.nudDiscNumber);
             this.gbAlbumTags.Controls.Add(this.chkAlbum);
             this.gbAlbumTags.Controls.Add(this.txtAlbum);
+            this.gbAlbumTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbAlbumTags.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAlbumTags.Location = new System.Drawing.Point(16, 296);
+            this.gbAlbumTags.Location = new System.Drawing.Point(3, 363);
             this.gbAlbumTags.Name = "gbAlbumTags";
-            this.gbAlbumTags.Size = new System.Drawing.Size(456, 188);
+            this.gbAlbumTags.Size = new System.Drawing.Size(458, 174);
             this.gbAlbumTags.TabIndex = 2;
             this.gbAlbumTags.TabStop = false;
             this.gbAlbumTags.Text = "Disc Tags";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(368, 152);
+            this.btnSave.Location = new System.Drawing.Point(368, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(74, 22);
             this.btnSave.TabIndex = 12;
@@ -105,7 +114,7 @@
             0,
             0});
             this.nudYear.Name = "nudYear";
-            this.nudYear.Size = new System.Drawing.Size(335, 20);
+            this.nudYear.Size = new System.Drawing.Size(337, 20);
             this.nudYear.TabIndex = 5;
             this.nudYear.Value = new decimal(new int[] {
             2008,
@@ -141,14 +150,14 @@
             this.cboAlbumArtist.ItemHeight = 13;
             this.cboAlbumArtist.Location = new System.Drawing.Point(105, 19);
             this.cboAlbumArtist.Name = "cboAlbumArtist";
-            this.cboAlbumArtist.Size = new System.Drawing.Size(335, 21);
+            this.cboAlbumArtist.Size = new System.Drawing.Size(337, 21);
             this.cboAlbumArtist.Sorted = true;
             this.cboAlbumArtist.TabIndex = 1;
             // 
             // chkAlbumArtist
             // 
             this.chkAlbumArtist.AutoSize = true;
-            this.chkAlbumArtist.Location = new System.Drawing.Point(9, 21);
+            this.chkAlbumArtist.Location = new System.Drawing.Point(10, 21);
             this.chkAlbumArtist.Name = "chkAlbumArtist";
             this.chkAlbumArtist.Size = new System.Drawing.Size(81, 17);
             this.chkAlbumArtist.TabIndex = 0;
@@ -167,7 +176,7 @@
             // chkDisc
             // 
             this.chkDisc.AutoSize = true;
-            this.chkDisc.Location = new System.Drawing.Point(9, 124);
+            this.chkDisc.Location = new System.Drawing.Point(10, 124);
             this.chkDisc.Name = "chkDisc";
             this.chkDisc.Size = new System.Drawing.Size(47, 17);
             this.chkDisc.TabIndex = 8;
@@ -203,7 +212,7 @@
             // chkAlbum
             // 
             this.chkAlbum.AutoSize = true;
-            this.chkAlbum.Location = new System.Drawing.Point(9, 46);
+            this.chkAlbum.Location = new System.Drawing.Point(10, 46);
             this.chkAlbum.Name = "chkAlbum";
             this.chkAlbum.Size = new System.Drawing.Size(55, 17);
             this.chkAlbum.TabIndex = 2;
@@ -216,34 +225,95 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAlbum.Location = new System.Drawing.Point(105, 44);
             this.txtAlbum.Name = "txtAlbum";
-            this.txtAlbum.Size = new System.Drawing.Size(335, 20);
+            this.txtAlbum.Size = new System.Drawing.Size(337, 20);
             this.txtAlbum.TabIndex = 3;
             // 
-            // lbPaths
+            // lbTracks
             // 
+            this.lbTracks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTracks.FormattingEnabled = true;
-            this.lbTracks.Location = new System.Drawing.Point(8, 176);
-            this.lbTracks.Name = "lbPaths";
-            this.lbTracks.Size = new System.Drawing.Size(464, 108);
+            this.lbTracks.Location = new System.Drawing.Point(3, 183);
+            this.lbTracks.Name = "lbTracks";
+            this.lbTracks.Size = new System.Drawing.Size(458, 174);
             this.lbTracks.TabIndex = 1;
             // 
             // tvBands
             // 
-            this.tvBands.Location = new System.Drawing.Point(8, 8);
+            this.tvBands.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvBands.Location = new System.Drawing.Point(3, 3);
             this.tvBands.Name = "tvBands";
-            this.tvBands.Size = new System.Drawing.Size(464, 160);
+            this.tvBands.Size = new System.Drawing.Size(458, 174);
             this.tvBands.TabIndex = 0;
             this.tvBands.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBands_NodeMouseClick);
             // 
+            // tlpApp
+            // 
+            this.tlpApp.ColumnCount = 1;
+            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpApp.Controls.Add(this.gbAlbumTags, 0, 2);
+            this.tlpApp.Controls.Add(this.tvBands, 0, 0);
+            this.tlpApp.Controls.Add(this.lbTracks, 0, 1);
+            this.tlpApp.Controls.Add(this.panelButtons, 0, 4);
+            this.tlpApp.Controls.Add(this.panelOptions, 0, 3);
+            this.tlpApp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpApp.Location = new System.Drawing.Point(0, 0);
+            this.tlpApp.Name = "tlpApp";
+            this.tlpApp.RowCount = 5;
+            this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpApp.Size = new System.Drawing.Size(464, 601);
+            this.tlpApp.TabIndex = 3;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.Controls.Add(this.btnOk);
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelButtons.Location = new System.Drawing.Point(3, 571);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(458, 27);
+            this.panelButtons.TabIndex = 4;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(367, 3);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 22);
+            this.btnOk.TabIndex = 4;
+            this.btnOk.Text = "&OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // panelOptions
+            // 
+            this.panelOptions.Controls.Add(this.chkCopyMusicToLibrary);
+            this.panelOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelOptions.Location = new System.Drawing.Point(3, 543);
+            this.panelOptions.Name = "panelOptions";
+            this.panelOptions.Size = new System.Drawing.Size(458, 22);
+            this.panelOptions.TabIndex = 5;
+            // 
+            // chkCopyMusicToLibrary
+            // 
+            this.chkCopyMusicToLibrary.AutoSize = true;
+            this.chkCopyMusicToLibrary.Location = new System.Drawing.Point(9, 2);
+            this.chkCopyMusicToLibrary.Name = "chkCopyMusicToLibrary";
+            this.chkCopyMusicToLibrary.Size = new System.Drawing.Size(127, 17);
+            this.chkCopyMusicToLibrary.TabIndex = 3;
+            this.chkCopyMusicToLibrary.Text = "Copy to Music Library";
+            this.chkCopyMusicToLibrary.UseVisualStyleBackColor = true;
+            // 
             // AddFilesWizard
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 497);
-            this.Controls.Add(this.tvBands);
-            this.Controls.Add(this.lbTracks);
-            this.Controls.Add(this.gbAlbumTags);
+            this.ClientSize = new System.Drawing.Size(464, 601);
+            this.Controls.Add(this.tlpApp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(480, 640);
             this.Name = "AddFilesWizard";
             this.Text = "AddFilesWizard";
             this.Load += new System.EventHandler(this.AddFilesWizard_Load);
@@ -252,6 +322,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscNumber)).EndInit();
+            this.tlpApp.ResumeLayout(false);
+            this.panelButtons.ResumeLayout(false);
+            this.panelOptions.ResumeLayout(false);
+            this.panelOptions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -274,5 +348,10 @@
         private System.Windows.Forms.ListBox lbTracks;
         private System.Windows.Forms.TreeView tvBands;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TableLayoutPanel tlpApp;
+        private System.Windows.Forms.Panel panelButtons;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Panel panelOptions;
+        private System.Windows.Forms.CheckBox chkCopyMusicToLibrary;
     }
 }

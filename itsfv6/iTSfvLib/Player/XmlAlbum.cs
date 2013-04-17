@@ -52,6 +52,14 @@ namespace iTSfvLib
             return ConstantStrings.UnknownAlbum;
         }
 
+        public uint DiscCount
+        {
+            get
+            {
+                return (uint)Discs.Count;
+            }
+        }
+
         public List<XmlTrack> GetTracks()
         {
             List<XmlTrack> tracks = new List<XmlTrack>();

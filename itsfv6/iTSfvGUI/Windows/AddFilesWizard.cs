@@ -17,6 +17,7 @@ namespace iTSfvGUI
         public List<XmlTrack> Tracks { get; private set; }
         public List<XmlTrack> TracksOrphaned { get; private set; }
         public List<XmlDisc> Discs { get; private set; }
+        public bool CopyMusicToLibrary { get; private set; }
 
         public AddFilesWizard(string[] filesDirs)
         {
@@ -25,6 +26,8 @@ namespace iTSfvGUI
             TracksOrphaned = new List<XmlTrack>();
             Discs = new List<XmlDisc>();
             Tracks = new List<XmlTrack>();
+
+            chkCopyMusicToLibrary.Checked = Program.Config.CopyMusicToLibrary;
         }
 
         private void AddFilesWizard_Load(object sender, EventArgs e)
@@ -118,8 +121,10 @@ namespace iTSfvGUI
 
                 if (chkDisc.Checked)
                 {
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
-                    lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
+                    if (nudDiscNumber.Value > 0)
+                        lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.Disc = (uint)nudDiscNumber.Value);
+                    if (nudDiscCount.Value > 0)
+                        lbTracks.Items.Cast<XmlTrack>().ToList().ForEach(x => x.Tags.DiscCount = (uint)nudDiscCount.Value);
 
                     if (tvBands.SelectedNode.Tag is XmlDisc)
                     {
@@ -129,6 +134,12 @@ namespace iTSfvGUI
                     }
                 }
             }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            this.CopyMusicToLibrary = chkCopyMusicToLibrary.Checked;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

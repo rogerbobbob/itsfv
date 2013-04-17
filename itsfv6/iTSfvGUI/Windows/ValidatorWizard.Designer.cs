@@ -34,6 +34,7 @@
             this.tpChecks = new System.Windows.Forms.TabPage();
             this.flpChecks = new System.Windows.Forms.FlowLayoutPanel();
             this.chkChecks_MissingTags = new System.Windows.Forms.CheckBox();
+            this.chkChecks_ArtworkLowRes = new System.Windows.Forms.CheckBox();
             this.tpTracks = new System.Windows.Forms.TabPage();
             this.flpTracks = new System.Windows.Forms.FlowLayoutPanel();
             this.chkTracks_ArtworkFill = new System.Windows.Forms.CheckBox();
@@ -57,7 +58,6 @@
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
-            this.chkChecks_ArtworkLowRes = new System.Windows.Forms.CheckBox();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -112,6 +112,16 @@
             this.chkChecks_MissingTags.TabIndex = 0;
             this.chkChecks_MissingTags.Text = "Check for missing tags";
             this.chkChecks_MissingTags.UseVisualStyleBackColor = true;
+            // 
+            // chkChecks_ArtworkLowRes
+            // 
+            this.chkChecks_ArtworkLowRes.AutoSize = true;
+            this.chkChecks_ArtworkLowRes.Location = new System.Drawing.Point(3, 26);
+            this.chkChecks_ArtworkLowRes.Name = "chkChecks_ArtworkLowRes";
+            this.chkChecks_ArtworkLowRes.Size = new System.Drawing.Size(177, 17);
+            this.chkChecks_ArtworkLowRes.TabIndex = 1;
+            this.chkChecks_ArtworkLowRes.Text = "Check for low resolution artwork";
+            this.chkChecks_ArtworkLowRes.UseVisualStyleBackColor = true;
             // 
             // tpTracks
             // 
@@ -245,16 +255,18 @@
             // tsmiFile_TasksAddFiles
             // 
             this.tsmiFile_TasksAddFiles.Name = "tsmiFile_TasksAddFiles";
-            this.tsmiFile_TasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(262, 22);
+            this.tsmiFile_TasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(233, 22);
             this.tsmiFile_TasksAddFiles.Text = "&Add files...";
             this.tsmiFile_TasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
             // 
             // tsmiFile_AddFilesWithStructure
             // 
             this.tsmiFile_AddFilesWithStructure.Name = "tsmiFile_AddFilesWithStructure";
-            this.tsmiFile_AddFilesWithStructure.Size = new System.Drawing.Size(262, 22);
-            this.tsmiFile_AddFilesWithStructure.Text = "Add files (respect folder structure)...";
+            this.tsmiFile_AddFilesWithStructure.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.tsmiFile_AddFilesWithStructure.Size = new System.Drawing.Size(233, 22);
+            this.tsmiFile_AddFilesWithStructure.Text = "Add files with dialog...";
             this.tsmiFile_AddFilesWithStructure.Click += new System.EventHandler(this.tsmiFile_AddFilesWithStructure_Click);
             // 
             // windowsToolStripMenuItem
@@ -269,7 +281,7 @@
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(135, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -284,7 +296,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -305,6 +317,7 @@
             // 
             // tvLibrary
             // 
+            this.tvLibrary.AllowDrop = true;
             this.tvLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvLibrary.Location = new System.Drawing.Point(317, 3);
             this.tvLibrary.Name = "tvLibrary";
@@ -312,6 +325,8 @@
             this.tvLibrary.TabIndex = 2;
             this.tvLibrary.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLibrary_NodeMouseClick);
             this.tvLibrary.Click += new System.EventHandler(this.tvLibrary_Click);
+            this.tvLibrary.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvLibrary_DragDrop);
+            this.tvLibrary.DragEnter += new System.Windows.Forms.DragEventHandler(this.tvLibrary_DragEnter);
             // 
             // tlpApp
             // 
@@ -330,18 +345,9 @@
             this.tlpApp.Size = new System.Drawing.Size(944, 417);
             this.tlpApp.TabIndex = 3;
             // 
-            // chkChecks_ArtworkLowRes
-            // 
-            this.chkChecks_ArtworkLowRes.AutoSize = true;
-            this.chkChecks_ArtworkLowRes.Location = new System.Drawing.Point(3, 26);
-            this.chkChecks_ArtworkLowRes.Name = "chkChecks_ArtworkLowRes";
-            this.chkChecks_ArtworkLowRes.Size = new System.Drawing.Size(177, 17);
-            this.chkChecks_ArtworkLowRes.TabIndex = 1;
-            this.chkChecks_ArtworkLowRes.Text = "Check for low resolution artwork";
-            this.chkChecks_ArtworkLowRes.UseVisualStyleBackColor = true;
-            // 
             // ValidatorWizard
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 441);
@@ -353,6 +359,8 @@
             this.Text = "iTSfv";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ValidatorWizard_FormClosing);
             this.Load += new System.EventHandler(this.ValidatorWizard_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.ValidatorWizard_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.ValidatorWizard_DragEnter);
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);
             this.Resize += new System.EventHandler(this.ValidatorWizard_Resize);
             this.tcValidator.ResumeLayout(false);

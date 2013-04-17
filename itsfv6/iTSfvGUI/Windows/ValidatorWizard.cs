@@ -117,7 +117,7 @@ namespace iTSfvGUI
             AddFiles();
         }
 
-        private void AddFiles(bool respectFolderStructure = false)
+        private void AddFiles(bool showWizard = false)
         {
             CommonOpenFileDialog dlg = new CommonOpenFileDialog("Add files or a folder...")
             {
@@ -127,7 +127,7 @@ namespace iTSfvGUI
 
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                if (respectFolderStructure)
+                if (showWizard)
                     ShowAddFilesWizard(dlg.FileNames.ToArray());
                 else
                     AddFilesFolders(dlg.FileNames.ToArray());
@@ -139,8 +139,6 @@ namespace iTSfvGUI
             var pathsFilesFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
             AddFilesFolders(pathsFilesFolders);
         }
-
-
 
         private void AddFilesFolders(string[] filesDirs)
         {
@@ -217,9 +215,12 @@ namespace iTSfvGUI
         public void ShowAddFilesWizard(string[] filesDirs)
         {
             AddFilesWizard afw = new AddFilesWizard(filesDirs);
-            afw.ShowDialog();
+            if (afw.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Program.Config.CopyMusicToLibrary = afw.CopyMusicToLibrary;
 
-            AddTracks(afw.Tracks);
+                AddTracks(afw.Tracks);
+            }
         }
 
         #endregion Helpers
@@ -322,12 +323,32 @@ namespace iTSfvGUI
 
         private void tsmiFile_AddFilesWithStructure_Click(object sender, EventArgs e)
         {
-            AddFiles(respectFolderStructure: true);
+            AddFiles(showWizard: true);
         }
 
         private void tsmiFoldersLogs_Click(object sender, EventArgs e)
         {
             HelpersLib.Helpers.OpenFolder(Program.LogsFolderPath);
+        }
+
+        private void tvLibrary_DragDrop(object sender, DragEventArgs e)
+        {
+            lbDiscs_DragDrop(sender, e);
+        }
+
+        private void tvLibrary_DragEnter(object sender, DragEventArgs e)
+        {
+            lbDiscs_DragEnter(sender, e);
+        }
+
+        private void ValidatorWizard_DragEnter(object sender, DragEventArgs e)
+        {
+            lbDiscs_DragEnter(sender, e);
+        }
+
+        private void ValidatorWizard_DragDrop(object sender, DragEventArgs e)
+        {
+            lbDiscs_DragDrop(sender, e);
         }
     }
 }

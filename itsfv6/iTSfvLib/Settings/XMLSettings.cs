@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using HelpersLib;
+using System.Drawing.Design;
 
 namespace iTSfvLib
 {
@@ -27,6 +28,13 @@ namespace iTSfvLib
 
         [Category(MyStrings.App), DefaultValue(300), Description("Minimum width and height size in pixels for artwork")]
         public int LowResArtworkSize { get; set; }
+
+        [EditorAttribute(typeof(FolderNameEditor), typeof(UITypeEditor))]
+        [Category(MyStrings.App), Description("Music folder path")]
+        public string MusicLibraryFolder { get; set; }
+
+        [Category(MyStrings.App), DefaultValue(true), Description("Copy music to library folder")]
+        public bool CopyMusicToLibrary { get; set; }
 
         public UserConfig UI = new UserConfig();
 
