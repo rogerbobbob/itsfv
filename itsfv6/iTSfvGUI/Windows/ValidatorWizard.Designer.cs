@@ -141,6 +141,7 @@
             this.flpTracks.Controls.Add(this.chkTracks_AlbumArtistFill);
             this.flpTracks.Controls.Add(this.chkTracks_TrackCountFill);
             this.flpTracks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpTracks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpTracks.Location = new System.Drawing.Point(3, 3);
             this.flpTracks.Name = "flpTracks";
             this.flpTracks.Size = new System.Drawing.Size(294, 379);
@@ -200,6 +201,7 @@
             // 
             this.flpFileSystem.Controls.Add(this.chkFileSystem_ArtworkJpgExport);
             this.flpFileSystem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpFileSystem.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpFileSystem.Location = new System.Drawing.Point(0, 0);
             this.flpFileSystem.Name = "flpFileSystem";
             this.flpFileSystem.Size = new System.Drawing.Size(300, 385);

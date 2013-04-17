@@ -36,6 +36,9 @@ namespace iTSfvLib
         [Category(MyStrings.App), DefaultValue(true), Description("Copy music to library folder")]
         public bool CopyMusicToLibrary { get; set; }
 
+        [Category(MyStrings.App), DefaultValue(false), Description("Automatically validate tracks after adding files/folders")]
+        public bool ValidateAfterAddingTracks { get; set; }
+
         public UserConfig UI = new UserConfig();
 
         public XMLSettings()

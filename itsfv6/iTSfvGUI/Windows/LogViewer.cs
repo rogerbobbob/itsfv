@@ -39,7 +39,8 @@ namespace iTSfvGUI
 
         public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            tspbApp.Value = e.ProgressPercentage;
+            if (tspbApp != null)
+                tspbApp.Value = e.ProgressPercentage;
         }
 
         public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
