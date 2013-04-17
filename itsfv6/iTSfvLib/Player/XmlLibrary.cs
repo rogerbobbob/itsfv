@@ -1,5 +1,4 @@
 ﻿using HelpersLib;
-using iTSfvLib.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -233,6 +232,8 @@ namespace iTSfvLib
 
         public void ValidateTrack(XmlTrack track)
         {
+            DebugHelper.WriteLine("Validating --> " + track.Location);
+
             if (this.Config.UI.Tracks_ArtworkFill)
                 track.EmbedArtwork(this.Config, this.Report);
 

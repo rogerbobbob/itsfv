@@ -259,7 +259,7 @@
             this.tsmiFile_TasksAddFiles.Name = "tsmiFile_TasksAddFiles";
             this.tsmiFile_TasksAddFiles.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
-            this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(233, 22);
+            this.tsmiFile_TasksAddFiles.Size = new System.Drawing.Size(234, 22);
             this.tsmiFile_TasksAddFiles.Text = "&Add files...";
             this.tsmiFile_TasksAddFiles.Click += new System.EventHandler(this.miTasksAddFiles_Click);
             // 
@@ -267,8 +267,8 @@
             // 
             this.tsmiFile_AddFilesWithStructure.Name = "tsmiFile_AddFilesWithStructure";
             this.tsmiFile_AddFilesWithStructure.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.tsmiFile_AddFilesWithStructure.Size = new System.Drawing.Size(233, 22);
-            this.tsmiFile_AddFilesWithStructure.Text = "Add files with dialog...";
+            this.tsmiFile_AddFilesWithStructure.Size = new System.Drawing.Size(234, 22);
+            this.tsmiFile_AddFilesWithStructure.Text = "Add files with wizard...";
             this.tsmiFile_AddFilesWithStructure.Click += new System.EventHandler(this.tsmiFile_AddFilesWithStructure_Click);
             // 
             // windowsToolStripMenuItem
@@ -283,7 +283,7 @@
             // 
             this.tsmiTasksValidate.Name = "tsmiTasksValidate";
             this.tsmiTasksValidate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.tsmiTasksValidate.Size = new System.Drawing.Size(135, 22);
+            this.tsmiTasksValidate.Size = new System.Drawing.Size(152, 22);
             this.tsmiTasksValidate.Text = "&Validate";
             this.tsmiTasksValidate.Click += new System.EventHandler(this.tsmiTasksValidate_Click);
             // 
@@ -298,7 +298,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(125, 22);
+            this.tsmiOptions.Size = new System.Drawing.Size(152, 22);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -313,7 +313,7 @@
             // tsmiFoldersLogs
             // 
             this.tsmiFoldersLogs.Name = "tsmiFoldersLogs";
-            this.tsmiFoldersLogs.Size = new System.Drawing.Size(108, 22);
+            this.tsmiFoldersLogs.Size = new System.Drawing.Size(152, 22);
             this.tsmiFoldersLogs.Text = "&Logs...";
             this.tsmiFoldersLogs.Click += new System.EventHandler(this.tsmiFoldersLogs_Click);
             // 
