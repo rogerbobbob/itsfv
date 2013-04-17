@@ -48,7 +48,7 @@ namespace iTSfvLib
             {
                 if (Directory.Exists(pfd))
                 {
-                    foreach (string ext in Config.SupportedAudioTypes)
+                    foreach (string ext in Config.SupportedAudioFileTypes)
                     {
                         foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
                         {
