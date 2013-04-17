@@ -70,7 +70,17 @@ namespace iTSfvLib
         {
             get
             {
-                return AlbumArtist.Replace("/", "_");
+                return Path.GetInvalidFileNameChars().Aggregate(AlbumArtist,
+                    (current, c) => current.Replace(c.ToString(), "_"));
+            }
+        }
+
+        public string AlbumPathFriendly
+        {
+            get
+            {
+                return Path.GetInvalidFileNameChars().Aggregate(this.Tags.Album,
+                  (current, c) => current.Replace(c.ToString(), "_"));
             }
         }
 
@@ -336,33 +346,38 @@ namespace iTSfvLib
         internal void FillTrackCount(List<XmlAlbum> Albums, List<XmlDisc> Discs, ReportWriter reportWriter)
         {
             XmlDisc disc = Discs.FirstOrDefault(x => x.Key == this.GetDiscKey());
+            List<string> filledTags = new List<string>();
+
             if (disc != null)
             {
                 if (this.Tags.TrackCount == 0)
                 {
                     this.Tags.TrackCount = (uint)disc.Tracks.Count;
                     IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled TrackCount");
+                    filledTags.Add("TrackCount");
                 }
             }
 
             XmlAlbum album = Albums.FirstOrDefault(x => x.Key == this.GetAlbumKey());
             if (album != null)
             {
-                if (this.Tags.DiscCount == 0)
-                {
-                    this.Tags.DiscCount = (uint)album.Discs.Count;
-                    IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled DiscCount");
-                }
-
                 if (this.Tags.Disc == 0 && album.Discs.Count == 1)
                 {
                     this.Tags.Disc = 1; // for single disc albums you can specify DiscNumber
                     IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled DiscNumber");
+                    filledTags.Add("DiscNumber");
+                }
+
+                if (this.Tags.DiscCount == 0)
+                {
+                    this.Tags.DiscCount = (uint)album.Discs.Count;
+                    IsModified = true;
+                    filledTags.Add("DiscCount");
                 }
             }
+
+            if (filledTags.Count > 0)
+                DebugHelper.WriteLine(this.FileName + " --> filled " + filledTags.ToArray().Join("; "));
         }
 
         internal void FillAlbumArtist(List<XmlAlbum> Albums, ReportWriter reportWriter)

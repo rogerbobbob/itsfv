@@ -52,14 +52,6 @@ namespace iTSfvLib
             return ConstantStrings.UnknownAlbum;
         }
 
-        public uint DiscCount
-        {
-            get
-            {
-                return (uint)Discs.Count;
-            }
-        }
-
         public List<XmlTrack> GetTracks()
         {
             List<XmlTrack> tracks = new List<XmlTrack>();
@@ -73,10 +65,14 @@ namespace iTSfvLib
             return tracks;
         }
 
+        private string _albumArtist = string.Empty;
         public string AlbumArtist
         {
             get
             {
+                if (!string.IsNullOrEmpty(_albumArtist))
+                    return _albumArtist;
+
                 List<string> albumArtists = new List<string>();
                 IEnumerator e = this.Discs.GetEnumerator();
                 while (e.MoveNext())
@@ -86,7 +82,7 @@ namespace iTSfvLib
                         albumArtists.Add((albumartist));
                 }
                 if (albumArtists.Count > 0)
-                    return string.Join(" / ", albumArtists.ToArray());
+                    return _albumArtist = string.Join(" / ", albumArtists.ToArray());
 
                 return ConstantStrings.UnknownArtist;
             }
