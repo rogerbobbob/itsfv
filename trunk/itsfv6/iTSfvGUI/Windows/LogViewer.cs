@@ -1,4 +1,5 @@
-﻿using iTSfvLib;
+﻿using HelpersLib;
+using iTSfvLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace iTSfvGUI
         public LogViewer()
         {
             InitializeComponent();
+            DebugHelper.MyLogger = this.Logger;
             Logger.MessageAdded += Logger_MessageAdded;
         }
 

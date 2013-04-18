@@ -384,5 +384,14 @@ namespace iTSfvGUI
             AboutForm frm = new AboutForm() { Icon = this.Icon };
             frm.Show();
         }
+
+        private void tsmiHelpLogViewer_Click(object sender, EventArgs e)
+        {
+            if (Program.LogViewer.IsDisposed || Program.LogViewer == null)
+                Program.LogViewer = new LogViewer();
+
+            Program.LogViewer.Show();
+            Program.LogViewer.Focus();
+        }
     }
 }
