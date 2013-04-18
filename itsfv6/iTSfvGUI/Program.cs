@@ -8,11 +8,15 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace iTSfvGUI
 {
     public static class Program
     {
+        [DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
         private static readonly string ApplicationName = Application.ProductName; // keep this top most
         private static readonly string LogFileName = ApplicationName + "Log-{0}.log";
         public static bool IsPortable { get; private set; }
@@ -105,9 +109,9 @@ namespace iTSfvGUI
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
 
                 LogViewer = new LogViewer();
-                DebugHelper.MyLogger = LogViewer.Logger;
 
                 MainForm = new ValidatorWizard();
                 SettingsReader.DoWork += SettingsReader_DoWork;
