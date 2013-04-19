@@ -48,7 +48,7 @@ namespace iTSfvLib
             {
                 if (Directory.Exists(pfd))
                 {
-                    foreach (string ext in Config.SupportedAudioFileTypes)
+                    foreach (string ext in Config.SupportedFileTypes)
                     {
                         foreach (string fp in Directory.GetFiles(pfd, string.Format("*.{0}", ext), SearchOption.AllDirectories))
                         {
@@ -224,6 +224,8 @@ namespace iTSfvLib
 
         public void ValidateDisc(XmlDisc disc)
         {
+            DebugHelper.WriteLine("Validating --> " + disc.Location);
+
             disc.Tracks.Sort(XmlTrackComparer.XmlTrackComparerMethods.CompareByTrackNumber);
 
             foreach (XmlTrack track in disc.Tracks)
@@ -234,8 +236,6 @@ namespace iTSfvLib
 
         public void ValidateTrack(XmlTrack track)
         {
-            DebugHelper.WriteLine("Validating --> " + track.Location);
-
             if (this.Config.UI.Tracks_ArtworkFill)
                 track.EmbedArtwork(this.Config, this.Report);
 
