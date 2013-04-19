@@ -15,7 +15,7 @@ namespace iTSfvLib
     {
         [Editor("System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter)), Category(MyStrings.App)]
-        public List<string> SupportedAudioFileTypes { get; set; }
+        public List<string> SupportedFileTypes { get; set; }
 
         [Category(MyStrings.App), DefaultValue(true), Description("All the tracks in a folder are treated as having the same Album Artist")]
         public bool TreatAsOneBandPerFolder { get; set; }
@@ -48,9 +48,6 @@ namespace iTSfvLib
 
         public XMLSettings()
         {
-            if (SupportedAudioFileTypes == null)
-                SupportedAudioFileTypes = new List<string>() { "mp3", "m4a", "flac" };
-
             ApplyDefaultValues(this);
         }
 
@@ -66,7 +63,12 @@ namespace iTSfvLib
 
         public static XMLSettings Read(string filePath)
         {
-            return SettingsHelper.Load<XMLSettings>(filePath, SerializationType.Xml);
+            XMLSettings settings = SettingsHelper.Load<XMLSettings>(filePath, SerializationType.Xml);
+
+            if (settings.SupportedFileTypes == null || settings.SupportedFileTypes.Count == 0)
+                settings.SupportedFileTypes = new List<string>() { "mp3", "m4a", "flac" };
+
+            return settings;
         }
 
         public bool Write(string filePath)
