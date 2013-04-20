@@ -30,6 +30,7 @@ namespace iTSfvLib
             {
                 this.Tags.AlbumArtists = new string[] { value };
                 IsModified = true;
+                DebugHelper.WriteLine(this.FileName + " --> filled AlbumArtist with " + value);
             }
         }
 
@@ -111,6 +112,7 @@ namespace iTSfvLib
             {
                 Tags.Genres = new string[] { value };
                 IsModified = true;
+                DebugHelper.WriteLine(this.FileName + " --> filled Genre with " + value);
             }
         }
 
@@ -482,14 +484,10 @@ namespace iTSfvLib
             {
                 if (this.Tags.AlbumArtists.Length == 0)
                 {
-                    this.Tags.AlbumArtists = new string[] { album.AlbumArtist };
-                    IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled AlbumArtist with " + album.AlbumArtist);
+                    this.AlbumArtist = album.AlbumArtist;
                 }
             }
         }
-
-
 
         internal void FillGenre(List<XmlDisc> Discs, ReportWriter reportWriter)
         {
@@ -498,9 +496,7 @@ namespace iTSfvLib
             {
                 if (this.Tags.Genres.Length == 0)
                 {
-                    this.Tags.Genres = new string[] { disc.Genre };
-                    IsModified = true;
-                    DebugHelper.WriteLine(this.FileName + " --> filled Genre with " + disc.Genre);
+                    this.Genre = disc.Genre;
                 }
             }
         }
@@ -536,7 +532,6 @@ namespace iTSfvLib
 
             return false;
         }
-
 
         internal void EmbedArtwork(XMLSettings xMLSettings, ReportWriter reportWriter)
         {
