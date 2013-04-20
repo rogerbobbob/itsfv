@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{2E014C90-8985-4DC9-97C9-8E6DF8190DF7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvGUI", "iTSfvGUI\iTSfvGUI.csproj", "{FCF3E10D-5724-4F70-ABEF-90D119B035C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvLib", "iTSfvLib\iTSfvLib.csproj", "{C1D1A1ED-B33E-471F-91FA-4A65C4ADAA75}"
@@ -10,8 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTSfvCLI", "iTSfvCLI\iTSfvCLI.csproj", "{2ACC1072-25A0-4AF9-8F0B-3ED54DECB168}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersLib", "..\..\..\ShareX\trunk\HelpersLib\HelpersLib.csproj", "{327750E1-9FB7-4CC3-8AEA-9BC42180CAD3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD18E16F-E101-41DF-871C-1772098C1767}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadersLib", "..\..\..\ShareX\trunk\UploadersLib\UploadersLib.csproj", "{E1C94415-3424-4517-A2A1-B2FDD1F59C67}"
 EndProject

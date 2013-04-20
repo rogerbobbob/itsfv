@@ -57,13 +57,13 @@
             this.tsmiFoldersLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHelpLogViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.ttApp = new System.Windows.Forms.ToolTip(this.components);
             this.tvLibrary = new System.Windows.Forms.TreeView();
             this.tlpApp = new System.Windows.Forms.TableLayoutPanel();
             this.cmsDisc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSearchInGoogle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiShowInExplorer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiHelpLogViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.tcValidator.SuspendLayout();
             this.tpChecks.SuspendLayout();
             this.flpChecks.SuspendLayout();
@@ -83,19 +83,19 @@
             this.tcValidator.Controls.Add(this.tpFileSystem);
             this.tcValidator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcValidator.Location = new System.Drawing.Point(4, 4);
-            this.tcValidator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcValidator.Margin = new System.Windows.Forms.Padding(4);
             this.tcValidator.Name = "tcValidator";
             this.tcValidator.SelectedIndex = 0;
-            this.tcValidator.Size = new System.Drawing.Size(391, 397);
+            this.tcValidator.Size = new System.Drawing.Size(471, 397);
             this.tcValidator.TabIndex = 1;
             // 
             // tpChecks
             // 
             this.tpChecks.Controls.Add(this.flpChecks);
             this.tpChecks.Location = new System.Drawing.Point(4, 25);
-            this.tpChecks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpChecks.Margin = new System.Windows.Forms.Padding(4);
             this.tpChecks.Name = "tpChecks";
-            this.tpChecks.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpChecks.Padding = new System.Windows.Forms.Padding(4);
             this.tpChecks.Size = new System.Drawing.Size(383, 368);
             this.tpChecks.TabIndex = 1;
             this.tpChecks.Text = "Checks";
@@ -108,7 +108,7 @@
             this.flpChecks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpChecks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpChecks.Location = new System.Drawing.Point(4, 4);
-            this.flpChecks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpChecks.Margin = new System.Windows.Forms.Padding(4);
             this.flpChecks.Name = "flpChecks";
             this.flpChecks.Size = new System.Drawing.Size(375, 360);
             this.flpChecks.TabIndex = 1;
@@ -117,7 +117,7 @@
             // 
             this.chkChecks_MissingTags.AutoSize = true;
             this.chkChecks_MissingTags.Location = new System.Drawing.Point(4, 4);
-            this.chkChecks_MissingTags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkChecks_MissingTags.Margin = new System.Windows.Forms.Padding(4);
             this.chkChecks_MissingTags.Name = "chkChecks_MissingTags";
             this.chkChecks_MissingTags.Size = new System.Drawing.Size(172, 21);
             this.chkChecks_MissingTags.TabIndex = 0;
@@ -128,7 +128,7 @@
             // 
             this.chkChecks_ArtworkLowRes.AutoSize = true;
             this.chkChecks_ArtworkLowRes.Location = new System.Drawing.Point(4, 33);
-            this.chkChecks_ArtworkLowRes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkChecks_ArtworkLowRes.Margin = new System.Windows.Forms.Padding(4);
             this.chkChecks_ArtworkLowRes.Name = "chkChecks_ArtworkLowRes";
             this.chkChecks_ArtworkLowRes.Size = new System.Drawing.Size(230, 21);
             this.chkChecks_ArtworkLowRes.TabIndex = 1;
@@ -139,10 +139,10 @@
             // 
             this.tpTracks.Controls.Add(this.flpTracks);
             this.tpTracks.Location = new System.Drawing.Point(4, 25);
-            this.tpTracks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpTracks.Margin = new System.Windows.Forms.Padding(4);
             this.tpTracks.Name = "tpTracks";
-            this.tpTracks.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tpTracks.Size = new System.Drawing.Size(383, 368);
+            this.tpTracks.Padding = new System.Windows.Forms.Padding(4);
+            this.tpTracks.Size = new System.Drawing.Size(463, 368);
             this.tpTracks.TabIndex = 2;
             this.tpTracks.Text = "Tracks";
             this.tpTracks.UseVisualStyleBackColor = true;
@@ -156,16 +156,16 @@
             this.flpTracks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTracks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpTracks.Location = new System.Drawing.Point(4, 4);
-            this.flpTracks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpTracks.Margin = new System.Windows.Forms.Padding(4);
             this.flpTracks.Name = "flpTracks";
-            this.flpTracks.Size = new System.Drawing.Size(375, 360);
+            this.flpTracks.Size = new System.Drawing.Size(455, 360);
             this.flpTracks.TabIndex = 2;
             // 
             // chkTracks_ArtworkFill
             // 
             this.chkTracks_ArtworkFill.AutoSize = true;
             this.chkTracks_ArtworkFill.Location = new System.Drawing.Point(4, 4);
-            this.chkTracks_ArtworkFill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTracks_ArtworkFill.Margin = new System.Windows.Forms.Padding(4);
             this.chkTracks_ArtworkFill.Name = "chkTracks_ArtworkFill";
             this.chkTracks_ArtworkFill.Size = new System.Drawing.Size(196, 21);
             this.chkTracks_ArtworkFill.TabIndex = 3;
@@ -176,7 +176,7 @@
             // 
             this.chkTracks_GenreFill.AutoSize = true;
             this.chkTracks_GenreFill.Location = new System.Drawing.Point(4, 33);
-            this.chkTracks_GenreFill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTracks_GenreFill.Margin = new System.Windows.Forms.Padding(4);
             this.chkTracks_GenreFill.Name = "chkTracks_GenreFill";
             this.chkTracks_GenreFill.Size = new System.Drawing.Size(253, 21);
             this.chkTracks_GenreFill.TabIndex = 0;
@@ -187,7 +187,7 @@
             // 
             this.chkTracks_AlbumArtistFill.AutoSize = true;
             this.chkTracks_AlbumArtistFill.Location = new System.Drawing.Point(4, 62);
-            this.chkTracks_AlbumArtistFill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTracks_AlbumArtistFill.Margin = new System.Windows.Forms.Padding(4);
             this.chkTracks_AlbumArtistFill.Name = "chkTracks_AlbumArtistFill";
             this.chkTracks_AlbumArtistFill.Size = new System.Drawing.Size(288, 21);
             this.chkTracks_AlbumArtistFill.TabIndex = 1;
@@ -198,7 +198,7 @@
             // 
             this.chkTracks_TrackCountFill.AutoSize = true;
             this.chkTracks_TrackCountFill.Location = new System.Drawing.Point(4, 91);
-            this.chkTracks_TrackCountFill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTracks_TrackCountFill.Margin = new System.Windows.Forms.Padding(4);
             this.chkTracks_TrackCountFill.Name = "chkTracks_TrackCountFill";
             this.chkTracks_TrackCountFill.Size = new System.Drawing.Size(368, 21);
             this.chkTracks_TrackCountFill.TabIndex = 2;
@@ -209,7 +209,7 @@
             // 
             this.tpFileSystem.Controls.Add(this.flpFileSystem);
             this.tpFileSystem.Location = new System.Drawing.Point(4, 25);
-            this.tpFileSystem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpFileSystem.Margin = new System.Windows.Forms.Padding(4);
             this.tpFileSystem.Name = "tpFileSystem";
             this.tpFileSystem.Size = new System.Drawing.Size(383, 368);
             this.tpFileSystem.TabIndex = 3;
@@ -222,7 +222,7 @@
             this.flpFileSystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpFileSystem.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpFileSystem.Location = new System.Drawing.Point(0, 0);
-            this.flpFileSystem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpFileSystem.Margin = new System.Windows.Forms.Padding(4);
             this.flpFileSystem.Name = "flpFileSystem";
             this.flpFileSystem.Size = new System.Drawing.Size(383, 368);
             this.flpFileSystem.TabIndex = 1;
@@ -231,7 +231,7 @@
             // 
             this.chkFileSystem_ArtworkJpgExport.AutoSize = true;
             this.chkFileSystem_ArtworkJpgExport.Location = new System.Drawing.Point(4, 4);
-            this.chkFileSystem_ArtworkJpgExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkFileSystem_ArtworkJpgExport.Margin = new System.Windows.Forms.Padding(4);
             this.chkFileSystem_ArtworkJpgExport.Name = "chkFileSystem_ArtworkJpgExport";
             this.chkFileSystem_ArtworkJpgExport.Size = new System.Drawing.Size(306, 21);
             this.chkFileSystem_ArtworkJpgExport.TabIndex = 0;
@@ -244,10 +244,10 @@
             this.lbDiscs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbDiscs.FormattingEnabled = true;
             this.lbDiscs.ItemHeight = 16;
-            this.lbDiscs.Location = new System.Drawing.Point(802, 4);
-            this.lbDiscs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbDiscs.Location = new System.Drawing.Point(842, 4);
+            this.lbDiscs.Margin = new System.Windows.Forms.Padding(4);
             this.lbDiscs.Name = "lbDiscs";
-            this.lbDiscs.Size = new System.Drawing.Size(392, 397);
+            this.lbDiscs.Size = new System.Drawing.Size(352, 397);
             this.lbDiscs.Sorted = true;
             this.lbDiscs.TabIndex = 0;
             this.lbDiscs.SelectedIndexChanged += new System.EventHandler(this.lbDiscs_SelectedIndexChanged);
@@ -323,7 +323,7 @@
             // tsmiOptions
             // 
             this.tsmiOptions.Name = "tsmiOptions";
-            this.tsmiOptions.Size = new System.Drawing.Size(152, 24);
+            this.tsmiOptions.Size = new System.Drawing.Size(139, 24);
             this.tsmiOptions.Text = "&Options...";
             this.tsmiOptions.Click += new System.EventHandler(this.tsmiOptions_Click);
             // 
@@ -338,7 +338,7 @@
             // tsmiFoldersLogs
             // 
             this.tsmiFoldersLogs.Name = "tsmiFoldersLogs";
-            this.tsmiFoldersLogs.Size = new System.Drawing.Size(152, 24);
+            this.tsmiFoldersLogs.Size = new System.Drawing.Size(118, 24);
             this.tsmiFoldersLogs.Text = "&Logs...";
             this.tsmiFoldersLogs.Click += new System.EventHandler(this.tsmiFoldersLogs_Click);
             // 
@@ -358,14 +358,21 @@
             this.tsmiAbout.Text = "&About...";
             this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
+            // tsmiHelpLogViewer
+            // 
+            this.tsmiHelpLogViewer.Name = "tsmiHelpLogViewer";
+            this.tsmiHelpLogViewer.Size = new System.Drawing.Size(159, 24);
+            this.tsmiHelpLogViewer.Text = "&Log viewer...";
+            this.tsmiHelpLogViewer.Click += new System.EventHandler(this.tsmiHelpLogViewer_Click);
+            // 
             // tvLibrary
             // 
             this.tvLibrary.AllowDrop = true;
             this.tvLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvLibrary.Location = new System.Drawing.Point(403, 4);
-            this.tvLibrary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tvLibrary.Location = new System.Drawing.Point(483, 4);
+            this.tvLibrary.Margin = new System.Windows.Forms.Padding(4);
             this.tvLibrary.Name = "tvLibrary";
-            this.tvLibrary.Size = new System.Drawing.Size(391, 397);
+            this.tvLibrary.Size = new System.Drawing.Size(351, 397);
             this.tvLibrary.TabIndex = 2;
             this.tvLibrary.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLibrary_NodeMouseClick);
             this.tvLibrary.Click += new System.EventHandler(this.tvLibrary_Click);
@@ -375,15 +382,15 @@
             // tlpApp
             // 
             this.tlpApp.ColumnCount = 3;
-            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tlpApp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpApp.Controls.Add(this.tvLibrary, 1, 0);
             this.tlpApp.Controls.Add(this.tcValidator, 0, 0);
             this.tlpApp.Controls.Add(this.lbDiscs, 2, 0);
             this.tlpApp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpApp.Location = new System.Drawing.Point(0, 28);
-            this.tlpApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpApp.Margin = new System.Windows.Forms.Padding(4);
             this.tlpApp.Name = "tlpApp";
             this.tlpApp.RowCount = 1;
             this.tlpApp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -412,13 +419,6 @@
             this.tsmiShowInExplorer.Text = "Open containing folder...";
             this.tsmiShowInExplorer.Click += new System.EventHandler(this.tsmiShowInExplorer_Click);
             // 
-            // tsmiHelpLogViewer
-            // 
-            this.tsmiHelpLogViewer.Name = "tsmiHelpLogViewer";
-            this.tsmiHelpLogViewer.Size = new System.Drawing.Size(159, 24);
-            this.tsmiHelpLogViewer.Text = "&Log viewer...";
-            this.tsmiHelpLogViewer.Click += new System.EventHandler(this.tsmiHelpLogViewer_Click);
-            // 
             // ValidatorWizard
             // 
             this.AllowDrop = true;
@@ -428,7 +428,7 @@
             this.Controls.Add(this.tlpApp);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1216, 480);
             this.Name = "ValidatorWizard";
             this.Text = "iTSfv";
