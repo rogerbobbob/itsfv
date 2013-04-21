@@ -1,5 +1,6 @@
 ﻿using HelpersLib;
 using iTSfvLib;
+using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,7 @@ namespace iTSfvGUI
         {
             if (tspbApp != null && !tspbApp.IsDisposed)
                 tspbApp.Value = e.ProgressPercentage;
+            TaskbarHelper.TaskbarSetProgressValue(e.ProgressPercentage);
         }
 
         public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -66,12 +68,14 @@ namespace iTSfvGUI
         {
             tsslApp.Text = "Reading files/folders...";
             tspbApp.ProgressBar.Style = ProgressBarStyle.Marquee;
+            TaskbarHelper.TaskbarSetProgressState(TaskbarProgressBarState.Indeterminate);
         }
 
         internal void AddFilesWorker_RunWorkerCompleted()
         {
             tsslApp.Text = "Ready.";
             tspbApp.ProgressBar.Style = ProgressBarStyle.Continuous;
+            TaskbarHelper.TaskbarSetProgressState(TaskbarProgressBarState.Normal);
         }
     }
 }

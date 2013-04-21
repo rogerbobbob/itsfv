@@ -96,7 +96,7 @@
             this.tpChecks.Margin = new System.Windows.Forms.Padding(4);
             this.tpChecks.Name = "tpChecks";
             this.tpChecks.Padding = new System.Windows.Forms.Padding(4);
-            this.tpChecks.Size = new System.Drawing.Size(383, 368);
+            this.tpChecks.Size = new System.Drawing.Size(463, 368);
             this.tpChecks.TabIndex = 1;
             this.tpChecks.Text = "Checks";
             this.tpChecks.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             this.flpChecks.Location = new System.Drawing.Point(4, 4);
             this.flpChecks.Margin = new System.Windows.Forms.Padding(4);
             this.flpChecks.Name = "flpChecks";
-            this.flpChecks.Size = new System.Drawing.Size(375, 360);
+            this.flpChecks.Size = new System.Drawing.Size(455, 360);
             this.flpChecks.TabIndex = 1;
             // 
             // chkChecks_MissingTags
@@ -211,7 +211,7 @@
             this.tpFileSystem.Location = new System.Drawing.Point(4, 25);
             this.tpFileSystem.Margin = new System.Windows.Forms.Padding(4);
             this.tpFileSystem.Name = "tpFileSystem";
-            this.tpFileSystem.Size = new System.Drawing.Size(383, 368);
+            this.tpFileSystem.Size = new System.Drawing.Size(463, 368);
             this.tpFileSystem.TabIndex = 3;
             this.tpFileSystem.Text = "FileSystem";
             this.tpFileSystem.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.flpFileSystem.Location = new System.Drawing.Point(0, 0);
             this.flpFileSystem.Margin = new System.Windows.Forms.Padding(4);
             this.flpFileSystem.Name = "flpFileSystem";
-            this.flpFileSystem.Size = new System.Drawing.Size(383, 368);
+            this.flpFileSystem.Size = new System.Drawing.Size(463, 368);
             this.flpFileSystem.TabIndex = 1;
             // 
             // chkFileSystem_ArtworkJpgExport
@@ -434,6 +434,7 @@
             this.Text = "iTSfv";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ValidatorWizard_FormClosing);
             this.Load += new System.EventHandler(this.ValidatorWizard_Load);
+            this.Shown += new System.EventHandler(this.ValidatorWizard_Shown);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.ValidatorWizard_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.ValidatorWizard_DragEnter);
             this.Move += new System.EventHandler(this.ValidatorWizard_Move);

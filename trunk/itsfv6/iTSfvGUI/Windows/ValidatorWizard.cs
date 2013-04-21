@@ -98,6 +98,11 @@ namespace iTSfvGUI
             this.Text = Program.Title;
         }
 
+        private void ValidatorWizard_Shown(object sender, EventArgs e)
+        {
+            TaskbarHelper.Init(this);
+        }
+
         private void ValidatorWizard_Move(object sender, EventArgs e)
         {
             UpdateLogViewPos();
@@ -393,5 +398,7 @@ namespace iTSfvGUI
             Program.LogViewer.Show();
             Program.LogViewer.Focus();
         }
+
+
     }
 }
