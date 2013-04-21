@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TaskbarHelper.cs" />
     <Compile Include="Windows\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
