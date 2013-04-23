@@ -2,9 +2,9 @@
 <Update>
   <iTSfv>
     <Stable>
-      <Version>5.62.1.0</Version>
-      <URL>https://itsfv.googlecode.com/files/iTSfv-5.62.1.0-setup.exe</URL>
-      <Date>2012-02-08</Date>
+      <Version>6.0.0.170</Version>
+      <URL>https://itsfv.googlecode.com/files/iTSfv-6.0.0.170-setup.exe</URL>
+      <Date>2012-04-24</Date>
       <Summary>https://itsfv.googlecode.com/svn/trunk/itsfv6/iTSfvLib/Docs/VersionHistory.txt</Summary>
     </Stable>
   </iTSfv>
