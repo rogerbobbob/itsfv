@@ -70,6 +70,15 @@ namespace iTSfvGUI
             }
         }
 
+        public static string LogFilePath
+        {
+            get
+            {
+                DateTime now = FastDateTime.Now;
+                return Path.Combine(LogsFolderPath, string.Format(LogFileName, now.Year, now.Month));
+            }
+        }
+
         public static string Title
         {
             get
@@ -102,9 +111,12 @@ namespace iTSfvGUI
         [STAThread]
         private static void Main(string[] args)
         {
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            AppDomain.CurrentDomain.AssemblyLoad += new AssemblyLoadEventHandler(CurrentDomain_AssemblyLoad);
+
             try
             {
-                AppDomain.CurrentDomain.AssemblyLoad += new AssemblyLoadEventHandler(CurrentDomain_AssemblyLoad);
                 IsPortable = CLIHelper.CheckArgs(args, "p", "portable");
 
                 Application.EnableVisualStyles();
@@ -125,6 +137,21 @@ namespace iTSfvGUI
             {
 
             }
+        }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            OnError(e.Exception);
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            OnError((Exception)e.ExceptionObject);
+        }
+
+        private static void OnError(Exception e)
+        {
+            new ErrorForm(Application.ProductName, e, LogViewer.Logger, LogFilePath, Links.URL_ISSUES).ShowDialog();
         }
 
         static void SettingsReader_DoWork(object sender, DoWorkEventArgs e)
